@@ -295,15 +295,40 @@
   }));
 
   /* ---------- screenshot lightbox ---------- */
-  // Opens full screen, steps through every screenshot on the page, and zooms to real size
-  // (tap the image or the Zoom button) so dense UI is readable on a phone.
+  // One viewer for every screenshot: opens full screen, steps through the case study (buttons, ← →, swipe),
+  // and zooms to real size (tap the image or the Zoom button) so dense UI is readable on a phone.
+  // Close-up crops (.detail-shot) open the full screenshot they came from (data-full); each image is counted once.
   const box = document.getElementById('lightbox');
   const lbStage = document.getElementById('lb-stage');
   const boxImg = lbStage.querySelector('img'), boxCap = box.querySelector('.lb-cap');
   const lbCount = document.getElementById('lb-count'), lbZoom = document.getElementById('lb-zoom');
   const lbPrev = box.querySelector('.lb-prev'), lbNext = box.querySelector('.lb-next');
   let lbSet = [], lbIdx = 0, zoomed = false, swiped = false;
+  // touch wording in the hint follows the input actually used, not just what the device claims
+  addEventListener('pointerdown', e => document.documentElement.classList.toggle('touch-input', e.pointerType === 'touch'), { capture: true, passive: true });
 
+  // what a trigger shows: its full-size source, alt text and a caption that describes that image
+  function lbItem(el) {
+    const img = el.querySelector('img');
+    const src = el.dataset.full || (img && (img.getAttribute('src')));
+    const alt = el.dataset.fullAlt || (img ? img.alt : '');
+    const fig = el.closest('figure'), cap = fig && fig.querySelector('figcaption:not(.sr-only)');
+    let text = el.dataset.caption || (!el.dataset.full && cap ? cap.textContent : '') || alt;
+    return { el, src, alt, text: text.replace(/\s+/g, ' ').trim() };
+  }
+  function lbBuild(scope) {
+    const seen = new Map();
+    [...scope.querySelectorAll('.shot, .shot-link')].forEach(el => {
+      const it = lbItem(el);
+      if (!it.src) return;
+      // a full screenshot's own caption beats the alt-text caption a close-up would give it
+      const prev = seen.get(it.src);
+      if (!prev) seen.set(it.src, it);
+      else if (!el.dataset.full && !el.dataset.caption && prev.el.dataset.full) seen.set(it.src, Object.assign(it, { order: prev.order }));
+      seen.get(it.src).order ??= seen.size;
+    });
+    return [...seen.values()].sort((a, b) => a.order - b.order);
+  }
   function setZoom(on, fx = .5, fy = .5) {
     zoomed = on;
     box.classList.toggle('zoomed', on);
@@ -320,22 +345,23 @@
   }
   function lbShow(i) {
     lbIdx = (i + lbSet.length) % lbSet.length;
-    const shot = lbSet[lbIdx], img = shot.querySelector('img');
+    const it = lbSet[lbIdx];
     setZoom(false);
-    boxImg.src = img.currentSrc || img.src;
-    boxImg.alt = img.alt;
-    const fig = shot.closest('figure'), cap = fig && fig.querySelector('figcaption');
-    boxCap.textContent = cap ? cap.textContent : img.alt;
+    boxImg.src = it.src;
+    boxImg.alt = it.alt;
+    boxCap.textContent = it.text;
     const many = lbSet.length > 1;
     lbCount.textContent = many ? `${lbIdx + 1} / ${lbSet.length}` : '';
     lbPrev.hidden = lbNext.hidden = !many;
   }
   document.addEventListener('click', e => {
-    const shot = e.target.closest('.shot');
-    if (!shot) return;
-    const scope = shot.closest('[data-view]') || document;
-    lbSet = [...scope.querySelectorAll('.shot')];
-    lbShow(lbSet.indexOf(shot));
+    const shot = e.target.closest('.shot, .shot-link');
+    if (!shot || box.contains(shot)) return;
+    lbSet = lbBuild(shot.closest('[data-view]') || document);
+    const it = lbItem(shot);
+    let i = lbSet.findIndex(x => x.src === it.src);
+    if (i < 0) { lbSet = [it]; i = 0; }
+    lbShow(i);
     if (box.showModal) box.showModal(); else box.setAttribute('open', '');
     lockScroll(true);
   });
@@ -365,6 +391,14 @@
     if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5 && lbSet.length > 1) { swiped = true; lbShow(lbIdx + (dx < 0 ? 1 : -1)); }
   });
   lbStage.addEventListener('pointercancel', () => { sx = null; });
+
+  /* ---------- before / after comparison: a native range input drives the reveal ---------- */
+  document.querySelectorAll('.compare').forEach(c => {
+    const range = c.querySelector('.compare-range');
+    const update = () => c.style.setProperty('--pos', range.value + '%');
+    range.addEventListener('input', update);
+    update();
+  });
 
   /* ---------- copy email ---------- */
   const copy = document.getElementById('copy'), email = document.getElementById('email');

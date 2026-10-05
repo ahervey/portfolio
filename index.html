@@ -26,6 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@1,9..144,700..900,0..100,0..1&family=Shrikhand&family=Hanken+Grotesk:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="styles.css?v=202610051400">
 <link rel="stylesheet" href="theme-pastel.css?v=202610051400">
+<link rel="stylesheet" href="case-visuals.css?v=202610051700">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -221,6 +222,14 @@
       <div class="flavor">MEW2</div>
       <h1>A guided interface for editing renewable asset data without writing SQL</h1>
       <p class="summary">MEW2 sits on top of our SQL Server databases so teams across Avangrid can maintain sites, devices and certificates through forms and a browsable tree instead of raw queries.</p>
+      <figure class="hero-visual">
+        <div class="hv-stage" style="--pt:66px">
+          <button class="shot hv-main" type="button"><span class="hv-bar" aria-hidden="true"><i></i><i></i><i></i><span>MEW2 · Farms</span></span><span class="hv-img"><img src="img/mew2_4.webp" alt="MEW2 farm editor: sites in a sidebar, asset types in a second column, and the Baffin Bay attributes as editable fields" width="1600" height="787" decoding="async" fetchpriority="high"><span class="hv-pin" style="--x:39.6%;--y:23%" aria-hidden="true">1</span><span class="hv-pin" style="--x:86.4%;--y:5%" aria-hidden="true">2</span></span></button>
+          <div class="hv-call hv-c1" style="--w:52%"><span class="hv-tag"><b>1</b> Unsaved edits are flagged</span><img src="img/mew2_h_unsaved.webp" alt="Close-up: the Company Name field outlined in orange with an Unsaved badge" width="316" height="128" decoding="async"></div>
+          <div class="hv-call hv-c2" style="--w:48%"><span class="hv-tag"><b>2</b> One place to save</span><img src="img/mew2_d_pending.webp" alt="Close-up: a 1 pending counter beside the Save and undo buttons" width="312" height="66" decoding="async"></div>
+        </div>
+        <figcaption class="sr-only">The MEW2 farm editor with close-ups of an unsaved field and the pending-changes counter.</figcaption>
+      </figure>
     </header>
     <dl class="glance">
       <div><dt>Role</dt><dd>Designer &amp; developer (solo)</dd></div>
@@ -322,13 +331,19 @@
           <h2>Screens</h2>
           <div class="gallery">
             <figure class="wide"><button class="shot" type="button"><img src="img/mew2_4.webp" alt="Farm attributes being edited, with a changed field highlighted and a pending-changes badge" loading="lazy" width="1600" height="787" decoding="async"></button><figcaption>Editing a farm. Changed fields are highlighted and the header shows how many edits are waiting to be committed.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/mew2_9.webp" alt="Review pending changes panel comparing old and new values" loading="lazy" width="1600" height="788" decoding="async"></button><figcaption>Reviewing pending changes side by side before committing them in one batch.</figcaption></figure>
+            <div class="details" aria-label="Close-ups">
+              <figure class="detail"><button class="shot detail-shot" type="button" data-full="img/mew2_4.webp" data-full-alt="Farm attributes being edited, with a changed field highlighted and a pending-changes badge"><img src="img/mew2_d_unsaved.webp" alt="Close-up: the Company Name field outlined in orange with an Unsaved badge, next to an untouched Server Prefix field" loading="lazy" width="640" height="128" decoding="async"></button><figcaption><span class="detail-tag">Close-up</span> An edited field turns orange and says it's unsaved, so nothing changes silently.</figcaption></figure>
+              <figure class="detail"><button class="shot detail-shot" type="button" data-full="img/mew2_4.webp" data-full-alt="Farm attributes being edited, with a changed field highlighted and a pending-changes badge"><img src="img/mew2_d_pending.webp" alt="Close-up: a 1 pending counter beside the Save and undo buttons in the header" loading="lazy" width="312" height="66" decoding="async"></button><figcaption><span class="detail-tag">Close-up</span> The pending counter, Save and undo stay in the header on every tab.</figcaption></figure>
+              <figure class="detail"><button class="shot detail-shot" type="button" data-full="img/mew2_7.webp" data-full-alt="Create asset form showing a validation error"><img src="img/mew2_d_error.webp" alt="Close-up: an Action failed banner reading Please fill out mandatory fields: Company Name" loading="lazy" width="604" height="98" decoding="async"></button><figcaption><span class="detail-tag">Close-up</span> Validation names the exact field that's missing.</figcaption></figure>
+              <figure class="detail"><button class="shot detail-shot" type="button" data-full="img/mew2_3.webp" data-full-alt="Activity history showing an updated server with old and new values"><img src="img/mew2_d_diff.webp" alt="Close-up: a history card for server BB1-SV-SQL1 showing the previous value in red and the new value in green" loading="lazy" width="1072" height="240" decoding="async"></button><figcaption><span class="detail-tag">Close-up</span> History shows the previous and new value side by side.</figcaption></figure>
+            </div>
+            <figure class="wide"><button class="shot" type="button"><img src="img/mew2_9.webp" alt="Review pending changes panel comparing old and new values" loading="lazy" width="1600" height="788" decoding="async"></button><figcaption>Reviewing pending changes side by side before committing them in one batch.</figcaption></figure>
             <figure><button class="shot" type="button"><img src="img/mew2_1.webp" alt="Inspector panel for a server asset" loading="lazy" width="1600" height="788" decoding="async"></button><figcaption>The inspector for a single server, opened from the second column.</figcaption></figure>
             <figure><button class="shot" type="button"><img src="img/mew2_2.webp" alt="Create a new asset form with asset type options" loading="lazy" width="1600" height="708" decoding="async"></button><figcaption>One creation form that adapts its fields to the asset type.</figcaption></figure>
             <figure><button class="shot" type="button"><img src="img/mew2_7.webp" alt="Create asset form showing a validation error" loading="lazy" width="1600" height="789" decoding="async"></button><figcaption>Validation explains what's missing before anything reaches the database.</figcaption></figure>
             <figure><button class="shot" type="button"><img src="img/mew2_3.webp" alt="Activity history showing an updated server with old and new values" loading="lazy" width="1600" height="784" decoding="async"></button><figcaption>Activity history: what changed, who changed it and when.</figcaption></figure>
             <figure><button class="shot" type="button"><img src="img/mew2_6.webp" alt="Certificates tab with certificate details" loading="lazy" width="1600" height="789" decoding="async"></button><figcaption>The Certificates tab.</figcaption></figure>
-            <figure class="wide"><button class="shot" type="button"><img src="img/mew2_8.webp" alt="MEW2 data explorer in dark mode" loading="lazy" width="1600" height="789" decoding="async"></button><figcaption>Dark mode.</figcaption></figure>
+            <figure><button class="shot" type="button"><img src="img/mew2_8.webp" alt="MEW2 data explorer in dark mode" loading="lazy" width="1600" height="789" decoding="async"></button><figcaption>Dark mode.</figcaption></figure>
             <figure><button class="shot" type="button"><img src="img/mew2_0.webp" alt="Empty data explorer prompting to select an asset" loading="lazy" width="1600" height="787" decoding="async"></button><figcaption>The starting state asks you to pick an asset from the sidebar.</figcaption></figure>
             <figure><button class="shot" type="button"><img src="img/mew2_5.webp" alt="Baffin Bay site attributes" loading="lazy" width="1600" height="706" decoding="async"></button><figcaption>A site's attributes laid out as labeled fields.</figcaption></figure>
           </div>
@@ -383,6 +398,14 @@
       <div class="flavor">Alarms</div>
       <h1>Redesigning the historical alarms tool for our solar and wind sites</h1>
       <p class="summary">CORE Alarms lets engineers query Oracle for the alarm history of any site or front-end machine. I redesigned and rebuilt it on my own, from wireframe to a shipped React and Node.js app.</p>
+      <figure class="hero-visual">
+        <div class="hv-stage">
+          <button class="shot hv-main" type="button"><span class="hv-bar" aria-hidden="true"><i></i><i></i><i></i><span>CORE Alarms</span></span><span class="hv-img"><img src="img/oracle_2.webp" alt="Redesigned CORE Alarms: a query panel on the left and a green-headed table of alarm results on the right" width="1600" height="792" decoding="async" fetchpriority="high"></span></button>
+          <div class="hv-call hv-c1" style="--w:38%"><span class="hv-tag">Filters become chips</span><img src="img/oracle_h_chips.webp" alt="Close-up: a Gen. Unit Filters menu with an N-04 filter chip" width="220" height="84" decoding="async"></div>
+          <div class="hv-call hv-c2" style="--w:50%"><span class="hv-tag">Errors say what to fix</span><img src="img/oracle_d_error.webp" alt="Close-up: a red toast reading Validation Error, please select an alarm list" width="320" height="88" decoding="async"></div>
+        </div>
+        <figcaption class="sr-only">The redesigned CORE Alarms split layout, with close-ups of the filter chips and a validation toast.</figcaption>
+      </figure>
     </header>
     <dl class="glance">
       <div><dt>Role</dt><dd>Sole designer &amp; developer</dd></div>
@@ -501,16 +524,27 @@
         <section class="case-sec" data-toc="Before &amp; after">
           <h2>Before &amp; after</h2>
           <div class="gallery">
+            <figure class="wide compare-fig">
+              <div class="compare" style="--pos:50%">
+                <img class="compare-after" src="img/oracle_2.webp" alt="After: the redesigned results, with the query panel beside a green-headed, paginated table" loading="lazy" width="1600" height="792" decoding="async">
+                <div class="compare-before"><img src="img/oracle_cmp_before.webp" alt="Before: the old results, a plain HTML parameter table above a dense olive-headed alarm table" loading="lazy" width="1600" height="792" decoding="async"></div>
+                <span class="compare-tag is-before" aria-hidden="true">Before</span><span class="compare-tag is-after" aria-hidden="true">After</span>
+                <span class="compare-handle" aria-hidden="true"></span>
+                <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Before and after comparison: slide left to show more of the redesign, right to show more of the old tool">
+              </div>
+              <figcaption>Drag the handle to compare the same alarm query in the old tool and the redesign. <span class="compare-open"><button type="button" class="shot-link" data-full="img/oracle_cmp_before.webp" data-full-alt="The old CORE Alarms results table" data-caption="Before: the old results table.">Open before</button> · <button type="button" class="shot-link" data-full="img/oracle_2.webp" data-full-alt="New split layout with query panel and results" data-caption="After: the query panel sits beside the results.">Open after</button></span></figcaption>
+            </figure>
             <span class="gallery-label mono">Before</span>
-            <figure><button class="shot" type="button"><img src="img/oracle_0.webp" alt="The old CORE Alarms query form" loading="lazy" width="1600" height="858" decoding="async"></button><figcaption>The old query form.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/oracle_1.webp" alt="The old CORE Alarms results table" loading="lazy" width="1600" height="858" decoding="async"></button><figcaption>The old results table.</figcaption></figure>
+            <figure class="wide"><button class="shot" type="button"><img src="img/oracle_0_page.webp" alt="The old CORE Alarms query form: a plain HTML table of parameters with syntax help beside each one" loading="lazy" width="1600" height="793" decoding="async"></button><figcaption>The old query form: every parameter and its syntax help in one table.</figcaption></figure>
             <span class="gallery-label mono">After</span>
-            <figure class="wide"><button class="shot" type="button"><img src="img/oracle_2.webp" alt="New split layout with query panel and results" loading="lazy" width="1600" height="792" decoding="async"></button><figcaption>Split layout: the query panel sits beside the results.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/oracle_5.webp" alt="Filters and columns drawer open over the results" loading="lazy" width="1600" height="794" decoding="async"></button><figcaption>The Filters &amp; Columns drawer.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/oracle_3.webp" alt="Results narrowed by an active filter chip" loading="lazy" width="1600" height="793" decoding="async"></button><figcaption>Active filters show as chips above the results.</figcaption></figure>
             <figure class="wide"><button class="shot" type="button"><img src="img/oracle_6.webp" alt="Stacked layout with a full-width query bar" loading="lazy" width="1600" height="794" decoding="async"></button><figcaption>Stacked layout: a full-width query bar above the results.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/oracle_4.webp" alt="Validation error toast asking the user to select an alarm list" loading="lazy" width="1600" height="791" decoding="async"></button><figcaption>Validation catches an incomplete query.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/oracle_7.webp" alt="Toast confirming the CSV was exported" loading="lazy" width="1600" height="791" decoding="async"></button><figcaption>Confirmation after exporting to CSV.</figcaption></figure>
+            <figure class="wide"><button class="shot" type="button"><img src="img/oracle_5.webp" alt="Filters and columns drawer open over the results" loading="lazy" width="1600" height="794" decoding="async"></button><figcaption>The Filters &amp; Columns drawer.</figcaption></figure>
+            <div class="details" aria-label="Close-ups">
+              <figure class="detail"><button class="shot detail-shot" type="button" data-full="img/oracle_3.webp" data-full-alt="Results narrowed by an active filter chip"><img src="img/oracle_d_chips.webp" alt="Close-up: 43 results with a 6 after filters badge, a Gen. Unit Filters menu and an N-04 chip" loading="lazy" width="610" height="136" decoding="async"></button><figcaption><span class="detail-tag">Close-up</span> Active filters show as chips, with a count of what's left.</figcaption></figure>
+              <figure class="detail"><button class="shot detail-shot" type="button" data-full="img/oracle_5.webp" data-full-alt="Filters and columns drawer open over the results"><img src="img/oracle_d_cols.webp" alt="Close-up: the Columns to display checklist with Time, Tag Name and other columns ticked" loading="lazy" width="406" height="266" decoding="async"></button><figcaption><span class="detail-tag">Close-up</span> Pick which of the 16 columns to show.</figcaption></figure>
+              <figure class="detail half"><button class="shot detail-shot" type="button" data-full="img/oracle_4.webp" data-full-alt="Validation error toast asking the user to select an alarm list"><img src="img/oracle_d_error.webp" alt="Close-up: a red Validation Error toast reading Please select an alarm list" loading="lazy" width="320" height="88" decoding="async"></button><figcaption><span class="detail-tag">Close-up</span> Validation catches an incomplete query.</figcaption></figure>
+              <figure class="detail half"><button class="shot detail-shot" type="button" data-full="img/oracle_7.webp" data-full-alt="Toast confirming the CSV was exported"><img src="img/oracle_d_csv.webp" alt="Close-up: a green CSV Exported toast reading Your data has been exported successfully" loading="lazy" width="392" height="88" decoding="async"></button><figcaption><span class="detail-tag">Close-up</span> Confirmation after exporting to CSV.</figcaption></figure>
+            </div>
           </div>
         </section>
 
@@ -571,6 +605,14 @@
       <div class="flavor">MyChart</div>
       <h1>Simplifying a patient portal for the older users who rely on it most</h1>
       <p class="summary">A redesign of the MyChart app with streamlined menus, a more useful dashboard, hospital maps, integrations and onboarding, built as a high-fidelity Figma prototype.</p>
+      <figure class="hero-visual">
+        <div class="hv-stage" style="--pt:100px">
+          <button class="shot hv-main hv-paper" type="button"><span class="hv-img"><img src="img/mychart_0.webp" alt="Persona sheet for Mark de la Cruz, 68, with his photo, biography, goals, frustrations and medical experience" width="1600" height="900" decoding="async" fetchpriority="high"><span class="hv-pin" style="--x:17%;--y:84%" aria-hidden="true">1</span><span class="hv-pin" style="--x:85%;--y:22%" aria-hidden="true">2</span></span></button>
+          <div class="hv-call hv-c1 at-br" style="--w:44%"><span class="hv-tag"><b>1</b> In Mark's words</span><img src="img/mychart_d_quote.webp" alt="Close-up of Mark's quote: my time is valuable, and I do not want to waste it waiting in line to hear things about my health that I already know" width="460" height="220" decoding="async"></div>
+          <div class="hv-call hv-c2 at-tl" style="--w:30%"><span class="hv-tag"><b>2</b> Comfort with tech</span><img src="img/mychart_d_scale.webp" alt="Close-up: technological familiarity rated about 6 of 10, medical familiarity about 3 of 10" width="398" height="220" decoding="async"></div>
+        </div>
+        <figcaption class="sr-only">The persona sheet for Mark de la Cruz, with close-ups of his quote and familiarity scales.</figcaption>
+      </figure>
     </header>
     <dl class="glance">
       <div><dt>Role</dt><dd>Lead designer</dd></div>
@@ -726,6 +768,14 @@
       <div class="flavor">InTune</div>
       <h1>A music social app for listeners who want more than a yearly Wrapped</h1>
       <p class="summary">InTune blends Last.fm-style listening analytics with Reddit-style communities, so serious listeners can track their taste all year and find people who share it.</p>
+      <figure class="hero-visual">
+        <div class="hv-stage hv-split">
+          <span class="hv-back"><img src="img/intune_0.webp" alt="Hand-drawn wireframes for InTune's welcome screen, streaming-service picker and home feed" width="512" height="320" decoding="async"></span>
+          <button class="shot hv-main hv-paper" type="button"><span class="hv-img"><img src="img/intune_1.webp" alt="Hand-drawn wireframes for InTune's Community, Creative and Analytics screens" width="512" height="320" decoding="async" fetchpriority="high"><span class="hv-pin" style="--x:83%;--y:30%" aria-hidden="true">1</span></span></button>
+          <div class="hv-call hv-c2 hv-tall" style="--w:30%"><span class="hv-tag"><b>1</b> Stats all year</span><img src="img/intune_d_analytics.webp" alt="Close-up of the Analytics wireframe: a music mood banner and a grid of top artists filtered to the last 4 weeks" width="348" height="568" decoding="async"></div>
+        </div>
+        <figcaption class="sr-only">InTune's hand-drawn wireframes, with a close-up of the Analytics screen.</figcaption>
+      </figure>
     </header>
     <dl class="glance">
       <div><dt>Role</dt><dd>Lead designer</dd></div>
