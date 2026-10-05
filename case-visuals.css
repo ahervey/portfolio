@@ -181,3 +181,130 @@
   .lb-prev{grid-column:1;justify-self:start}
   .lb-next{grid-column:3;justify-self:end}
 }
+
+/* ================= r3-cases-b: MyChart + InTune case studies =================
+   Tension-first opening, research synthesis cards, a landscape map, large annotated frames
+   with numbered pins tied to the decisions list, and numbered decisions with their tradeoff cards.
+   Sizes come from type.css tokens only. */
+
+/* no alt-text flash while images load: reserve space and hide the alt string */
+[data-view="mychart"] img,[data-view="intune"] img{color:transparent}
+[data-view="mychart"] .case-body img,[data-view="intune"] .case-body img{background:var(--print-cream)}
+
+/* constraint chips inside the north-star card */
+.r3-chips{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.r3-chips li{font:500 var(--t-12)/1.2 var(--f-mono);letter-spacing:var(--ls-chip);text-transform:uppercase;color:var(--print-ink);
+  background:rgba(255,255,255,.6);border:1.5px solid rgba(31,42,85,.35);border-radius:999px;padding:6px 11px}
+.r3-chips::before{content:"Constraints";display:block;width:100%;font:500 var(--t-12)/1 var(--f-mono);letter-spacing:var(--ls-label);text-transform:uppercase;color:var(--print-ink);margin-bottom:2px}
+.case-sec .problem{gap:12px}
+
+/* research synthesis: insight cards that each point at a decision */
+.r3-synth{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.r3-synth li{position:relative;display:grid;grid-template-rows:auto 1fr auto;gap:8px;align-content:start;padding:16px 16px 14px;border:2px solid var(--print-ink);border-radius:16px;
+  background:var(--c,var(--print-butter));color:var(--print-ink);box-shadow:5px 6px 0 rgba(31,42,85,.14)}
+.r3-synth li .mono{color:var(--print-ink);opacity:.8}
+.r3-synth li b{font:var(--w-voice) var(--t-20)/1.2 var(--f-display);font-style:italic;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72;text-wrap:balance}
+.r3-synth li p{margin:0;font-size:var(--t-14);line-height:1.45}
+.r3-c-butter,.r3c-butter{--c:var(--print-butter)}.r3c-green{--c:var(--print-green)}.r3c-lilac{--c:var(--print-lilac)}.r3c-blue{--c:var(--print-blue)}
+.r3-to{justify-self:start;display:inline-flex;align-items:center;gap:6px;font:500 var(--t-12)/1 var(--f-mono);letter-spacing:var(--ls-chip);text-transform:uppercase;
+  color:var(--print-cream);background:var(--print-ink);border-radius:999px;padding:6px 10px}
+.r3-to::before{content:"→"}
+
+/* InTune landscape map beside the survey cards */
+.r3-research{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:16px;align-items:stretch}
+.r3-synth-col{grid-template-columns:minmax(0,1fr)}
+.r3-synth-col li{grid-template-rows:auto auto auto}
+.r3-map{position:relative;margin:0;min-height:340px;border:2px solid var(--print-ink);border-radius:16px;color:var(--print-ink);
+  background:linear-gradient(var(--line),var(--line)) 50% 0/1.5px 100% no-repeat,linear-gradient(90deg,var(--line),var(--line)) 0 50%/100% 1.5px no-repeat,
+  radial-gradient(circle,rgba(31,42,85,.12) 1.2px,transparent 1.6px) 0 0/14px 14px,var(--print-cream)}
+.r3-map figcaption{position:absolute;left:14px;top:12px;color:var(--print-ink)}
+.r3-axis{position:absolute;font:500 var(--t-12)/1 var(--f-mono);letter-spacing:var(--ls-label);text-transform:uppercase;color:var(--print-ink);opacity:.75}
+.r3-ax-y{left:14px;top:50%;transform:translateY(-130%)}
+.r3-ax-x{right:14px;top:50%;transform:translateY(60%)}
+.r3-dot{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);display:grid;gap:2px;text-align:center;white-space:nowrap;
+  font-size:var(--t-12);line-height:1.2;padding:6px 10px;border-radius:12px;background:#fff;border:1.5px solid var(--print-ink)}
+.r3-dot b{font:700 var(--t-14)/1.2 var(--f-body)}
+.r3-us{background:var(--print-green);border:2px dashed var(--print-ink);padding:9px 14px;box-shadow:5px 6px 0 rgba(31,42,85,.16)}
+.r3-us b{font:var(--w-voice) var(--t-20)/1.1 var(--f-display);font-style:italic;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72}
+
+/* large annotated frames: numbered pins over a real artefact, explained in a key or the decisions below */
+.af{margin:0;display:grid;gap:14px}
+.af-stage{position:relative}
+.af-stage .shot{display:block;width:100%;padding:0;border:2px solid var(--print-ink);border-radius:12px;overflow:hidden;background:#fff;box-shadow:8px 10px 0 rgba(31,42,85,.14)}
+.af-stage img{display:block;width:100%;height:auto;aspect-ratio:var(--ar,16/9)}
+[data-view="intune"] .af-stage img{--ar:16/10}
+.af-pin{position:absolute;left:var(--x);top:var(--y);width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;pointer-events:none;
+  display:grid;place-items:center;background:#B23A2B;color:#fff;font:800 var(--t-14)/1 var(--f-body);border:2px solid #fff;box-shadow:0 0 0 2px #B23A2B,0 4px 10px rgba(0,0,0,.25)}
+.af-key{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 22px}
+.af-key li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:10px;align-items:start;font-size:var(--t-14);line-height:1.45;color:var(--muted)}
+.af-key b{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#B23A2B;color:#fff;font:800 var(--t-12)/1 var(--f-body)}
+.af-key em{display:block;font-style:normal;font-weight:700;color:var(--ink)}
+.af figcaption:not(.sr-only){font-size:var(--t-14);color:var(--muted)}
+
+/* numbered decisions; a tradeoff card sits beside the decision it shaped */
+.r3-dec{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.r3-dec > li{display:grid;grid-template-columns:64px minmax(0,1fr) minmax(0,.9fr);gap:14px 22px;align-items:start;padding:22px 0;border-top:3px solid var(--ink)}
+.r3-dec > li:last-child{border-bottom:3px solid var(--ink)}
+.r3-dec > li > div:not(.turn){display:grid;gap:6px}
+.r3-dec > li > div:not(.turn):last-child{grid-column:2/-1}
+.r3-dec p{margin:0;font-size:var(--t-17);line-height:1.55;color:var(--muted);max-width:var(--measure)}
+.r3-dec p b{color:var(--ink)}
+.r3-n{font:var(--w-loud) var(--t-40)/1 var(--f-display);font-style:italic;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72;color:var(--accent-ink)}
+.r3-dec .turn{margin:0}
+.r3-dec .turn p{color:var(--print-ink);font-size:var(--t-14)}
+.r3-dec .turn h3{font-size:var(--t-17)}
+
+/* InTune's last word: where it is now */
+.r3-now{display:grid;gap:8px;margin-top:8px;padding:22px 24px;border:2px solid var(--print-ink);border-radius:18px;background:var(--print-green);color:var(--print-ink);box-shadow:6px 8px 0 rgba(31,42,85,.14)}
+.r3-now .mono{color:var(--print-ink)}
+.r3-now p{margin:0;font-size:var(--t-17);line-height:1.55;max-width:60ch}
+.r3-now b{font:var(--w-voice) var(--t-20)/1.3 var(--f-display);font-style:italic;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72}
+
+/* the Figma poster is a button, not a 16:10 hole in the page, until it's loaded */
+[data-view="mychart"] .figma-frame:has(.figma-poster:not([hidden])),[data-view="intune"] .figma-frame:has(.figma-poster:not([hidden])){aspect-ratio:auto;min-height:0}
+[data-view="mychart"] .figma-frame .figma-poster:not([hidden]),[data-view="intune"] .figma-frame .figma-poster:not([hidden]){position:relative;inset:auto;padding:36px 24px}
+
+@media (max-width:1000px){
+  .r3-synth{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .r3-research{grid-template-columns:minmax(0,1fr)}
+  .r3-synth-col{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .r3-dec > li{grid-template-columns:52px minmax(0,1fr)}
+  .r3-dec > li > .turn{grid-column:2}
+}
+@media (max-width:600px){
+  .r3-synth,.r3-synth-col{grid-template-columns:minmax(0,1fr);gap:10px}
+  .r3-synth li{grid-template-rows:auto;padding:14px}
+  .r3-synth li p{display:none}
+  .af-key{grid-template-columns:minmax(0,1fr)}
+  .af-pin{width:22px;height:22px;margin:-11px 0 0 -11px;font-size:var(--t-12)}
+  .r3-map{min-height:300px}
+  .r3-dot{padding:4px 7px}
+  .r3-dot b{font-size:var(--t-12)}
+  .r3-us{padding:6px 10px}
+  .r3-us b{font-size:var(--t-17)}
+  .r3-ax-y{top:auto;bottom:10px;left:10px;transform:none}
+  .r3-ax-x{top:auto;bottom:10px;right:10px;transform:none}
+  .r3-dec > li{grid-template-columns:minmax(0,1fr);gap:10px;padding:18px 0}
+  .r3-dec > li > .turn,.r3-dec > li > div:not(.turn):last-child{grid-column:1}
+  .r3-n{font-size:var(--t-28)}
+  .r3-now{padding:18px}
+}
+
+/* round 2: map labels clear of the dots; InTune's "now" note sits under the lessons, beside the receipt */
+.r3-map figcaption{top:auto;bottom:12px}
+.r3-ax-y{left:calc(50% + 8px);top:12px;transform:none}
+.r3-ax-x{right:14px;top:calc(50% + 8px);transform:none}
+[data-view="intune"] .takeaway > .r3-now{grid-column:1;margin-top:0}
+[data-view="intune"] .takeaway > .printer{grid-column:2;grid-row:1/span 2}
+@media (max-width:1000px){[data-view="intune"] .takeaway > .printer{grid-column:1;grid-row:auto}}
+@media (max-width:600px){
+  .r3-map figcaption{display:none}
+  .r3-ax-y{left:calc(50% + 6px);top:10px;bottom:auto}
+  .r3-ax-x{right:10px;top:calc(50% + 6px);bottom:auto}
+  .r3-synth:not(.r3-synth-col){grid-template-columns:repeat(2,minmax(0,1fr))}
+  .r3-synth li{gap:6px;padding:12px}
+  .r3-synth li b{font-size:var(--t-17)}
+  .r3-synth li .mono{letter-spacing:.04em}
+}
+[data-view="intune"] .takeaway{row-gap:22px}
+@media (max-width:1000px){[data-view="intune"] .takeaway > .r3-now{order:1}[data-view="intune"] .takeaway > .printer{order:2}}
