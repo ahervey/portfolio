@@ -18,7 +18,7 @@
   --accent:#FF9C8F; --wave:rgba(244,239,234,.3); color-scheme:dark}
 
 /* display type: soft, wonky, italic */
-.hero h1,.lid-name,.flavor,.sticker,.problem q,.back h2,.slip-intro h1,.slip-logo,.essay h1,.card h3,.fold h2,.shelf-title,.rc-brand{
+.hero h1,.lid-name,.flavor,.sticker,.problem q,.back h2,.slip-intro h1,.slip-logo,.essay h1,.card h3,.fold h2,.extra-title,.pov,.rc-brand{
   font-family:var(--f-display);font-style:italic;font-weight:800;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72;letter-spacing:.01em}
 .hero h1{letter-spacing:.01em;line-height:.95}
 .hero h1 em{color:var(--accent);font-style:italic;font-weight:800}
@@ -73,7 +73,9 @@
           mask:radial-gradient(circle 7px at 50% 0,transparent 96%,#000) top/20px 51% repeat-x,radial-gradient(circle 7px at 50% 100%,transparent 96%,#000) bottom/20px 51% repeat-x;
   border-radius:22px}
 .variety:hover{box-shadow:none}
-.variety::before,.case-hero::before,.next::before{border-style:dashed;opacity:.35;inset:16px 12px}
+/* one card language: the scalloped edge is the frame, so no dashed inset on cards */
+.variety::before,.next::before{display:none}
+.case-hero::before{border-style:dashed;opacity:.35;inset:16px 12px}
 .v-red,.v-blue,.v-green,.v-butter{color:var(--print-ink)}
 .v-red{background:var(--print-red)}
 .v-blue{background:var(--print-blue)}
@@ -112,5 +114,5 @@
 
 
 .t-pink .mini-lid,.t-mint .mini-lid{color:var(--print-ink)}
-.seal{background:var(--print-lilac)}
-:root{--shelf:#B9A6E4;--shelf-top:#DCD0F7}
+.seal{background:var(--paper);color:var(--ink);border:1.5px solid var(--ink)}
+:root{--shelf:#E3CFC6;--shelf-top:#F1E3DC}
