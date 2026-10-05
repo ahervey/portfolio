@@ -147,34 +147,89 @@
   }
 
   /* ---------- case study contents: built from each section's heading ---------- */
-  let tocObserver = null;
+  // On small screens the sidebar is hidden; a pill in the header names the current section
+  // and opens the same list as a bottom sheet.
+  let tocSecs = [], tocActive = 0;
+  const pill = document.getElementById('toc-pill'), pillV = document.getElementById('toc-pill-v');
+  const sheet = document.getElementById('toc-sheet'), sheetList = document.getElementById('toc-sheet-list');
+  const secLabel = s => s.dataset.toc || s.querySelector('h2').textContent;
+  function goToSection(s) {
+    s.scrollIntoView({ block: 'start', behavior: reduce ? 'auto' : 'smooth' });
+    const h = s.querySelector('h2');
+    if (h) { h.tabIndex = -1; h.focus({ preventScroll: true }); }
+  }
+  function markToc(i, btns) {
+    tocActive = i;
+    btns.forEach((b, j) => b.classList.toggle('on', i === j));
+    if (pillV && tocSecs[i]) pillV.textContent = secLabel(tocSecs[i]);
+  }
   function setupToc(name) {
-    if (tocObserver) { tocObserver.disconnect(); tocObserver = null; }
     const view = views.find(v => v.dataset.view === name);
     const toc = view && view.querySelector('.toc');
-    if (!toc) return;
-    const secs = [...view.querySelectorAll('.case-sec')];
+    if (pill) pill.hidden = !toc;
+    if (!toc) { tocSecs = []; return; }
+    const secs = tocSecs = [...view.querySelectorAll('.case-sec')];
     if (!toc.dataset.built) {
       secs.forEach(s => {
         const b = document.createElement('button');
         b.type = 'button';
-        b.textContent = s.dataset.toc || s.querySelector('h2').textContent;
-        b.addEventListener('click', () => s.scrollIntoView({ block: 'start' }));
+        b.textContent = secLabel(s);
+        b.addEventListener('click', () => goToSection(s));
         toc.appendChild(b);
       });
       toc.dataset.built = '1';
     }
-    const btns = [...toc.querySelectorAll('button')];
-    if (!('IntersectionObserver' in window)) return;
-    tocObserver = new IntersectionObserver(entries => {
-      entries.forEach(en => {
-        if (!en.isIntersecting) return;
-        const i = secs.indexOf(en.target);
-        btns.forEach((b, j) => b.classList.toggle('on', i === j));
-      });
-    }, { rootMargin: '-20% 0px -70% 0px' });
-    secs.forEach(s => tocObserver.observe(s));
+    tocBtns = [...toc.querySelectorAll('button')];
+    tocActive = -1;
+    trackToc();
   }
+  // the current section is the last one whose top has passed 30% of the screen (works for jumps too)
+  let tocBtns = [];
+  function trackToc() {
+    if (!tocSecs.length) return;
+    const line = innerHeight * .3;
+    let i = 0;
+    tocSecs.forEach((s, j) => { if (s.getBoundingClientRect().top < line) i = j; });
+    if (i !== tocActive) markToc(i, tocBtns);
+  }
+  function lockScroll(on) { document.documentElement.classList.toggle('modal-open', on); }
+  if (pill && sheet) {
+    pill.addEventListener('click', () => {
+      sheetList.innerHTML = '';
+      tocSecs.forEach((s, i) => {
+        const li = document.createElement('li');
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.innerHTML = `<span class="mono">${String(i + 1).padStart(2, '0')}</span>`;
+        b.append(secLabel(s));
+        if (i === tocActive) b.setAttribute('aria-current', 'true');
+        b.addEventListener('click', () => { sheet.close(); goToSection(s); });
+        li.appendChild(b);
+        sheetList.appendChild(li);
+      });
+      sheet.showModal();
+      lockScroll(true);
+      const cur = sheetList.querySelector('[aria-current]');
+      if (cur) cur.focus();
+    });
+    sheet.addEventListener('click', e => { if (e.target === sheet || e.target.closest('.sheet-close')) sheet.close(); });
+    sheet.addEventListener('close', () => lockScroll(false));
+  }
+
+  /* ---------- compact header: on small screens it tucks away while you read down, and returns on the way up ---------- */
+  const head = document.getElementById('site-head');
+  const small = matchMedia('(max-width: 900px)');
+  let lastY = scrollY;
+  function chrome() {
+    const y = scrollY, dy = y - lastY;
+    head.classList.toggle('scrolled', y > 8);
+    if (Math.abs(dy) < 6 && y > 8) return;
+    const nearEnd = y + innerHeight > document.documentElement.scrollHeight - 120;
+    const hide = small.matches && dy > 0 && y > 160 && !nearEnd && !head.contains(document.activeElement);
+    document.documentElement.classList.toggle('chrome-hide', hide);
+    lastY = y;
+  }
+  head.addEventListener('focusin', () => document.documentElement.classList.remove('chrome-hide'));
 
   /* ---------- takeaway receipts print out when scrolled into view ---------- */
   if (!reduce && 'IntersectionObserver' in window) {
@@ -213,7 +268,7 @@
   addEventListener('scroll', () => {
     if (swimQueued) return;
     swimQueued = true;
-    requestAnimationFrame(() => { swimQueued = false; swim(); });
+    requestAnimationFrame(() => { swimQueued = false; swim(); chrome(); trackToc(); });
   }, { passive: true });
   addEventListener('resize', swim);
   addEventListener('hashchange', () => requestAnimationFrame(swim));
@@ -231,19 +286,76 @@
   }));
 
   /* ---------- screenshot lightbox ---------- */
+  // Opens full screen, steps through every screenshot on the page, and zooms to real size
+  // (tap the image or the Zoom button) so dense UI is readable on a phone.
   const box = document.getElementById('lightbox');
-  const boxImg = box.querySelector('img'), boxCap = box.querySelector('p');
+  const lbStage = document.getElementById('lb-stage');
+  const boxImg = lbStage.querySelector('img'), boxCap = box.querySelector('.lb-cap');
+  const lbCount = document.getElementById('lb-count'), lbZoom = document.getElementById('lb-zoom');
+  const lbPrev = box.querySelector('.lb-prev'), lbNext = box.querySelector('.lb-next');
+  let lbSet = [], lbIdx = 0, zoomed = false, swiped = false;
+
+  function setZoom(on, fx = .5, fy = .5) {
+    zoomed = on;
+    box.classList.toggle('zoomed', on);
+    lbZoom.setAttribute('aria-pressed', on);
+    lbZoom.textContent = on ? 'Fit to screen' : 'Zoom in';
+    if (!on) { boxImg.style.width = ''; lbStage.scrollTo(0, 0); return; }
+    // at least the image's own pixels (capped at 2.6x the screen) so small text becomes legible
+    const w = Math.max(lbStage.clientWidth * 1.6, Math.min(boxImg.naturalWidth || 1600, lbStage.clientWidth * 2.6));
+    boxImg.style.width = Math.round(w) + 'px';
+    requestAnimationFrame(() => {
+      lbStage.scrollLeft = fx * boxImg.offsetWidth - lbStage.clientWidth / 2;
+      lbStage.scrollTop = fy * boxImg.offsetHeight - lbStage.clientHeight / 2;
+    });
+  }
+  function lbShow(i) {
+    lbIdx = (i + lbSet.length) % lbSet.length;
+    const shot = lbSet[lbIdx], img = shot.querySelector('img');
+    setZoom(false);
+    boxImg.src = img.currentSrc || img.src;
+    boxImg.alt = img.alt;
+    const fig = shot.closest('figure'), cap = fig && fig.querySelector('figcaption');
+    boxCap.textContent = cap ? cap.textContent : img.alt;
+    const many = lbSet.length > 1;
+    lbCount.textContent = many ? `${lbIdx + 1} / ${lbSet.length}` : '';
+    lbPrev.hidden = lbNext.hidden = !many;
+  }
   document.addEventListener('click', e => {
     const shot = e.target.closest('.shot');
     if (!shot) return;
-    const img = shot.querySelector('img');
-    boxImg.src = img.src;
-    boxImg.alt = img.alt;
-    const cap = shot.closest('figure') && shot.closest('figure').querySelector('figcaption');
-    boxCap.textContent = cap ? cap.textContent : img.alt;
+    const scope = shot.closest('[data-view]') || document;
+    lbSet = [...scope.querySelectorAll('.shot')];
+    lbShow(lbSet.indexOf(shot));
     if (box.showModal) box.showModal(); else box.setAttribute('open', '');
+    lockScroll(true);
   });
-  box.addEventListener('click', e => { if (e.target === box || e.target.closest('button')) box.close(); });
+  lbPrev.addEventListener('click', () => lbShow(lbIdx - 1));
+  lbNext.addEventListener('click', () => lbShow(lbIdx + 1));
+  lbZoom.addEventListener('click', () => setZoom(!zoomed));
+  boxImg.addEventListener('click', e => {
+    if (swiped) return;
+    const r = boxImg.getBoundingClientRect();
+    setZoom(!zoomed, (e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height);
+  });
+  box.addEventListener('click', e => {
+    if (e.target === box || e.target.closest('.lb-close') || (e.target === lbStage && !zoomed)) box.close();
+  });
+  box.addEventListener('close', () => { setZoom(false); lockScroll(false); });
+  box.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' && lbSet.length > 1) { lbShow(lbIdx + 1); e.preventDefault(); }
+    else if (e.key === 'ArrowLeft' && lbSet.length > 1) { lbShow(lbIdx - 1); e.preventDefault(); }
+  });
+  // swipe sideways to step through screenshots (only when not zoomed, where a drag pans instead)
+  let sx = null, sy = 0;
+  lbStage.addEventListener('pointerdown', e => { swiped = false; if (!zoomed && e.pointerType !== 'mouse') { sx = e.clientX; sy = e.clientY; } });
+  lbStage.addEventListener('pointerup', e => {
+    if (sx === null) return;
+    const dx = e.clientX - sx, dy = e.clientY - sy;
+    sx = null;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5 && lbSet.length > 1) { swiped = true; lbShow(lbIdx + (dx < 0 ? 1 : -1)); }
+  });
+  lbStage.addEventListener('pointercancel', () => { sx = null; });
 
   /* ---------- copy email ---------- */
   const copy = document.getElementById('copy'), email = document.getElementById('email');

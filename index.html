@@ -24,8 +24,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@1,9..144,700..900,0..100,0..1&family=Shrikhand&family=Hanken+Grotesk:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="styles.css?v=202610050958">
-<link rel="stylesheet" href="theme-pastel.css?v=202610050958">
+<link rel="stylesheet" href="styles.css?v=202610051400">
+<link rel="stylesheet" href="theme-pastel.css?v=202610051400">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -50,15 +50,22 @@
   <symbol id="knife" viewBox="0 0 24 24"><path d="M14 3c-3.5 2.5-4.6 6.5-4.4 10H14zM12 13v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </svg>
 <div class="wrap">
-  <nav aria-label="Main">
-    <a class="brand" href="#top"><i></i>Aaron Hervey</a>
-    <div class="nav-links">
-      <a href="#work" data-cases="mew2 oracle mychart intune">Work</a>
-      <a href="#resume">Résumé</a>
-      <a href="#writing">Writing</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
+  <header class="site-head" id="site-head">
+    <nav aria-label="Main">
+      <a class="brand" href="#top"><i></i>Aaron Hervey</a>
+      <div class="nav-links">
+        <a href="#work" data-cases="mew2 oracle mychart intune">Work</a>
+        <a href="#resume">Résumé</a>
+        <a href="#writing">Writing</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+    <!-- on small screens the case-study contents live behind this pill (the sidebar is hidden there) -->
+    <button class="toc-pill" id="toc-pill" type="button" aria-haspopup="dialog" aria-controls="toc-sheet" hidden>
+      <span class="toc-pill-k mono">Contents</span><span class="toc-pill-v" id="toc-pill-v"></span>
+      <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </header>
 
   <!-- ===================== HOME ===================== -->
   <main id="main" tabindex="-1">
@@ -1057,11 +1064,25 @@
 </div>
 
 <dialog class="lightbox" id="lightbox" aria-label="Screenshot">
-  <button type="button" aria-label="Close">×</button>
-  <img alt="">
-  <p></p>
+  <div class="lb-bar">
+    <span class="lb-count mono" id="lb-count" aria-live="polite"></span>
+    <button class="lb-zoom" id="lb-zoom" type="button" aria-pressed="false">Zoom in</button>
+    <button class="lb-close" type="button" aria-label="Close">×</button>
+  </div>
+  <div class="lb-stage" id="lb-stage"><img alt=""></div>
+  <button class="lb-nav lb-prev" type="button" aria-label="Previous screenshot">←</button>
+  <button class="lb-nav lb-next" type="button" aria-label="Next screenshot">→</button>
+  <p class="lb-cap"></p>
 </dialog>
 
-<script src="app.js?v=202610050958"></script>
+<dialog class="toc-sheet" id="toc-sheet" aria-labelledby="toc-sheet-h">
+  <div class="sheet-head">
+    <span class="mono" id="toc-sheet-h">Contents</span>
+    <button class="sheet-close" type="button" aria-label="Close contents">×</button>
+  </div>
+  <ol class="sheet-list" id="toc-sheet-list"></ol>
+</dialog>
+
+<script src="app.js?v=202610051400"></script>
 </body>
 </html>
