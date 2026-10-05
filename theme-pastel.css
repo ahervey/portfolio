@@ -55,6 +55,8 @@
 /* on phones the turning label may brush the gutter, never the page edge */
 /* on phones there's no room for a full circle, so the label becomes an oval that hugs the tin and holds still */
 @media (max-width:480px){.stage::before{width:126%;scale:1 1.26;rotate:0deg;animation:none}}
+/* tablets: the tin sits in the right column, so the label hugs it as an oval that stays inside the page */
+@media (min-width:601px) and (max-width:860px){.stage::before{width:126%;scale:1 1.26;rotate:0deg;animation:none}}
 .emboss{display:block;position:absolute;top:2cqw;left:50%;width:25cqw;aspect-ratio:1;translate:-50% 0;border-radius:50%;
   box-shadow:inset 0 3px 5px rgba(31,42,85,.18),inset 0 -2px 3px rgba(255,255,255,.6),0 1px 0 rgba(255,255,255,.5)}
 

@@ -81,35 +81,54 @@
   });
 
   /* ---------- the tin: pull the tab, the lid peels back, the four case studies are packed inside ---------- */
+  // It always loads sealed (phone or desktop). Reach for it and the lid lifts a crack; pull the ring,
+  // tap the lid, use the button, or the ring's slider keys to open it all the way.
   const tin = document.getElementById('tin'), lid = document.getElementById('lid');
   const ring = document.getElementById('pull-ring'), catchList = document.getElementById('catch');
   const toggle = document.getElementById('toggle'), stage = document.getElementById('stage');
   const hintText = toggle.querySelector('.hint-text');
   const fishes = [...catchList.querySelectorAll('.sardine a')];
-  let p = 0, v = 0, target = 0, raf = 0, last = 0, introduced = false, isOpen = false, drag = null;
-  const play = (el, frames, opts) => { if (!reduce && el.animate) el.animate(frames, opts); };
+  const PEEK = .17;
+  let p = 0, v = 0, target = 0, raf = 0, last = 0, introduced = false, isOpen = false, drag = null, wantOpen = false;
+  const play = (el, frames, opts) => (!reduce && el.animate) ? el.animate(frames, opts) : null;
+  const closedLabel = reduce ? 'Open the tin' : 'Pull the tab to open';
+  hintText.textContent = closedLabel;
 
   function set(x) {
     p = Math.max(0, Math.min(1, x));
     tin.style.setProperty('--p', p.toFixed(4));
+    const pct = Math.round(p * 100);
+    if (ring.getAttribute('aria-valuenow') !== String(pct)) {
+      ring.setAttribute('aria-valuenow', pct);
+      ring.setAttribute('aria-valuetext', pct >= 99 ? 'Open, four case studies inside' : pct <= 1 ? 'Sealed' : pct + '% open');
+    }
   }
-  // the open/closed state only changes once the lid has come to rest (it never rests half-open)
-  function settle(open) {
+  // what the controls say follows where the lid is heading, straight away (not where it is mid-flight)
+  function intend(open) {
+    if (open === wantOpen) return;
+    wantOpen = open;
+    toggle.setAttribute('aria-expanded', open);
+    hintText.textContent = open ? 'Close the tin' : closedLabel;
+    stage.classList.toggle('opening', open);
+    if (!open) catchList.inert = true;
+  }
+  // the lid has come to rest
+  function settle() {
+    const open = target >= .5;
+    if (open) catchList.inert = false;
     if (open === isOpen) return;
     isOpen = open;
     stage.classList.toggle('is-open', open);
-    catchList.inert = !open;
-    toggle.setAttribute('aria-expanded', open);
-    hintText.textContent = open ? 'Close the tin' : 'Pull the tab to open';
-    if (open) fishes.forEach((f, i) => play(f, [{ scale: .82, translate: '0 10px' }, { scale: 1.06, translate: '0 -4px', offset: .55 }, { scale: 1, translate: '0 0' }],
-      { duration: 520, delay: 60 + i * 70, easing: 'cubic-bezier(.3,1.4,.5,1)', fill: 'backwards' }));
-    else play(tin, [{ scale: '1 1' }, { scale: '1.03 .97' }, { scale: '.99 1.01' }, { scale: '1 1' }], { duration: 320, easing: 'ease-out' });
+    if (open) fishes.forEach((f, i) => play(f, [{ scale: .86, translate: '0 8px' }, { scale: 1.04, translate: '0 -3px', offset: .55 }, { scale: 1, translate: '0 0' }],
+      { duration: 460, delay: 40 + i * 60, easing: 'cubic-bezier(.3,1.4,.5,1)', fill: 'backwards' }));
+    else play(tin, [{ scale: '1 1' }, { scale: '1.025 .975' }, { scale: '.995 1.005' }, { scale: '1 1' }], { duration: 300, easing: 'ease-out' });
   }
-  // a damped spring towards fully open or fully closed, with a little bounce off the hard stop
-  function springTo(open, v0 = 0, k = 190) {
-    target = open ? 1 : 0;
+  // a damped spring towards a resting point, with a little bounce off the hard stops
+  function springTo(to, v0 = 0, k = 190) {
+    target = to;
+    if (to >= .5) intend(true); else if (to === 0 || to > PEEK) intend(false);
     cancelAnimationFrame(raf);
-    if (reduce) { set(target); v = 0; return settle(open); }
+    if (reduce) { set(to); v = 0; return settle(); }
     v = v0; last = performance.now();
     const step = now => {
       let dt = Math.min(.05, (now - last) / 1000); last = now;
@@ -120,29 +139,40 @@
         if (x > 1) { x = 1; v = -v * .28; } else if (x < 0) { x = 0; v = -v * .28; }
         set(x);
       }
-      if (Math.abs(p - target) < .002 && Math.abs(v) < .02) { set(target); return settle(open); }
+      if (Math.abs(p - target) < .002 && Math.abs(v) < .02) { set(target); return settle(); }
       raf = requestAnimationFrame(step);
     };
     raf = requestAnimationFrame(step);
   }
-  const toggleTin = (v0) => springTo(!isOpen, v0 || (isOpen ? -2 : 2));
+  // on phones the open tin's tab ends up at the bottom, so bring it clear of the bottom dock
+  const phone = matchMedia('(max-width: 600px)');
+  function reveal() {
+    if (!phone.matches) return;
+    const over = stage.getBoundingClientRect().bottom + 52 - (innerHeight - 92);
+    if (over > 0) scrollBy({ top: over, behavior: reduce ? 'auto' : 'smooth' });
+  }
+  const openTin = (v0 = 2) => { springTo(1, v0); reveal(); };
+  const closeTin = (v0 = -2) => springTo(0, v0);
+  const toggleTin = () => (wantOpen ? closeTin() : openTin());
+  const rattle = (amp = 1.2) => play(tin, [{ rotate: '0deg' }, { rotate: -amp + 'deg' }, { rotate: amp * .8 + 'deg' }, { rotate: -amp * .4 + 'deg' }, { rotate: '0deg' }],
+    { duration: 360, easing: 'ease-in-out' });
 
-  // first paint is always a sealed tin; it rattles, then pops open once it's actually on screen
+  // once the sealed tin is on screen it gives one small rattle and lifts its lid a crack: there's something inside
   function tinIntro() {
-    if (introduced) return;
+    if (introduced || reduce) return;
     introduced = true;
-    if (reduce) return springTo(true);
-    const open = () => setTimeout(() => {
-      if (drag || isOpen || target === 1) return;
-      play(tin, [{ rotate: '0deg' }, { rotate: '-2.2deg' }, { rotate: '2deg' }, { rotate: '-1.4deg' }, { rotate: '.8deg' }, { rotate: '0deg' }], { duration: 420, easing: 'ease-in-out' });
-      setTimeout(() => { if (!drag && target === 0) springTo(true, 1.2, 85); }, 380);
-    }, 450);
-    if (!('IntersectionObserver' in window)) return open();
+    const tease = () => setTimeout(() => {
+      if (drag || wantOpen || p > 0) return;
+      rattle(1.8);
+      setTimeout(() => { if (!drag && !wantOpen) springTo(PEEK, 1.4, 120); }, 280);
+      setTimeout(() => { if (!drag && !wantOpen && target === PEEK && !stage.matches(':hover')) springTo(0, 0, 150); }, 1300);
+    }, 700);
+    if (!('IntersectionObserver' in window)) return tease();
     const io = new IntersectionObserver(entries => {
       if (!entries.some(en => en.isIntersecting)) return;
       io.disconnect();
-      open();
-    }, { threshold: .55 });
+      tease();
+    }, { threshold: .4 });
     io.observe(tin);
   }
 
@@ -162,6 +192,7 @@
     if (now > drag.t) drag.vel = drag.vel * .6 + (dy / drag.h) / ((now - drag.t) / 1000) * .4;
     drag.y = e.clientY; drag.t = now;
     set(drag.p0 + (e.clientY - drag.y0) / drag.h);
+    if (drag.moved) intend(p > .5);
   });
   const release = () => {
     if (!drag) return;
@@ -170,29 +201,48 @@
     if (!d.moved) return toggleTin();
     // a pause before letting go means no flick: it settles by position alone
     const vel = performance.now() - d.t > 90 ? 0 : Math.max(-8, Math.min(8, d.vel));
-    springTo(p + vel * .22 > .5, vel);
+    springTo(p + vel * .22 > .5 ? 1 : 0, vel);
   };
   ring.addEventListener('pointerup', release);
   ring.addEventListener('pointercancel', release);
   ring.addEventListener('lostpointercapture', release);
+  // the ring is also a slider: arrows peel it a quarter at a time, Home/End/Enter/Space go all the way
+  ring.addEventListener('keydown', e => {
+    const step = { ArrowDown: .25, ArrowRight: .25, PageDown: .5, ArrowUp: -.25, ArrowLeft: -.25, PageUp: -.5 }[e.key];
+    if (step) springTo(Math.max(0, Math.min(1, Math.round((Math.max(target, p > PEEK ? p : 0) + step) * 4) / 4)), step * 4);
+    else if (e.key === 'Home') closeTin();
+    else if (e.key === 'End') openTin();
+    else if (e.key === 'Enter' || e.key === ' ') toggleTin();
+    else return;
+    e.preventDefault();
+  });
 
   toggle.addEventListener('click', () => toggleTin());
-  lid.addEventListener('click', () => { if (!isOpen && !drag) springTo(true, 2); });
-  // a closed tin rattles when you reach for it: there's something inside
+  lid.addEventListener('click', () => { if (!wantOpen && !drag) openTin(); });
+  // a sealed tin rattles and lifts its lid a crack when you reach for it
   let rattled = 0;
-  tin.addEventListener('pointerenter', e => {
-    if (isOpen || drag || e.pointerType !== 'mouse' || performance.now() - rattled < 2500) return;
-    rattled = performance.now();
-    play(tin, [{ rotate: '0deg' }, { rotate: '-1.2deg' }, { rotate: '1deg' }, { rotate: '0deg' }], { duration: 300, easing: 'ease-in-out' });
+  stage.addEventListener('pointerenter', e => {
+    if (wantOpen || drag || e.pointerType !== 'mouse') return;
+    if (performance.now() - rattled > 1800) { rattled = performance.now(); rattle(); }
+    if (!reduce && target === 0) springTo(PEEK, 1.2, 140);
   });
-  // picking a sardine: it wriggles out of the tin, then the case study opens
+  stage.addEventListener('pointerleave', () => { if (!wantOpen && !drag && target === PEEK) springTo(0, 0, 150); });
+
+  // picking a sardine: a flick of the tail and it darts out of the tin, then the case study opens
   fishes.forEach(a => a.addEventListener('click', e => {
     if (reduce || e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
     e.preventDefault();
+    if (a.classList.contains('swim')) return;
     const dir = a.parentElement.classList.contains('flip') ? -1 : 1;
-    const anim = a.animate([{ translate: '0 0', rotate: '0deg' }, { translate: `${-dir * 4}% -6%`, rotate: `${-dir * 3}deg`, offset: .3 }, { translate: `${dir * 70}% -14%`, rotate: `${dir * 6}deg`, opacity: 0 }],
-      { duration: 340, easing: 'cubic-bezier(.5,0,.75,0)', fill: 'forwards' });
-    anim.onfinish = () => { location.hash = a.getAttribute('href'); setTimeout(() => anim.cancel(), 120); };
+    a.classList.add('swim');
+    const anim = a.animate([
+      { translate: '0 0', rotate: '0deg', scale: 1.06 },
+      { translate: `${-dir * 5}% 1%`, rotate: `${dir * 4}deg`, scale: 1.02, offset: .28, easing: 'cubic-bezier(.6,0,.9,.4)' },
+      { translate: `${dir * 85}% -10%`, rotate: `${-dir * 5}deg`, scale: 1.08, opacity: 0 }
+    ], { duration: 360, fill: 'forwards' });
+    // the rest of the catch flinches as it goes
+    fishes.forEach(o => { if (o !== a) play(o, [{ translate: '0 0' }, { translate: `${dir * 1.5}% 0` }, { translate: '0 0' }], { duration: 300, easing: 'ease-out' }); });
+    anim.onfinish = () => { location.hash = a.getAttribute('href'); setTimeout(() => { anim.cancel(); a.classList.remove('swim'); }, 120); };
   }));
 
   if (!reduce && matchMedia('(hover: hover)').matches) {
@@ -203,11 +253,12 @@
       // the fish keep an eye on the pointer
       tin.style.setProperty('--ex', Math.max(-1, Math.min(1, (e.clientX - cx) / (r.width * .8))).toFixed(2));
       tin.style.setProperty('--ey', Math.max(-1, Math.min(1, (e.clientY - cy) / (r.height * .8))).toFixed(2));
+      tin.style.setProperty('--gx', Math.max(-1, Math.min(1, (e.clientX - cx) / innerWidth * 2)).toFixed(3));
       if (drag) return;
-      tin.style.setProperty('--ty', ((e.clientX - cx) / innerWidth * 14).toFixed(2) + 'deg');
-      tin.style.setProperty('--tx', (-(e.clientY - cy) / innerHeight * 10).toFixed(2) + 'deg');
+      tin.style.setProperty('--ty', ((e.clientX - cx) / innerWidth * 12).toFixed(2) + 'deg');
+      tin.style.setProperty('--tx', (-(e.clientY - cy) / innerHeight * 8).toFixed(2) + 'deg');
     });
-    hero.addEventListener('pointerleave', () => ['--tx', '--ty', '--ex', '--ey'].forEach(k => tin.style.setProperty(k, k[2] === 't' ? '0deg' : '0')));
+    hero.addEventListener('pointerleave', () => ['--tx', '--ty', '--ex', '--ey', '--gx'].forEach(k => tin.style.setProperty(k, k[2] === 't' ? '0deg' : '0')));
   }
 
   /* ---------- case study contents: built from each section's heading ---------- */
