@@ -6,6 +6,9 @@
   const titles = { home: 'Aaron Hervey · Product Designer' };
   views.forEach(v => { if (v.dataset.title) titles[v.dataset.view] = v.dataset.title + ' · Aaron Hervey'; });
   const homeAnchors = ['top', 'home', 'work', 'about', 'editions'];
+  // each view's summary doubles as its description (for shares from a browser and for reader tools)
+  const descTag = document.querySelector('meta[name="description"]');
+  const descHome = descTag && descTag.content;
   let current = null;
 
   function show(name) {
@@ -13,6 +16,10 @@
     views.forEach(v => { v.hidden = v.dataset.view !== name; });
     current = name;
     document.title = titles[name] || titles.home;
+    if (descTag) {
+      const sum = views.find(v => v.dataset.view === name)?.querySelector('.summary');
+      descTag.content = sum ? sum.textContent.replace(/\s+/g, ' ').trim() : descHome;
+    }
     document.querySelectorAll('.nav-links a').forEach(a => {
       const target = a.getAttribute('href').slice(1);
       const on = target === name || (target === 'work' && a.dataset.cases && a.dataset.cases.split(' ').includes(name));
