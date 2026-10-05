@@ -469,6 +469,7 @@ figcaption{font-size:14px;color:var(--muted);line-height:1.45}
   .ed{grid-row:auto;grid-template-rows:none}
   .mini-tin{aspect-ratio:2/1}
   .seal{right:8px;top:10px}
+  .ed-inside img{object-fit:contain}
   .ed-shelf,.ed:first-child .ed-shelf,.ed:last-child .ed-shelf{margin-inline:-12px;border-radius:5px}
   .ed-note{margin-top:20px}
 }

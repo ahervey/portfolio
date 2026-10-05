@@ -448,14 +448,34 @@
 
   /* ---------- limited editions: opening a tin lifts its lid and shows the back of the tin ---------- */
   // Notes stay visible without JS; with JS they start hidden so opening a tin reveals them.
-  document.querySelectorAll('button.ed-tin').forEach(tin => {
-    const note = document.getElementById(tin.getAttribute('aria-controls'));
+  const edTins = [...document.querySelectorAll('button.ed-tin')];
+  const edNote = tin => document.getElementById(tin.getAttribute('aria-controls'));
+  const setTin = (tin, open) => {
+    tin.setAttribute('aria-expanded', String(open));
+    const note = edNote(tin);
+    if (note) note.hidden = !open;
+  };
+  let lastTin = null;
+  edTins.forEach(tin => {
+    const note = edNote(tin);
     if (note) note.hidden = true;
     tin.addEventListener('click', () => {
       const open = tin.getAttribute('aria-expanded') !== 'true';
-      tin.setAttribute('aria-expanded', String(open));
-      if (note) note.hidden = !open;
+      setTin(tin, open);
+      lastTin = open ? tin : null;
     });
+  });
+  // Escape closes the open tin you're in (or the last one opened) and returns focus to its button.
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    const active = document.activeElement;
+    const open = edTins.filter(t => t.getAttribute('aria-expanded') === 'true');
+    const tin = open.find(t => t === active || (edNote(t) && edNote(t).contains(active))) ||
+      (lastTin && open.includes(lastTin) ? lastTin : null);
+    if (!tin) return;
+    setTin(tin, false);
+    if (tin === lastTin) lastTin = null;
+    tin.focus();
   });
 
   route();
