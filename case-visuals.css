@@ -308,3 +308,85 @@
 }
 [data-view="intune"] .takeaway{row-gap:22px}
 @media (max-width:1000px){[data-view="intune"] .takeaway > .r3-now{order:1}[data-view="intune"] .takeaway > .printer{order:2}}
+/* ---------- r3-cases-a: MEW2 + Alarms read as one argument (tension, decisions with annotated frames, outcome) ---------- */
+/* first paint: every screenshot keeps its box from width/height and never flashes its alt text while loading */
+.case-hero .hv-img img,.hv-call img,.frame img,.compare img{color:transparent;background:var(--print-cream)}
+
+/* constraints as one row of chips inside the problem card */
+.cons-row{list-style:none;margin:2px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.cons-row li{background:rgba(255,255,255,.6);border-radius:999px;padding:7px 14px;font-size:var(--t-14);line-height:1.35;color:var(--print-ink)}
+.cons-row b{font-weight:700;margin-right:5px}
+.problem .trace li{background:rgba(255,255,255,.72);border-color:transparent;color:var(--print-ink)}
+.problem .trace li > span:first-child{color:var(--print-ink);opacity:.8}
+.problem .trace-head span{color:var(--print-ink)}
+.dec-ref{display:inline-grid;place-items:center;min-width:28px;height:20px;padding:0 6px;margin-left:5px;border-radius:999px;background:var(--print-ink);color:var(--print-cream);
+  font:500 var(--t-12)/1 var(--f-mono);letter-spacing:.04em;vertical-align:2px}
+
+/* decisions: claim + numbered callouts, one big frame, then the tradeoff or the turn that shaped it */
+.dec-intro{max-width:var(--measure);font-size:var(--t-17);line-height:1.6;color:var(--muted)}
+.dec{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:20px 40px;margin-top:18px;padding-top:24px;border-top:3px solid var(--ink)}
+.dec-head{display:grid;gap:8px;align-content:start}
+.dec-n{font-family:var(--f-display);font-style:italic;font-weight:var(--w-voice);font-size:var(--t-40);line-height:1;color:var(--accent-ink)}
+.dec-head p{font-size:var(--t-17);line-height:1.6}
+.dec-side{display:grid;gap:16px;align-content:end}
+.callouts{list-style:none;counter-reset:co;margin:0;padding:0;display:grid;gap:10px;align-content:end}
+.callouts li{counter-increment:co;position:relative;padding-left:36px;font-size:var(--t-17);line-height:1.45;color:var(--ink)}
+.callouts li::before{content:counter(co);position:absolute;left:0;top:0;width:24px;height:24px;border-radius:50%;background:#B23A2B;color:#fff;
+  font:700 var(--t-12)/24px var(--f-mono);text-align:center}
+.dec > .frame,.dec > .dec-foot{grid-column:1/-1}
+.frame{margin:0}
+.frame .shot{border:2px solid var(--print-ink);border-radius:14px;box-shadow:8px 10px 0 rgba(31,42,85,.14),0 26px 44px -30px rgba(31,42,85,.55)}
+.frame .hv-pin{z-index:1;transition:transform .2s ease}
+.frame .shot::after{right:auto;left:10px}
+.dec:has(.callouts li:nth-child(1):hover) .hv-pin:nth-of-type(1),
+.dec:has(.callouts li:nth-child(2):hover) .hv-pin:nth-of-type(2),
+.dec:has(.callouts li:nth-child(3):hover) .hv-pin:nth-of-type(3),
+.dec:has(.callouts li:nth-child(4):hover) .hv-pin:nth-of-type(4){transform:scale(1.4)}
+.dec-foot{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px;align-items:start}
+.dec-trade{margin:0;padding:2px 0 2px 16px;border-left:3px dashed var(--line);font-size:var(--t-17);line-height:1.5;color:var(--muted)}
+.dec-trade b{display:block;margin-bottom:8px;font:500 var(--t-12)/1 var(--f-mono);letter-spacing:var(--ls-label);text-transform:uppercase;color:var(--ink)}
+
+/* the before/after slider is the main evidence: full column width, its own section */
+.compare-big{margin:0;display:grid;gap:14px}
+.compare-big .compare{box-shadow:8px 10px 0 rgba(31,42,85,.14),0 26px 44px -30px rgba(31,42,85,.55)}
+.compare-big figcaption{max-width:72ch;font-size:var(--t-14);line-height:1.55;color:var(--muted)}
+
+/* outcome: evidence first, then the receipts of how it kept growing */
+.case-sec .stats.loose b{font-size:var(--t-28)}
+.out-row{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px;align-items:start}
+.out-row .impact{max-width:none}
+[data-view="mew2"] .case-sec,[data-view="oracle"] .case-sec{padding-block:36px}
+[data-view="mew2"] .case-sec:first-child,[data-view="oracle"] .case-sec:first-child{padding-top:0}
+
+@media (max-width:860px){
+  .dec{grid-template-columns:minmax(0,1fr);gap:16px}
+  .dec > .frame{order:1}
+  .dec > .dec-side{order:2}
+  .dec > .dec-foot{order:3}
+  .out-row{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:720px){
+  .dec{margin-top:10px;padding-top:20px}
+  .dec-n{font-size:var(--t-28)}
+  .dec-head p,.callouts li,.dec-trade,.dec-intro{font-size:var(--fs-small);line-height:1.55}
+  .callouts li{padding-left:32px}
+  .callouts li::before{width:22px;height:22px;line-height:22px}
+  .frame .shot{border-radius:10px;box-shadow:5px 6px 0 rgba(31,42,85,.14)}
+  .frame .hv-pin{width:18px;height:18px;margin:-9px 0 0 -9px;font-size:var(--t-12);line-height:14px;border-width:1.5px}
+  .frame .hv-pin::after{inset:-5px}
+  /* phones: crop the slider to the query side of both screens so it's readable */
+  .compare-big .compare{aspect-ratio:1/1}
+  .compare-big .compare img{height:100%;object-fit:cover;object-position:left top}
+  .cons-row li{font-size:var(--t-12);padding:6px 11px}
+  [data-view="mew2"] .case-sec,[data-view="oracle"] .case-sec{padding-block:26px}
+  .problem .trace li{padding:10px 14px;gap:2px}
+  .problem .trace li > i{display:none}
+  .problem .trace li > span:first-child{font-size:var(--t-14)}
+  .case-sec .stats.loose li{grid-template-columns:minmax(0,1fr);gap:2px;padding:14px 18px}
+  .tldr-grid > div{padding:14px 18px;display:block}
+  .tldr-grid .tag{margin-right:6px;vertical-align:1px}
+  .tldr-grid > div p{display:inline}
+  .case-sec .stats.loose li{display:block}
+  .case-sec .stats.loose b{display:inline;margin-right:6px;font-size:var(--t-20)}
+  .case-sec .stats.loose span{display:inline}
+}
