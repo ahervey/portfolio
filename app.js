@@ -81,22 +81,32 @@
   });
 
   /* ---------- the tin: pull the tab, the lid peels back, the four case studies are packed inside ---------- */
-  // It always loads sealed (phone or desktop). Reach for it and the lid lifts a crack; pull the ring,
-  // tap the lid, use the button, or the ring's slider keys to open it all the way.
+  // First paint is always sealed, on every screen. Once it's on screen it rattles and opens by itself (~1.5s);
+  // with reduced motion it stays sealed and the button opens it. While sealed, reaching for it lifts the lid
+  // a crack; the ring drags, and is also a keyboard slider.
   const tin = document.getElementById('tin'), lid = document.getElementById('lid');
   const ring = document.getElementById('pull-ring'), catchList = document.getElementById('catch');
   const toggle = document.getElementById('toggle'), stage = document.getElementById('stage');
   const hintText = toggle.querySelector('.hint-text');
   const fishes = [...catchList.querySelectorAll('.sardine a')];
   const PEEK = .17;
-  let p = 0, v = 0, target = 0, raf = 0, last = 0, introduced = false, isOpen = false, drag = null, wantOpen = false;
+  let p = 0, v = 0, target = 0, raf = 0, last = 0, introduced = false, isOpen = false, drag = null, wantOpen = false, saysOpen = false;
   const play = (el, frames, opts) => (!reduce && el.animate) ? el.animate(frames, opts) : null;
   const closedLabel = reduce ? 'Open the tin' : 'Pull the tab to open';
   hintText.textContent = closedLabel;
 
+  // the button speaks for the lid: it flips once the lid passes halfway, or when it comes to rest
+  function label(open) {
+    if (open === saysOpen) return;
+    saysOpen = open;
+    toggle.setAttribute('aria-expanded', open);
+    hintText.textContent = open ? 'Close the tin' : closedLabel;
+  }
   function set(x) {
+    const was = p;
     p = Math.max(0, Math.min(1, x));
     tin.style.setProperty('--p', p.toFixed(4));
+    if ((was - .5) * (p - .5) < 0 || p === .5) label(p > .5);
     const pct = Math.round(p * 100);
     if (ring.getAttribute('aria-valuenow') !== String(pct)) {
       ring.setAttribute('aria-valuenow', pct);
@@ -107,14 +117,13 @@
   function intend(open) {
     if (open === wantOpen) return;
     wantOpen = open;
-    toggle.setAttribute('aria-expanded', open);
-    hintText.textContent = open ? 'Close the tin' : closedLabel;
     stage.classList.toggle('opening', open);
     if (!open) catchList.inert = true;
   }
   // the lid has come to rest
   function settle() {
     const open = target >= .5;
+    label(open);
     if (open) catchList.inert = false;
     if (open === isOpen) return;
     isOpen = open;
@@ -157,22 +166,20 @@
   const rattle = (amp = 1.2) => play(tin, [{ rotate: '0deg' }, { rotate: -amp + 'deg' }, { rotate: amp * .8 + 'deg' }, { rotate: -amp * .4 + 'deg' }, { rotate: '0deg' }],
     { duration: 360, easing: 'ease-in-out' });
 
-  // once the sealed tin is on screen it gives one small rattle and lifts its lid a crack: there's something inside
+  // once the sealed tin is on screen it gives one small rattle, then pops open by itself
   function tinIntro() {
     if (introduced || reduce) return;
     introduced = true;
-    const tease = () => setTimeout(() => {
-      if (drag || wantOpen || p > 0) return;
-      rattle(1.8);
-      setTimeout(() => { if (!drag && !wantOpen) springTo(PEEK, 1.4, 120); }, 280);
-      setTimeout(() => { if (!drag && !wantOpen && target === PEEK && !stage.matches(':hover')) springTo(0, 0, 150); }, 1300);
-    }, 700);
-    if (!('IntersectionObserver' in window)) return tease();
+    const go = () => {
+      setTimeout(() => { if (!drag && !wantOpen) rattle(1.6); }, 1050);
+      setTimeout(() => { if (!drag && !wantOpen) springTo(1, 1.2, 110); }, 1450);
+    };
+    if (!('IntersectionObserver' in window)) return go();
     const io = new IntersectionObserver(entries => {
       if (!entries.some(en => en.isIntersecting)) return;
       io.disconnect();
-      tease();
-    }, { threshold: .4 });
+      go();
+    }, { threshold: .3 });
     io.observe(tin);
   }
 

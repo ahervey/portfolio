@@ -43,7 +43,6 @@
 .s-butter .sd-tail,.s-butter .sd-fin{fill:#F2C95E}
 /* a scalloped butter label sits square behind the tin and turns, very slowly, like a sun */
 .stage::before{content:"";position:absolute;z-index:-1;left:50%;top:50%;width:var(--halo,146%);aspect-ratio:1;translate:-50% -50%;rotate:-8deg;pointer-events:none;
-  animation:label-turn 120s linear infinite;
   background:radial-gradient(circle,transparent 61%,rgba(31,42,85,.10) 61.4%,transparent 62.2%),var(--print-butter);
   -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50.0 6.0A6.8 6.8 0 0 1 62.4 7.8A6.8 6.8 0 0 1 73.8 13.0A6.8 6.8 0 0 1 83.3 21.2A6.8 6.8 0 0 1 90.0 31.7A6.8 6.8 0 0 1 93.6 43.7A6.8 6.8 0 0 1 93.6 56.3A6.8 6.8 0 0 1 90.0 68.3A6.8 6.8 0 0 1 83.3 78.8A6.8 6.8 0 0 1 73.8 87.0A6.8 6.8 0 0 1 62.4 92.2A6.8 6.8 0 0 1 50.0 94.0A6.8 6.8 0 0 1 37.6 92.2A6.8 6.8 0 0 1 26.2 87.0A6.8 6.8 0 0 1 16.7 78.8A6.8 6.8 0 0 1 10.0 68.3A6.8 6.8 0 0 1 6.4 56.3A6.8 6.8 0 0 1 6.4 43.7A6.8 6.8 0 0 1 10.0 31.7A6.8 6.8 0 0 1 16.7 21.2A6.8 6.8 0 0 1 26.2 13.0A6.8 6.8 0 0 1 37.6 7.8A6.8 6.8 0 0 1 50.0 6.0Z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50.0 6.0A6.8 6.8 0 0 1 62.4 7.8A6.8 6.8 0 0 1 73.8 13.0A6.8 6.8 0 0 1 83.3 21.2A6.8 6.8 0 0 1 90.0 31.7A6.8 6.8 0 0 1 93.6 43.7A6.8 6.8 0 0 1 93.6 56.3A6.8 6.8 0 0 1 90.0 68.3A6.8 6.8 0 0 1 83.3 78.8A6.8 6.8 0 0 1 73.8 87.0A6.8 6.8 0 0 1 62.4 92.2A6.8 6.8 0 0 1 50.0 94.0A6.8 6.8 0 0 1 37.6 92.2A6.8 6.8 0 0 1 26.2 87.0A6.8 6.8 0 0 1 16.7 78.8A6.8 6.8 0 0 1 10.0 68.3A6.8 6.8 0 0 1 6.4 56.3A6.8 6.8 0 0 1 6.4 43.7A6.8 6.8 0 0 1 10.0 31.7A6.8 6.8 0 0 1 16.7 21.2A6.8 6.8 0 0 1 26.2 13.0A6.8 6.8 0 0 1 37.6 7.8A6.8 6.8 0 0 1 50.0 6.0Z'/%3E%3C/svg%3E") center/contain no-repeat}
 
@@ -55,8 +54,6 @@
 /* on phones the turning label may brush the gutter, never the page edge */
 /* on phones there's no room for a full circle, so the label becomes an oval that hugs the tin and holds still */
 @media (max-width:480px){.stage::before{width:126%;scale:1 1.26;rotate:0deg;animation:none}}
-/* tablets: the tin sits in the right column, so the label hugs it as an oval that stays inside the page */
-@media (min-width:601px) and (max-width:860px){.stage::before{width:126%;scale:1 1.26;rotate:0deg;animation:none}}
 .emboss{display:block;position:absolute;top:2cqw;left:50%;width:25cqw;aspect-ratio:1;translate:-50% 0;border-radius:50%;
   box-shadow:inset 0 3px 5px rgba(31,42,85,.18),inset 0 -2px 3px rgba(255,255,255,.6),0 1px 0 rgba(255,255,255,.5)}
 
