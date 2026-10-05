@@ -39,6 +39,8 @@ main:focus{outline:none}
 [hidden]{display:none!important}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+/* headings and main only take focus from the router so screen readers start in the right place; no ring there */
+[tabindex="-1"]:focus{outline:none}
 .wrap{max-width:1120px;margin-inline:auto}
 h1,h2,h3{text-wrap:balance;margin:0}
 p{margin:0}
