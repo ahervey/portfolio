@@ -615,12 +615,12 @@
       <h1>The patients who need MyChart most get lost in it</h1>
       <p class="summary">A ten-week class redesign. We traced the confusion to nested menus and rebuilt the app around bottom tabs and a dashboard about you. A Figma prototype, not yet user-tested.</p>
       <figure class="hero-visual">
-        <div class="hv-stage" style="--pt:100px">
-          <button class="shot hv-main hv-paper" type="button"><span class="hv-img"><img src="img/mychart_0.webp" alt="Persona sheet for Mark de la Cruz, 68, with his photo, biography, goals, frustrations and medical experience" width="1600" height="900" decoding="async" fetchpriority="high"><span class="hv-pin" style="--x:17%;--y:84%" aria-hidden="true">1</span><span class="hv-pin" style="--x:85%;--y:22%" aria-hidden="true">2</span></span></button>
-          <div class="hv-call hv-c1 at-br" style="--w:44%"><span class="hv-tag"><b>1</b> In Mark's words</span><img src="img/mychart_d_quote.webp" alt="Close-up of Mark's quote: my time is valuable, and I do not want to waste it waiting in line to hear things about my health that I already know" width="460" height="220" decoding="async"></div>
-          <div class="hv-call hv-c2 at-tl" style="--w:30%"><span class="hv-tag"><b>2</b> Comfort with tech</span><img src="img/mychart_d_scale.webp" alt="Close-up: technological familiarity rated about 6 of 10, medical familiarity about 3 of 10" width="398" height="220" decoding="async"></div>
+        <div class="hv-stage hv-mark">
+          <button class="shot hv-main hv-paper" type="button"><span class="hv-img"><img src="img/mychart_hero.webp" alt="Persona card for Mark de la Cruz: male, 68, bachelor's degree, civil engineer, with his photo" width="502" height="568" decoding="async" fetchpriority="high"></span></button>
+          <div class="hv-call hv-c1 at-br" style="--w:50%"><span class="hv-tag">In Mark's words</span><img src="img/mychart_d_quote.webp" alt="Close-up of Mark's quote: my time is valuable, and I do not want to waste it waiting in line to hear things about my health that I already know" width="460" height="220" decoding="async"></div>
+          <div class="hv-call hv-c2" style="--w:42%"><span class="hv-tag">Comfort with tech</span><img src="img/mychart_d_scale.webp" alt="Close-up: technological familiarity rated about 6 of 10, medical familiarity about 3 of 10" width="398" height="220" decoding="async"></div>
         </div>
-        <figcaption class="sr-only">The persona sheet for Mark de la Cruz, with close-ups of his quote and familiarity scales.</figcaption>
+        <figcaption class="sr-only">Mark de la Cruz's persona card, with close-ups of his quote and familiarity scales.</figcaption>
       </figure>
     </header>
     <dl class="glance">
@@ -642,7 +642,7 @@
           </div>
           <ul class="stats loose">
             <li><b>~10</b><span>people surveyed, most 40 or older</span></li>
-            <li><b>4</b><span>design decisions, each tied to a finding</span></li>
+            <li><b>10 wks</b><span>from research to high-fidelity prototype</span></li>
             <li><b>Untested</b><span>no usability test yet; test plan below</span></li>
           </ul>
         </section>
@@ -651,10 +651,10 @@
           <h2>What we heard</h2>
           <div class="prose"><p>We surveyed about ten people and ran contextual inquiries. Four findings set the agenda.</p></div>
           <ol class="r3-synth">
-            <li class="r3c-butter"><span class="mono">Finding 01</span><b>"Hard to navigate and confusing"</b><p>Layers of sub-menus made it easy to get lost.</p><span class="r3-to">Decision 01</span></li>
+            <li class="r3c-butter"><span class="mono">Finding 01</span><b>"Hard to navigate"</b><p>Layers of sub-menus made it easy to get lost.</p><span class="r3-to">Decision 01</span></li>
             <li class="r3c-green"><span class="mono">Finding 02</span><b>The dashboard felt random</b><p>Nothing on it was about them.</p><span class="r3-to">Decision 02</span></li>
             <li class="r3c-lilac"><span class="mono">Finding 03</span><b>The look didn't appeal</b><p>But they came for their health, not color.</p><span class="r3-to">Decision 03</span></li>
-            <li class="r3c-blue"><span class="mono">Finding 04</span><b>Most were 40 or older</b><p>So we designed for Mark, 68.</p><span class="r3-to">Decision 04</span></li>
+            <li class="r3c-blue"><span class="mono">Finding 04</span><b>Many found it confusing</b><p>Most were 40 or older, so the app has to explain itself.</p><span class="r3-to">Decision 04</span></li>
           </ol>
           <blockquote class="pull"><p>"It does a lot of good, and I like that because I'm disabled and rely on this to stay on top of my health, but it is confusing at times and hard to use."</p><cite>Survey respondent, 40–50 years old</cite></blockquote>
         </section>
@@ -664,7 +664,7 @@
           <div class="prose"><p>We distilled the survey into one persona: Mark, 68, a working civil engineer who was hospitalized for heart palpitations, then missed follow-ups because of work.</p></div>
           <figure class="af">
             <div class="af-stage">
-              <button class="shot" type="button"><img src="img/mychart_0.webp" alt="Persona sheet for Mark de la Cruz with profile, biography, goals, frustrations and medical experience" loading="lazy" width="1600" height="900" decoding="async"></button>
+              <button class="shot" type="button" data-full="img/mychart_annotated.webp" data-full-alt="Persona sheet for Mark de la Cruz with four numbered pins" data-caption="Mark's persona, annotated: 1 time is valuable, so the dashboard shows what's new; 2 wants to self-manage, so navigation he can work out alone; 3 struggles to schedule visits and find specialists, so appointments up front and hospital maps; 4 tech comfort 6 of 10, medical 3 of 10, so a first-run tour."><img src="img/mychart_0.webp" alt="Persona sheet for Mark de la Cruz with profile, biography, goals, frustrations and medical experience" loading="lazy" width="1600" height="900" decoding="async"></button>
               <span class="af-pin" style="--x:6.8%;--y:70%" aria-hidden="true">1</span>
               <span class="af-pin" style="--x:70%;--y:71%" aria-hidden="true">2</span>
               <span class="af-pin" style="--x:70%;--y:85%" aria-hidden="true">3</span>
@@ -688,7 +688,7 @@
             <li><span class="r3-n">02</span><div><h3>A dashboard about you</h3><p>Upcoming appointments, recent lab work and visit results at a glance, so Mark isn't waiting in line to hear what he already knows.</p></div></li>
             <li><span class="r3-n">03</span><div><h3>Calm white and blue</h3><p>Minimal and modern, built from simple community resources in Figma.</p></div>
               <div class="turn"><span class="mono">Option we rejected</span><h3>A colorful makeover</h3><p>A brighter palette was the obvious fix for "didn't appeal." We stayed mostly white and blue: blue is tied to healthcare and already part of MyChart's brand.</p></div></li>
-            <li><span class="r3-n">04</span><div><h3>Show people around</h3><p>A first-run tutorial shows where everything lives. <b>Hospital maps</b> find the right room, and <b>integrations</b> connect accounts from other providers.</p></div></li>
+            <li><span class="r3-n">04</span><div><h3>Show people around</h3><p>For the many who found the app confusing (finding 04), a first-run tutorial shows where everything lives. <b>Hospital maps</b> find the right room, and <b>integrations</b> connect accounts from other providers.</p></div></li>
           </ol>
         </section>
 

@@ -274,7 +274,6 @@
 @media (max-width:600px){
   .r3-synth,.r3-synth-col{grid-template-columns:minmax(0,1fr);gap:10px}
   .r3-synth li{grid-template-rows:auto;padding:14px}
-  .r3-synth li p{display:none}
   .af-key{grid-template-columns:minmax(0,1fr)}
   .af-pin{width:22px;height:22px;margin:-11px 0 0 -11px;font-size:var(--t-12)}
   .r3-map{min-height:300px}
@@ -298,7 +297,6 @@
 [data-view="intune"] .takeaway > .printer{grid-column:2;grid-row:1/span 2}
 @media (max-width:1000px){[data-view="intune"] .takeaway > .printer{grid-column:1;grid-row:auto}}
 @media (max-width:600px){
-  .r3-map figcaption{display:none}
   .r3-ax-y{left:calc(50% + 6px);top:10px;bottom:auto}
   .r3-ax-x{right:10px;top:calc(50% + 6px);bottom:auto}
   .r3-synth:not(.r3-synth-col){grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -308,6 +306,28 @@
 }
 [data-view="intune"] .takeaway{row-gap:22px}
 @media (max-width:1000px){[data-view="intune"] .takeaway > .r3-now{order:1}[data-view="intune"] .takeaway > .printer{order:2}}
+/* r3-casesb-fix: caption sits in the empty top-left quadrant, wrapping before the axis line */
+.r3-map figcaption{top:12px;bottom:auto;max-width:calc(50% - 28px);line-height:1.4}
+@media (max-width:600px){.r3-map figcaption{left:10px;top:10px;max-width:calc(50% - 20px);letter-spacing:.04em}
+  .r3-synth li p{font-size:var(--t-14);line-height:1.4}}
+/* MyChart hero: Mark's persona card (a crop, not the full sheet) with the quote and the familiarity scales beside it */
+.hv-mark{position:relative;padding:28px 2% 40px 3%}
+.hv-mark .hv-main{width:54%;transform:rotate(-1.6deg)}
+.hv-mark .hv-c2{top:6%;right:0;left:auto;bottom:auto;transform:rotate(2deg)}
+.hv-mark .hv-c1{bottom:4%;right:2%;left:auto;top:auto;transform:rotate(-1.4deg)}
+@media (max-width:999px){
+  .hv-mark{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px 12px;align-items:start;padding:22px 0 0}
+  .hv-mark .hv-main{grid-column:1;grid-row:1/span 2;width:100%;transform:rotate(-1deg)}
+  .hv-mark .hv-call{position:relative;inset:auto;width:auto;max-width:100%;transform:rotate(1deg)}
+  .hv-mark .hv-c2{grid-column:2;grid-row:1}
+  .hv-mark .hv-c1{grid-column:2;grid-row:2}
+  .hv-mark .hv-call img{width:100%}
+}
+@media (max-width:480px){
+  .hv-mark{grid-template-columns:minmax(0,1fr)}
+  .hv-mark .hv-main{grid-row:auto;width:78%;justify-self:center}
+  .hv-mark .hv-c1,.hv-mark .hv-c2{grid-column:1;grid-row:auto}
+}
 /* ---------- r3-cases-a: MEW2 + Alarms read as one argument (tension, decisions with annotated frames, outcome) ---------- */
 /* first paint: every screenshot keeps its box from width/height and never flashes its alt text while loading */
 .case-hero .hv-img img,.hv-call img,.frame img,.compare img{color:transparent;background:var(--print-cream)}
