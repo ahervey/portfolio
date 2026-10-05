@@ -265,13 +265,13 @@
     <header class="case-hero v-blue">
       <span class="mono"><span class="nw">Nº 01</span> · <span class="nw">Avangrid Renewables</span> · <span class="nw">June – August 2026</span></span>
       <div class="flavor">MEW2</div>
-      <h1>A guided interface for editing renewable asset data without writing SQL</h1>
-      <p class="summary">MEW2 sits on top of our SQL Server databases so teams across Avangrid can maintain sites, devices and certificates through forms and a browsable tree instead of raw queries.</p>
+      <h1>Adding an asset meant writing SQL by hand. I turned it into a guided form.</h1>
+      <p class="summary">MEW2 sits on our SQL Server inventory of sites, devices and certificates. The forms were the easy part. The hard part was making that much data readable, and edits feel safe for people who'd never touched the database.</p>
       <figure class="hero-visual">
         <div class="hv-stage" style="--pt:66px">
-          <button class="shot hv-main" type="button"><span class="hv-bar" aria-hidden="true"><i></i><i></i><i></i><span>MEW2 · Farms</span></span><span class="hv-img"><img src="img/mew2_4.webp" alt="MEW2 farm editor: sites in a sidebar, asset types in a second column, and the Baffin Bay attributes as editable fields" width="1600" height="787" decoding="async" fetchpriority="high"><span class="hv-pin" style="--x:39.6%;--y:23%" aria-hidden="true">1</span><span class="hv-pin" style="--x:86.4%;--y:5%" aria-hidden="true">2</span></span></button>
-          <div class="hv-call hv-c1" style="--w:52%"><span class="hv-tag"><b>1</b> Unsaved edits are flagged</span><img src="img/mew2_h_unsaved.webp" alt="Close-up: the Company Name field outlined in orange with an Unsaved badge" width="316" height="128" decoding="async"></div>
-          <div class="hv-call hv-c2" style="--w:48%"><span class="hv-tag"><b>2</b> One place to save</span><img src="img/mew2_d_pending.webp" alt="Close-up: a 1 pending counter beside the Save and undo buttons" width="312" height="66" decoding="async"></div>
+          <button class="shot hv-main" type="button" data-caption="The farm editor: sites in a sidebar, asset types in a second column, attributes as editable fields."><span class="hv-bar" aria-hidden="true"><i></i><i></i><i></i><span>MEW2 · Farms</span></span><span class="hv-img"><img src="img/mew2_4.webp" alt="MEW2 farm editor: sites in a sidebar, asset types in a second column, and the Baffin Bay attributes as editable fields" width="1600" height="787" decoding="async" fetchpriority="high"><span class="hv-pin" style="--x:39.6%;--y:23%" aria-hidden="true">1</span><span class="hv-pin" style="--x:86.4%;--y:5%" aria-hidden="true">2</span></span></button>
+          <div class="hv-call hv-c1" style="--w:52%"><span class="hv-tag"><b>1</b> Unsaved edits are flagged</span><img src="img/mew2_h_unsaved.webp" alt="Close-up: the Company Name field outlined in orange with an Unsaved badge" width="316" height="128" decoding="async" fetchpriority="high"></div>
+          <div class="hv-call hv-c2" style="--w:48%"><span class="hv-tag"><b>2</b> One place to save</span><img src="img/mew2_d_pending.webp" alt="Close-up: a 1 pending counter beside the Save and undo buttons" width="312" height="66" decoding="async" fetchpriority="high"></div>
         </div>
         <figcaption class="sr-only">The MEW2 farm editor with close-ups of an unsaved field and the pending-changes counter.</figcaption>
       </figure>
@@ -289,10 +289,104 @@
           <h2>TL;DR</h2>
           <div class="tldr">
             <div class="tldr-grid">
-              <div><span class="tag t-pain">The pain</span><p>Teams across Avangrid keep our renewable inventory current: sites, devices and certificates. Creating an asset meant writing SQL by hand in SQL Server Management Studio, so only people comfortable with SQL could do it.</p></div>
-              <div><span class="tag t-did">What I did</span><p>As the only designer and developer, I built MEW2: people browse sites in two columns, edit through validated forms and review every change before it's committed.</p></div>
-              <div><span class="tag t-result">The result</span><p>Launched to our team three months after kickoff and now rolling out to more teams. The same jobs happen in a guided web form instead of a query window.</p></div>
+              <div><span class="tag t-pain">The pain</span><p>Creating an asset meant writing SQL by hand in SSMS, so only people comfortable with SQL could keep the inventory current.</p></div>
+              <div><span class="tag t-did">What I did</span><p>Solo designer and developer: two-column browsing, validated forms and a review step before every commit.</p></div>
+              <div><span class="tag t-result">The result</span><p>Launched to our team three months after kickoff; now rolling out to more teams.</p></div>
             </div>
+          </div>
+        </section>
+
+        <section class="case-sec" data-toc="The tension">
+          <h2>The tension</h2>
+          <div class="problem">
+            <span class="mono">Key question</span>
+            <q>How might people who don't write SQL find the right asset, and change it with confidence?</q>
+            <p>Farms opens on 95 sites, each with servers, turbines and pads. Every decision below either makes that much data make sense, or makes sure nothing changes by accident.</p>
+            <ul class="cons-row" aria-label="Constraints">
+              <li><b>Urgent</b> no separate prototyping phase</li>
+              <li><b>No users yet</b> my manager stood in</li>
+              <li><b>Generic data</b> attribute records, raw columns</li>
+              <li><b>.NET server</b> stays in the team's stack</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="case-sec" data-toc="Decisions">
+          <h2>Three decisions</h2>
+          <p class="dec-intro">With no time for a prototyping phase, I designed in code and walked each build through with my manager every week.</p>
+
+          <div class="dec">
+            <div class="dec-head">
+              <span class="dec-n">01</span>
+              <h3>Two columns, then stop</h3>
+              <p>Sites live in a persistent sidebar. Pick one and its devices open in a second column; the inspector shows the rest.</p>
+            </div>
+            <div class="dec-side">
+              <ol class="callouts">
+              <li>Sites stay put, with a count.</li>
+              <li>Devices open in a second column, with a back button instead of a third.</li>
+              <li>Readable field names, mapped from raw attribute columns.</li>
+              <li>Global search jumps straight to an asset.</li>
+            </ol>
+            </div>
+            <figure class="frame">
+              <button class="shot" type="button" data-caption="Decision 01: sites in the sidebar, devices in a second column, the inspector for one server."><img src="img/mew2_1.webp" alt="MEW2 Farms: a sidebar of 95 sites, a second column of Baffin Bay servers with a Back button, and the inspector for server BB1-SV-SQL1" loading="lazy" width="1600" height="788" decoding="async"><span class="hv-pin" style="--x:8.6%;--y:13.4%" aria-hidden="true">1</span><span class="hv-pin" style="--x:21.4%;--y:19.3%" aria-hidden="true">2</span><span class="hv-pin" style="--x:36.5%;--y:24.5%" aria-hidden="true">3</span><span class="hv-pin" style="--x:51.3%;--y:6.2%" aria-hidden="true">4</span></button>
+              <figcaption class="sr-only">The Farms view, numbered to match the list.</figcaption>
+            </figure>
+            <div class="dec-foot">
+              <div class="turn"><span class="mono">Option I rejected</span><h3>Finder-style columns that keep opening</h3><p>The dashboards I studied on Dribbble and Contra lean on a hierarchy sidebar, and Miller columns can nest as deep as the data. I capped MEW2 at two so it never sprawls.</p></div>
+            </div>
+          </div>
+
+          <div class="dec">
+            <div class="dec-head">
+              <span class="dec-n">02</span>
+              <h3>A form that knows the asset type</h3>
+              <p>The blank query window became one form that swaps its fields by asset type and marks what's required.</p>
+            </div>
+            <div class="dec-side">
+              <ol class="callouts">
+              <li>Pick a type: site, server, turbine, substation or certificate.</li>
+              <li>Field and required counts up front.</li>
+              <li>Validation names the exact missing field.</li>
+              <li>Required fields filled, as you go.</li>
+            </ol>
+            </div>
+            <figure class="frame">
+              <button class="shot" type="button" data-caption="Decision 02: one creation form that adapts to the asset type and names what's missing."><img src="img/mew2_7.webp" alt="Create a new asset: entity type cards on the left, a New Site form with 24 fields and 2 required, and an Action failed banner naming Company Name" loading="lazy" width="1600" height="789" decoding="async"><span class="hv-pin" style="--x:31.3%;--y:45.5%" aria-hidden="true">1</span><span class="hv-pin" style="--x:70.5%;--y:40%" aria-hidden="true">2</span><span class="hv-pin" style="--x:37%;--y:27.3%" aria-hidden="true">3</span><span class="hv-pin" style="--x:22.9%;--y:94%" aria-hidden="true">4</span></button>
+              <figcaption class="sr-only">The asset creation form, numbered to match the list.</figcaption>
+            </figure>
+            <div class="dec-foot">
+              <div class="turn t-fb"><span class="mono">What changed the design</span><h3>A zip code that lost its zeros</h3><p>A zip code set as a number input silently dropped leading zeros. Since then I treat field types and validation as part of the interface, not a back-end detail.</p></div>
+              <p class="dec-trade"><b>Tradeoff</b> A mapping layer over raw columns is more code to maintain, but people see readable names and input is converted to the right type before saving.</p>
+            </div>
+          </div>
+
+          <div class="dec">
+            <div class="dec-head">
+              <span class="dec-n">03</span>
+              <h3>Nothing changes silently</h3>
+              <p>Edits collect as drafts, get reviewed side by side, then are committed together and logged in History.</p>
+            </div>
+            <div class="dec-side">
+              <ol class="callouts">
+              <li>Pending count, Save and undo on every tab.</li>
+              <li>Current against draft, for every edited field.</li>
+              <li>Each change stays a draft until committed.</li>
+            </ol>
+              <p class="dec-trade"><b>Tradeoff</b> One API module handles every call's errors, retries and cancellation. More plumbing, but a slow connection never leaves a form half-broken.</p>
+            </div>
+            <figure class="frame">
+              <button class="shot" type="button" data-caption="Decision 03: reviewing three pending changes side by side before committing them."><img src="img/mew2_9c.webp" alt="Review pending changes: three Baffin Bay fields, each with its current value in red beside the draft value in green, and a 3 pending counter in the header" loading="lazy" width="1600" height="709" decoding="async"><span class="hv-pin" style="--x:82.4%;--y:7.1%" aria-hidden="true">1</span><span class="hv-pin" style="--x:50%;--y:42.9%" aria-hidden="true">2</span><span class="hv-pin" style="--x:94.1%;--y:32.9%" aria-hidden="true">3</span></button>
+              <figcaption class="sr-only">The pending-changes review, numbered to match the list.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="case-sec" data-toc="Outcome">
+          <h2>Outcome</h2>
+          <p class="dec-intro">Keeping the inventory current no longer depends on someone who can write a query.</p>
+          <div class="tldr">
             <div class="shift">
               <div class="shift-head"><span class="mono">Creating an asset, before and after</span><small>We didn't measure time saved, so here's the workflow itself.</small></div>
               <div class="trace-head" aria-hidden="true"><span>Before: SQL in SSMS</span><span></span><span>Now: MEW2</span></div>
@@ -303,90 +397,6 @@
               </ul>
             </div>
           </div>
-          <h3 class="sub-h">Context &amp; my role</h3>
-          <div class="prose">
-            <p>I was asked to build a web interface to our SQL Server so teams could maintain the inventory without touching SQL. I designed it and built both halves: an ASP.NET back-end that uses Entity Framework to make changes safely, and a React front-end with four areas: <b>Farms</b> (sites and their devices), <b>Certificates</b>, <b>History</b> (who changed what, and when) and <b>Asset management</b> (creating new devices).</p>
-          </div>
-        </section>
-
-        <section class="case-sec" data-toc="The problem">
-          <h2>The problem</h2>
-          <div class="problem">
-            <span class="mono">Key question</span>
-            <q>How might people who don't write SQL find the right asset, and change it with confidence?</q>
-            <p>A first-time user opening the Farms page faces sites, turbines, pads and many other devices at once. The hard part wasn't the look. It was surfacing that much information so it makes sense, and making edits feel safe for people who had never touched the database.</p>
-            <span class="mono">Constraints</span>
-            <ul class="constraints">
-              <li><b>Needed urgently.</b> No time for a separate prototyping phase.</li>
-              <li><b>No existing users.</b> A brand-new tool, so my manager stood in for the teams who'd use it.</li>
-              <li><b>Generic data underneath.</b> Many assets are stored as attribute records, so friendly field names had to map to raw columns.</li>
-              <li><b>Team stack.</b> The server had to stay in the team's .NET stack.</li>
-            </ul>
-          </div>
-        </section>
-
-        <section class="case-sec" data-toc="Process">
-          <h2>How I worked</h2>
-          <ol class="steps">
-            <li><span class="n">01</span><h3>Study</h3><p>Compared asset dashboards on Dribbble and Contra that hold lots of nested data.</p></li>
-            <li><span class="n">02</span><h3>Sketch</h3><p>A persistent sidebar of sites that opens into their devices.</p></li>
-            <li><span class="n">03</span><h3>Build</h3><p>Designed in code and shipped working versions fast.</p></li>
-            <li><span class="n">04</span><h3>Review</h3><p>Walked each build through with my manager every week.</p></li>
-          </ol>
-          <div class="turns">
-            <div class="turn"><span class="mono">Option I rejected</span><h3>Finder-style columns that keep opening</h3><p>The dashboards I studied lean on a hierarchy sidebar, and Miller columns can nest as deep as the data. I capped MEW2 at two, sites then their devices, with a back button, so the layout never sprawls across the screen.</p></div>
-            <div class="turn t-fb"><span class="mono">What changed the design</span><h3>A zip code that lost its zeros</h3><p>A zip code field set as a number input was silently dropping leading zeros. Since then I treat field types and validation as part of the interface, not a back-end detail.</p></div>
-          </div>
-        </section>
-
-        <section class="case-sec" data-toc="Key features">
-          <h2>Key features</h2>
-          <div class="features">
-            <div><h3>Review before you commit</h3><p>Edits collect in a pending-changes panel. A counter shows unsaved work on every tab, and each change can be committed or undone.</p></div>
-            <div><h3>Validated asset creation</h3><p>One form that changes its fields by asset type, marks required fields and names exactly what still needs fixing.</p></div>
-            <div><h3>History timeline</h3><p>Cards that show what was created or changed, by whom and when, with old and new values side by side.</p></div>
-            <div><h3>Tabs instead of pages</h3><p>A button group swaps views in place instead of reloading the site, and a global search jumps straight to an asset.</p></div>
-          </div>
-        </section>
-
-        <section class="case-sec" data-toc="Tradeoffs">
-          <h2>Tradeoffs under the hood</h2>
-          <ul class="tradeoffs">
-            <li><b>React on a .NET server.</b> React was what I knew best, so the interface moved faster while the server stayed in the team's stack.</li>
-            <li><b>A mapping layer over raw columns.</b> More code to maintain, but people see readable field names, and input is converted to the right data type before saving.</li>
-            <li><b>One API module for every call.</b> Shared error handling, retries and cancellation mean a slow connection never leaves a form half-broken.</li>
-          </ul>
-        </section>
-
-        <section class="case-sec" data-toc="Screens">
-          <h2>Screens</h2>
-          <div class="gallery">
-            <figure class="wide"><button class="shot" type="button"><img src="img/mew2_4.webp" alt="Farm attributes being edited, with a changed field highlighted and a pending-changes badge" loading="lazy" width="1600" height="787" decoding="async"></button><figcaption>Editing a farm. Changed fields are highlighted and the header shows how many edits are waiting to be committed.</figcaption></figure>
-            <div class="details" aria-label="Close-ups">
-              <figure class="detail"><button class="shot detail-shot" type="button" data-full="img/mew2_4.webp" data-full-alt="Farm attributes being edited, with a changed field highlighted and a pending-changes badge"><img src="img/mew2_d_unsaved.webp" alt="Close-up: the Company Name field outlined in orange with an Unsaved badge, next to an untouched Server Prefix field" loading="lazy" width="640" height="128" decoding="async"></button><figcaption><span class="detail-tag">Close-up</span> An edited field turns orange and says it's unsaved, so nothing changes silently.</figcaption></figure>
-              <figure class="detail"><button class="shot detail-shot" type="button" data-full="img/mew2_4.webp" data-full-alt="Farm attributes being edited, with a changed field highlighted and a pending-changes badge"><img src="img/mew2_d_pending.webp" alt="Close-up: a 1 pending counter beside the Save and undo buttons in the header" loading="lazy" width="312" height="66" decoding="async"></button><figcaption><span class="detail-tag">Close-up</span> The pending counter, Save and undo stay in the header on every tab.</figcaption></figure>
-              <figure class="detail"><button class="shot detail-shot" type="button" data-full="img/mew2_7.webp" data-full-alt="Create asset form showing a validation error"><img src="img/mew2_d_error.webp" alt="Close-up: an Action failed banner reading Please fill out mandatory fields: Company Name" loading="lazy" width="604" height="98" decoding="async"></button><figcaption><span class="detail-tag">Close-up</span> Validation names the exact field that's missing.</figcaption></figure>
-              <figure class="detail"><button class="shot detail-shot" type="button" data-full="img/mew2_3.webp" data-full-alt="Activity history showing an updated server with old and new values"><img src="img/mew2_d_diff.webp" alt="Close-up: a history card for server BB1-SV-SQL1 showing the previous value in red and the new value in green" loading="lazy" width="1072" height="240" decoding="async"></button><figcaption><span class="detail-tag">Close-up</span> History shows the previous and new value side by side.</figcaption></figure>
-            </div>
-            <figure class="wide"><button class="shot" type="button"><img src="img/mew2_9.webp" alt="Review pending changes panel comparing old and new values" loading="lazy" width="1600" height="788" decoding="async"></button><figcaption>Reviewing pending changes side by side before committing them in one batch.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/mew2_1.webp" alt="Inspector panel for a server asset" loading="lazy" width="1600" height="788" decoding="async"></button><figcaption>The inspector for a single server, opened from the second column.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/mew2_2.webp" alt="Create a new asset form with asset type options" loading="lazy" width="1600" height="708" decoding="async"></button><figcaption>One creation form that adapts its fields to the asset type.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/mew2_7.webp" alt="Create asset form showing a validation error" loading="lazy" width="1600" height="789" decoding="async"></button><figcaption>Validation explains what's missing before anything reaches the database.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/mew2_3.webp" alt="Activity history showing an updated server with old and new values" loading="lazy" width="1600" height="784" decoding="async"></button><figcaption>Activity history: what changed, who changed it and when.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/mew2_6.webp" alt="Certificates tab with certificate details" loading="lazy" width="1600" height="789" decoding="async"></button><figcaption>The Certificates tab.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/mew2_8.webp" alt="MEW2 data explorer in dark mode" loading="lazy" width="1600" height="789" decoding="async"></button><figcaption>Dark mode.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/mew2_0.webp" alt="Empty data explorer prompting to select an asset" loading="lazy" width="1600" height="787" decoding="async"></button><figcaption>The starting state asks you to pick an asset from the sidebar.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/mew2_5.webp" alt="Baffin Bay site attributes" loading="lazy" width="1600" height="706" decoding="async"></button><figcaption>A site's attributes laid out as labeled fields.</figcaption></figure>
-          </div>
-        </section>
-
-        <section class="case-sec" data-toc="Impact">
-          <h2>Impact</h2>
-          <ul class="impact">
-            <li><b>Edits without SQL.</b> Keeping sites, devices and certificates current no longer depends on someone who can write a query.</li>
-            <li><b>A review step and a paper trail.</b> Every edit waits to be checked and committed, then lands in a history of who changed what.</li>
-            <li><b>Mistakes caught at the form.</b> Validation names the missing field before anything reaches the database.</li>
-          </ul>
         </section>
 
         <section class="case-sec" data-toc="Reflections">
@@ -426,13 +436,13 @@
     <header class="case-hero v-red">
       <span class="mono"><span class="nw">Nº 02</span> · <span class="nw">Avangrid Renewables</span> · <span class="nw">August 2024 – February 2025</span></span>
       <div class="flavor">Alarms</div>
-      <h1>Redesigning the historical alarms tool for our solar and wind sites</h1>
-      <p class="summary">Hundreds of people use CORE Alarms to pull the alarm history of any site or front-end machine. I redesigned and rebuilt it on my own, from wireframe to a shipped React and Node.js app, and I still maintain it.</p>
+      <h1>The brief said “make it modern.” Its users needed to find an alarm, fast.</h1>
+      <p class="summary">Hundreds of people use CORE Alarms to pull the alarm history of any site or front-end machine. I redesigned it around searching and reading results, built it solo in React and Node.js, and still maintain it.</p>
       <figure class="hero-visual">
         <div class="hv-stage">
           <button class="shot hv-main" type="button"><span class="hv-bar" aria-hidden="true"><i></i><i></i><i></i><span>CORE Alarms</span></span><span class="hv-img"><img src="img/oracle_2.webp" alt="Redesigned CORE Alarms: a query panel on the left and a green-headed table of alarm results on the right" width="1600" height="792" decoding="async" fetchpriority="high"></span></button>
-          <div class="hv-call hv-c1" style="--w:38%"><span class="hv-tag">Filters become chips</span><img src="img/oracle_h_chips.webp" alt="Close-up: a Gen. Unit Filters menu with an N-04 filter chip" width="220" height="84" decoding="async"></div>
-          <div class="hv-call hv-c2" style="--w:50%"><span class="hv-tag">Errors say what to fix</span><img src="img/oracle_d_error.webp" alt="Close-up: a red toast reading Validation Error, please select an alarm list" width="320" height="88" decoding="async"></div>
+          <div class="hv-call hv-c1" style="--w:38%"><span class="hv-tag">Filters become chips</span><img src="img/oracle_h_chips.webp" alt="Close-up: a Gen. Unit Filters menu with an N-04 filter chip" width="220" height="84" decoding="async" fetchpriority="high"></div>
+          <div class="hv-call hv-c2" style="--w:50%"><span class="hv-tag">Errors say what to fix</span><img src="img/oracle_d_error.webp" alt="Close-up: a red toast reading Validation Error, please select an alarm list" width="320" height="88" decoding="async" fetchpriority="high"></div>
         </div>
         <figcaption class="sr-only">The redesigned CORE Alarms split layout, with close-ups of the filter chips and a validation toast.</figcaption>
       </figure>
@@ -450,125 +460,130 @@
           <h2>TL;DR</h2>
           <div class="tldr">
             <div class="tldr-grid">
-              <div><span class="tag t-pain">The pain</span><p>Engineers dig through CORE Alarms for the alarm history of our wind and solar sites. The old site worked, but it felt slow, results couldn't be sorted or filtered, and some columns were never explained.</p></div>
-              <div><span class="tag t-did">What I did</span><p>I redesigned and rebuilt it on my own in React and Node.js, adding column filters, sorting, query validation and a searchable site picker.</p></div>
-              <div><span class="tag t-result">The result</span><p>Shipped in February 2025, replacing the old site. Since then it has moved to SQL Server and keeps growing from user tickets.</p></div>
+              <div><span class="tag t-pain">The pain</span><p>It worked, but felt slow, couldn't sort or filter results, and never explained some columns.</p></div>
+              <div><span class="tag t-did">What I did</span><p>Rebuilt it solo in React and Node.js with column filters, sorting, query validation and a searchable site picker.</p></div>
+              <div><span class="tag t-result">The result</span><p>Shipped February 2025, replacing the old site. Since moved to SQL Server, still growing from user tickets.</p></div>
             </div>
-            <ul class="stats">
-              <li><b>Hundreds</b><span>of people use it to look up alarm history</span></li>
-              <li><b>2+ yrs</b><span>since the first wireframe in Aug 2024, still maintained by me</span></li>
-            </ul>
-          </div>
-          <h3 class="sub-h">Context &amp; my role</h3>
-          <div class="prose">
-            <p>My manager, Godfrey, looked for a project where I could use my UI/UX skills, and landed on this tool. I wireframed the direction, built it following guidelines from Godfrey and Stephen on my team, and found users to interview about the old site and what they wanted next.</p>
           </div>
         </section>
 
-        <section class="case-sec" data-toc="The problem">
-          <h2>The problem</h2>
+        <section class="case-sec" data-toc="The tension">
+          <h2>The tension</h2>
           <div class="problem">
             <span class="mono">The brief</span>
-            <p>"Make it look and feel more modern." I agreed, but the site already worked, and a fresh coat of paint alone wouldn't help the people using it every day.</p>
-            <span class="mono">The real question</span>
+            <p>“Make it look and feel more modern.” But the site already worked, so we asked the people using it what slowed them down.</p>
+            <div class="trace-head" aria-hidden="true"><span>What users told us</span><span></span><span>Where it went</span></div>
+            <ul class="trace">
+              <li><span>It felt slow, especially on large results.</span><i aria-hidden="true">→</i><b>Pages, chunks and virtualized lists <span class="dec-ref">01</span> <span class="dec-ref">02</span></b></li>
+              <li><span>It lacked proper sorting and filtering.</span><i aria-hidden="true">→</i><b>Filter by any value, pick columns, sort either way <span class="dec-ref">01</span> <span class="dec-ref">02</span></b></li>
+              <li><span>Some things weren't explained, like certain columns.</span><i aria-hidden="true">→</i><b>Tooltips and validation that says what's wrong <span class="dec-ref">03</span></b></li>
+            </ul>
             <q>How might engineers find the alarms they need in a long history, quickly and without guesswork?</q>
-            <p>The visual refresh became the vehicle for fixing how people search and read their results.</p>
-            <span class="mono">Constraints</span>
-            <ul class="constraints">
-              <li><b>Solo.</b> The only designer and developer, and out of practice with code at the start.</li>
-              <li><b>Keep what works.</b> People relied on the old site, so every existing query had to keep working.</li>
-              <li><b>Two-month window.</b> Queries cover at most two months, but a busy window can still return more rows than a browser table handles comfortably.</li>
+            <ul class="cons-row" aria-label="Constraints">
+              <li><b>Solo</b> and out of practice with code</li>
+              <li><b>Keep what works</b> every old query still runs</li>
+              <li><b>Two-month window</b> per query</li>
             </ul>
           </div>
-        </section>
-
-        <section class="case-sec" data-toc="Process">
-          <h2>How I worked</h2>
-          <ol class="steps">
-            <li><span class="n">01</span><h3>Listen</h3><p>Asked people who use the tool what slows them down.</p></li>
-            <li><span class="n">02</span><h3>Wireframe</h3><p>A softer, more open layout, drawn from other dashboards.</p></li>
-            <li><span class="n">03</span><h3>Rebuild</h3><p>Rebuilt it with filtering, sorting and validation.</p></li>
-            <li><span class="n">04</span><h3>Test</h3><p>Staged it for users and folded in their feedback.</p></li>
-          </ol>
-          <div class="turns">
-            <div class="turn"><span class="mono">Option I rejected</span><h3>A long dropdown of sites</h3><p>The alarm list has 100+ sites. A standard dropdown meant scrolling to find yours, so it became a type-to-filter combobox that works from the keyboard.</p></div>
-            <div class="turn t-fb"><span class="mono">Feedback that changed it</span><h3>Tickets after launch</h3><p>Users asked for alarm attributes the tool didn't show, so I added Reset Category and Category Code, and fixed reported bugs like station numbers not resolving to host names.</p></div>
-          </div>
-        </section>
-
-        <section class="case-sec" data-toc="Research">
-          <h2>Research</h2>
-          <div class="prose">
-            <p>Contextual inquiry surfaced three problems, each answered in the redesign.</p>
-          </div>
-          <div class="trace-head" aria-hidden="true"><span>What users told us</span><span></span><span>What changed</span></div>
-          <ul class="trace">
-            <li><span>It felt slow, especially on large results.</span><i aria-hidden="true">→</i><b>A paginated table that renders in chunks, and virtualized filter lists.</b></li>
-            <li><span>It lacked proper sorting and filtering.</span><i aria-hidden="true">→</i><b>Filter by any value in a column, choose columns and sort either way.</b></li>
-            <li><span>Some things weren't explained, like certain columns.</span><i aria-hidden="true">→</i><b>Tooltips such as the optional Tag field, and validation that says what's wrong.</b></li>
-          </ul>
-          <div class="prose">
-            <p>For the visuals, other dashboards pointed to rounder type and buttons, brighter colors and a more open layout.</p>
-          </div>
-        </section>
-
-        <section class="case-sec" data-toc="Design decisions">
-          <h2>Design decisions</h2>
-          <div class="prose"><p>One small visual vocabulary in a Chakra theme, drawn from the Avangrid brand system.</p></div>
-          <div class="swatches"><span><i style="background:#00A443"></i>#00A443 actions</span><span><i style="background:#00402A"></i>#00402A headings</span><span><i style="background:#E8F5EE"></i>#E8F5EE hover</span><span><i style="background:#F1F3F5"></i>#F1F3F5 page</span></div>
-          <div class="decisions">
-            <div><h3>Two layouts, remembered</h3><p>Split puts results beside the query panel; Stacked puts a query bar above them. The choice is saved per browser.</p></div>
-            <div><h3>Filters that read as inputs</h3><p>Outlined boxes show "Any" or "N selected" and fill green once set. I shortened their open animation from 200ms to about 80ms, because they get opened over and over.</p></div>
-            <div><h3>Results stay on screen</h3><p>Editing the query doesn't clear the table. Only a new search replaces it.</p></div>
-            <div><h3>Errors that say what to do</h3><p>A query too large for the browser gets a prompt to export instead.</p></div>
-            <div><h3>Quick date ranges</h3><p>Chakra has no millisecond time picker, so quick-range buttons sit under the date fields to cut typing errors.</p></div>
-          </div>
-        </section>
-
-        <section class="case-sec" data-toc="Tradeoffs">
-          <h2>Tradeoffs under the hood</h2>
-          <ul class="tradeoffs">
-            <li><b>React over the planned Angular.</b> It was what I knew best, so a solo build could move faster.</li>
-            <li><b>Pages and chunks over one long table.</b> Results render a page at a time, so the browser stays responsive.</li>
-            <li><b>Virtualized, fixed-height filter lists.</b> Every option is 40px, truncated with the full value on hover. Long values lose a little visibility, but big lists stay quick and options no longer overlap.</li>
-          </ul>
         </section>
 
         <section class="case-sec" data-toc="Before &amp; after">
-          <h2>Before &amp; after</h2>
-          <div class="gallery">
-            <figure class="wide compare-fig">
-              <div class="compare" style="--pos:50%">
-                <img class="compare-after" src="img/oracle_2.webp" alt="After: the redesigned results, with the query panel beside a green-headed, paginated table" loading="lazy" width="1600" height="792" decoding="async">
-                <div class="compare-before"><img src="img/oracle_cmp_before.webp" alt="Before: the old results, a plain HTML parameter table above a dense olive-headed alarm table" loading="lazy" width="1600" height="792" decoding="async"></div>
-                <span class="compare-tag is-before" aria-hidden="true">Before</span><span class="compare-tag is-after" aria-hidden="true">After</span>
-                <span class="compare-handle" aria-hidden="true"></span>
-                <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Before and after comparison: slide left to show more of the redesign, right to show more of the old tool">
-              </div>
-              <figcaption>Drag the handle to compare the same alarm query in the old tool and the redesign. <span class="compare-open"><button type="button" class="shot-link" data-full="img/oracle_cmp_before.webp" data-full-alt="The old CORE Alarms results table" data-caption="Before: the old results table.">Open before</button> · <button type="button" class="shot-link" data-full="img/oracle_2.webp" data-full-alt="New split layout with query panel and results" data-caption="After: the query panel sits beside the results.">Open after</button></span></figcaption>
+          <h2>Same query, before and after</h2>
+          <figure class="compare-fig compare-big">
+            <div class="compare" style="--pos:50%">
+              <img class="compare-after" src="img/oracle_2.webp" alt="After: the redesigned results, with the query panel beside a green-headed, paginated table" loading="lazy" width="1600" height="792" decoding="async">
+              <div class="compare-before"><img src="img/oracle_cmp_before.webp" alt="Before: the old results, a plain HTML parameter table above a dense olive-headed alarm table" loading="lazy" width="1600" height="792" decoding="async"></div>
+              <span class="compare-tag is-before" aria-hidden="true">Before</span><span class="compare-tag is-after" aria-hidden="true">After</span>
+              <span class="compare-handle" aria-hidden="true"></span>
+              <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Before and after comparison: slide left to show more of the redesign, right to show more of the old tool">
+            </div>
+            <figcaption>Drag to compare. Every old parameter survives, now beside the results in brighter Avangrid colours and a more open layout. <span class="compare-open"><button type="button" class="shot-link" data-full="img/oracle_cmp_before.webp" data-full-alt="The old CORE Alarms results table" data-caption="Before: the old results table.">Open before</button> · <button type="button" class="shot-link" data-full="img/oracle_2.webp" data-full-alt="New split layout with query panel and results" data-caption="After: the query panel sits beside the results.">Open after</button></span></figcaption>
+          </figure>
+        </section>
+
+        <section class="case-sec" data-toc="Decisions">
+          <h2>Three decisions</h2>
+          <p class="dec-intro">I wireframed, rebuilt, then staged it for users and folded in their feedback.</p>
+
+          <div class="dec" id="oracle-d1">
+            <div class="dec-head">
+              <span class="dec-n">01</span>
+              <h3>Narrow the results, don't scan them</h3>
+              <p>Filter any column by its values, sort either way, and keep active filters in view, so a long history shrinks to the rows you need.</p>
+            </div>
+            <div class="dec-side">
+              <ol class="callouts">
+              <li>Active filters as chips you can clear.</li>
+              <li>What's left: 43 results, 6 after filters.</li>
+              <li>Sort either way.</li>
+              <li>Pages instead of one endless table.</li>
+            </ol>
+              <p class="dec-trade"><b>Tradeoff</b> Results render a page at a time, in chunks, so the browser stays responsive on a busy two-month window.</p>
+            </div>
+            <figure class="frame">
+              <button class="shot" type="button" data-caption="Decision 01: 43 results narrowed to 6 by a Gen. Unit filter chip."><img src="img/oracle_3c.webp" alt="CORE Alarms results for Baffin Bay 1: 43 results with a 6 after filters badge, an N-04 filter chip, a Sort: Descending menu and pagination controls (empty space trimmed)" loading="lazy" width="1600" height="639" decoding="async"><span class="hv-pin" style="--x:23.5%;--y:27.1%" aria-hidden="true">1</span><span class="hv-pin" style="--x:44.2%;--y:8.9%" aria-hidden="true">2</span><span class="hv-pin" style="--x:85.2%;--y:8.9%" aria-hidden="true">3</span><span class="hv-pin" style="--x:94.6%;--y:85.7%" aria-hidden="true">4</span></button>
+              <figcaption class="sr-only">Filtered results, numbered to match the list.</figcaption>
             </figure>
-            <span class="gallery-label mono">Before</span>
-            <figure class="wide"><button class="shot" type="button"><img src="img/oracle_0_page.webp" alt="The old CORE Alarms query form: a plain HTML table of parameters with syntax help beside each one" loading="lazy" width="1600" height="793" decoding="async"></button><figcaption>The old query form: every parameter and its syntax help in one table.</figcaption></figure>
-            <span class="gallery-label mono">After</span>
-            <figure class="wide"><button class="shot" type="button"><img src="img/oracle_6.webp" alt="Stacked layout with a full-width query bar" loading="lazy" width="1600" height="794" decoding="async"></button><figcaption>Stacked layout: a full-width query bar above the results.</figcaption></figure>
-            <figure class="wide"><button class="shot" type="button"><img src="img/oracle_5.webp" alt="Filters and columns drawer open over the results" loading="lazy" width="1600" height="794" decoding="async"></button><figcaption>The Filters &amp; Columns drawer.</figcaption></figure>
-            <div class="details" aria-label="Close-ups">
-              <figure class="detail"><button class="shot detail-shot" type="button" data-full="img/oracle_3.webp" data-full-alt="Results narrowed by an active filter chip"><img src="img/oracle_d_chips.webp" alt="Close-up: 43 results with a 6 after filters badge, a Gen. Unit Filters menu and an N-04 chip" loading="lazy" width="610" height="136" decoding="async"></button><figcaption><span class="detail-tag">Close-up</span> Active filters show as chips, with a count of what's left.</figcaption></figure>
-              <figure class="detail"><button class="shot detail-shot" type="button" data-full="img/oracle_5.webp" data-full-alt="Filters and columns drawer open over the results"><img src="img/oracle_d_cols.webp" alt="Close-up: the Columns to display checklist with Time, Tag Name and other columns ticked" loading="lazy" width="406" height="266" decoding="async"></button><figcaption><span class="detail-tag">Close-up</span> Pick which of the 16 columns to show.</figcaption></figure>
-              <figure class="detail half"><button class="shot detail-shot" type="button" data-full="img/oracle_4.webp" data-full-alt="Validation error toast asking the user to select an alarm list"><img src="img/oracle_d_error.webp" alt="Close-up: a red Validation Error toast reading Please select an alarm list" loading="lazy" width="320" height="88" decoding="async"></button><figcaption><span class="detail-tag">Close-up</span> Validation catches an incomplete query.</figcaption></figure>
-              <figure class="detail half"><button class="shot detail-shot" type="button" data-full="img/oracle_7.webp" data-full-alt="Toast confirming the CSV was exported"><img src="img/oracle_d_csv.webp" alt="Close-up: a green CSV Exported toast reading Your data has been exported successfully" loading="lazy" width="392" height="88" decoding="async"></button><figcaption><span class="detail-tag">Close-up</span> Confirmation after exporting to CSV.</figcaption></figure>
+          </div>
+
+          <div class="dec" id="oracle-d2">
+            <div class="dec-head">
+              <span class="dec-n">02</span>
+              <h3>One drawer for columns and filters</h3>
+              <p>Sixteen columns is too many to read at once. One drawer holds both jobs: choose columns, then filter them.</p>
+            </div>
+            <div class="dec-side">
+              <ol class="callouts">
+              <li>Choose which of the 16 columns to show.</li>
+              <li>Filters read as inputs: “Any” until set, then green. Their open animation dropped from 200ms to about 80ms, since they're opened over and over.</li>
+              <li>Reset or apply in one place.</li>
+            </ol>
+              <p class="dec-trade"><b>Tradeoff</b> Filter lists are virtualized, with fixed 40px options truncated and shown in full on hover. Long values are a little less visible, but big lists stay quick and never overlap.</p>
+            </div>
+            <figure class="frame">
+              <button class="shot" type="button" data-caption="Decision 02: the Filters &amp; Columns drawer open over the results."><img src="img/oracle_5.webp" alt="The Filters and Columns drawer open over the results: a Columns to display checklist above a grid of filter dropdowns set to Any, with Reset and Apply buttons" loading="lazy" width="1600" height="794" decoding="async"><span class="hv-pin" style="--x:87.6%;--y:9.9%" aria-hidden="true">1</span><span class="hv-pin" style="--x:83.4%;--y:43%" aria-hidden="true">2</span><span class="hv-pin" style="--x:91.5%;--y:94%" aria-hidden="true">3</span></button>
+              <figcaption class="sr-only">The drawer, numbered to match the list.</figcaption>
+            </figure>
+          </div>
+
+          <div class="dec" id="oracle-d3">
+            <div class="dec-head">
+              <span class="dec-n">03</span>
+              <h3>Catch a bad query before it runs</h3>
+              <p>The old form explained its syntax in a column of notes. The new one guides input instead.</p>
+            </div>
+            <div class="dec-side">
+              <ol class="callouts">
+              <li>Quick ranges, since Chakra has no millisecond time picker.</li>
+              <li>A type-to-filter site picker.</li>
+              <li>Results stay put while you edit the query.</li>
+              <li>Validation names what's missing; oversized queries are pointed to export.</li>
+            </ol>
+            </div>
+            <figure class="frame">
+              <button class="shot" type="button" data-caption="Decision 03: the empty state and a validation error asking for an alarm list."><img src="img/oracle_4c.webp" alt="CORE Alarms before a search: quick range buttons, a Search or select a site field, a No results yet message and a red Validation Error toast reading Please select an alarm list (empty space trimmed)" loading="lazy" width="1600" height="641" decoding="async"><span class="hv-pin" style="--x:14.9%;--y:45%" aria-hidden="true">1</span><span class="hv-pin" style="--x:15.7%;--y:58.5%" aria-hidden="true">2</span><span class="hv-pin" style="--x:54.3%;--y:58%" aria-hidden="true">3</span><span class="hv-pin" style="--x:41.3%;--y:91.4%" aria-hidden="true">4</span></button>
+              <figcaption class="sr-only">The query panel and a validation error, numbered to match the list.</figcaption>
+            </figure>
+            <div class="dec-foot">
+              <div class="turn"><span class="mono">Option I rejected</span><h3>A long dropdown of sites</h3><p>The alarm list has 100+ sites. A standard dropdown meant scrolling to find yours, so it became the keyboard-friendly picker in <b>2</b>.</p></div>
             </div>
           </div>
         </section>
 
-        <section class="case-sec" data-toc="Impact">
-          <h2>Impact</h2>
-          <ul class="impact">
-            <li><b>The everyday tool for hundreds of people,</b> who now sort, filter and pick columns instead of scanning raw tables.</li>
-            <li><b>It outlived its database.</b> When the data moved from Oracle to SQL Server, I rewrote the queries and reworked search and export.</li>
-            <li><b>Steadier with big exports.</b> A server-side row cap, and CSV exports that stream instead of being built in the browser.</li>
-            <li><b>More reliable.</b> Validated settings, config instead of hard-coded names, and unit tests for filtering, export and validation.</li>
+        <section class="case-sec" data-toc="Outcome">
+          <h2>Outcome</h2>
+          <ul class="stats loose">
+            <li><b>Hundreds</b><span>of people use it to look up alarm history</span></li>
+            <li><b>2+ yrs</b><span>since the first wireframe, still maintained by me</span></li>
+            <li><b>SQL Server</b><span>it outlived Oracle: I rewrote the queries, search and export</span></li>
           </ul>
+          <div class="out-row">
+            <ul class="impact">
+              <li><b>Steadier with big exports.</b> A server-side row cap and CSV exports that stream instead of building in the browser.</li>
+              <li><b>More reliable.</b> Validated settings and unit tests for filtering, export and validation.</li>
+            </ul>
+            <div class="turn t-fb"><span class="mono">Feedback that changed it</span><h3>Tickets after launch</h3><p>Users asked for alarm attributes the tool didn't show, so I added Reset Category and Category Code, and fixed reported bugs like station numbers not resolving to host names.</p></div>
+          </div>
         </section>
 
         <section class="case-sec" data-toc="Reflections">
