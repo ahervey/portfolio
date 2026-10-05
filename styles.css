@@ -51,9 +51,6 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:16px;paddi
 .nav-links a:hover{color:var(--ink)}
 .nav-links a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--print-red)}
 
-/* packaging style switch (pastel / classic) */
-  font:500 11.5px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
-.arch,.sparkles,.pull-ring,.hint-tab,.emboss{display:none}
 
 /* hero */
 .hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px;align-items:center;padding-block:40px 96px}
