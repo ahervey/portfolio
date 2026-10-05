@@ -151,3 +151,33 @@
   .hv-split .hv-tag{left:12px;right:auto}
 }
 @media (prefers-reduced-motion:reduce){.hv-pin::after{animation:none}.case-hero .hv-main{transform:none}}
+
+/* ---------- polish pass ---------- */
+/* metadata lines break between items, never inside a date or name */
+.nw{white-space:nowrap}
+/* coral text that clears 4.5:1 on paper (the brighter --accent stays for shapes and rules) */
+:root{--accent-ink:#B23A2B}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--accent-ink:var(--accent)}}
+:root[data-theme="dark"]{--accent-ink:var(--accent)}
+.lot,.tear-here,.figma-poster .mono{color:var(--accent-ink)}
+.stamp{color:var(--accent-ink);border-color:var(--accent-ink);opacity:1}
+.hv-pin{background:#B23A2B;box-shadow:0 0 0 2px #B23A2B,0 4px 10px rgba(0,0,0,.25)}
+.hv-pin::after{border-color:#B23A2B}
+.hv-tag b{background:#B23A2B}
+/* résumé: a plain-language line under the official job title */
+.role-sub{margin:-6px 0 0;text-wrap:pretty;font-size:15px;line-height:1.4;font-weight:500;color:var(--muted)}
+/* takeaway receipt: clip only the top edge (for the print-out), so its shadow fades instead of ending in a hard grey box */
+.receipt-clip{overflow:visible;clip-path:inset(0 -60px -80px -60px)}
+/* headings and short labels: no orphaned last words */
+.prose p,.summary,.lb-cap,.extra-sub,.variety h3{text-wrap:pretty}
+/* scalloped cards are masked, which would hide an outside focus ring: draw it inside instead */
+.variety:focus-visible,.next:focus-visible{outline:3px solid var(--print-ink);outline-offset:-14px}
+/* lightbox on wider screens: arrows sit in their own gutters beside the image, never over it */
+@media (min-width:769px){
+  .lightbox[open]{grid-template-columns:56px minmax(0,1fr) 56px;column-gap:14px}
+  .lb-bar,.lb-cap{grid-column:1/-1}
+  .lb-stage{grid-column:2;grid-row:2}
+  .lb-nav{position:static;margin:0;grid-row:2;align-self:center}
+  .lb-prev{grid-column:1;justify-self:start}
+  .lb-next{grid-column:3;justify-self:end}
+}
