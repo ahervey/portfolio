@@ -80,86 +80,134 @@
     m.scrollIntoView();
   });
 
-  /* ---------- the tin ---------- */
+  /* ---------- the tin: pull the tab, the lid peels back, the four case studies are packed inside ---------- */
   const tin = document.getElementById('tin'), lid = document.getElementById('lid');
-  // two handles: the classic side key (drag up to open) and the pastel pull tab (drag down to open)
-  const handles = [{ el: document.getElementById('key'), dir: 1 }, { el: document.getElementById('pull-ring'), dir: -1 }].filter(h => h.el);
+  const ring = document.getElementById('pull-ring'), catchList = document.getElementById('catch');
   const toggle = document.getElementById('toggle'), stage = document.getElementById('stage');
-  let p = 0, anim = null, introduced = false;
+  const hintText = toggle.querySelector('.hint-text');
+  const fishes = [...catchList.querySelectorAll('.sardine a')];
+  let p = 0, v = 0, target = 0, raf = 0, last = 0, introduced = false, isOpen = false, drag = null;
+  const play = (el, frames, opts) => { if (!reduce && el.animate) el.animate(frames, opts); };
 
-  function set(v) {
-    p = Math.max(0, Math.min(1, v));
+  function set(x) {
+    p = Math.max(0, Math.min(1, x));
     tin.style.setProperty('--p', p.toFixed(4));
-    handles.forEach(({ el }) => {
-      el.setAttribute('aria-valuenow', Math.round(p * 100));
-      el.setAttribute('aria-valuetext', p > .97 ? 'Open' : p < .03 ? 'Closed' : Math.round(p * 100) + '% open');
-    });
-    toggle.textContent = p > .5 ? 'Close the tin' : 'Open the tin';
-    stage.classList.toggle('is-open', p > .5);
   }
-  function animateTo(target, ms = 1500) {
-    cancelAnimationFrame(anim);
-    if (reduce) return set(target);
-    const from = p, t0 = performance.now();
-    const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  // the open/closed state only changes once the lid has come to rest (it never rests half-open)
+  function settle(open) {
+    if (open === isOpen) return;
+    isOpen = open;
+    stage.classList.toggle('is-open', open);
+    catchList.inert = !open;
+    toggle.setAttribute('aria-expanded', open);
+    hintText.textContent = open ? 'Close the tin' : 'Pull the tab to open';
+    if (open) fishes.forEach((f, i) => play(f, [{ scale: .82, translate: '0 10px' }, { scale: 1.06, translate: '0 -4px', offset: .55 }, { scale: 1, translate: '0 0' }],
+      { duration: 520, delay: 60 + i * 70, easing: 'cubic-bezier(.3,1.4,.5,1)', fill: 'backwards' }));
+    else play(tin, [{ scale: '1 1' }, { scale: '1.03 .97' }, { scale: '.99 1.01' }, { scale: '1 1' }], { duration: 320, easing: 'ease-out' });
+  }
+  // a damped spring towards fully open or fully closed, with a little bounce off the hard stop
+  function springTo(open, v0 = 0, k = 190) {
+    target = open ? 1 : 0;
+    cancelAnimationFrame(raf);
+    if (reduce) { set(target); v = 0; return settle(open); }
+    v = v0; last = performance.now();
     const step = now => {
-      const t = Math.min(1, (now - t0) / ms);
-      set(from + (target - from) * ease(t));
-      if (t < 1) anim = requestAnimationFrame(step);
+      let dt = Math.min(.05, (now - last) / 1000); last = now;
+      while (dt > 0) {
+        const h = Math.min(dt, 1 / 240); dt -= h;
+        v += (-k * (p - target) - 1.38 * Math.sqrt(k) * v) * h;
+        let x = p + v * h;
+        if (x > 1) { x = 1; v = -v * .28; } else if (x < 0) { x = 0; v = -v * .28; }
+        set(x);
+      }
+      if (Math.abs(p - target) < .002 && Math.abs(v) < .02) { set(target); return settle(open); }
+      raf = requestAnimationFrame(step);
     };
-    anim = requestAnimationFrame(step);
+    raf = requestAnimationFrame(step);
   }
-  // the lid peels open the first time the tin is actually on screen (below the headline on phones)
+  const toggleTin = (v0) => springTo(!isOpen, v0 || (isOpen ? -2 : 2));
+
+  // first paint is always a sealed tin; it rattles, then pops open once it's actually on screen
   function tinIntro() {
     if (introduced) return;
     introduced = true;
-    set(0);
-    const open = () => setTimeout(() => { if (!drag && p < .03) animateTo(1, 1800); }, 500);
+    if (reduce) return springTo(true);
+    const open = () => setTimeout(() => {
+      if (drag || isOpen || target === 1) return;
+      play(tin, [{ rotate: '0deg' }, { rotate: '-2.2deg' }, { rotate: '2deg' }, { rotate: '-1.4deg' }, { rotate: '.8deg' }, { rotate: '0deg' }], { duration: 420, easing: 'ease-in-out' });
+      setTimeout(() => { if (!drag && target === 0) springTo(true, 1.2, 85); }, 380);
+    }, 450);
     if (!('IntersectionObserver' in window)) return open();
     const io = new IntersectionObserver(entries => {
       if (!entries.some(en => en.isIntersecting)) return;
       io.disconnect();
       open();
-    }, { threshold: .6 });
+    }, { threshold: .55 });
     io.observe(tin);
   }
 
-  let drag = null;
-  const end = () => { if (!drag) return; drag = null; if (p > .88) animateTo(1, 300); else if (p < .08) animateTo(0, 300); };
-  handles.forEach(({ el, dir }) => {
-    el.addEventListener('pointerdown', e => {
-      cancelAnimationFrame(anim);
-      drag = { y: e.clientY, p, h: lid.getBoundingClientRect().height, dir };
-      el.setPointerCapture(e.pointerId);
-    });
-    el.addEventListener('pointermove', e => { if (drag) set(drag.p + drag.dir * (drag.y - e.clientY) / drag.h); });
-    el.addEventListener('pointerup', end);
-    el.addEventListener('pointercancel', end);
-    el.addEventListener('keydown', e => {
-      const k = e.key;
-      if (k === 'ArrowUp' || k === 'ArrowRight') set(p + .1);
-      else if (k === 'ArrowDown' || k === 'ArrowLeft') set(p - .1);
-      else if (k === 'Home') set(0);
-      else if (k === 'End') set(1);
-      else if (k === 'Enter' || k === ' ') animateTo(p > .5 ? 0 : 1, 900);
-      else return;
-      e.preventDefault();
-    });
+  // drag the ring: down opens, up closes; on release it snaps to whichever way you were heading
+  ring.addEventListener('pointerdown', e => {
+    if (e.button) return;
+    cancelAnimationFrame(raf);
+    drag = { y0: e.clientY, y: e.clientY, t: performance.now(), p0: p, vel: 0, moved: false, h: lid.getBoundingClientRect().height };
+    stage.classList.add('dragging');
+    ring.setPointerCapture(e.pointerId);
+    e.preventDefault();
   });
-  toggle.addEventListener('click', () => animateTo(p > .5 ? 0 : 1, 1100));
-  lid.addEventListener('click', () => { if (p < .5) animateTo(1, 1100); });
+  ring.addEventListener('pointermove', e => {
+    if (!drag) return;
+    const now = performance.now(), dy = e.clientY - drag.y;
+    if (Math.abs(e.clientY - drag.y0) > 4) drag.moved = true;
+    if (now > drag.t) drag.vel = drag.vel * .6 + (dy / drag.h) / ((now - drag.t) / 1000) * .4;
+    drag.y = e.clientY; drag.t = now;
+    set(drag.p0 + (e.clientY - drag.y0) / drag.h);
+  });
+  const release = () => {
+    if (!drag) return;
+    const d = drag; drag = null;
+    stage.classList.remove('dragging');
+    if (!d.moved) return toggleTin();
+    // a pause before letting go means no flick: it settles by position alone
+    const vel = performance.now() - d.t > 90 ? 0 : Math.max(-8, Math.min(8, d.vel));
+    springTo(p + vel * .22 > .5, vel);
+  };
+  ring.addEventListener('pointerup', release);
+  ring.addEventListener('pointercancel', release);
+  ring.addEventListener('lostpointercapture', release);
+
+  toggle.addEventListener('click', () => toggleTin());
+  lid.addEventListener('click', () => { if (!isOpen && !drag) springTo(true, 2); });
+  // a closed tin rattles when you reach for it: there's something inside
+  let rattled = 0;
+  tin.addEventListener('pointerenter', e => {
+    if (isOpen || drag || e.pointerType !== 'mouse' || performance.now() - rattled < 2500) return;
+    rattled = performance.now();
+    play(tin, [{ rotate: '0deg' }, { rotate: '-1.2deg' }, { rotate: '1deg' }, { rotate: '0deg' }], { duration: 300, easing: 'ease-in-out' });
+  });
+  // picking a sardine: it wriggles out of the tin, then the case study opens
+  fishes.forEach(a => a.addEventListener('click', e => {
+    if (reduce || e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+    e.preventDefault();
+    const dir = a.parentElement.classList.contains('flip') ? -1 : 1;
+    const anim = a.animate([{ translate: '0 0', rotate: '0deg' }, { translate: `${-dir * 4}% -6%`, rotate: `${-dir * 3}deg`, offset: .3 }, { translate: `${dir * 70}% -14%`, rotate: `${dir * 6}deg`, opacity: 0 }],
+      { duration: 340, easing: 'cubic-bezier(.5,0,.75,0)', fill: 'forwards' });
+    anim.onfinish = () => { location.hash = a.getAttribute('href'); setTimeout(() => anim.cancel(), 120); };
+  }));
 
   if (!reduce && matchMedia('(hover: hover)').matches) {
     const hero = document.querySelector('.hero');
     hero.addEventListener('pointermove', e => {
-      if (drag) return;
       const r = stage.getBoundingClientRect();
-      const x = (e.clientX - (r.left + r.width / 2)) / innerWidth;
-      const y = (e.clientY - (r.top + r.height / 2)) / innerHeight;
-      tin.style.setProperty('--ty', (x * 14).toFixed(2) + 'deg');
-      tin.style.setProperty('--tx', (-y * 10).toFixed(2) + 'deg');
+      const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+      // the fish keep an eye on the pointer
+      tin.style.setProperty('--ex', Math.max(-1, Math.min(1, (e.clientX - cx) / (r.width * .8))).toFixed(2));
+      tin.style.setProperty('--ey', Math.max(-1, Math.min(1, (e.clientY - cy) / (r.height * .8))).toFixed(2));
+      if (drag) return;
+      tin.style.setProperty('--ty', ((e.clientX - cx) / innerWidth * 14).toFixed(2) + 'deg');
+      tin.style.setProperty('--tx', (-(e.clientY - cy) / innerHeight * 10).toFixed(2) + 'deg');
     });
-    hero.addEventListener('pointerleave', () => { tin.style.setProperty('--tx', '0deg'); tin.style.setProperty('--ty', '0deg'); });
+    hero.addEventListener('pointerleave', () => ['--tx', '--ty', '--ex', '--ey'].forEach(k => tin.style.setProperty(k, k[2] === 't' ? '0deg' : '0')));
   }
 
   /* ---------- case study contents: built from each section's heading ---------- */

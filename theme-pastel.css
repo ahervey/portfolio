@@ -31,28 +31,19 @@
 /* ---------- the tin lid ---------- */
 .lid{background:radial-gradient(circle,rgba(31,42,85,.09) 1.2px,transparent 1.6px) 0 0/14px 14px,
   radial-gradient(120% 70% at 30% 0%,rgba(255,255,255,.4),transparent 60%),var(--print-red);
-  color:var(--print-ink);padding-top:22px}
+  color:var(--print-ink)}
 .lid::before{border:2px solid rgba(31,42,85,.55);box-shadow:inset 0 0 0 5px rgba(255,255,255,.35),0 0 0 4px rgba(31,42,85,.12)}
-.lid .mono{color:var(--print-ink)}
-.lid-mid > .mono{color:var(--print-ink)!important;opacity:.75!important}
-.lid-name{color:var(--print-ink);text-shadow:3px 4px 0 var(--print-cream),5px 6px 0 var(--print-coral);font-size:clamp(40px,9.6vw,62px)}
+.lid .mono{color:var(--print-ink);opacity:.85}
+.lid-name{color:var(--print-ink);text-shadow:3px 4px 0 var(--print-cream),5px 6px 0 var(--print-coral)}
 .banner{background:var(--print-ink);color:var(--print-butter)}
-.school{color:var(--print-coral)}
-.lid .est{display:none}
-.arch{width:100%;max-width:230px;height:auto;display:block;overflow:visible;margin-top:8px}
-.arch text{font:500 12px var(--f-mono);letter-spacing:.1em;fill:var(--print-ink);text-transform:uppercase}
 .sparkles{display:block;position:absolute;inset:0;pointer-events:none}
 .sparkles i{position:absolute;color:var(--print-cream);font-style:normal;font-size:18px;line-height:1}
 .roll{background:linear-gradient(to bottom,rgba(0,0,0,.35),rgba(0,0,0,0) 30%,rgba(255,255,255,.55) 44%,rgba(255,255,255,0) 58%,rgba(0,0,0,.4)),var(--print-red)}
-/* ring-pull opener: the lid peels back from the top instead of rolling up on a key */
-.stage{padding-right:0;width:min(100%,360px)}
-.hint{padding-right:0}
-.key,.hint-key{display:none}
-.hint-tab{display:inline}
-.stage.is-open + .hint .hint-tab{display:none}
-@media (max-width:860px){.stage{width:340px;zoom:.66}}
-/* a scalloped butter label peeks out behind the tin, offset into the gutter (never past the page edge) */
-.stage::before{content:"";position:absolute;z-index:-1;left:36%;top:38%;width:122%;aspect-ratio:1;translate:-50% -50%;rotate:-8deg;pointer-events:none;
+.sd-label b{font-family:var(--f-display);font-style:italic;font-weight:800;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72}
+.s-butter .sd-tail,.s-butter .sd-fin{fill:#F2C95E}
+/* a scalloped butter label sits square behind the tin and turns, very slowly, like a sun */
+.stage::before{content:"";position:absolute;z-index:-1;left:50%;top:50%;width:var(--halo,146%);aspect-ratio:1;translate:-50% -50%;rotate:-8deg;pointer-events:none;
+  animation:label-turn 120s linear infinite;
   background:radial-gradient(circle,transparent 61%,rgba(31,42,85,.10) 61.4%,transparent 62.2%),var(--print-butter);
   -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50.0 6.0A6.8 6.8 0 0 1 62.4 7.8A6.8 6.8 0 0 1 73.8 13.0A6.8 6.8 0 0 1 83.3 21.2A6.8 6.8 0 0 1 90.0 31.7A6.8 6.8 0 0 1 93.6 43.7A6.8 6.8 0 0 1 93.6 56.3A6.8 6.8 0 0 1 90.0 68.3A6.8 6.8 0 0 1 83.3 78.8A6.8 6.8 0 0 1 73.8 87.0A6.8 6.8 0 0 1 62.4 92.2A6.8 6.8 0 0 1 50.0 94.0A6.8 6.8 0 0 1 37.6 92.2A6.8 6.8 0 0 1 26.2 87.0A6.8 6.8 0 0 1 16.7 78.8A6.8 6.8 0 0 1 10.0 68.3A6.8 6.8 0 0 1 6.4 56.3A6.8 6.8 0 0 1 6.4 43.7A6.8 6.8 0 0 1 10.0 31.7A6.8 6.8 0 0 1 16.7 21.2A6.8 6.8 0 0 1 26.2 13.0A6.8 6.8 0 0 1 37.6 7.8A6.8 6.8 0 0 1 50.0 6.0Z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50.0 6.0A6.8 6.8 0 0 1 62.4 7.8A6.8 6.8 0 0 1 73.8 13.0A6.8 6.8 0 0 1 83.3 21.2A6.8 6.8 0 0 1 90.0 31.7A6.8 6.8 0 0 1 93.6 43.7A6.8 6.8 0 0 1 93.6 56.3A6.8 6.8 0 0 1 90.0 68.3A6.8 6.8 0 0 1 83.3 78.8A6.8 6.8 0 0 1 73.8 87.0A6.8 6.8 0 0 1 62.4 92.2A6.8 6.8 0 0 1 50.0 94.0A6.8 6.8 0 0 1 37.6 92.2A6.8 6.8 0 0 1 26.2 87.0A6.8 6.8 0 0 1 16.7 78.8A6.8 6.8 0 0 1 10.0 68.3A6.8 6.8 0 0 1 6.4 56.3A6.8 6.8 0 0 1 6.4 43.7A6.8 6.8 0 0 1 10.0 31.7A6.8 6.8 0 0 1 16.7 21.2A6.8 6.8 0 0 1 26.2 13.0A6.8 6.8 0 0 1 37.6 7.8A6.8 6.8 0 0 1 50.0 6.0Z'/%3E%3C/svg%3E") center/contain no-repeat}
 
@@ -60,18 +51,12 @@
 .tray{border-radius:82px/70px}
 .lid-clip{border-radius:86px/74px}
 .lid::before{border-radius:74px/62px}
-.lid{clip-path:inset(calc(var(--p) * 100%) 0 0 0);padding-top:104px}
-.lid-mid{gap:12px}
-.lid-mid > .mono{display:none}
-/* the curl hugs the rounded ends of the tin: narrow at the top and bottom, full width mid-way */
-.roll{--edge:calc(8px + 62px * (1 - 4 * var(--p) + 4 * var(--p) * var(--p)));top:calc(var(--p) * 100% - var(--rh) / 2);left:var(--edge);right:var(--edge)}
-.emboss{display:block;position:absolute;top:8px;left:50%;width:100px;height:100px;margin-left:-50px;border-radius:50%;
+@keyframes label-turn{to{rotate:352deg}}
+/* on phones the turning label may brush the gutter, never the page edge */
+/* on phones there's no room for a full circle, so the label becomes an oval that hugs the tin and holds still */
+@media (max-width:480px){.stage::before{width:126%;scale:1 1.26;rotate:0deg;animation:none}}
+.emboss{display:block;position:absolute;top:2cqw;left:50%;width:25cqw;aspect-ratio:1;translate:-50% 0;border-radius:50%;
   box-shadow:inset 0 3px 5px rgba(31,42,85,.18),inset 0 -2px 3px rgba(255,255,255,.6),0 1px 0 rgba(255,255,255,.5)}
-.pull-ring{display:block;position:absolute;left:50%;top:calc(50% + 26px * (1 - var(--p)));width:74px;cursor:grab;touch-action:none;pointer-events:auto;
-  transform-origin:50% 22%;transform:translate(-50%,-22%) rotateX(calc(min(var(--p) * 540, 180) * 1deg));
-  filter:drop-shadow(0 3px 3px rgba(31,42,85,.35));border-radius:40%}
-.pull-ring:active{cursor:grabbing}
-.pull-ring svg{display:block;width:100%;height:auto}
 
 /* ---------- scalloped labels ---------- */
 .variety,.case-hero,.next{

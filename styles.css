@@ -54,7 +54,7 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:16px;paddi
 .nav-links a:hover{color:var(--ink)}
 .nav-links a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--print-red)}
 
-.arch,.sparkles,.pull-ring,.hint-tab,.emboss{display:none}
+.sparkles,.emboss{display:none}
 
 /* hero: one headline, one tin */
 .hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center;padding-block:clamp(24px,5vh,56px) clamp(64px,10vh,112px)}
@@ -70,52 +70,108 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:16px;paddi
 .btn:hover{transform:translateY(-2px)}
 .btn.primary{background:var(--ink);color:var(--ground)}
 
-/* ---------- the tin ---------- */
-.stage{position:relative;width:min(100%,420px);justify-self:center;padding-right:34px;perspective:1400px}
-.tin{--p:0;--rh:calc(12px + var(--p) * 30px);position:relative;aspect-ratio:3/4;border-radius:46px;
+/* ---------- the tin: the hero object. Closed it's a label; pull the tab and the work is packed inside ---------- */
+.stage{--tw:400px;position:relative;width:min(100%,var(--tw));justify-self:center;perspective:1400px;margin-bottom:46px}
+.tin{--p:0;--rh:calc(12px + var(--p) * 30px);position:relative;aspect-ratio:3/4;border-radius:46px;container-type:inline-size;
   background:linear-gradient(135deg,#f6f8f9 0%,#aab2b8 16%,#eef1f3 32%,#8a949b 50%,#e3e7ea 68%,#98a1a7 86%,#d6dbde 100%);
   box-shadow:inset 0 2px 0 rgba(255,255,255,.85),inset 0 -3px 0 rgba(0,0,0,.25),var(--shadow-tin);
-  transform:rotateX(var(--tx,0deg)) rotateY(var(--ty,0deg));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+  transform:rotateX(var(--tx,0deg)) rotateY(var(--ty,0deg));transition:transform .5s cubic-bezier(.2,.7,.2,1);
+  animation:tin-bob 5.5s ease-in-out infinite alternate}
+@keyframes tin-bob{from{translate:0 0}to{translate:0 -7px}}
 .tray{position:absolute;inset:16px;border-radius:32px;overflow:hidden;
   background:radial-gradient(120% 80% at 50% 0%,#eef1f2,#b8c0c5);
   box-shadow:inset 0 8px 16px rgba(0,0,0,.4),inset 0 -2px 3px rgba(255,255,255,.7)}
 .liner{position:absolute;inset:9px;border-radius:24px;background:
   linear-gradient(115deg,rgba(255,255,255,0) 40%,rgba(255,255,255,.55) 46%,rgba(255,255,255,0) 52%),
-  linear-gradient(70deg,rgba(255,255,255,0) 60%,rgba(255,255,255,.4) 64%,rgba(255,255,255,0) 69%),#efe9dc}
-.photo{position:absolute;inset:20px 18px 20px;border-radius:18px;overflow:hidden;transform:rotate(-1.4deg);
-  background:#c9b9a4;box-shadow:0 10px 22px -8px rgba(0,0,0,.45)}
-.photo img{width:100%;height:100%;object-fit:cover;display:block}
+  linear-gradient(70deg,rgba(255,255,255,0) 60%,rgba(255,255,255,.4) 64%,rgba(255,255,255,0) 69%),#efe9dc;
+  box-shadow:inset 0 6px 14px rgba(31,42,85,.18)}
+
+/* a few bubbles of oil drift up between the fish */
+.bubble{position:absolute;bottom:6%;left:calc(14% + var(--b) * 23%);width:calc(1.6cqw + var(--b) * .4cqw);aspect-ratio:1;border-radius:50%;opacity:0;
+  background:radial-gradient(circle at 35% 30%,#fff 0 25%,rgba(255,255,255,.2) 45%,rgba(31,42,85,.12) 100%);box-shadow:inset 0 0 0 1px rgba(31,42,85,.18);
+  animation:bubble 7s ease-in calc(var(--b) * -1.75s + 1s) infinite}
+.bubble:nth-child(even){animation-duration:9s}
+@keyframes bubble{0%{translate:0 0;opacity:0}12%{opacity:.9}50%{translate:1.5cqw -45cqw}85%{opacity:.7}100%{translate:-1cqw -110cqw;opacity:0}}
+
+/* the catch: four case studies packed head to tail, like sardines */
+.catch{position:absolute;inset:9px;margin:0;padding:9cqw 4cqw 8cqw;list-style:none;display:grid;grid-template-rows:repeat(4,minmax(0,1fr));align-items:center}
+.sardine{position:relative;min-height:0}
+.sardine a{--sd:var(--print-blue);position:relative;display:block;width:100%;aspect-ratio:320/90;color:var(--print-ink);text-decoration:none;border-radius:999px;
+  animation:sd-sway 4.4s ease-in-out infinite alternate;animation-delay:calc(var(--i) * -1.3s);transition:scale .25s cubic-bezier(.3,1.6,.5,1),filter .2s ease}
+.s-red a{--sd:var(--print-red)}.s-butter a{--sd:var(--print-butter)}.s-green a{--sd:var(--print-green)}
+@keyframes sd-sway{from{translate:-1.2cqw 0;rotate:-.7deg}to{translate:1.2cqw 0;rotate:.7deg}}
+.sd{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 3px 2px rgba(31,42,85,.22));transition:filter .25s ease}
+.flip .sd{transform:scaleX(-1)}
+.sd path{stroke:var(--print-ink);stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round}
+.sd-body{fill:var(--sd)}
+.sd-tail,.sd-fin{fill:color-mix(in srgb,var(--sd),#1F2A55 16%)}
+.sd .sd-belly{fill:rgba(255,252,246,.7);stroke-width:1.2}
+.sd-gill{fill:none}
+.sd-eye circle:first-child{fill:#fff;stroke:var(--print-ink);stroke-width:2.2}
+.sd-pupil{fill:var(--print-ink);transform:translate(calc(var(--ex,0) * 2.8px),calc(var(--ey,0) * 2.4px));transition:transform .2s ease-out}
+.flip .sd-pupil{transform:translate(calc(var(--ex,0) * -2.8px),calc(var(--ey,0) * 2.4px))}
+.sd-eye{transform-box:fill-box;transform-origin:center;animation:sd-blink 5.8s infinite;animation-delay:calc(var(--i) * -1.9s)}
+@keyframes sd-blink{0%,93%,100%{transform:scaleY(1)}95.5%{transform:scaleY(.08)}}
+.sd-tail{transform-box:fill-box;transform-origin:100% 50%;animation:sd-tail .9s ease-in-out infinite alternate;animation-delay:calc(var(--i) * -.35s)}
+@keyframes sd-tail{from{rotate:-9deg}to{rotate:9deg}}
+.sd-label{position:absolute;left:17%;right:21%;top:47%;translate:0 -50%;display:grid;justify-items:center;gap:1.1cqw;line-height:1;text-align:center;pointer-events:none}
+.flip .sd-label{left:21%;right:17%}
+.sd-label b{font:400 7cqw/1 var(--f-display);white-space:nowrap}
+.sd-label span{font:500 max(9.5px,2.4cqw)/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;opacity:.82}
+.sardine a:hover,.sardine a:focus-visible{scale:1.06}
+.sardine a:hover .sd,.sardine a:focus-visible .sd{filter:drop-shadow(0 9px 7px rgba(31,42,85,.3))}
+.sardine a:hover .sd-tail,.sardine a:focus-visible .sd-tail{animation-duration:.16s}
+.sardine a:active{scale:.97}
+.sd-label b::after{content:"→";position:absolute;left:100%;margin-left:.3em;font:600 .62em/1.4 var(--f-body);opacity:0;translate:-6px 0;transition:opacity .2s ease,translate .25s ease}
+.sd-label b{position:relative}
+.sardine a:hover .sd-label b::after,.sardine a:focus-visible .sd-label b::after{opacity:1;translate:0 0}
+@media (hover:hover){.catch:has(a:hover) .sardine a:not(:hover){filter:saturate(.6) opacity(.75)}}
+.sardine a:focus-visible{outline:3px solid var(--print-ink);outline-offset:1px}
+
+/* the lid peels back from the top on a ring-pull */
 .lid-wrap{position:absolute;inset:11px;pointer-events:none}
 .lid-clip{position:absolute;inset:0;border-radius:36px;overflow:hidden;pointer-events:none}
-.lid{position:absolute;inset:0;cursor:pointer;pointer-events:auto;clip-path:inset(0 0 calc(var(--p) * 100%) 0);
+.lid{position:absolute;inset:0;cursor:pointer;pointer-events:auto;clip-path:inset(calc(var(--p) * 100%) 0 0 0);
   background:repeating-linear-gradient(-45deg,rgba(255,255,255,.035) 0 10px,transparent 10px 20px),
     radial-gradient(120% 70% at 30% 0%,rgba(255,255,255,.18),transparent 60%),var(--print-blue);
-  color:var(--print-cream);display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;padding:34px 26px 40px}
+  color:var(--print-cream);display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;padding:27cqw 7cqw 9cqw}
 .lid::before{content:"";position:absolute;inset:13px;border-radius:26px;border:2px solid rgba(255,246,220,.35);
   box-shadow:inset 0 0 0 5px rgba(0,0,0,.12),0 0 0 5px rgba(255,255,255,.06)}
 .lid > *{position:relative}
-.lid .mono{color:var(--print-butter);font-size:11px}
-.lid-name{font:400 clamp(38px,9vw,58px)/.92 var(--f-display);color:var(--print-butter);text-shadow:0 4px 0 var(--print-red),0 5px 0 rgba(0,0,0,.25)}
-.banner{background:var(--print-red);color:var(--print-cream);padding:7px 26px;font:800 13px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;
+.lid .mono{color:var(--print-butter);font-size:max(9.5px,2.6cqw);letter-spacing:.06em;line-height:1.45;text-align:left}
+.lid-name{font:400 16.5cqw/.92 var(--f-display);color:var(--print-butter);text-shadow:0 4px 0 var(--print-red),0 5px 0 rgba(0,0,0,.25)}
+.banner{background:var(--print-red);color:var(--print-cream);padding:7px 26px;font:800 max(11px,3.2cqw)/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;
   clip-path:polygon(0 0,100% 0,94% 50%,100% 100%,0 100%,6% 50%)}
-.school{display:flex;gap:10px;color:var(--print-cream)}
-.school svg{width:30px;height:30px;transform:rotate(-90deg)}
-.school svg:nth-child(2){transform:rotate(-90deg) translateX(-8px)}
-.lid-mid{display:grid;gap:16px;justify-items:center}
-.roll{position:absolute;left:-7px;right:-7px;height:var(--rh);top:calc((1 - var(--p)) * 100% - var(--rh) / 2);border-radius:999px;pointer-events:none;
+.lid-mid{display:grid;gap:4cqw;justify-items:center;margin-block:auto}
+.lid-foot{display:flex;align-items:center;gap:3cqw}
+.medallion{flex:none;width:14cqw;aspect-ratio:1;border-radius:50%;overflow:hidden;border:3px solid var(--print-cream);box-shadow:0 0 0 2px var(--print-ink),0 4px 8px -3px rgba(0,0,0,.4);rotate:-6deg}
+.medallion img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}
+.roll{--edge:calc(2cqw + 15.5cqw * (1 - 4 * var(--p) + 4 * var(--p) * var(--p)));position:absolute;left:var(--edge);right:var(--edge);height:var(--rh);
+  top:calc(var(--p) * 100% - var(--rh) / 2);border-radius:999px;pointer-events:none;
   background:linear-gradient(to bottom,rgba(0,0,0,.55),rgba(0,0,0,0) 30%,rgba(255,255,255,.45) 44%,rgba(255,255,255,0) 58%,rgba(0,0,0,.6)),var(--print-blue);
   box-shadow:0 6px 10px -4px rgba(0,0,0,.45)}
 .roll::before,.roll::after{content:"";position:absolute;top:0;bottom:0;width:calc(var(--rh) * .6);border-radius:50%;
   background:repeating-radial-gradient(circle,#dfe4e7 0 1.5px,#7f888e 1.5px 3px)}
 .roll::before{left:0}.roll::after{right:0}
-.key{position:absolute;right:-36px;top:50%;width:52px;height:44px;transform:translateY(-50%);display:flex;align-items:center;
-  cursor:grab;touch-action:none;pointer-events:auto;border-radius:12px}
-.key:active{cursor:grabbing}
-.key .stem{width:20px;height:7px;background:linear-gradient(#f1f4f5,#8c959b);border-radius:2px}
-.key .ring{width:28px;height:28px;border-radius:50%;border:6px solid #b4bcc1;box-shadow:inset 0 1px 1px rgba(255,255,255,.9),0 2px 4px rgba(0,0,0,.35);
-  border-color:#e5e9eb #8a939a #7f888e #d2d8db}
-.hint{display:flex;justify-content:center;gap:8px;color:var(--muted);margin-top:22px;padding-right:34px;text-align:center;flex-wrap:wrap}
-.hint button{background:none;border:0;padding:0;font:inherit;color:var(--ink);text-decoration:underline;text-underline-offset:3px;cursor:pointer;letter-spacing:inherit;text-transform:inherit}
+/* the tab flips over as the lid curls, then hangs off the open end, ready to push back */
+.pull-ring{position:absolute;left:50%;top:calc(50% + 6.5cqw * (1 - var(--p)));width:18cqw;cursor:grab;touch-action:none;pointer-events:auto;border-radius:40%;
+  transform-origin:50% 22%;transform:translate(-50%,-22%) rotateX(calc(min(var(--p) * 540, 180) * 1deg + max(var(--p) - .7, 0) * 600deg)) scale(calc(1 - var(--p) * .22));
+  filter:drop-shadow(0 3px 3px rgba(31,42,85,.35))}
+.pull-ring svg{display:block;width:100%;height:auto;transition:translate .2s ease}
+.pull-ring:hover svg{translate:0 3px}
+.pull-ring:active,.dragging .pull-ring{cursor:grabbing}
+.stage:not(.is-open):not(.dragging) .pull-ring svg{animation:tab-tug 3.4s ease-in-out 1.2s infinite}
+@keyframes tab-tug{0%,72%,100%{translate:0 0}79%{translate:0 6px}85%{translate:0 0}90%{translate:0 3px}95%{translate:0 0}}
+
+/* one state-aware hint, sitting right above the tab it talks about */
+.hint{position:relative;z-index:1;display:flex;justify-content:center;margin:0 0 14px}
+.hint button{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;border:1.5px dashed var(--line);background:var(--ground);
+  font:inherit;color:var(--ink);cursor:pointer;letter-spacing:inherit;text-transform:inherit;transition:border-color .2s ease}
+.hint button:hover{border-style:solid;border-color:var(--ink)}
+.hint-icon{width:14px;height:14px;flex:none;background:currentColor;transition:rotate .35s cubic-bezier(.3,1.5,.5,1);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M7 2v9M3 7.5 7 11.5 11 7.5' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M7 2v9M3 7.5 7 11.5 11 7.5' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+.hint button[aria-expanded="true"] .hint-icon{rotate:180deg}
 
 /* home sections */
 .home-sec{padding-block:112px;border-top:1px solid var(--line);position:relative}
@@ -321,8 +377,6 @@ figcaption{font-size:14px;color:var(--muted);line-height:1.45}
 .sec-head h2{display:flex;align-items:center;gap:10px}
 .dist{display:inline-flex;align-items:center;gap:6px}
 .dist .utensil{width:20px;height:20px}
-.tray-fish{position:absolute;left:6px;bottom:22px;width:92px;height:54px;z-index:1;
-  transform:translateX(calc((1 - var(--p)) * -120px)) rotate(-10deg);filter:drop-shadow(0 4px 4px rgba(0,0,0,.25))}
 .swimmer{position:absolute;top:-19px;left:calc(var(--swim,0) * (100% - 46px));width:46px;height:27px;pointer-events:none;z-index:1;will-change:transform}
 .rc-fish{width:58px;height:34px;--fish-body:transparent;--fish-belly:transparent;--fish-fin:transparent;--fish-line:currentColor;--fish-eye:transparent;margin-bottom:2px}
 
@@ -577,12 +631,14 @@ html.modal-open{overflow:hidden}
 @media (max-width:860px){
   .hero{grid-template-columns:minmax(0,1fr);gap:36px;padding-block:12px 64px}
   .hero-copy{gap:20px}
+  .stage{--tw:340px}
   .lede{max-width:36ch}
   .about-grid,.back{grid-template-columns:minmax(0,1fr);gap:40px}
 }
 @media (max-width:480px){
   .hero .ctas{gap:10px}
   .hero .ctas .btn{padding:12px 16px;font-size:15px}
+  .stage{--tw:296px}
 }
 @media (max-width:360px){
   .status{font-size:10.5px;letter-spacing:.04em;gap:8px}
@@ -776,7 +832,7 @@ html.modal-open{overflow:hidden}
   .lb-cap{padding-inline:68px;font-size:14px;min-height:58px}
 }
 @media (hover:none){.lb-cap::after{content:"Tap the image to zoom · swipe for the next one"}}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}.leaflet.unfold .fold,.toc-sheet[open]{animation:none}html{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.tin,.sardine a,.sd-eye,.sd-tail,.pull-ring svg,.stage::before{animation:none!important}.bubble{display:none}.leaflet.unfold .fold,.toc-sheet[open]{animation:none}html{scroll-behavior:auto}}
 /* the big .n numeral already labels each step; drop the older counter so the grid keeps two columns */
 .steps li::before{content:none;display:none}
 @media (max-width:720px){
