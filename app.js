@@ -231,19 +231,56 @@
   }));
 
   /* ---------- screenshot lightbox ---------- */
+  // Close-up crops (.detail-shot) open the full screenshot they came from (data-full).
+  // Within a case study, ← / → step through every screenshot on the page; clicking the image toggles 100% zoom.
   const box = document.getElementById('lightbox');
-  const boxImg = box.querySelector('img'), boxCap = box.querySelector('p');
+  const boxImg = box.querySelector('img'), boxCap = box.querySelector('p'), boxScroll = box.querySelector('.lb-scroll');
+  const prevBtn = box.querySelector('.lb-prev'), nextBtn = box.querySelector('.lb-next');
+  let lbSet = [], lbIndex = 0;
+  function lbShow(i) {
+    lbIndex = (i + lbSet.length) % lbSet.length;
+    const shot = lbSet[lbIndex], img = shot.querySelector('img');
+    box.classList.remove('zoomed');
+    boxImg.src = shot.dataset.full || img.currentSrc || img.src;
+    boxImg.alt = shot.dataset.fullAlt || img.alt;
+    const fig = shot.closest('figure'), cap = fig && fig.querySelector('figcaption:not(.sr-only)');
+    let text = shot.dataset.caption || (cap ? cap.textContent : boxImg.alt);
+    text = text.replace(/^\s*Close-up\s*/, '').replace(/\s*Open before · Open after\s*$/, '').trim();
+    boxCap.textContent = lbSet.length > 1 ? `${lbIndex + 1} / ${lbSet.length} · ${text}` : text;
+    prevBtn.hidden = nextBtn.hidden = lbSet.length < 2;
+    boxScroll.scrollTo(0, 0);
+  }
   document.addEventListener('click', e => {
-    const shot = e.target.closest('.shot');
-    if (!shot) return;
-    const img = shot.querySelector('img');
-    boxImg.src = img.src;
-    boxImg.alt = img.alt;
-    const cap = shot.closest('figure') && shot.closest('figure').querySelector('figcaption');
-    boxCap.textContent = cap ? cap.textContent : img.alt;
+    const shot = e.target.closest('.shot, .shot-link');
+    if (!shot || box.contains(shot)) return;
+    const scope = shot.closest('[data-view]') || document;
+    lbSet = [...scope.querySelectorAll('.shot, .shot-link')];
+    lbShow(lbSet.indexOf(shot));
     if (box.showModal) box.showModal(); else box.setAttribute('open', '');
   });
-  box.addEventListener('click', e => { if (e.target === box || e.target.closest('button')) box.close(); });
+  prevBtn.addEventListener('click', () => lbShow(lbIndex - 1));
+  nextBtn.addEventListener('click', () => lbShow(lbIndex + 1));
+  box.querySelector('.lb-close').addEventListener('click', () => box.close());
+  boxImg.addEventListener('click', e => {
+    const r = boxImg.getBoundingClientRect(), fx = (e.clientX - r.left) / r.width, fy = (e.clientY - r.top) / r.height;
+    box.classList.toggle('zoomed');
+    // keep the spot you clicked under the pointer after zooming in
+    if (box.classList.contains('zoomed')) boxScroll.scrollTo(fx * boxScroll.scrollWidth - boxScroll.clientWidth / 2, fy * boxScroll.scrollHeight - boxScroll.clientHeight / 2);
+  });
+  box.addEventListener('click', e => { if (e.target === box || e.target === boxScroll) box.close(); });
+  box.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft' && lbSet.length > 1) { e.preventDefault(); lbShow(lbIndex - 1); }
+    else if (e.key === 'ArrowRight' && lbSet.length > 1) { e.preventDefault(); lbShow(lbIndex + 1); }
+  });
+  box.addEventListener('close', () => box.classList.remove('zoomed'));
+
+  /* ---------- before / after comparison: a native range input drives the reveal ---------- */
+  document.querySelectorAll('.compare').forEach(c => {
+    const range = c.querySelector('.compare-range');
+    const update = () => c.style.setProperty('--pos', range.value + '%');
+    range.addEventListener('input', update);
+    update();
+  });
 
   /* ---------- copy email ---------- */
   const copy = document.getElementById('copy'), email = document.getElementById('email');

@@ -474,12 +474,7 @@ figcaption{font-size:14px;color:var(--muted);line-height:1.45}
 .bars i{display:block;background:var(--ink)}
 .barcode .mono{font-size:11px}
 
-/* lightbox */
-.lightbox{border:0;padding:0;background:transparent;max-width:min(96vw,1600px);max-height:94vh;overflow:visible}
-.lightbox::backdrop{background:rgba(8,12,22,.86)}
-.lightbox img{display:block;max-width:100%;max-height:84vh;border-radius:10px;margin-inline:auto}
-.lightbox p{color:#E8ECF4;text-align:center;margin-top:12px;font-size:15px}
-.lightbox button{position:absolute;top:-14px;right:-6px;width:40px;height:40px;border-radius:50%;border:0;background:#fff;color:#121A2B;font-size:20px;cursor:pointer}
+/* lightbox: see case-visuals.css */
 
 @media (max-width:900px){
   .case-body{grid-template-columns:minmax(0,1fr);gap:0}
