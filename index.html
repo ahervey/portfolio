@@ -175,41 +175,77 @@
     <section class="home-sec" id="about">
       <div class="sec-head"><h2><svg class="utensil" aria-hidden="true"><use href="#spoon"/></svg>What's in the tin</h2><span class="mono">About Aaron</span></div>
       <div class="about-grid">
-        <figure class="portrait">
-          <img src="img/aj.jpg" alt="Aaron Hervey smiling in glasses and a blue patterned shirt" width="660" height="880" loading="lazy" decoding="async">
-          <figcaption class="mono">Aaron (AJ) Hervey · Vancouver, WA</figcaption>
+        <figure class="tin-label">
+          <img src="img/aj_wide.webp" alt="Aaron Hervey smiling in glasses and a blue patterned shirt, under a green steel canopy" width="960" height="720" loading="lazy" decoding="async">
+          <figcaption>
+            <span class="tl-name">Aaron (AJ) Hervey</span>
+            <span class="tl-route mono">Memphis → Knoxville → Raleigh → Vancouver,&nbsp;WA</span>
+          </figcaption>
         </figure>
         <div class="about-copy">
           <p class="pov">I design the tool, then I build it myself, so nothing gets lost in handoff.</p>
-          <p class="about">I studied Computer &amp; Information Sciences at the University of Tennessee, where I combined UX design with programming. Before Avangrid I interned twice at Optum, designing in Figma and building in React and TypeScript. Now I research, design and build the tools engineers use to keep wind and solar sites running.</p>
-          <div class="method-row">
-            <h3 class="mono">House method</h3>
-            <ol class="steps">
-              <li><b>Listen.</b> Interview the people doing the work, at their desks and in their real tools.</li>
-              <li><b>Map.</b> Competitive analysis, flows and wireframes until the team agrees on the problem.</li>
-              <li><b>Make.</b> Design in Figma, then build it all the way to production in React.</li>
-              <li><b>Test.</b> Serve to real users. Adjust while the feedback is still warm.</li>
+          <p class="about">I studied Computer &amp; Information Sciences at the University of Tennessee, mixing UX design with programming. Now I research, design and build the tools engineers at Avangrid use to keep wind and solar sites running.</p>
+          <div class="ingredients-label">
+            <div class="il-head"><h3>Ingredients</h3><span class="mono">Four that shaped how I work</span></div>
+            <ol class="tin-ingredients">
+              <li><span class="mono">2020 · Knoxville</span><div><b>Interviews before interfaces.</b> My first research job had me interviewing local businesses about COVID's impact. I built the Qualtrics survey and presented the findings at the Eureka Conference.</div></li>
+              <li><span class="mono">2021 · Writing</span><div><b>Writing myself in.</b> An autoethnography on being queer and Black was the first paper that asked me to write in the first person. I stopped editing myself out of the work. <a href="#writing">Read it&nbsp;→</a></div></li>
+              <li><span class="mono">2022–23 · Optum</span><div><b>Two summers, two platforms.</b> On teams of four interns I designed in Figma, built in React and TypeScript and tested with users: a discussion space for employees, then a hub for release notes.</div></li>
+              <li><span class="mono">Now · Avangrid</span><div><b>On call, too.</b> Besides designing and building, I take shifts in the on-call rotation, triaging issues across our renewable sites. I see what happens long after handoff.</div></li>
             </ol>
           </div>
-          <p class="contains"><b>Also contains:</b> poetry, video games and game-dev side projects.</p>
         </div>
       </div>
     </section>
     <section class="home-sec" id="editions">
-      <div class="sec-head"><h2><svg class="utensil" aria-hidden="true"><use href="#knife"/></svg>Limited editions</h2><span class="mono">Not yet in stock</span></div>
-      <p class="editions-intro">Small-batch side projects, sealed until they're ready.</p>
+      <div class="sec-head"><h2><svg class="utensil" aria-hidden="true"><use href="#knife"/></svg>Limited editions</h2><span class="mono">Small batch · 3 tins</span></div>
+      <p class="editions-intro">What I'm making off the clock. Open a tin to read the back.</p>
       <div class="editions">
-        <a class="mini-tin t-mint" href="#intune">
-          <div class="mini-lid"><span class="mono">Small batch</span><b>InTune</b><span class="mini-sub">From concept to a real app</span></div>
-          <span class="seal mono">Now cooking</span>
-        </a>
-        <div class="mini-tin t-pink">
-          <div class="mini-lid"><span class="mono">Small batch</span><b>Game dev</b><span class="mini-sub">Tinkering in progress</span></div>
-          <span class="seal mono">Sealed for now</span>
-        </div>
-        <a class="mini-tin t-open" href="#contact">
-          <div class="mini-lid"><span class="mono">Reserved</span><b>Your team?</b><span class="mini-sub">This spot's open. Let's talk →</span></div>
-        </a>
+        <article class="ed">
+          <button class="mini-tin ed-tin t-mint" type="button" aria-expanded="false" aria-controls="ed-note-1" aria-label="InTune, now cooking. Open the tin">
+            <span class="ed-inside"><img src="img/intune_1.webp" alt="" width="512" height="320" loading="lazy" decoding="async"></span>
+            <span class="mini-lid"><span class="lid-back"></span><span class="mono">Small batch</span><b>InTune</b><span class="mini-sub">A music social app</span></span>
+            <span class="seal mono">Now cooking</span>
+          </button>
+          <span class="ed-shelf" aria-hidden="true"></span>
+          <div class="ed-note" id="ed-note-1">
+            <span class="note-head mono"><span>Back of the tin</span><span>Nº 01</span></span>
+            <div class="note-body">
+              <p>Began in spring 2023 as a ten-week University of Tennessee project with Holly Sarah Liban and Emma Thomas. I was lead designer: the research, the logo and the Figma prototype. Under the lid: our hand-drawn wireframes.</p>
+              <p><b>Now:</b> I'm developing it into a real app.</p>
+              <a class="note-link" href="#intune">Read the 2023 case study →</a>
+            </div>
+          </div>
+        </article>
+        <article class="ed">
+          <button class="mini-tin ed-tin t-pink" type="button" aria-expanded="false" aria-controls="ed-note-2" aria-label="Game dev, sealed for now. Open the tin">
+            <span class="ed-inside ed-text"><b>Tinkering in progress</b><span class="mono">Nothing to taste yet</span></span>
+            <span class="mini-lid"><span class="lid-back"></span><span class="mono">Small batch</span><b>Game dev</b><span class="mini-sub">Side projects</span></span>
+            <span class="seal mono">Sealed for now</span>
+          </button>
+          <span class="ed-shelf" aria-hidden="true"></span>
+          <div class="ed-note" id="ed-note-2">
+            <span class="note-head mono"><span>Back of the tin</span><span>Nº 02</span></span>
+            <div class="note-body">
+              <p>Video games are how I got into computers and programming, so game dev is where I go back to play. These are side projects I tinker on, sealed until they're ready to show.</p>
+            </div>
+          </div>
+        </article>
+        <article class="ed">
+          <button class="mini-tin ed-tin t-blue" type="button" aria-expanded="false" aria-controls="ed-note-3" aria-label="Your team? Reserved. Open the tin">
+            <span class="ed-inside ed-text"><b>Room for one more</b><span class="mono">Your project here</span></span>
+            <span class="mini-lid"><span class="lid-back"></span><span class="mono">Reserved</span><b>Your team?</b><span class="mini-sub">This spot's open</span></span>
+            <span class="seal mono">Reserved</span>
+          </button>
+          <span class="ed-shelf" aria-hidden="true"></span>
+          <div class="ed-note" id="ed-note-3">
+            <span class="note-head mono"><span>Back of the tin</span><span>Nº 03</span></span>
+            <div class="note-body">
+              <p>The shelf has room. I'm looking for UX design and software engineering roles where I can design for real users and build the result myself.</p>
+              <a class="note-link" href="#contact">Let's talk →</a>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
   </div>

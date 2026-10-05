@@ -119,6 +119,6 @@
 .card{border-radius:10px}
 
 
-.t-pink .mini-lid,.t-mint .mini-lid{color:var(--print-ink)}
+.t-pink .mini-lid,.t-mint .mini-lid,.t-blue .mini-lid{color:var(--print-ink)}
 .seal{background:var(--paper);color:var(--ink);border:1.5px solid var(--ink)}
 :root{--shelf:#E3CFC6;--shelf-top:#F1E3DC}
