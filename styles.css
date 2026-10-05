@@ -167,7 +167,10 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:16px;paddi
 .facts .mid{border-bottom:5px solid var(--ink);font-size:14px}
 .facts .plain{border:0}
 .facts .ind{padding-left:16px}
-.facts .meter{flex:1;align-self:center;height:6px;border-radius:3px;background:var(--line);margin-inline:10px;overflow:hidden;max-width:110px}
+/* label | bar | % in fixed columns so every bar starts and every value ends in the same place */
+.facts .row.bar{display:grid;grid-template-columns:minmax(0,1fr) 96px 40px;gap:12px;align-items:center}
+.facts .row.bar > b:last-child{text-align:right}
+.facts .meter{height:6px;border-radius:3px;background:var(--line);overflow:hidden}
 .facts .meter i{display:block;height:100%;background:var(--accent)}
 .facts .label{flex:none}
 .facts small{display:block;font-size:13px;line-height:1.45;padding-top:8px;color:var(--muted)}
