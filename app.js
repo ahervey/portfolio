@@ -286,3 +286,10 @@
 
   route();
 })();
+
+// before / after comparison: the range input drives the reveal
+document.querySelectorAll('.compare-frame').forEach(f => {
+  const r = f.querySelector('input');
+  const set = () => f.style.setProperty('--pos', r.value + '%');
+  r.addEventListener('input', set); set();
+});
