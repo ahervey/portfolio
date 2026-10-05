@@ -24,8 +24,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@1,9..144,700..900,0..100,0..1&family=Shrikhand&family=Hanken+Grotesk:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="styles.css?v=202610051400">
-<link rel="stylesheet" href="theme-pastel.css?v=202610051400">
+<link rel="stylesheet" href="styles.css?v=202610052000">
+<link rel="stylesheet" href="theme-pastel.css?v=202610052000">
 <link rel="stylesheet" href="case-visuals.css?v=202610051700">
 </head>
 <body>
@@ -82,45 +82,53 @@
         </div>
       </div>
       <div class="hero-art">
+        <p class="hint mono"><button type="button" id="toggle" aria-controls="catch" aria-expanded="false"><span class="hint-icon" aria-hidden="true"></span><span class="hint-text">Pull the tab to open</span></button></p>
         <div class="stage" id="stage">
           <div class="tin" id="tin">
             <div class="tray">
-              <div class="liner"></div>
-              <svg class="tray-fish" aria-hidden="true"><use href="#fish"/></svg>
-              <div class="photo"><img src="img/aj.jpg" alt="Aaron Hervey smiling in glasses and a blue patterned shirt" width="660" height="880" decoding="async" fetchpriority="high"></div>
+              <div class="liner"><i class="bubble" style="--b:0"></i><i class="bubble" style="--b:1"></i><i class="bubble" style="--b:2"></i><i class="bubble" style="--b:3"></i></div>
+              <ul class="catch" id="catch" aria-label="Case studies in the tin" inert>
+            <li class="sardine s-blue" style="--i:0"><a href="#mew2">
+              <svg class="sd" viewBox="0 0 320 90" aria-hidden="true" focusable="false"><path class="sd-tail" d="M50 45 L12 13 Q24 32 21 45 Q24 58 12 77 Z"/><path class="sd-fin" d="M146 15 Q164 -2 190 12 Z"/><path class="sd-body" d="M38 45 C70 14 150 8 232 12 C280 15 307 30 316 45 C307 61 280 75 232 78 C150 82 70 76 38 45 Z"/><path class="sd-belly" d="M74 63 C140 77 230 77 300 56 C254 72 150 75 74 63 Z"/><path class="sd-gill" d="M262 21 Q249 45 262 69"/><g class="sd-eye"><circle cx="285" cy="38" r="8.5"/><circle class="sd-pupil" cx="286" cy="38" r="4.2"/></g></svg>
+              <span class="sd-label"><b>MEW2</b> <span>Nº 01 · Data editor</span></span>
+            </a></li>
+            <li class="sardine flip s-red" style="--i:1"><a href="#oracle">
+              <svg class="sd" viewBox="0 0 320 90" aria-hidden="true" focusable="false"><path class="sd-tail" d="M50 45 L12 13 Q24 32 21 45 Q24 58 12 77 Z"/><path class="sd-fin" d="M146 15 Q164 -2 190 12 Z"/><path class="sd-body" d="M38 45 C70 14 150 8 232 12 C280 15 307 30 316 45 C307 61 280 75 232 78 C150 82 70 76 38 45 Z"/><path class="sd-belly" d="M74 63 C140 77 230 77 300 56 C254 72 150 75 74 63 Z"/><path class="sd-gill" d="M262 21 Q249 45 262 69"/><g class="sd-eye"><circle cx="285" cy="38" r="8.5"/><circle class="sd-pupil" cx="286" cy="38" r="4.2"/></g></svg>
+              <span class="sd-label"><b>Alarms</b> <span>Nº 02 · Redesign</span></span>
+            </a></li>
+            <li class="sardine s-butter" style="--i:2"><a href="#mychart">
+              <svg class="sd" viewBox="0 0 320 90" aria-hidden="true" focusable="false"><path class="sd-tail" d="M50 45 L12 13 Q24 32 21 45 Q24 58 12 77 Z"/><path class="sd-fin" d="M146 15 Q164 -2 190 12 Z"/><path class="sd-body" d="M38 45 C70 14 150 8 232 12 C280 15 307 30 316 45 C307 61 280 75 232 78 C150 82 70 76 38 45 Z"/><path class="sd-belly" d="M74 63 C140 77 230 77 300 56 C254 72 150 75 74 63 Z"/><path class="sd-gill" d="M262 21 Q249 45 262 69"/><g class="sd-eye"><circle cx="285" cy="38" r="8.5"/><circle class="sd-pupil" cx="286" cy="38" r="4.2"/></g></svg>
+              <span class="sd-label"><b>MyChart</b> <span>Nº 03 · Patient portal</span></span>
+            </a></li>
+            <li class="sardine flip s-green" style="--i:3"><a href="#intune">
+              <svg class="sd" viewBox="0 0 320 90" aria-hidden="true" focusable="false"><path class="sd-tail" d="M50 45 L12 13 Q24 32 21 45 Q24 58 12 77 Z"/><path class="sd-fin" d="M146 15 Q164 -2 190 12 Z"/><path class="sd-body" d="M38 45 C70 14 150 8 232 12 C280 15 307 30 316 45 C307 61 280 75 232 78 C150 82 70 76 38 45 Z"/><path class="sd-belly" d="M74 63 C140 77 230 77 300 56 C254 72 150 75 74 63 Z"/><path class="sd-gill" d="M262 21 Q249 45 262 69"/><g class="sd-eye"><circle cx="285" cy="38" r="8.5"/><circle class="sd-pupil" cx="286" cy="38" r="4.2"/></g></svg>
+              <span class="sd-label"><b>InTune</b> <span>Nº 04 · Music social</span></span>
+            </a></li>
+              </ul>
             </div>
             <div class="lid-wrap">
               <div class="lid-clip">
                 <div class="lid" id="lid" aria-hidden="true">
-                  <i class="emboss" aria-hidden="true"></i>
-                  <div class="sparkles"><i style="top:18%;left:12%">✦</i><i style="top:30%;right:12%;font-size:13px">✦</i><i style="top:66%;left:14%;font-size:12px">✦</i><i style="top:70%;right:15%">✦</i></div>
-                  <span class="mono est">Est. 2019 · Knoxville, TN</span>
-                  <svg class="arch" viewBox="0 0 260 46" aria-hidden="true"><path id="lid-arc" d="M14 42 A270 270 0 0 1 246 42" fill="none"/><text><textPath href="#lid-arc" startOffset="50%" text-anchor="middle">Est. 2019 · Knoxville, TN</textPath></text></svg>
+                  <i class="emboss"></i>
+                  <div class="sparkles"><i style="top:20%;left:13%">✦</i><i style="top:27%;right:13%;font-size:13px">✦</i><i style="top:62%;left:10%;font-size:12px">✦</i><i style="top:58%;right:11%">✦</i></div>
                   <div class="lid-mid">
-                    <span class="mono" style="color:var(--print-cream);opacity:.8">Finest quality</span>
                     <div class="lid-name">Aaron<br>Hervey</div>
                     <span class="banner">Product Design</span>
-                    <div class="school">
-                      <svg viewBox="0 0 24 24"><path d="M5 2l14 11-6.2.9 3.7 7.4-2.8 1.4-3.7-7.5L5 19z" fill="currentColor"/></svg>
-                      <svg viewBox="0 0 24 24"><path d="M5 2l14 11-6.2.9 3.7 7.4-2.8 1.4-3.7-7.5L5 19z" fill="currentColor"/></svg>
-                      <svg viewBox="0 0 24 24"><path d="M5 2l14 11-6.2.9 3.7 7.4-2.8 1.4-3.7-7.5L5 19z" fill="currentColor"/></svg>
-                    </div>
                   </div>
-                  <span class="mono">Designed &amp; built in Vancouver, WA</span>
+                  <div class="lid-foot">
+                    <span class="medallion"><img src="img/aj.jpg" alt="" width="660" height="880" decoding="async"></span>
+                    <span class="mono">4 case studies<br>packed in Vancouver, WA</span>
+                  </div>
                 </div>
               </div>
               <div class="roll">
-                <div class="key" id="key" role="slider" tabindex="0" aria-label="Tin lid" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="Closed">
-                  <span class="stem"></span><span class="ring"></span>
-                </div>
-                <div class="pull-ring" id="pull-ring" role="slider" tabindex="0" aria-label="Tin lid pull tab" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="Closed">
-                  <svg viewBox="0 0 70 90" aria-hidden="true"><defs><linearGradient id="tab-metal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6f8f9"/><stop offset=".45" stop-color="#aab2b8"/><stop offset=".7" stop-color="#e9edef"/><stop offset="1" stop-color="#8a939a"/></linearGradient></defs><path fill-rule="evenodd" fill="url(#tab-metal)" stroke="#7d868c" d="M35 2C52 2 64 12 64 28c0 12-4 18-4 30 0 18-10 30-25 30S10 76 10 58c0-12-4-18-4-30C6 12 18 2 35 2zm0 38c-11 0-17 8-17 20s7 19 17 19 17-7 17-19-6-20-17-20z"/><circle cx="35" cy="20" r="9" fill="url(#tab-metal)" stroke="#7d868c"/><circle cx="35" cy="20" r="3.5" fill="#c3c9cd"/></svg>
+                <div class="pull-ring" id="pull-ring" aria-hidden="true">
+                  <svg viewBox="0 0 70 90"><defs><linearGradient id="tab-metal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6f8f9"/><stop offset=".45" stop-color="#aab2b8"/><stop offset=".7" stop-color="#e9edef"/><stop offset="1" stop-color="#8a939a"/></linearGradient></defs><path fill-rule="evenodd" fill="url(#tab-metal)" stroke="#7d868c" d="M35 2C52 2 64 12 64 28c0 12-4 18-4 30 0 18-10 30-25 30S10 76 10 58c0-12-4-18-4-30C6 12 18 2 35 2zm0 38c-11 0-17 8-17 20s7 19 17 19 17-7 17-19-6-20-17-20z"/><circle cx="35" cy="20" r="9" fill="url(#tab-metal)" stroke="#7d868c"/><circle cx="35" cy="20" r="3.5" fill="#c3c9cd"/></svg>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <p class="hint mono"><span class="hint-key">Drag the key to open ·</span><span class="hint-tab">Pull the tab to open ·</span><button type="button" id="toggle">Open the tin</button></p>
       </div>
     </header>
 
@@ -1170,6 +1178,6 @@
   <ol class="sheet-list" id="toc-sheet-list"></ol>
 </dialog>
 
-<script src="app.js?v=202610051400"></script>
+<script src="app.js?v=202610052000"></script>
 </body>
 </html>
