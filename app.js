@@ -290,6 +290,9 @@
 // before / after comparison: the range input drives the reveal
 document.querySelectorAll('.compare-frame').forEach(f => {
   const r = f.querySelector('input');
-  const set = () => f.style.setProperty('--pos', r.value + '%');
+  const set = () => {
+    f.style.setProperty('--pos', r.value + '%');
+    r.setAttribute('aria-valuetext', `${100 - r.value}% old design, ${r.value}% redesign`);
+  };
   r.addEventListener('input', set); set();
 });
