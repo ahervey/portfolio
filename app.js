@@ -511,6 +511,10 @@
       const open = tin.getAttribute('aria-expanded') !== 'true';
       setTin(tin, open);
       lastTin = open ? tin : null;
+      // on phones the note opens below the fold, behind the bottom dock: bring it up just enough
+      if (open && note && note.getBoundingClientRect().bottom > innerHeight) {
+        note.scrollIntoView({ block: 'nearest', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      }
     });
   });
   // Escape closes the open tin you're in (or the last one opened) and returns focus to its button.
