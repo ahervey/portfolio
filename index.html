@@ -609,8 +609,8 @@
     <header class="case-hero v-butter">
       <span class="mono"><span class="nw">Nº 03</span> · <span class="nw">University of Tennessee</span> · <span class="nw">August – December 2022</span></span>
       <div class="flavor">MyChart</div>
-      <h1>Simplifying a patient portal for the older users who rely on it most</h1>
-      <p class="summary">A redesign of the MyChart app with streamlined menus, a more useful dashboard, hospital maps, integrations and onboarding, built as a high-fidelity Figma prototype.</p>
+      <h1>The patients who need MyChart most get lost in it</h1>
+      <p class="summary">A ten-week class redesign. We traced the confusion to nested menus and rebuilt the app around bottom tabs and a dashboard about you. A Figma prototype, not yet user-tested.</p>
       <figure class="hero-visual">
         <div class="hv-stage" style="--pt:100px">
           <button class="shot hv-main hv-paper" type="button"><span class="hv-img"><img src="img/mychart_0.webp" alt="Persona sheet for Mark de la Cruz, 68, with his photo, biography, goals, frustrations and medical experience" width="1600" height="900" decoding="async" fetchpriority="high"><span class="hv-pin" style="--x:17%;--y:84%" aria-hidden="true">1</span><span class="hv-pin" style="--x:85%;--y:22%" aria-hidden="true">2</span></span></button>
@@ -621,7 +621,7 @@
       </figure>
     </header>
     <dl class="glance">
-      <div><dt>Role</dt><dd>Lead designer</dd></div>
+      <div><dt>Role</dt><dd>Lead designer: recruiting, hi-fi prototype</dd></div>
       <div><dt>Timeline</dt><dd>10 weeks, Aug – Dec 2022</dd></div>
       <div><dt>Team</dt><dd>University of Tennessee course team</dd></div>
       <div><dt>Tools</dt><dd>Figma</dd></div>
@@ -629,95 +629,68 @@
     <div class="case-body">
       <aside class="toc" aria-label="Contents"><span class="mono">Contents</span></aside>
       <div>
-        <section class="case-sec" data-toc="TL;DR">
-          <h2>TL;DR</h2>
-          <div class="tldr">
-            <div class="tldr-grid">
-              <div><span class="tag t-pain">The pain</span><p>MyChart holds messages, lab results and appointments, but the people we surveyed got lost in layers of sub-menus, and the dashboard felt random rather than about them.</p></div>
-              <div><span class="tag t-did">What I did</span><p>As lead designer on a class team, I recruited the people we surveyed and turned our research and wireframes into a high-fidelity Figma prototype built around simpler navigation.</p></div>
-              <div><span class="tag t-result">The result</span><p>A clickable prototype where each major change traces back to something people told us. We never tested it with users, so below is what I'd test next.</p></div>
-            </div>
-            <ul class="stats">
-              <li><b>~10</b><span>people surveyed about how they use the app</span></li>
-              <li><b>10 wks</b><span>from research to high-fidelity prototype</span></li>
-              <li><b>Untested</b><span>no usability test yet; my test plan is in Reflections</span></li>
-            </ul>
-          </div>
-          <h3 class="sub-h">Context &amp; my role</h3>
-          <div class="prose">
-            <p>Our class team was asked to redesign an app we already knew, and a teammate suggested MyChart. As lead designer, I turned our vision and early prototypes into the high-fidelity design, and recruited the people we talked to about the app and our ideas.</p>
-          </div>
-        </section>
-
-        <section class="case-sec" data-toc="The problem">
-          <h2>The problem</h2>
+        <section class="case-sec" data-toc="The tension">
+          <h2>The tension</h2>
           <div class="problem">
-            <span class="mono">Key question</span>
-            <q>How might patients who rely on MyChart find what they need without getting lost?</q>
-            <p>Our research pointed to one critical issue: navigation. Layers of sub-menus made it easy to get lost, which hit hardest because so many users were older, and some depend on the app to manage their health. Fixing navigation was also a chance to modernize the design.</p>
-            <span class="mono">Constraints</span>
-            <ul class="constraints">
-              <li><b>10 weeks.</b> A single semester, from research to high-fidelity.</li>
-              <li><b>One account.</b> Only one of us had MyChart, so we leaned on user feedback and public feature info.</li>
-              <li><b>New tools.</b> My first UI/UX project and my first time in Figma.</li>
-              <li><b>Existing brand.</b> Blue was already part of MyChart's identity.</li>
-            </ul>
+            <span class="mono">North star</span>
+            <q>Help someone like Mark find his lab results or his next appointment without getting lost.</q>
+            <p>MyChart already did the important things: messages, lab results, appointments. Layers of sub-menus buried them, for people who were mostly 40 or older, one relying on the app to manage a disability.</p>
+            <ul class="r3-chips" aria-label="Constraints"><li>10 weeks</li><li>1 shared account</li><li>First Figma project</li><li>Existing blue brand</li></ul>
           </div>
-        </section>
-
-        <section class="case-sec" data-toc="Process">
-          <h2>How we worked</h2>
-          <ol class="steps">
-            <li><span class="n">01</span><h3>Map</h3><p>Listed everything the app already does, from messaging to lab results.</p></li>
-            <li><span class="n">02</span><h3>Ask</h3><p>Surveyed about ten people and ran contextual inquiries.</p></li>
-            <li><span class="n">03</span><h3>Distill</h3><p>Turned what we heard into a persona, Mark.</p></li>
-            <li><span class="n">04</span><h3>Prototype</h3><p>Wireframes, then low- and high-fidelity prototypes in Figma.</p></li>
-          </ol>
-          <div class="turns">
-            <div class="turn"><span class="mono">Option we rejected</span><h3>A colorful makeover</h3><p>People said the design didn't appeal to them, and a brighter palette was the obvious fix. We avoided heavy color and stayed mostly white and blue: blue is tied to healthcare and already part of MyChart's brand.</p></div>
-            <div class="turn t-fb"><span class="mono">Feedback that changed it</span><h3>"Tabs, not menus"</h3><p>People told us bottom tabs would beat nested menus. That moved navigation from one fix among many to the center of the redesign: fewer nested levels, with information where people look first.</p></div>
-          </div>
-        </section>
-
-        <section class="case-sec" data-toc="Research">
-          <h2>Research</h2>
-          <div class="prose">
-            <p>Using the one account we had, we mapped the app's features: messaging with providers, lab results as soon as they're ready, and an appointment calendar. Then we asked people how they actually use it:</p>
-          </div>
-          <ul class="insights">
-            <li>Most were 40 or older.</li>
-            <li>Many found the app hard to navigate and confusing.</li>
-            <li>The visual design didn't appeal to them.</li>
-            <li>They felt bottom tabs would beat nested menus.</li>
-            <li>The dashboard felt random rather than personal.</li>
+          <ul class="stats loose">
+            <li><b>~10</b><span>people surveyed, most 40 or older</span></li>
+            <li><b>4</b><span>design decisions, each tied to a finding</span></li>
+            <li><b>Untested</b><span>no usability test yet; test plan below</span></li>
           </ul>
+        </section>
+
+        <section class="case-sec" data-toc="What we heard">
+          <h2>What we heard</h2>
+          <div class="prose"><p>We surveyed about ten people and ran contextual inquiries. Four findings set the agenda.</p></div>
+          <ol class="r3-synth">
+            <li class="r3c-butter"><span class="mono">Finding 01</span><b>"Hard to navigate and confusing"</b><p>Layers of sub-menus made it easy to get lost.</p><span class="r3-to">Decision 01</span></li>
+            <li class="r3c-green"><span class="mono">Finding 02</span><b>The dashboard felt random</b><p>Nothing on it was about them.</p><span class="r3-to">Decision 02</span></li>
+            <li class="r3c-lilac"><span class="mono">Finding 03</span><b>The look didn't appeal</b><p>But they came for their health, not color.</p><span class="r3-to">Decision 03</span></li>
+            <li class="r3c-blue"><span class="mono">Finding 04</span><b>Most were 40 or older</b><p>So we designed for Mark, 68.</p><span class="r3-to">Decision 04</span></li>
+          </ol>
           <blockquote class="pull"><p>"It does a lot of good, and I like that because I'm disabled and rely on this to stay on top of my health, but it is confusing at times and hard to use."</p><cite>Survey respondent, 40–50 years old</cite></blockquote>
         </section>
 
-        <section class="case-sec" data-toc="Persona">
-          <h2>Meet Mark</h2>
-          <div class="prose"><p>We distilled what we heard into a persona: Mark, a 68-year-old retired civil engineer managing a heart condition, who doesn't want to waste his time waiting in line for health information he already knows.</p></div>
-          <figure><button class="shot" type="button"><img src="img/mychart_0.webp" alt="Persona sheet for Mark de la Cruz with profile, biography, goals, frustrations and medical experience" loading="lazy" width="1600" height="900" decoding="async"></button><figcaption>Persona: Mark de la Cruz.</figcaption></figure>
+        <section class="case-sec" data-toc="Designing for Mark">
+          <h2>Designing for Mark</h2>
+          <div class="prose"><p>We distilled the survey into one persona: Mark, 68, a working civil engineer who was hospitalized for heart palpitations, then missed follow-ups because of work.</p></div>
+          <figure class="af">
+            <div class="af-stage">
+              <button class="shot" type="button"><img src="img/mychart_0.webp" alt="Persona sheet for Mark de la Cruz with profile, biography, goals, frustrations and medical experience" loading="lazy" width="1600" height="900" decoding="async"></button>
+              <span class="af-pin" style="--x:6.8%;--y:70%" aria-hidden="true">1</span>
+              <span class="af-pin" style="--x:70%;--y:71%" aria-hidden="true">2</span>
+              <span class="af-pin" style="--x:70%;--y:85%" aria-hidden="true">3</span>
+              <span class="af-pin" style="--x:71.5%;--y:16.5%" aria-hidden="true">4</span>
+            </div>
+            <ol class="af-key">
+              <li><b>1</b><span><em>"My time is valuable."</em> The dashboard should show what's new before he asks.</span></li>
+              <li><b>2</b><span><em>Wants to self-manage and stay independent.</em> Navigation he can work out alone.</span></li>
+              <li><b>3</b><span><em>Struggles to schedule visits and find specialists.</em> Appointments up front, and maps of the building.</span></li>
+              <li><b>4</b><span><em>Tech comfort 6 of 10, medical 3 of 10.</em> A first-run tour, not a manual.</span></li>
+            </ol>
+            <figcaption class="sr-only">Persona sheet for Mark de la Cruz, annotated with four needs.</figcaption>
+          </figure>
         </section>
 
-        <section class="case-sec" data-toc="Research → design">
-          <h2>From research to design</h2>
-          <div class="prose"><p>Each major change answers something people told us.</p></div>
-          <div class="trace-head" aria-hidden="true"><span>What we heard</span><span></span><span>What we designed</span></div>
-          <ul class="trace">
-            <li><span>It was hard to navigate, and bottom tabs would beat nested menus.</span><i aria-hidden="true">→</i><b>Simpler navigation: fewer nested menus, with information surfaced where people expect it.</b></li>
-            <li><span>The dashboard felt random rather than personal.</span><i aria-hidden="true">→</i><b>A dashboard about you: upcoming appointments, lab work and visit results at a glance.</b></li>
-            <li><span>Many found the app confusing.</span><i aria-hidden="true">→</i><b>A first-run tutorial that shows what the app can do and where everything lives.</b></li>
-            <li><span>The visual design didn't appeal to them.</span><i aria-hidden="true">→</i><b>A calm, minimal white-and-blue look.</b></li>
-          </ul>
-          <div class="prose"><p>Two more features rounded out the prototype: <b>hospital maps</b>, so finding the right room is as easy as finding the right address, and <b>service integrations</b> that connect accounts from different providers in one place.</p></div>
+        <section class="case-sec" data-toc="Decisions">
+          <h2>Four decisions</h2>
+          <ol class="r3-dec">
+            <li><span class="r3-n">01</span><div><h3>Bottom tabs over nested menus</h3><p>Fewer nested levels, with information where people look first, so Mark can manage on his own.</p></div>
+              <div class="turn t-fb"><span class="mono">Feedback that changed it</span><h3>"Tabs, not menus"</h3><p>People told us bottom tabs would beat nested menus. That moved navigation to the center of the redesign.</p></div></li>
+            <li><span class="r3-n">02</span><div><h3>A dashboard about you</h3><p>Upcoming appointments, recent lab work and visit results at a glance, so Mark isn't waiting in line to hear what he already knows.</p></div></li>
+            <li><span class="r3-n">03</span><div><h3>Calm white and blue</h3><p>Minimal and modern, built from simple community resources in Figma.</p></div>
+              <div class="turn"><span class="mono">Option we rejected</span><h3>A colorful makeover</h3><p>A brighter palette was the obvious fix for "didn't appeal." We stayed mostly white and blue: blue is tied to healthcare and already part of MyChart's brand.</p></div></li>
+            <li><span class="r3-n">04</span><div><h3>Show people around</h3><p>A first-run tutorial shows where everything lives. <b>Hospital maps</b> find the right room, and <b>integrations</b> connect accounts from other providers.</p></div></li>
+          </ol>
         </section>
 
-        <section class="case-sec" data-toc="Visual design">
-          <h2>Visual design</h2>
-          <div class="prose">
-            <p>Minimal and modern, built from simple, professional community resources in Figma, with vector avatars for profile images.</p>
-          </div>
+        <section class="case-sec" data-toc="Prototype">
+          <h2>The prototype</h2>
 <div class="figma-frame" data-src="https://www.figma.com/embed?embed_host=share&amp;url=https%3A%2F%2Fwww.figma.com%2Fdesign%2Fq7RuYWyuYlEiKuseegkchy%2FMyChart-Mock-up%3Fnode-id%3D0%253A1%26t%3DSJgsuLsm8kySRytp-1" data-title="MyChart high-fidelity mock-up prototype in Figma">
               <div class="figma-poster">
                 <span class="mono"><span class="nw">Live prototype</span> · <span class="nw">Figma</span></span>
@@ -732,8 +705,8 @@
           <h2>Reflections</h2>
           <div class="takeaway">
             <ol class="lessons">
-              <li><h3>A prototype isn't proof</h3><p>We never put the prototype in front of users, so I can show that each change answers what people told us, but not that it works better. If I picked it up again, I'd test it against the current app with people like Mark, on three tasks:</p><ul class="test-plan"><li>Find your most recent lab result.</li><li>Find when and where your next appointment is.</li><li>Find the right room using the hospital map.</li></ul><p class="next-time"><b>Next time I'd</b> measure task success and time on both apps, and watch where people hesitate.</p></li>
-              <li><h3>Consistency compounds</h3><p>It was my first UI/UX project and my first time in Figma. Small inconsistencies between screens added up quickly, and I could have managed our ten weeks better.</p><p class="next-time"><b>Next time I'd</b> set up shared styles and components before drawing screens, and plan the semester backward from the deadline.</p></li>
+              <li><h3>Consistency compounds</h3><p>My first UI/UX project and first time in Figma. Small inconsistencies between screens added up quickly.</p><p class="next-time"><b>Next time I'd</b> set up shared styles and components before drawing screens, and plan the semester backward from the deadline.</p></li>
+              <li><h3>A prototype isn't proof</h3><p>Every change traces back to something people told us, but we never tested the prototype with users, so I can't show it works better. I'd test it against the current app with people like Mark:</p><ul class="test-plan"><li>Find your most recent lab result.</li><li>Find when and where your next appointment is.</li><li>Find the right room using the hospital map.</li></ul><p class="next-time"><b>Next time I'd</b> measure task success and time on both apps, and watch where people hesitate.</p></li>
             </ol>
             <div class="printer" aria-label="Takeaways receipt">
           <div class="slot" aria-hidden="true"></div>
@@ -767,8 +740,8 @@
     <header class="case-hero v-green">
       <span class="mono"><span class="nw">Nº 04</span> · <span class="nw">University of Tennessee</span> · <span class="nw">January – May 2023</span></span>
       <div class="flavor">InTune</div>
-      <h1>A music social app for listeners who want more than a yearly Wrapped</h1>
-      <p class="summary">InTune blends Last.fm-style listening analytics with Reddit-style communities, so serious listeners can track their taste all year and find people who share it.</p>
+      <h1>Listeners loved Wrapped, then waited a year for the next one</h1>
+      <p class="summary">A three-designer class concept: listening stats you can check any week, and communities built around the artists you love. I'm now developing it into a real app.</p>
       <figure class="hero-visual">
         <div class="hv-stage hv-split">
           <span class="hv-back"><img src="img/intune_0.webp" alt="Hand-drawn wireframes for InTune's welcome screen, streaming-service picker and home feed" width="512" height="320" decoding="async"></span>
@@ -787,98 +760,78 @@
     <div class="case-body">
       <aside class="toc" aria-label="Contents"><span class="mono">Contents</span></aside>
       <div>
-        <section class="case-sec" data-toc="TL;DR">
-          <h2>TL;DR</h2>
-          <div class="tldr">
-            <div class="tldr-grid">
-              <div><span class="tag t-pain">The pain</span><p>Listeners loved Spotify Wrapped and Apple Music Replay, but got real insight into their taste only once a year. Few knew where to find more, and one resorted to scrolling Twitter search to find fans of the same artists.</p></div>
-              <div><span class="tag t-did">What I did</span><p>On a team of three designers, I led the high-fidelity Figma prototype, designed the logo and found references for each page. Together we surveyed listeners and sketched the wireframes.</p></div>
-              <div><span class="tag t-result">The result</span><p>A prototype of a year-round listening companion: detailed analytics, artist communities, curated playlists and MySpace-style profiles, shaped by what we heard.</p></div>
-            </div>
-            <ul class="stats">
-              <li><b>4</b><span>listeners surveyed about how they track their music</span></li>
-              <li><b>None</b><span>of them had heard of Last.fm, the best-known stats app</span></li>
-              <li><b>10 wks</b><span>concept to high-fidelity prototype</span></li>
-            </ul>
-          </div>
-          <h3 class="sub-h">Context &amp; my role</h3>
-          <div class="prose">
-            <p>We wanted an app that connects like-minded listeners and serious audiophiles, blending Last.fm-style analytics with Reddit-style communities. I worked with Holly Sarah Liban and Emma Thomas. As lead designer, I built the high-fidelity prototype, researched potential users and design references, designed the brand logo, and coordinated our wireframes.</p>
-          </div>
-        </section>
-
-        <section class="case-sec" data-toc="The problem">
-          <h2>The problem</h2>
+        <section class="case-sec" data-toc="The tension">
+          <h2>The tension</h2>
           <div class="problem">
-            <span class="mono">Key question</span>
-            <q>How might serious listeners see their taste all year, and find the people who share it?</q>
-            <p>Streaming services hand out a recap once a year. Last.fm has deep analytics but almost no social side, and fan-made tools mostly work only with Spotify. Before designing screens, we had to find out whether people wanted something in between, and what would keep them coming back beyond the numbers.</p>
-            <span class="mono">Constraints</span>
-            <ul class="constraints">
-              <li><b>10 weeks.</b> One semester for research, wireframes and a high-fidelity prototype.</li>
-              <li><b>Unproven idea.</b> A new product, so we had to test whether the need existed at all.</li>
-              <li><b>Borrowed parts.</b> Free community Figma resources shaped much of the visual style.</li>
-            </ul>
+            <span class="mono">North star</span>
+            <q>Let serious listeners see their taste all year, and find the people who share it.</q>
+            <p>Wrapped and Replay were loved, but real insight arrived once a year. Last.fm had the depth and almost no social side. We had to learn whether people wanted something in between, and what would bring them back beyond the numbers.</p>
+            <ul class="r3-chips" aria-label="Constraints"><li>10 weeks</li><li>Unproven idea</li><li>Free Figma parts</li></ul>
           </div>
-        </section>
-
-        <section class="case-sec" data-toc="Process">
-          <h2>How we worked</h2>
-          <ol class="steps">
-            <li><span class="n">01</span><h3>Research</h3><p>Looked at what Spotify, Apple Music and Last.fm already offer.</p></li>
-            <li><span class="n">02</span><h3>Ask</h3><p>Surveyed four listeners about their stats and how they find other fans.</p></li>
-            <li><span class="n">03</span><h3>Sketch</h3><p>Hand-drew wireframes for analytics, communities and profiles.</p></li>
-            <li><span class="n">04</span><h3>Polish</h3><p>Built the high-fidelity prototype in Figma.</p></li>
-          </ol>
-          <div class="turns">
-            <div class="turn"><span class="mono">Option we rejected</span><h3>Stats and nothing else</h3><p>Last.fm already does deep analytics, with almost no social side. Numbers alone give people little reason to come back daily, so we added communities and curated playlists to the core.</p></div>
-            <div class="turn t-fb"><span class="mono">Feedback that changed it</span><h3>The Twitter scroller</h3><p>One person found fans of the same artists by scrolling Twitter search and messaging them. That's why communities are built around a single artist or genre, not general chat.</p></div>
-          </div>
-        </section>
-
-        <section class="case-sec" data-toc="Research">
-          <h2>Research</h2>
-          <div class="prose">
-            <h3>What already exists</h3>
-            <ul>
-              <li>Spotify offers Wrapped once a year but no detailed analytics on your library.</li>
-              <li>Apple Music's Replay updates weekly, but still lacks depth.</li>
-              <li>Last.fm has great analytics and almost no social features.</li>
-              <li>Fan-made tools like Receiptify are popular, and most support only Spotify.</li>
-            </ul>
-            <h3>What the people we surveyed said</h3>
-          </div>
-          <ul class="insights">
-            <li>Most streamed often, and Spotify was the clear favorite.</li>
-            <li>Few knew how to find detailed analytics about their listening.</li>
-            <li>They loved Wrapped and Replay and wanted something like it year-round.</li>
-            <li>Nobody had heard of Last.fm, though they'd seen Receiptify posts.</li>
+          <ul class="stats loose">
+            <li><b>4</b><span>listeners surveyed about how they track their music</span></li>
+            <li><b>0 of 4</b><span>had heard of Last.fm, the best-known stats app</span></li>
+            <li><b>Now</b><span>I'm developing InTune into a real app</span></li>
           </ul>
+          <div class="prose"><p>I led the high-fidelity prototype, the logo and design references. Holly Sarah Liban, Emma Thomas and I surveyed listeners and sketched the wireframes together.</p></div>
+        </section>
+
+        <section class="case-sec" data-toc="What we found">
+          <h2>What we found</h2>
+          <div class="prose"><p>We mapped what already existed, then asked four listeners how they track their music and find other fans.</p></div>
+          <div class="r3-research">
+            <figure class="r3-map" aria-label="Our read of the 2023 landscape: how deep each tool's stats go against how social it is">
+              <span class="r3-axis r3-ax-y">More social ↑</span>
+              <span class="r3-axis r3-ax-x">Deeper stats →</span>
+              <span class="r3-dot" style="--x:20%;--y:70%"><b>Spotify Wrapped</b>once a year</span>
+              <span class="r3-dot" style="--x:36%;--y:88%"><b>Apple Replay</b>weekly, shallow</span>
+              <span class="r3-dot" style="--x:26%;--y:54%"><b>Receiptify</b>a snapshot to post</span>
+              <span class="r3-dot" style="--x:76%;--y:80%"><b>Last.fm</b>deep, barely social</span>
+              <span class="r3-dot r3-us" style="--x:74%;--y:26%"><b>InTune</b>the gap we aimed at</span>
+              <figcaption class="mono">Our read of the landscape, 2023</figcaption>
+            </figure>
+            <ol class="r3-synth r3-synth-col">
+              <li class="r3c-butter"><span class="mono">From 4 listeners</span><b>They wanted Wrapped all year</b><span class="r3-to">Decision 01</span></li>
+              <li class="r3c-green"><span class="mono">From 4 listeners</span><b>Few could find detailed stats when asked</b><span class="r3-to">Decision 02</span></li>
+              <li class="r3c-lilac"><span class="mono">From 4 listeners</span><b>Finding fellow fans was hard</b><span class="r3-to">Decision 03</span></li>
+            </ol>
+          </div>
           <blockquote class="pull"><p>"It's not something I ever really thought about, but I'd be interested to see my music tastes and how they change more than just at the end of the year."</p><cite>Survey respondent, 18–20 years old</cite></blockquote>
         </section>
 
-        <section class="case-sec" data-toc="Research → design">
-          <h2>From research to design</h2>
-          <div class="prose"><p>Most core features answer something we heard directly.</p></div>
-          <div class="trace-head" aria-hidden="true"><span>What we heard</span><span></span><span>What we designed</span></div>
-          <ul class="trace">
-            <li><span>They wanted Wrapped and Replay all year round.</span><i aria-hidden="true">→</i><b>Analytics by day, week, year or all time, with this-week-versus-last comparisons.</b></li>
-            <li><span>Few knew how to find detailed stats.</span><i aria-hidden="true">→</i><b>Stats built in: connect a streaming service and your history is tracked for you.</b></li>
-            <li><span>Finding fans of the same artists was hard.</span><i aria-hidden="true">→</i><b>Communities around each artist or genre.</b></li>
-            <li><span>They'd seen people post Receiptify snapshots of their listening.</span><i aria-hidden="true">→</i><b>Profiles with a banner and a favorite track that plays when someone visits, in the spirit of MySpace.</b></li>
-          </ul>
-          <div class="prose"><p>Curated playlists, imagined as AI recommendations from your habits and similar listeners, were our bet on giving people a reason to return.</p></div>
-          <div class="gallery">
-            <figure><button class="shot" type="button"><img src="img/intune_0.webp" alt="Wireframes for logo screen, service selection and home feed" loading="lazy" width="512" height="320" decoding="async"></button><figcaption>Wireframes: welcome, service picker and home.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/intune_1.webp" alt="Wireframes for community, creative and analytics screens" loading="lazy" width="512" height="320" decoding="async"></button><figcaption>Wireframes: communities, creative and analytics.</figcaption></figure>
-          </div>
+        <section class="case-sec" data-toc="Decisions">
+          <h2>Four decisions</h2>
+          <div class="prose"><p>Numbers on our wireframes match the decisions below.</p></div>
+          <figure class="af">
+            <div class="af-stage">
+              <button class="shot" type="button"><img src="img/intune_w0.webp" alt="Wireframes for the welcome screen, the streaming-service picker and the home feed" loading="lazy" width="1024" height="640" decoding="async"></button>
+              <span class="af-pin" style="--x:96.5%;--y:21%" aria-hidden="true">1</span>
+              <span class="af-pin" style="--x:34.5%;--y:45%" aria-hidden="true">2</span>
+              <span class="af-pin" style="--x:96.5%;--y:41%" aria-hidden="true">3</span>
+            </div>
+            <figcaption>Welcome, service picker and home feed.</figcaption>
+          </figure>
+          <figure class="af">
+            <div class="af-stage">
+              <button class="shot" type="button"><img src="img/intune_w1.webp" alt="Wireframes for the Community, Creative and Analytics screens" loading="lazy" width="1024" height="640" decoding="async"></button>
+              <span class="af-pin" style="--x:93%;--y:55%" aria-hidden="true">1</span>
+              <span class="af-pin" style="--x:2.7%;--y:40%" aria-hidden="true">3</span>
+              <span class="af-pin" style="--x:34.5%;--y:70%" aria-hidden="true">4</span>
+            </div>
+            <figcaption>Community, Creative and Analytics tabs.</figcaption>
+          </figure>
+          <ol class="r3-dec">
+            <li><span class="r3-n">01</span><div><h3>Stats all year, not once a year</h3><p>Your history by day, week, year or all time, with this-week-versus-last comparisons and top genres, artists and albums.</p></div></li>
+            <li><span class="r3-n">02</span><div><h3>Connect once, tracked for you</h3><p>Pick your main service on the first screen and stats come to you. The picker goes beyond Spotify, where most fan-made tools stop.</p></div></li>
+            <li><span class="r3-n">03</span><div><h3>Communities around one artist</h3><p>Each community centers on one artist or genre, a place to talk releases with people who share your taste.</p></div>
+              <div class="turn t-fb"><span class="mono">Feedback that changed it</span><h3>The Twitter scroller</h3><p>One person found fellow fans by scrolling Twitter search and messaging them. So communities form around an artist, not general chat.</p></div></li>
+            <li><span class="r3-n">04</span><div><h3>A reason to come back</h3><p>Curated playlists, imagined as AI picks from your habits and similar listeners, plus MySpace-style profiles whose favorite track plays when someone visits.</p></div>
+              <div class="turn"><span class="mono">Option we rejected</span><h3>Stats and nothing else</h3><p>Last.fm already does deep analytics with almost no social side. Numbers alone give people little reason to come back daily.</p></div></li>
+          </ol>
         </section>
 
-        <section class="case-sec" data-toc="Visual design">
-          <h2>Visual design</h2>
-          <div class="prose">
-            <p>To move quickly, we built on community Figma resources: a minimal base with a splash of color on each page, shaped into our own direction as wireframes became high-fidelity screens.</p>
-          </div>
+        <section class="case-sec" data-toc="Prototype">
+          <h2>The prototype</h2>
           <div class="figma-frame" data-src="https://www.figma.com/embed?embed_host=share&amp;url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FVseYbL1HKa4afr99k7Jiou%2FInTune-High-Fidelity%3Fnode-id%3D0%253A1%26t%3DJBlKy4W2P74Eoz2o-1" data-title="InTune high-fidelity design prototype in Figma">
               <div class="figma-poster">
                 <span class="mono"><span class="nw">Live prototype</span> · <span class="nw">Figma</span></span>
@@ -916,6 +869,10 @@
             <div class="rc-foot"><svg class="rc-fish" aria-hidden="true"><use href="#fish"/></svg><span>Now playing: whatever you're into</span><span>Thank you for visiting</span><i class="rc-bars"></i><span>Keep this receipt</span></div>
           </div></div></div>
         </div>
+          <div class="r3-now">
+            <span class="mono">Since 2023</span>
+            <p><b>I'm developing InTune into a real app.</b> The open question from lesson 02, whether communities bring people back, is one real listeners can now answer.</p>
+          </div>
           </div>
         </section>
       </div>
