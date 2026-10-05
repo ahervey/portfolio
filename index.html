@@ -24,14 +24,26 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@1,72,600..800,100,1&family=Hanken+Grotesk:wght@400..800&family=DM+Mono:wght@500&display=swap">
-<link rel="stylesheet" href="styles.css?v=202610052300">
-<link rel="stylesheet" href="theme-pastel.css?v=202610052300">
+<!-- ← → only: Hanken draws them for every face (DM Mono and Fraunces have no arrows), about 1 KB -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400..800&text=%E2%86%90%E2%86%92&display=swap">
+<script>/* paint the routed page from the first frame, not home until app.js arrives; app.js removes this */
+(function(h){try{h=decodeURIComponent(location.hash.slice(1))}catch(e){return}
+if(!h||/^(top|home|work|about|editions|contact|main)$/.test(h)||!/^[\w-]+$/.test(h))return;
+var s=document.createElement('style');s.id='route-boot';
+s.textContent='[data-view="home"]{display:none!important}[data-view="'+h+'"][hidden]{display:block!important}';
+document.head.appendChild(s)})();</script>
+<link rel="stylesheet" href="styles.css?v=202610060100">
+<link rel="stylesheet" href="theme-pastel.css?v=202610060100">
 <link rel="stylesheet" href="case-visuals.css?v=202610051900">
-<link rel="stylesheet" href="type.css?v=202610052000">
+<link rel="stylesheet" href="type.css?v=202610060100">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <svg class="sprite" aria-hidden="true" focusable="false">
+  <!-- small glyphs the web fonts don't carry, drawn so no system font fills in -->
+  <symbol id="i-out" viewBox="0 0 12 12"><path d="M3.2 8.8 8.6 3.4M4.2 3h4.8v4.8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 12 12"><path d="M6 0Q6.7 5.3 12 6 6.7 6.7 6 12 5.3 6.7 0 6 5.3 5.3 6 0Z" fill="currentColor"/></symbol>
+  <symbol id="i-cut" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="3.6" cy="4.2" r="2.2"/><circle cx="3.6" cy="11.8" r="2.2"/><path d="M5.5 5.4 14.5 12.2M5.5 10.6 14.5 3.8"/></g></symbol>
   <symbol id="fish" viewBox="0 0 120 70">
     <g stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--fish-line);stroke-width:2.6">
       <path d="M24 35 L6 17 Q1 35 6 53 Z" style="fill:var(--fish-fin)"/>
@@ -76,7 +88,7 @@
       <div class="hero-copy">
         <span class="status mono"><b></b>Hi, I'm AJ · Open to UX &amp; SWE roles</span>
         <h1>A product designer who <em>builds</em> what I&nbsp;design.</h1>
-        <p class="lede">I design and ship internal tools at Avangrid Renewables, from user interviews to production front&#8209;ends, so data-heavy systems feel simple.</p>
+        <p class="lede">I design and ship internal tools at Avangrid Renewables, from user interviews to production <span class="nw">front-ends</span>, so data-heavy systems feel simple.</p>
         <div class="ctas">
           <a class="btn primary" href="#work">See selected work</a>
           <a class="btn" href="#resume">Read my résumé</a>
@@ -90,7 +102,7 @@
               <div class="lid-clip">
                 <div class="lid" id="lid" aria-hidden="true">
                   <i class="emboss"></i>
-                  <div class="sparkles"><i style="top:20%;left:13%">✦</i><i style="top:27%;right:13%;font-size:13px">✦</i><i style="top:62%;left:10%;font-size:12px">✦</i><i style="top:58%;right:11%">✦</i></div>
+                  <div class="sparkles"><i style="top:20%;left:13%"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-spark"/></svg></i><i style="top:27%;right:13%;font-size:13px"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-spark"/></svg></i><i style="top:62%;left:10%;font-size:12px"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-spark"/></svg></i><i style="top:58%;right:11%"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-spark"/></svg></i></div>
                   <div class="lid-mid">
                     <div class="lid-name">Aaron<br>Hervey</div>
                     <span class="banner">Product Design</span>
@@ -699,7 +711,7 @@
                 <span class="mono"><span class="nw">Live prototype</span> · <span class="nw">Figma</span></span>
                 <b>MyChart high-fidelity mock-up</b>
                 <p>Pan, zoom and click through the real design file.</p>
-                <div class="figma-actions"><button type="button" class="btn primary figma-load">Load the prototype</button><a class="btn" href="https://www.figma.com/design/q7RuYWyuYlEiKuseegkchy/MyChart-Mock-up?node-id=0%3A1&amp;t=SJgsuLsm8kySRytp-1" target="_blank" rel="noopener">Open in Figma ↗</a></div>
+                <div class="figma-actions"><button type="button" class="btn primary figma-load">Load the prototype</button><a class="btn" href="https://www.figma.com/design/q7RuYWyuYlEiKuseegkchy/MyChart-Mock-up?node-id=0%3A1&amp;t=SJgsuLsm8kySRytp-1" target="_blank" rel="noopener">Open in Figma <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-out"/></svg></a></div>
               </div>
             </div>
         </section>
@@ -840,7 +852,7 @@
                 <span class="mono"><span class="nw">Live prototype</span> · <span class="nw">Figma</span></span>
                 <b>InTune high-fidelity design</b>
                 <p>Pan, zoom and click through the real design file.</p>
-                <div class="figma-actions"><button type="button" class="btn primary figma-load">Load the prototype</button><a class="btn" href="https://www.figma.com/design/VseYbL1HKa4afr99k7Jiou/InTune-High-Fidelity?node-id=0%3A1&amp;t=JBlKy4W2P74Eoz2o-1" target="_blank" rel="noopener">Open in Figma ↗</a></div>
+                <div class="figma-actions"><button type="button" class="btn primary figma-load">Load the prototype</button><a class="btn" href="https://www.figma.com/design/VseYbL1HKa4afr99k7Jiou/InTune-High-Fidelity?node-id=0%3A1&amp;t=JBlKy4W2P74Eoz2o-1" target="_blank" rel="noopener">Open in Figma <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-out"/></svg></a></div>
               </div>
             </div>
         </section>
@@ -915,7 +927,7 @@
           <h2>What I found</h2>
           <p>Once I started, writing it was surprisingly natural. I began like any other paper; the only difference was not taking myself out of it. Choosing which stories to tell was the real challenge, and I had a sense of those before I began.</p>
           <p>My biggest takeaway was the beauty of combining art and research, and how writing truly changes you. For a while afterwards I wanted to be an English major. It also taught me to be articulate and to adapt my writing style to what a situation calls for, a skill I use every time I write up research or explain a design decision.</p>
-          <div class="fold-cta"><span class="mono"><span class="nw">The full paper</span> · <span class="nw">15 pages</span></span><a class="btn primary" href="files/aj-hervey-autoethnography.pdf" target="_blank" rel="noopener">Read the full paper ↗</a></div>
+          <div class="fold-cta"><span class="mono"><span class="nw">The full paper</span> · <span class="nw">15 pages</span></span><a class="btn primary" href="files/aj-hervey-autoethnography.pdf" target="_blank" rel="noopener">Read the full paper <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-out"/></svg></a></div>
         </section>
       </div>
     </div>
@@ -1019,9 +1031,9 @@
 
         <div class="slip-side">
           <a class="tearoff" href="files/aj-hervey-resume.pdf" target="_blank" rel="noopener">
-            <span class="mono tear-here">✂ Tear here</span>
+            <span class="mono tear-here"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-cut"/></svg> Tear here</span>
             <span class="mono muted"><span class="nw">Shipping label</span> · <span class="nw">1 page</span></span>
-            <b>Résumé PDF ↗</b>
+            <b>Résumé PDF <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-out"/></svg></b>
             <i class="rc-bars" aria-hidden="true"></i>
           </a>
           <section class="r-sec">
@@ -1051,8 +1063,8 @@
           <section class="r-sec">
             <h2>Elsewhere</h2>
             <div class="r-links">
-              <a href="https://www.linkedin.com/in/aahervey" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
-              <a href="https://github.com/ahervey" target="_blank" rel="noopener">GitHub <span>↗</span></a>
+              <a href="https://www.linkedin.com/in/aahervey" target="_blank" rel="noopener">LinkedIn <span><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-out"/></svg></span></a>
+              <a href="https://github.com/ahervey" target="_blank" rel="noopener">GitHub <span><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-out"/></svg></span></a>
             </div>
           </section>
         </div>
@@ -1094,9 +1106,9 @@
       </div>
       <div class="links">
         <span class="mono muted">Elsewhere</span>
-        <a href="https://www.linkedin.com/in/aahervey" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
-        <a href="https://github.com/ahervey" target="_blank" rel="noopener">GitHub <span>↗</span></a>
-        <a href="files/aj-hervey-resume.pdf" target="_blank" rel="noopener">Résumé PDF <span>↗</span></a>
+        <a href="https://www.linkedin.com/in/aahervey" target="_blank" rel="noopener">LinkedIn <span><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-out"/></svg></span></a>
+        <a href="https://github.com/ahervey" target="_blank" rel="noopener">GitHub <span><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-out"/></svg></span></a>
+        <a href="files/aj-hervey-resume.pdf" target="_blank" rel="noopener">Résumé PDF <span><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-out"/></svg></span></a>
       </div>
     </div>
   </section>
@@ -1127,6 +1139,6 @@
   <ol class="sheet-list" id="toc-sheet-list"></ol>
 </dialog>
 
-<script src="app.js?v=202610051700"></script>
+<script src="app.js?v=202610060200"></script>
 </body>
 </html>

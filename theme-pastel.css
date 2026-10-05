@@ -1,21 +1,8 @@
 /* Pastel tinned-seafood packaging theme.
    Loaded after styles.css and only overrides it: swap the palette to soft pastels with navy ink,
    a soft wonky serif for display type, scalloped label edges and wavy dividers.
-   Remove the <link> to this file to get the classic look back. */
-:root{
-  --ground:#FBF0EC; --paper:#FFFAF5; --ink:#1F2A55; --muted:#5E6589; --line:rgba(31,42,85,.14);
-  --accent:#E2574C; --wave:rgba(31,42,85,.28);
-  --print-blue:#BCD8F0; --print-red:#F7BDB6; --print-butter:#FBE29A; --print-green:#BFE3CC; --print-lilac:#D9CEF3;
-  --print-cream:#FFFAF2; --print-ink:#1F2A55; --print-coral:#E2574C;
-  --f-display:"Fraunces","Cooper Black",Georgia,serif;
-  --shadow-tin:0 40px 70px -28px rgba(31,42,85,.45),0 14px 24px -12px rgba(31,42,85,.3);
-}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --ground:#141A33; --paper:#1D2444; --ink:#F4EFEA; --muted:#AEB3CF; --line:rgba(244,239,234,.14);
-  --accent:#FF9C8F; --wave:rgba(244,239,234,.3); color-scheme:dark}}
-:root[data-theme="dark"]{
-  --ground:#141A33; --paper:#1D2444; --ink:#F4EFEA; --muted:#AEB3CF; --line:rgba(244,239,234,.14);
-  --accent:#FF9C8F; --wave:rgba(244,239,234,.3); color-scheme:dark}
+   The palette tokens (light and dark) live in styles.css :root, so the page stays pastel even if this file
+   fails to load; this file holds only the component styling. */
 
 /* display type: soft, wonky, italic */
 .hero h1,.lid-name,.flavor,.problem q,.back h2,.slip-intro h1,.slip-logo,.essay h1,.card h3,.fold h2,.extra-title,.pov,.rc-brand{
@@ -94,7 +81,6 @@
 .facts{border-radius:6px}
 .btn{border-radius:999px}
 .slot{background:linear-gradient(#3a4470,#1F2A55)}
-:root{--stamp:#E2574C}
 .slip{border-radius:18px}
 .slip::before{border-radius:18px 18px 0 0}
 .tearoff{background:var(--print-butter);color:var(--print-ink);border-color:var(--print-ink)}
@@ -105,4 +91,3 @@
 
 .t-pink .mini-lid,.t-mint .mini-lid,.t-blue .mini-lid{color:var(--print-ink)}
 .seal{background:var(--paper);color:var(--ink);border:1.5px solid var(--ink)}
-:root{--shelf:#E3CFC6;--shelf-top:#F1E3DC}
