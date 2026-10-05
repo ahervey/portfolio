@@ -10,7 +10,7 @@ Personal UX portfolio site. Open `index.html` in a browser.
 ## How it works
 
 Everything lives in `index.html` as separate views (home, four case studies, writing, résumé).
-`app.js` shows the right view based on the URL hash, e.g. `index.html#oracle`.
+`app.js` shows the right view based on the URL hash, e.g. `index.html#alarms`.
 
 - `styles.css` design tokens and all styling
 - `app.js` routing, the tin animation, contents sidebar, screenshot lightbox

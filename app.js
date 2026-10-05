@@ -29,7 +29,10 @@
   }
 
   function route() {
-    const h = decodeURIComponent(location.hash.slice(1)) || 'top';
+    let h = decodeURIComponent(location.hash.slice(1)) || 'top';
+    // old links keep working after a page is renamed
+    const renamed = { oracle: 'alarms' };
+    if (renamed[h]) { h = renamed[h]; history.replaceState(null, '', '#' + h); }
     if (h === 'contact') {
       if (!current) show('home');
       document.getElementById('contact').scrollIntoView();
