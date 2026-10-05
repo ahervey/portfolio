@@ -512,7 +512,7 @@
       setTin(tin, open);
       lastTin = open ? tin : null;
       // on phones the note opens below the fold, behind the bottom dock: bring it up just enough
-      if (open && note && note.getBoundingClientRect().bottom > innerHeight) {
+      if (open && note && note.getBoundingClientRect().bottom > innerHeight - (parseFloat(getComputedStyle(note).scrollMarginBottom) || 0)) {
         note.scrollIntoView({ block: 'nearest', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
       }
     });
