@@ -18,7 +18,7 @@
   --accent:#FF9C8F; --wave:rgba(244,239,234,.3); color-scheme:dark}
 
 /* display type: soft, wonky, italic */
-.hero h1,.lid-name,.flavor,.sticker,.problem q,.back h2,.slip-intro h1,.slip-logo,.essay h1,.card h3,.fold h2,.extra-title,.pov,.rc-brand{
+.hero h1,.lid-name,.flavor,.problem q,.back h2,.slip-intro h1,.slip-logo,.essay h1,.card h3,.fold h2,.extra-title,.pov,.rc-brand{
   font-family:var(--f-display);font-style:italic;font-weight:800;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72;letter-spacing:.01em}
 .hero h1{letter-spacing:.01em;line-height:.95}
 .hero h1 em{color:var(--accent);font-style:italic;font-weight:800}
@@ -45,10 +45,17 @@
 .sparkles i{position:absolute;color:var(--print-cream);font-style:normal;font-size:18px;line-height:1}
 .roll{background:linear-gradient(to bottom,rgba(0,0,0,.35),rgba(0,0,0,0) 30%,rgba(255,255,255,.55) 44%,rgba(255,255,255,0) 58%,rgba(0,0,0,.4)),var(--print-red)}
 /* ring-pull opener: the lid peels back from the top instead of rolling up on a key */
-.stage{padding-right:0;width:min(100%,400px)}
+.stage{padding-right:0;width:min(100%,360px)}
 .hint{padding-right:0}
 .key,.hint-key{display:none}
 .hint-tab{display:inline}
+.stage.is-open + .hint .hint-tab{display:none}
+@media (max-width:860px){.stage{width:340px;zoom:.66}}
+/* a scalloped butter label peeks out behind the tin, offset into the gutter (never past the page edge) */
+.stage::before{content:"";position:absolute;z-index:-1;left:36%;top:38%;width:122%;aspect-ratio:1;translate:-50% -50%;rotate:-8deg;pointer-events:none;
+  background:radial-gradient(circle,transparent 61%,rgba(31,42,85,.10) 61.4%,transparent 62.2%),var(--print-butter);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50.0 6.0A6.8 6.8 0 0 1 62.4 7.8A6.8 6.8 0 0 1 73.8 13.0A6.8 6.8 0 0 1 83.3 21.2A6.8 6.8 0 0 1 90.0 31.7A6.8 6.8 0 0 1 93.6 43.7A6.8 6.8 0 0 1 93.6 56.3A6.8 6.8 0 0 1 90.0 68.3A6.8 6.8 0 0 1 83.3 78.8A6.8 6.8 0 0 1 73.8 87.0A6.8 6.8 0 0 1 62.4 92.2A6.8 6.8 0 0 1 50.0 94.0A6.8 6.8 0 0 1 37.6 92.2A6.8 6.8 0 0 1 26.2 87.0A6.8 6.8 0 0 1 16.7 78.8A6.8 6.8 0 0 1 10.0 68.3A6.8 6.8 0 0 1 6.4 56.3A6.8 6.8 0 0 1 6.4 43.7A6.8 6.8 0 0 1 10.0 31.7A6.8 6.8 0 0 1 16.7 21.2A6.8 6.8 0 0 1 26.2 13.0A6.8 6.8 0 0 1 37.6 7.8A6.8 6.8 0 0 1 50.0 6.0Z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50.0 6.0A6.8 6.8 0 0 1 62.4 7.8A6.8 6.8 0 0 1 73.8 13.0A6.8 6.8 0 0 1 83.3 21.2A6.8 6.8 0 0 1 90.0 31.7A6.8 6.8 0 0 1 93.6 43.7A6.8 6.8 0 0 1 93.6 56.3A6.8 6.8 0 0 1 90.0 68.3A6.8 6.8 0 0 1 83.3 78.8A6.8 6.8 0 0 1 73.8 87.0A6.8 6.8 0 0 1 62.4 92.2A6.8 6.8 0 0 1 50.0 94.0A6.8 6.8 0 0 1 37.6 92.2A6.8 6.8 0 0 1 26.2 87.0A6.8 6.8 0 0 1 16.7 78.8A6.8 6.8 0 0 1 10.0 68.3A6.8 6.8 0 0 1 6.4 56.3A6.8 6.8 0 0 1 6.4 43.7A6.8 6.8 0 0 1 10.0 31.7A6.8 6.8 0 0 1 16.7 21.2A6.8 6.8 0 0 1 26.2 13.0A6.8 6.8 0 0 1 37.6 7.8A6.8 6.8 0 0 1 50.0 6.0Z'/%3E%3C/svg%3E") center/contain no-repeat}
+
 .tin{border-radius:96px/84px}
 .tray{border-radius:82px/70px}
 .lid-clip{border-radius:86px/74px}
@@ -65,7 +72,6 @@
   filter:drop-shadow(0 3px 3px rgba(31,42,85,.35));border-radius:40%}
 .pull-ring:active{cursor:grabbing}
 .pull-ring svg{display:block;width:100%;height:auto}
-.sticker{background:var(--print-butter);color:var(--print-ink);border-color:rgba(31,42,85,.5);outline-color:var(--print-butter);font-size:16px}
 
 /* ---------- scalloped labels ---------- */
 .variety,.case-hero,.next{

@@ -88,6 +88,7 @@
       el.setAttribute('aria-valuetext', p > .97 ? 'Open' : p < .03 ? 'Closed' : Math.round(p * 100) + '% open');
     });
     toggle.textContent = p > .5 ? 'Close the tin' : 'Open the tin';
+    stage.classList.toggle('is-open', p > .5);
   }
   function animateTo(target, ms = 1500) {
     cancelAnimationFrame(anim);
@@ -101,11 +102,19 @@
     };
     anim = requestAnimationFrame(step);
   }
+  // the lid peels open the first time the tin is actually on screen (below the headline on phones)
   function tinIntro() {
     if (introduced) return;
     introduced = true;
     set(0);
-    setTimeout(() => animateTo(1, 1800), 700);
+    const open = () => setTimeout(() => { if (!drag && p < .03) animateTo(1, 1800); }, 500);
+    if (!('IntersectionObserver' in window)) return open();
+    const io = new IntersectionObserver(entries => {
+      if (!entries.some(en => en.isIntersecting)) return;
+      io.disconnect();
+      open();
+    }, { threshold: .6 });
+    io.observe(tin);
   }
 
   let drag = null;
