@@ -72,6 +72,7 @@
           <a class="btn primary" href="#work">See selected work</a>
           <a class="btn" href="#resume">Read my résumé</a>
         </div>
+        <p class="proof mono">2 tools shipped at Avangrid · each designed &amp; built solo</p>
       </div>
       <div>
         <div class="stage" id="stage">
@@ -237,7 +238,7 @@
     <a class="back-link mono" href="#work">← All work</a>
     <header class="case-hero v-blue">
       <div class="case-hero-text">
-        <span class="mono">Nº 01 · Avangrid Renewables · June – August 2026</span>
+        <span class="mono eyebrow"><span>Nº 01 · Avangrid Renewables</span><span>June – August 2026</span></span>
         <div class="flavor">MEW2</div>
         <h1>A guided interface for editing renewable asset data without writing SQL</h1>
         <p class="summary">MEW2 sits on top of our SQL Server databases so teams across Avangrid can maintain sites, devices and certificates through forms and a browsable tree instead of raw queries.</p>
@@ -328,6 +329,9 @@
             <div><h3>Tabs instead of pages</h3><p>A button group swaps content in place instead of reloading the site, so moving between views feels instant.</p></div>
             <div><h3>Light and dark mode</h3><p>A toggle so people can match the interface to their environment and preference.</p></div>
           </div>
+          <div class="closeups">
+            <figure><button class="shot" type="button"><img src="img/mew2_detail_pending.webp" alt="Close-up: the Company Name field outlined in orange with an Unsaved tag, and a 1 pending badge beside Save in the header" loading="lazy" width="1343" height="448" decoding="async"></button><figcaption><b>Close-up.</b> An edited field turns orange and says Unsaved, while the header counts what's waiting to be saved.</figcaption></figure>
+          </div>
         </section>
 
         <section class="case-sec" data-toc="Engineering">
@@ -359,7 +363,7 @@
         <section class="case-sec" data-toc="Takeaways">
           <h2>Takeaways</h2>
           <div class="takeaway">
-            <div class="takeaway-text"><div class="prose"><p>The tool was needed urgently, so there was no separate prototyping phase. I designed as I built, shipped working versions quickly and iterated on my manager's feedback. I'm proud of how well it surfaces information and explains things people can miss, like what a certificate is or whether a site is solar or wind.</p></div><dl class="reflect"><div><dt class="mono">What worked</dt><dd>It surfaces a lot of nested data clearly, and explains what people can miss, like what a certificate is or whether a site is solar or wind.</dd></div><div><dt class="mono">What I'd change</dt><dd>Treat field types as UX from day one. A zip code saved as a number quietly dropped its leading zeros.</dd></div><div><dt class="mono">What's next</dt><dd>Usability tests with the teams now adopting it, a SQL audit table for history, and solar pad assets.</dd></div></dl></div>
+            <div class="takeaway-text"><div class="prose"><p>The tool was needed urgently, so there was no separate prototyping phase: the build was the prototype, reviewed with my manager each iteration.</p></div><dl class="reflect"><div><dt class="mono">What worked</dt><dd>It surfaces a lot of nested data clearly, and explains what people can miss, like what a certificate is or whether a site is solar or wind.</dd></div><div><dt class="mono">What I'd change</dt><dd>Put it in front of the people who will use it earlier, not only my manager, so feedback comes from more than one seat.</dd></div><div><dt class="mono">What's next</dt><dd>Usability tests with the teams now adopting it, a SQL audit table for history, and solar pad assets.</dd></div></dl></div>
             <div class="printer" aria-label="Takeaways receipt">
           <div class="slot" aria-hidden="true"></div>
           <div class="receipt-clip"><div class="receipt-wrap"><div class="receipt">
@@ -391,7 +395,7 @@
     <a class="back-link mono" href="#work">← All work</a>
     <header class="case-hero v-red">
       <div class="case-hero-text">
-        <span class="mono">Nº 02 · Avangrid Renewables · August 2024 – February 2025</span>
+        <span class="mono eyebrow"><span>Nº 02 · Avangrid Renewables</span><span>August 2024 – February 2025</span></span>
         <div class="flavor">Alarms</div>
         <h1>Redesigning the historical alarms tool for our solar and wind sites</h1>
         <p class="summary">CORE Alarms lets engineers query Oracle for the alarm history of any site or front-end machine. I redesigned and rebuilt it on my own, from wireframe to a shipped React and Node.js app.</p>
@@ -499,6 +503,10 @@
             <div><h3>Fast menus</h3><p>Menu transitions went from 200ms to about 80ms, because filter menus get opened over and over.</p></div>
             <div><h3>A fixed table viewport</h3><p>The table scrolls inside a set area instead of stretching the page, and large datasets export to Excel.</p></div>
           </div>
+          <div class="closeups tall">
+            <figure><button class="shot" type="button"><img src="img/oracle_detail_query.webp" alt="Close-up: the query panel with date fields, quick range buttons, a searchable alarm list and Search and Export buttons" loading="lazy" width="303" height="854" decoding="async"></button><figcaption><b>Query panel.</b> Quick ranges under the dates cut typing errors.</figcaption></figure>
+            <figure><button class="shot" type="button"><img src="img/oracle_detail_filters.webp" alt="Close-up: the Filters and Columns drawer with column checkboxes and Any dropdown filters" loading="lazy" width="432" height="663" decoding="async"></button><figcaption><b>Filters &amp; Columns.</b> Filters read as inputs and say "Any" until set.</figcaption></figure>
+          </div>
         </section>
 
         <section class="case-sec" data-toc="Engineering">
@@ -533,7 +541,7 @@
         <section class="case-sec" data-toc="Takeaways">
           <h2>Takeaways</h2>
           <div class="takeaway">
-            <div class="takeaway-text"><div class="prose"><p>This was the first time I carried a project almost entirely on my own. I was out of practice with programming at first, but it came back faster than I expected. I'm grateful Godfrey found a project that matched my interests and gave me free rein with it.</p></div><dl class="reflect"><div><dt class="mono">What worked</dt><dd>Carrying a project end to end on my own, from interviews and wireframes to a shipped React and Node.js app.</dd></div><div><dt class="mono">What I'd change</dt><dd>Keep polishing the UI. There is still room to make filtering faster on very large results.</dd></div><div><dt class="mono">What's next</dt><dd>Faster Oracle processing, so big queries come back sooner before they ever reach the table.</dd></div></dl></div>
+            <div class="takeaway-text"><div class="prose"><p>This was the first time I carried a project almost entirely on my own. I was out of practice with programming at first, but it came back faster than I expected. I'm grateful Godfrey found a project that matched my interests and gave me free rein with it.</p></div><dl class="reflect"><div><dt class="mono">What worked</dt><dd>Moving the rebuild from Angular to React, which I knew best, let one person design and ship the whole thing.</dd></div><div><dt class="mono">What I'd change</dt><dd>Keep polishing the UI. There is still room to make filtering faster on very large results.</dd></div><div><dt class="mono">What's next</dt><dd>Faster Oracle processing, so big queries come back sooner before they ever reach the table.</dd></div></dl></div>
             <div class="printer" aria-label="Takeaways receipt">
           <div class="slot" aria-hidden="true"></div>
           <div class="receipt-clip"><div class="receipt-wrap"><div class="receipt">
@@ -566,7 +574,7 @@
     <a class="back-link mono" href="#work">← All work</a>
     <header class="case-hero v-butter">
       <div class="case-hero-text">
-        <span class="mono">Nº 03 · University of Tennessee · August – December 2022</span>
+        <span class="mono eyebrow"><span>Nº 03 · University of Tennessee</span><span>August – December 2022</span></span>
         <div class="flavor">MyChart</div>
         <h1>Simplifying a patient portal for the older users who rely on it most</h1>
         <p class="summary">A redesign of the MyChart app with streamlined menus, a more useful dashboard, hospital maps, integrations and onboarding, built as a high-fidelity Figma prototype.</p>
@@ -710,7 +718,7 @@
     <a class="back-link mono" href="#work">← All work</a>
     <header class="case-hero v-green">
       <div class="case-hero-text">
-        <span class="mono">Nº 04 · University of Tennessee · January – May 2023</span>
+        <span class="mono eyebrow"><span>Nº 04 · University of Tennessee</span><span>January – May 2023</span></span>
         <div class="flavor">InTune</div>
         <h1>A music social app for listeners who want more than a yearly Wrapped</h1>
         <p class="summary">InTune blends Last.fm-style listening analytics with Reddit-style communities, so serious listeners can track their taste all year and find people who share it.</p>
