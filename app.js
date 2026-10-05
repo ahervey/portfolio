@@ -439,5 +439,10 @@
     addEventListener('hashchange', () => setTimeout(countView, 50));
   }
 
+  /* ---------- limited editions: tap a tin to lift its lid ---------- */
+  document.querySelectorAll('button.ed-tin').forEach(tin => tin.addEventListener('click', () => {
+    tin.setAttribute('aria-expanded', String(tin.getAttribute('aria-expanded') !== 'true'));
+  }));
+
   route();
 })();
