@@ -178,16 +178,19 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:16px;paddi
 .case-hero .summary{font-size:19px;max-width:56ch;opacity:.9}
 .case-hero .hero-shot{margin-top:14px}
 /* case hero: copy beside a framed screenshot of the shipped work */
-.case-hero{grid-template-columns:minmax(0,.85fr) minmax(0,1.3fr);align-items:center;gap:clamp(24px,4vw,48px)}
+.case-hero{grid-template-columns:minmax(0,1fr);gap:clamp(28px,4vw,44px);padding-bottom:0;overflow:hidden}
+.case-hero-text{max-width:860px}
 .case-hero-text{display:grid;gap:18px;align-content:center;min-width:0}
 .eyebrow{display:grid;gap:4px}
 .case-hero h1{overflow-wrap:break-word;hyphens:manual}
-.hero-shot.lowres{max-width:512px;justify-self:center;width:100%}
-.case-hero .flavor{font-size:clamp(52px,6.2vw,92px)}
-.case-hero h1{font-size:clamp(24px,2.6vw,34px)}
+.hero-shot.lowres{max-width:560px}
+.case-hero .flavor{font-size:clamp(56px,8.4vw,112px)}
+.case-hero h1{font-size:clamp(24px,3vw,38px);max-width:26ch}
 .case-hero .summary{font-size:18px}
-.hero-shot{margin:0;transform:rotate(1.2deg);transition:transform .3s ease}
-.hero-shot:hover{transform:rotate(0) translateY(-4px)}
+.hero-shot{margin:0 auto -2px;width:100%;max-width:1040px;transition:transform .3s ease}
+.hero-shot:hover{transform:translateY(-4px)}
+.hero-shot .shot.browser{border-radius:14px 14px 0 0;max-height:min(46vw,500px)}
+.hero-shot .shot.browser img{object-fit:cover;object-position:top left}
 .shot.browser{border:0;border-radius:12px;padding-top:26px;position:relative;background:#fff linear-gradient(#F1ECE8,#F1ECE8) top/100% 26px no-repeat;box-shadow:0 30px 50px -24px rgba(31,42,85,.45),0 0 0 1.5px rgba(31,42,85,.85)}
 .shot.browser::before{content:"";position:absolute;top:9px;left:12px;width:8px;height:8px;border-radius:50%;background:#E2574C;box-shadow:13px 0 0 #F2C14E,26px 0 0 #4CB884}
 
@@ -545,11 +548,10 @@ figcaption{font-size:14px;color:var(--muted);line-height:1.45}
 
 @media (max-width:900px){
   .case-hero{grid-template-columns:minmax(0,1fr)}
-  .hero-shot{transform:none}
   .tldr-cols,.stats{grid-template-columns:minmax(0,1fr)}
   .tldr{gap:18px}
-  .closeups.tall{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .closeups.tall img{width:100%;max-height:none}
+  .closeups.tall{grid-template-columns:minmax(0,1fr);justify-items:start}
+  .closeups.tall img{max-height:none;max-width:100%}
   .tldr-cols{gap:14px}
   .stats{gap:12px;padding-top:16px}
   .stats > div{grid-template-columns:minmax(96px,auto) minmax(0,1fr);align-items:center;gap:14px}
