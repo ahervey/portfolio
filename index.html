@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@1,9..144,700..900,0..100,0..1&family=Shrikhand&family=Hanken+Grotesk:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="styles.css?v=202610051400">
+<link rel="stylesheet" href="styles.css?v=202610052100">
 <link rel="stylesheet" href="theme-pastel.css?v=202610051400">
 <link rel="stylesheet" href="case-visuals.css?v=202610051700">
 </head>
@@ -234,7 +234,7 @@
     <dl class="glance">
       <div><dt>Role</dt><dd>Designer &amp; developer (solo)</dd></div>
       <div><dt>Timeline</dt><dd>June – August 2026</dd></div>
-      <div><dt>Collaborators</dt><dd>My manager</dd></div>
+      <div><dt>Collaborators</dt><dd>My manager, standing in for future users</dd></div>
       <div><dt>Tools</dt><dd>React, Chakra UI, ASP.NET, Entity Framework, SQL Server</dd></div>
     </dl>
     <div class="case-body">
@@ -244,27 +244,23 @@
           <h2>TL;DR</h2>
           <div class="tldr">
             <div class="tldr-grid">
-              <div><span class="tag t-pain">The pain</span><p>Teams across Avangrid keep our renewable inventory up to date: sites, devices and certificates. Changing any of it meant editing SQL Server directly, so only people comfortable writing SQL could do it.</p></div>
-              <div><span class="tag t-did">What I did</span><p>As the only designer and developer, I built MEW2: a React and ASP.NET app where people browse sites in two Miller columns, edit through validated forms and review every change before committing it.</p></div>
-              <div><span class="tag t-result">The result</span><p>Launched to our team about three months after kickoff and now rolling out to more teams. Everyday data changes go through a guided interface instead of raw SQL.</p></div>
+              <div><span class="tag t-pain">The pain</span><p>Teams across Avangrid keep our renewable inventory current: sites, devices and certificates. Creating an asset meant writing SQL by hand in SQL Server Management Studio, so only people comfortable with SQL could do it.</p></div>
+              <div><span class="tag t-did">What I did</span><p>As the only designer and developer, I built MEW2: people browse sites in two columns, edit through validated forms and review every change before it's committed.</p></div>
+              <div><span class="tag t-result">The result</span><p>Launched to our team three months after kickoff and now rolling out to more teams. The same jobs happen in a guided web form instead of a query window.</p></div>
             </div>
-            <ul class="stats">
-              <li><b>3 mo</b><span>June to August 2026, start to launch</span></li>
-              <li><b>0</b><span>lines of SQL needed to edit a site or device</span></li>
-              <li><b>4</b><span>areas: farms, certificates, history and asset creation</span></li>
-            </ul>
-            <!-- METRIC NEEDED: How many teams / people use MEW2 today, and roughly how many edits have been committed through it since launch? -->
-            <!-- METRIC NEEDED: How long did a typical data change take before MEW2 (request + SQL edit) vs. now? -->
+            <div class="shift">
+              <div class="shift-head"><span class="mono">Creating an asset, before and after</span><small>We didn't measure time saved, so here's the workflow itself.</small></div>
+              <div class="trace-head" aria-hidden="true"><span>Before: SQL in SSMS</span><span></span><span>Now: MEW2</span></div>
+              <ul class="trace">
+                <li><span>Write the SQL by hand, from a blank query window.</span><i aria-hidden="true">→</i><b>Pick an asset type and get a form with only that type's fields.</b></li>
+                <li><span>Know which raw columns each value belongs in.</span><i aria-hidden="true">→</i><b>Fill in readable field names, with required ones marked.</b></li>
+                <li><span>Run it, and the change is live.</span><i aria-hidden="true">→</i><b>Validation names what's missing, and edits wait for review before they're committed.</b></li>
+              </ul>
+            </div>
           </div>
           <h3 class="sub-h">Context &amp; my role</h3>
           <div class="prose">
-            <p>I was asked to build a website that works as an interface to our SQL Server, so teams could maintain the renewable inventory themselves without touching SQL. I designed it and built both halves: an ASP.NET back-end that uses Entity Framework to make changes safely, and a React front-end with four areas:</p>
-            <ul>
-              <li><b>Farms:</b> our renewable sites and all of their devices.</li>
-              <li><b>Certificates:</b> the certificates tied to each site.</li>
-              <li><b>History:</b> what was created or modified, by whom and when.</li>
-              <li><b>Asset management:</b> forms for creating new devices of each type directly in the database.</li>
-            </ul>
+            <p>I was asked to build a web interface to our SQL Server so teams could maintain the inventory without touching SQL. I designed it and built both halves: an ASP.NET back-end that uses Entity Framework to make changes safely, and a React front-end with four areas: <b>Farms</b> (sites and their devices), <b>Certificates</b>, <b>History</b> (who changed what, and when) and <b>Asset management</b> (creating new devices).</p>
           </div>
         </section>
 
@@ -273,13 +269,13 @@
           <div class="problem">
             <span class="mono">Key question</span>
             <q>How might people who don't write SQL find the right asset, and change it with confidence?</q>
-            <p>A first-time user opening the Farms page faces sites, turbines, pads and many other devices at once. The hard part wasn't how the interface should look, but how to surface that much information so it makes sense, and how to make editing it feel safe for people who had never touched the database.</p>
+            <p>A first-time user opening the Farms page faces sites, turbines, pads and many other devices at once. The hard part wasn't the look. It was surfacing that much information so it makes sense, and making edits feel safe for people who had never touched the database.</p>
             <span class="mono">Constraints</span>
             <ul class="constraints">
-              <li><b>Needed urgently.</b> No separate prototyping phase, so the build was the prototype.</li>
+              <li><b>Needed urgently.</b> No time for a separate prototyping phase.</li>
               <li><b>No existing users.</b> A brand-new tool, so my manager stood in for the teams who'd use it.</li>
               <li><b>Generic data underneath.</b> Many assets are stored as attribute records, so friendly field names had to map to raw columns.</li>
-              <li><b>Team stack.</b> The server had to stay in the .NET stack the team already used.</li>
+              <li><b>Team stack.</b> The server had to stay in the team's .NET stack.</li>
             </ul>
           </div>
         </section>
@@ -288,43 +284,33 @@
           <h2>How I worked</h2>
           <ol class="steps">
             <li><span class="n">01</span><h3>Study</h3><p>Compared asset dashboards on Dribbble and Contra that hold lots of nested data.</p></li>
-            <li><span class="n">02</span><h3>Sketch</h3><p>A sidebar of sites that opens into their devices, which became the Miller columns.</p></li>
-            <li><span class="n">03</span><h3>Build</h3><p>Shipped working versions fast, with edits held in a pending-changes panel until committed.</p></li>
-            <li><span class="n">04</span><h3>Review</h3><p>Walked each build through with my manager every week and folded his feedback into the next.</p></li>
+            <li><span class="n">02</span><h3>Sketch</h3><p>A persistent sidebar of sites that opens into their devices.</p></li>
+            <li><span class="n">03</span><h3>Build</h3><p>Designed in code and shipped working versions fast.</p></li>
+            <li><span class="n">04</span><h3>Review</h3><p>Walked each build through with my manager every week.</p></li>
           </ol>
-        </section>
-
-        <section class="case-sec" data-toc="Research">
-          <h2>Research</h2>
-          <div class="prose">
-            <h3>Competitive analysis</h3>
-            <p>MEW2 is an asset management dashboard, so I started by studying similar dashboards on Dribbble and Contra. I looked at how they organize large amounts of information and how people move between a high-level overview and specific details.</p>
-            <p>One pattern kept coming up: a persistent sidebar for hierarchical navigation. I adapted it so the sidebar lists each site, and clicking a site opens its child items. People can start at the top level and narrow down to exactly what they need without leaving the page or losing context.</p>
-            <h3>Feedback loop</h3>
-            <p>MEW2 was a brand-new tool, so there were no existing users to interview. Instead I reviewed each iteration with my manager, who represented the teams that would use it, and folded his feedback into the next build.</p>
+          <div class="turns">
+            <div class="turn"><span class="mono">Option I rejected</span><h3>Finder-style columns that keep opening</h3><p>The dashboards I studied lean on a hierarchy sidebar, and Miller columns can nest as deep as the data. I capped MEW2 at two, sites then their devices, with a back button, so the layout never sprawls across the screen.</p></div>
+            <div class="turn t-fb"><span class="mono">What changed the design</span><h3>A zip code that lost its zeros</h3><p>A zip code field set as a number input was silently dropping leading zeros. Since then I treat field types and validation as part of the interface, not a back-end detail.</p></div>
           </div>
         </section>
 
         <section class="case-sec" data-toc="Key features">
           <h2>Key features</h2>
           <div class="features">
-            <div><h3>Review before you commit</h3><p>Edits collect in a pending-changes panel. A global indicator shows unsaved work on every tab, and people can review each change, then commit or undo it.</p></div>
-            <div><h3>Miller column navigation</h3><p>Like macOS Finder: sites in the first column, their children in a second, capped at two columns with a back button so the layout never sprawls.</p></div>
-            <div><h3>Validated asset creation</h3><p>One form that changes its fields by asset type, marks required fields, and says clearly whether the asset was created or what still needs fixing.</p></div>
-            <div><h3>History timeline</h3><p>Cards that show what was created or changed, by whom, and when.</p></div>
-            <div><h3>Tabs instead of pages</h3><p>A button group swaps content in place instead of reloading the site, so moving between views feels instant.</p></div>
-            <div><h3>Light and dark mode</h3><p>A toggle so people can match the interface to their environment and preference.</p></div>
+            <div><h3>Review before you commit</h3><p>Edits collect in a pending-changes panel. A counter shows unsaved work on every tab, and each change can be committed or undone.</p></div>
+            <div><h3>Validated asset creation</h3><p>One form that changes its fields by asset type, marks required fields and names exactly what still needs fixing.</p></div>
+            <div><h3>History timeline</h3><p>Cards that show what was created or changed, by whom and when, with old and new values side by side.</p></div>
+            <div><h3>Tabs instead of pages</h3><p>A button group swaps views in place instead of reloading the site, and a global search jumps straight to an asset.</p></div>
           </div>
         </section>
 
-        <section class="case-sec" data-toc="Engineering">
-          <h2>Engineering for the interface</h2>
-          <div class="prose">
-            <p>I chose React for the front-end because it was the framework I knew best, which let me move faster on the interface while keeping the server in the .NET stack the team already used.</p>
-            <p>On the server, one thin API controller hands work to a service layer split into small files by job: creation, attribute updates, batch saves, search and the asset catalog. Because the database stores many assets as generic attribute records, I wrote mapping layers that translate between the field names people see and the columns underneath, and convert text input into the right data types before saving.</p>
-            <p>On the front-end, logic lives in custom hooks such as <code>useAssetCatalog</code>, <code>useAttributeEditor</code> and <code>useGlobalSearch</code>. Every server call goes through one API module with shared error handling, retries with backoff and request cancellation, so a slow connection never leaves the UI in a broken state. A global search bar highlights matching text so people can jump straight to an asset.</p>
-          </div>
-          <blockquote class="pull"><p>Small decisions like an input type can quietly damage data. I now think about validation and field types as a UX problem, not just a back-end one.</p><cite>Lesson learned: a zip code field set as a number input was silently dropping leading zeros.</cite></blockquote>
+        <section class="case-sec" data-toc="Tradeoffs">
+          <h2>Tradeoffs under the hood</h2>
+          <ul class="tradeoffs">
+            <li><b>React on a .NET server.</b> React was what I knew best, so the interface moved faster while the server stayed in the team's stack.</li>
+            <li><b>A mapping layer over raw columns.</b> More code to maintain, but people see readable field names, and input is converted to the right data type before saving.</li>
+            <li><b>One API module for every call.</b> Shared error handling, retries and cancellation mean a slow connection never leaves a form half-broken.</li>
+          </ul>
         </section>
 
         <section class="case-sec" data-toc="Screens">
@@ -352,27 +338,26 @@
         <section class="case-sec" data-toc="Impact">
           <h2>Impact</h2>
           <ul class="impact">
-            <li><b>Edits without SQL.</b> Teams update sites, devices and certificates through forms, so keeping data current no longer depends on someone who writes SQL.</li>
-            <li><b>A review step before anything changes.</b> Every edit waits in the pending-changes panel until it's checked and committed, and lands in a history of who changed what, and when.</li>
-            <li><b>Bad data stopped at the door.</b> The creation form adapts to each asset type and explains what's missing before anything reaches the database.</li>
-            <li><b>Less to explain.</b> The interface spells out things people can miss, like what a certificate is or whether a site is solar or wind.</li>
+            <li><b>Edits without SQL.</b> Keeping sites, devices and certificates current no longer depends on someone who can write a query.</li>
+            <li><b>A review step and a paper trail.</b> Every edit waits to be checked and committed, then lands in a history of who changed what.</li>
+            <li><b>Mistakes caught at the form.</b> Validation names the missing field before anything reaches the database.</li>
           </ul>
-          <!-- METRIC NEEDED: Any count of data-entry errors or bad records caught by validation / pending-change review since launch? -->
         </section>
 
         <section class="case-sec" data-toc="Reflections">
           <h2>Reflections</h2>
           <div class="takeaway">
-            <div class="prose"><p>The tool was needed urgently, so there was no separate prototyping phase. I designed as I built, shipped working versions quickly and iterated on my manager's feedback. I'm proud of how well it surfaces information and explains things people can miss, like what a certificate is or whether a site is solar or wind.</p></div>
+            <ol class="lessons">
+              <li><h3>A manager is not a user</h3><p>With no existing users, my manager's weekly reviews were the whole feedback loop. They kept the build moving, but one person can't show me where a first-time user gets stuck.</p><p class="next-time"><b>Next time I'd</b> run usability tests with the teams now adopting MEW2, starting with creating an asset from scratch.</p></li>
+              <li><h3>Organizing beats decorating</h3><p>What I'm proudest of is how MEW2 surfaces information and explains what people can miss, like what a certificate is or whether a site is solar or wind. The visuals are plainer than I'd like.</p><p class="next-time"><b>Next time I'd</b> give the visual layer its own pass once the structure holds.</p></li>
+            </ol>
             <div class="printer" aria-label="Takeaways receipt">
           <div class="slot" aria-hidden="true"></div>
           <div class="receipt-clip"><div class="receipt-wrap"><div class="receipt">
             <div class="rc-head"><span class="rc-brand">Aaron Hervey Goods</span><span>Vancouver, WA</span><span>Takeaways receipt</span></div>
             <div class="rc-meta"><span>Order</span><span>Nº 01 · MEW2</span><span>Date</span><span>Aug 2026</span><span>Cashier</span><span>Aaron</span></div>
             <ul class="rc-items">
-              <li><span class="rc-line"><span>Entity Framework</span><span>Learned</span></span><span class="rc-note">New to me; the CORE Alarms build gave me a head start.</span></li>
-              <li><span class="rc-line"><span>Design while building</span><span>1x</span></span><span class="rc-note">No time for a prototyping phase, so the build was the prototype.</span></li>
-              <li><span class="rc-line"><span>Feedback loops</span><span>Weekly</span></span><span class="rc-note">Each iteration reviewed with my manager.</span></li>
+              <li><span class="rc-line"><span>Entity Framework</span><span>Learned</span></span><span class="rc-note">The CORE Alarms build gave me a head start.</span></li>
             </ul>
             <p class="rc-sub">Backordered</p>
             <ul class="rc-items">
@@ -380,11 +365,11 @@
               <li><span class="rc-line"><span>Solar pad assets</span><span>Pending</span></span><span class="rc-note">Waiting on the solar and wind teams.</span></li>
             </ul>
             <div class="rc-total"><span class="rc-line"><span>Total</span><span>Launched</span></span><span class="rc-note">Rolling out to more teams.</span></div>
-            <div class="rc-foot"><svg class="rc-fish" aria-hidden="true"><use href="#fish"/></svg><span>Next visit: usability tests, more teams, bolder visuals</span><span>Thank you for visiting</span><i class="rc-bars"></i><span>Keep this receipt</span></div>
+            <div class="rc-foot"><svg class="rc-fish" aria-hidden="true"><use href="#fish"/></svg><span>Thank you for visiting</span><i class="rc-bars"></i><span>Keep this receipt</span></div>
           </div></div></div>
         </div>
           </div>
-        
+        </section>
       </div>
     </div>
     <a class="next v-red" href="#oracle"><div><span class="mono">Next variety · Nº 02</span><div class="flavor">Alarms</div></div><span class="arrow" aria-hidden="true">→</span></a>
@@ -397,7 +382,7 @@
       <span class="mono">Nº 02 · Avangrid Renewables · August 2024 – February 2025</span>
       <div class="flavor">Alarms</div>
       <h1>Redesigning the historical alarms tool for our solar and wind sites</h1>
-      <p class="summary">CORE Alarms lets engineers query Oracle for the alarm history of any site or front-end machine. I redesigned and rebuilt it on my own, from wireframe to a shipped React and Node.js app.</p>
+      <p class="summary">Hundreds of people use CORE Alarms to pull the alarm history of any site or front-end machine. I redesigned and rebuilt it on my own, from wireframe to a shipped React and Node.js app, and I still maintain it.</p>
       <figure class="hero-visual">
         <div class="hv-stage">
           <button class="shot hv-main" type="button"><span class="hv-bar" aria-hidden="true"><i></i><i></i><i></i><span>CORE Alarms</span></span><span class="hv-img"><img src="img/oracle_2.webp" alt="Redesigned CORE Alarms: a query panel on the left and a green-headed table of alarm results on the right" width="1600" height="792" decoding="async" fetchpriority="high"></span></button>
@@ -409,9 +394,9 @@
     </header>
     <dl class="glance">
       <div><dt>Role</dt><dd>Sole designer &amp; developer</dd></div>
-      <div><dt>Timeline</dt><dd>August 2024 – February 2025</dd></div>
-      <div><dt>Collaborators</dt><dd>My manager, teammates and site users</dd></div>
-      <div><dt>Tools</dt><dd>Figma, React, Chakra UI, Node.js, Oracle</dd></div>
+      <div><dt>Timeline</dt><dd>Built Aug 2024 – Feb 2025, maintained since</dd></div>
+      <div><dt>Collaborators</dt><dd>Godfrey (manager), Stephen (teammate) and the users we interviewed</dd></div>
+      <div><dt>Tools</dt><dd>Figma, React, Chakra UI, Node.js, Oracle, later SQL Server</dd></div>
     </dl>
     <div class="case-body">
       <aside class="toc" aria-label="Contents"><span class="mono">Contents</span></aside>
@@ -420,26 +405,18 @@
           <h2>TL;DR</h2>
           <div class="tldr">
             <div class="tldr-grid">
-              <div><span class="tag t-pain">The pain</span><p>Engineers use CORE Alarms to dig through the alarm history of our wind and solar sites. Big queries were slow, results couldn't be properly sorted or filtered, and some columns were never explained.</p></div>
-              <div><span class="tag t-did">What I did</span><p>I redesigned and rebuilt it on my own, from wireframe to a React, Chakra UI and Node.js app, adding column filters and sorting, query validation and a searchable picker for every site.</p></div>
-              <div><span class="tag t-result">The result</span><p>Shipped and replaced the old site. I still maintain it: it has since moved to SQL Server, streams large CSV exports and keeps adding features from user tickets.</p></div>
+              <div><span class="tag t-pain">The pain</span><p>Engineers dig through CORE Alarms for the alarm history of our wind and solar sites. The old site worked, but it felt slow, results couldn't be sorted or filtered, and some columns were never explained.</p></div>
+              <div><span class="tag t-did">What I did</span><p>I redesigned and rebuilt it on my own in React and Node.js, adding column filters, sorting, query validation and a searchable site picker.</p></div>
+              <div><span class="tag t-result">The result</span><p>Shipped in February 2025, replacing the old site. Since then it has moved to SQL Server and keeps growing from user tickets.</p></div>
             </div>
             <ul class="stats">
-              <li><b>100+</b><span>sites in one type-to-filter picker</span></li>
-              <li><b>~80ms</b><span>filter menus open, down from 200ms</span></li>
-              <li><b>2+ yrs</b><span>designed, shipped and still maintained by me</span></li>
+              <li><b>Hundreds</b><span>of people use it to look up alarm history</span></li>
+              <li><b>2+ yrs</b><span>since the first wireframe in Aug 2024, still maintained by me</span></li>
             </ul>
-            <!-- METRIC NEEDED: How long did a large alarm query take to render/filter on the old site vs. the new one (seconds, or rows handled before the browser stalled)? -->
-            <!-- METRIC NEEDED: Roughly how many engineers use CORE Alarms each week/month? -->
           </div>
           <h3 class="sub-h">Context &amp; my role</h3>
           <div class="prose">
-            <p>My manager, Godfrey, looked for a project where I could put my UI/UX skills to work, and landed on this tool. It queries our alarm database so people can view historical alarm data for a specific site or front-end machine (FE). The rebuild was planned in Angular, but I moved it to React, which I knew best, and wrote the back-end in Node.js. As the sole designer and developer I:</p>
-            <ul>
-              <li>Wireframed the direction for the redesign.</li>
-              <li>Built the site in React, following guidelines from Godfrey and Stephen on my team.</li>
-              <li>Found users to interview about the old site, the redesign and the features they wanted.</li>
-            </ul>
+            <p>My manager, Godfrey, looked for a project where I could use my UI/UX skills, and landed on this tool. I wireframed the direction, built it following guidelines from Godfrey and Stephen on my team, and found users to interview about the old site and what they wanted next.</p>
           </div>
         </section>
 
@@ -447,16 +424,15 @@
           <h2>The problem</h2>
           <div class="problem">
             <span class="mono">The brief</span>
-            <p>"Make it look and feel more modern." I agreed: the old site's visuals were one of my own pain points. But the site already worked, and a fresh coat of paint alone wouldn't help the people using it every day.</p>
+            <p>"Make it look and feel more modern." I agreed, but the site already worked, and a fresh coat of paint alone wouldn't help the people using it every day.</p>
             <span class="mono">The real question</span>
-            <q>How might engineers find the alarms they need in a huge history, quickly and without guesswork?</q>
-            <p>Contextual inquiry showed where the time actually went: waiting on large queries, scanning results that couldn't be sorted or filtered, and guessing what certain columns meant. The visual refresh became the vehicle for fixing those.</p>
+            <q>How might engineers find the alarms they need in a long history, quickly and without guesswork?</q>
+            <p>The visual refresh became the vehicle for fixing how people search and read their results.</p>
             <span class="mono">Constraints</span>
             <ul class="constraints">
-              <li><b>Solo.</b> Sole designer and developer, and out of practice with programming at the start.</li>
+              <li><b>Solo.</b> The only designer and developer, and out of practice with code at the start.</li>
               <li><b>Keep what works.</b> People relied on the old site, so every existing query had to keep working.</li>
-              <li><b>Huge results.</b> A single query can return more data than a browser table comfortably renders.</li>
-              <li><b>Off-the-shelf parts.</b> Chakra UI had no millisecond time picker, and colors came from the Avangrid brand system.</li>
+              <li><b>Two-month window.</b> Queries cover at most two months, but a busy window can still return more rows than a browser table handles comfortably.</li>
             </ul>
           </div>
         </section>
@@ -464,61 +440,53 @@
         <section class="case-sec" data-toc="Process">
           <h2>How I worked</h2>
           <ol class="steps">
-            <li><span class="n">01</span><h3>Listen</h3><p>Asked people who use the tool what slows them down in the old site.</p></li>
-            <li><span class="n">02</span><h3>Wireframe</h3><p>Sketched a softer, more open layout, drawing on other dashboards.</p></li>
-            <li><span class="n">03</span><h3>Rebuild</h3><p>Moved it to React and Node.js with filtering, sorting and validation.</p></li>
-            <li><span class="n">04</span><h3>Test</h3><p>Staged it for users, folded in their feedback, then shipped.</p></li>
+            <li><span class="n">01</span><h3>Listen</h3><p>Asked people who use the tool what slows them down.</p></li>
+            <li><span class="n">02</span><h3>Wireframe</h3><p>A softer, more open layout, drawn from other dashboards.</p></li>
+            <li><span class="n">03</span><h3>Rebuild</h3><p>Rebuilt it with filtering, sorting and validation.</p></li>
+            <li><span class="n">04</span><h3>Test</h3><p>Staged it for users and folded in their feedback.</p></li>
           </ol>
+          <div class="turns">
+            <div class="turn"><span class="mono">Option I rejected</span><h3>A long dropdown of sites</h3><p>The alarm list has 100+ sites. A standard dropdown meant scrolling to find yours, so it became a type-to-filter combobox that works from the keyboard.</p></div>
+            <div class="turn t-fb"><span class="mono">Feedback that changed it</span><h3>Tickets after launch</h3><p>Users asked for alarm attributes the tool didn't show, so I added Reset Category and Category Code, and fixed reported bugs like station numbers not resolving to host names.</p></div>
+          </div>
         </section>
 
         <section class="case-sec" data-toc="Research">
           <h2>Research</h2>
           <div class="prose">
-            <h3>What users told us</h3>
-            <p>Contextual inquiry with people who use the tool surfaced three problems:</p>
+            <p>Contextual inquiry surfaced three problems, each answered in the redesign.</p>
           </div>
-          <ul class="insights">
-            <li>It felt slow, especially when a query returned a large dataset.</li>
-            <li>It lacked proper sorting and filtering.</li>
-            <li>Some things weren't explained, like what certain columns in the data meant.</li>
+          <div class="trace-head" aria-hidden="true"><span>What users told us</span><span></span><span>What changed</span></div>
+          <ul class="trace">
+            <li><span>It felt slow, especially on large results.</span><i aria-hidden="true">→</i><b>A paginated table that renders in chunks, and virtualized filter lists.</b></li>
+            <li><span>It lacked proper sorting and filtering.</span><i aria-hidden="true">→</i><b>Filter by any value in a column, choose columns and sort either way.</b></li>
+            <li><span>Some things weren't explained, like certain columns.</span><i aria-hidden="true">→</i><b>Tooltips such as the optional Tag field, and validation that says what's wrong.</b></li>
           </ul>
           <div class="prose">
-            <h3>Looking at other dashboards</h3>
-            <p>For the visual side, I studied dashboard designs to see which elements I wanted. What stood out were rounder type and buttons for a softer feel, brighter colors, and a less compact layout that feels more open.</p>
+            <p>For the visuals, other dashboards pointed to rounder type and buttons, brighter colors and a more open layout.</p>
           </div>
         </section>
 
-        <section class="case-sec" data-toc="Key features">
-          <h2>Key features</h2>
-          <div class="features">
-            <div><h3>Robust filtering</h3><p>Filter results by any unique value in a column, choose which columns to show, and sort ascending or descending.</p></div>
-            <div><h3>Error validation</h3><p>Clear alerts when a query is incorrect, incomplete, or too large for the browser, with a prompt to export instead.</p></div>
-            <div><h3>Small enhancements</h3><p>Query all sites at once, a tooltip that explains the optional Tag field, and date selectors for quicker, error-free queries.</p></div>
-          </div>
-        </section>
-
-        <section class="case-sec" data-toc="Design details">
-          <h2>Design details</h2>
-          <div class="prose"><p>The interface uses one small visual vocabulary everywhere, defined in a Chakra theme, so new screens and the filter drawer read as part of the same page. I drew the colors from the Avangrid brand system.</p></div>
+        <section class="case-sec" data-toc="Design decisions">
+          <h2>Design decisions</h2>
+          <div class="prose"><p>One small visual vocabulary in a Chakra theme, drawn from the Avangrid brand system.</p></div>
           <div class="swatches"><span><i style="background:#00A443"></i>#00A443 actions</span><span><i style="background:#00402A"></i>#00402A headings</span><span><i style="background:#E8F5EE"></i>#E8F5EE hover</span><span><i style="background:#F1F3F5"></i>#F1F3F5 page</span></div>
           <div class="decisions">
-            <div><h3>Two layouts, remembered</h3><p>Split puts results beside a 290px query panel; Stacked puts a full-width query bar above them. The choice is saved per browser, and the page still works if storage is blocked.</p></div>
-            <div><h3>Searchable site picker</h3><p>The alarm list has 100+ sites, so a long dropdown became a type-to-filter combobox with arrow-key and Enter support.</p></div>
-            <div><h3>Filters that read as inputs</h3><p>Outlined boxes show "Any" or "N selected" and fill green once set, so active filters are visible at a glance.</p></div>
+            <div><h3>Two layouts, remembered</h3><p>Split puts results beside the query panel; Stacked puts a query bar above them. The choice is saved per browser.</p></div>
+            <div><h3>Filters that read as inputs</h3><p>Outlined boxes show "Any" or "N selected" and fill green once set. I shortened their open animation from 200ms to about 80ms, because they get opened over and over.</p></div>
             <div><h3>Results stay on screen</h3><p>Editing the query doesn't clear the table. Only a new search replaces it.</p></div>
-            <div><h3>Editable table view</h3><p>Niche columns are hidden by default, and people can choose which columns matter to them.</p></div>
-            <div><h3>Quick date ranges</h3><p>Chakra has no millisecond time picker, so quick-range buttons sit under the date fields to reduce typing errors.</p></div>
-            <div><h3>Fast menus</h3><p>Menu transitions went from 200ms to about 80ms, because filter menus get opened over and over.</p></div>
-            <div><h3>A fixed table viewport</h3><p>The table scrolls inside a set area instead of stretching the page, and large datasets export to Excel.</p></div>
+            <div><h3>Errors that say what to do</h3><p>A query too large for the browser gets a prompt to export instead.</p></div>
+            <div><h3>Quick date ranges</h3><p>Chakra has no millisecond time picker, so quick-range buttons sit under the date fields to cut typing errors.</p></div>
           </div>
         </section>
 
-        <section class="case-sec" data-toc="Engineering">
-          <h2>Engineering</h2>
-          <div class="prose">
-            <p>The front-end sends query parameters to the Node.js back-end, which assembles the Oracle query and returns results for rendering or export.</p>
-            <p>The hard part was table rendering. Queries can return a huge amount of data, so I paginated the table and processed results in chunks to keep the main thread responsive. Filtering also slowed down as data grew, so I virtualized the filter lists with TanStack. Every option is a fixed 40px tall, with long values truncated and shown in full on hover. That fixed a bug where wrapped options overlapped.</p>
-          </div>
+        <section class="case-sec" data-toc="Tradeoffs">
+          <h2>Tradeoffs under the hood</h2>
+          <ul class="tradeoffs">
+            <li><b>React over the planned Angular.</b> It was what I knew best, so a solo build could move faster.</li>
+            <li><b>Pages and chunks over one long table.</b> Results render a page at a time, so the browser stays responsive.</li>
+            <li><b>Virtualized, fixed-height filter lists.</b> Every option is 40px, truncated with the full value on hover. Long values lose a little visibility, but big lists stay quick and options no longer overlap.</li>
+          </ul>
         </section>
 
         <section class="case-sec" data-toc="Before &amp; after">
@@ -550,48 +518,41 @@
 
         <section class="case-sec" data-toc="Impact">
           <h2>Impact</h2>
-          <div class="trace-head" aria-hidden="true"><span>What users told us</span><span></span><span>What changed</span></div>
-          <ul class="trace">
-            <li><span>It felt slow on large datasets.</span><i aria-hidden="true">→</i><b>Paginated, chunked rendering and virtualized filter lists keep big results responsive.</b></li>
-            <li><span>It lacked proper sorting and filtering.</span><i aria-hidden="true">→</i><b>Filter by any value in a column, choose columns and sort either way.</b></li>
-            <li><span>Some things weren't explained.</span><i aria-hidden="true">→</i><b>Tooltips like the optional Tag field, plus validation that says what's wrong with a query.</b></li>
-          </ul>
-          <h3 class="sub-h">Where it is now (2025 – 2026)</h3>
           <ul class="impact">
-            <li><b>Moved from Oracle to SQL Server.</b> I rewrote the queries and reworked search and export for the new back end.</li>
-            <li><b>Faster with big queries.</b> A server-side row cap, cached site settings, and CSV exports that stream instead of being built in the browser.</li>
-            <li><b>More reliable.</b> The server validates its settings before using them, database names live in config, and unit tests cover filtering, CSV export and validation.</li>
-            <li><b>Driven by user tickets.</b> New alarm attributes (Reset Category and Category Code) and fixes like station numbers not resolving to host names.</li>
+            <li><b>The everyday tool for hundreds of people,</b> who now sort, filter and pick columns instead of scanning raw tables.</li>
+            <li><b>It outlived its database.</b> When the data moved from Oracle to SQL Server, I rewrote the queries and reworked search and export.</li>
+            <li><b>Steadier with big exports.</b> A server-side row cap, and CSV exports that stream instead of being built in the browser.</li>
+            <li><b>More reliable.</b> Validated settings, config instead of hard-coded names, and unit tests for filtering, export and validation.</li>
           </ul>
-          <!-- METRIC NEEDED: How many user tickets / feature requests have been resolved since launch? Any drop in "query too large" failures after the row cap and streamed export? -->
         </section>
 
         <section class="case-sec" data-toc="Reflections">
           <h2>Reflections</h2>
           <div class="takeaway">
-            <div class="prose"><p>This was the first time I carried a project almost entirely on my own. I was out of practice with programming at first, but it came back faster than I expected. I'm grateful Godfrey found a project that matched my interests and gave me free rein with it.</p><p>In the later phase I leaned on generative AI (Claude, ChatGPT, Copilot and Gemini) to plan refactors, review code and track down bugs. It let me take on bigger changes, like the SQL Server move, than I could have handled alone. It still isn't perfect: I keep finding ways to polish the UI and speed up filtering.</p></div>
+            <ol class="lessons">
+              <li><h3>The brief is a starting point</h3><p>I was asked to make it look modern. The value was in sorting, filtering and explaining, and that only surfaced because we asked the people using it.</p><p class="next-time"><b>Next time I'd</b> time a few common lookups before the redesign, so I could show the difference instead of describing it.</p></li>
+              <li><h3>Solo, not alone</h3><p>My first project carried almost entirely by myself. My rusty programming came back faster than expected, and later generative AI (Claude, ChatGPT, Copilot, Gemini) helped me plan refactors and chase bugs, which made the SQL Server move possible.</p><p class="next-time"><b>Next time I'd</b> get another designer's eyes on the UI early. I'm still finding things to polish.</p></li>
+            </ol>
             <div class="printer" aria-label="Takeaways receipt">
           <div class="slot" aria-hidden="true"></div>
           <div class="receipt-clip"><div class="receipt-wrap"><div class="receipt">
             <div class="rc-head"><span class="rc-brand">Aaron Hervey Goods</span><span>Vancouver, WA</span><span>Takeaways receipt</span></div>
             <div class="rc-meta"><span>Order</span><span>Nº 02 · Alarms</span><span>Date</span><span>Feb 2025</span><span>Cashier</span><span>Aaron</span></div>
             <ul class="rc-items">
-              <li><span class="rc-line"><span>First solo project</span><span>1x</span></span><span class="rc-note">Design and build, start to finish.</span></li>
-              <li><span class="rc-line"><span>Programming skills</span><span>Restored</span></span><span class="rc-note">Rusty at first, back up to speed.</span></li>
               <li><span class="rc-line"><span>Free rein</span><span>Thanks, G.</span></span><span class="rc-note">A manager who matched the work to my interests.</span></li>
             </ul>
             <p class="rc-sub">Still on my list</p>
             <ul class="rc-items">
               <li><span class="rc-line"><span>UI polish</span><span>Ongoing</span></span></li>
               <li><span class="rc-line"><span>Faster filtering</span><span>Ongoing</span></span></li>
-              <li><span class="rc-line"><span>Faster Oracle processing</span><span>Ongoing</span></span></li>
+              <li><span class="rc-line"><span>Faster handling of large results</span><span>Ongoing</span></span></li>
             </ul>
             <div class="rc-total"><span class="rc-line"><span>Total</span><span>Shipped</span></span><span class="rc-note">Not perfect, and proud of it anyway.</span></div>
             <div class="rc-foot"><svg class="rc-fish" aria-hidden="true"><use href="#fish"/></svg><span>Returns accepted as new ideas</span><span>Thank you for visiting</span><i class="rc-bars"></i><span>Keep this receipt</span></div>
           </div></div></div>
         </div>
           </div>
-        
+        </section>
       </div>
     </div>
     <a class="next v-butter" href="#mychart"><div><span class="mono">Next variety · Nº 03</span><div class="flavor">MyChart</div></div><span class="arrow" aria-hidden="true">→</span></a>
@@ -627,21 +588,19 @@
           <h2>TL;DR</h2>
           <div class="tldr">
             <div class="tldr-grid">
-              <div><span class="tag t-pain">The pain</span><p>MyChart holds messages, lab results and appointments, but the people we interviewed, mostly 40 or older, got lost in layers of sub-menus, and the dashboard felt random rather than about them.</p></div>
-              <div><span class="tag t-did">What I did</span><p>As lead designer on a class team, I recruited the people we interviewed and turned our research and wireframes into a high-fidelity Figma prototype built around simpler navigation.</p></div>
-              <div><span class="tag t-result">The result</span><p>A clickable prototype built around what we heard: a personal dashboard, fewer nested menus, hospital maps, connected accounts and a first-run tutorial.</p></div>
+              <div><span class="tag t-pain">The pain</span><p>MyChart holds messages, lab results and appointments, but the people we surveyed got lost in layers of sub-menus, and the dashboard felt random rather than about them.</p></div>
+              <div><span class="tag t-did">What I did</span><p>As lead designer on a class team, I recruited the people we surveyed and turned our research and wireframes into a high-fidelity Figma prototype built around simpler navigation.</p></div>
+              <div><span class="tag t-result">The result</span><p>A clickable prototype where each major change traces back to something people told us. We never tested it with users, so below is what I'd test next.</p></div>
             </div>
             <ul class="stats">
-              <li><b>10 wks</b><span>research to high-fidelity prototype</span></li>
-              <li><b>40+</b><span>age of most users we spoke with</span></li>
-              <li><b>5</b><span>core features in the prototype</span></li>
+              <li><b>~10</b><span>people surveyed about how they use the app</span></li>
+              <li><b>10 wks</b><span>from research to high-fidelity prototype</span></li>
+              <li><b>Untested</b><span>no usability test yet; my test plan is in Reflections</span></li>
             </ul>
-            <!-- METRIC NEEDED: How many people did the team interview or survey? -->
-            <!-- METRIC NEEDED: Was the prototype tested with users (e.g. task success or time to find lab results / an appointment, old app vs. prototype)? -->
           </div>
           <h3 class="sub-h">Context &amp; my role</h3>
           <div class="prose">
-            <p>Our class team was asked to redesign an app we already knew. A teammate suggested MyChart, a healthcare app for appointments, lab results and much more. As lead designer, I turned our vision and early prototypes into the high-fidelity design, and recruited the users we interviewed about the app and our ideas.</p>
+            <p>Our class team was asked to redesign an app we already knew, and a teammate suggested MyChart. As lead designer, I turned our vision and early prototypes into the high-fidelity design, and recruited the people we talked to about the app and our ideas.</p>
           </div>
         </section>
 
@@ -650,13 +609,13 @@
           <div class="problem">
             <span class="mono">Key question</span>
             <q>How might patients who rely on MyChart find what they need without getting lost?</q>
-            <p>Interviews pointed to one critical issue: navigation. Layers of sub-menus made it easy to get lost, which hit especially hard because so many of the app's users were older, and some, like the respondent below, depend on it to manage their health. Fixing navigation was also a chance to modernize the design.</p>
+            <p>Our research pointed to one critical issue: navigation. Layers of sub-menus made it easy to get lost, which hit hardest because so many users were older, and some depend on the app to manage their health. Fixing navigation was also a chance to modernize the design.</p>
             <span class="mono">Constraints</span>
             <ul class="constraints">
               <li><b>10 weeks.</b> A single semester, from research to high-fidelity.</li>
               <li><b>One account.</b> Only one of us had MyChart, so we leaned on user feedback and public feature info.</li>
               <li><b>New tools.</b> My first UI/UX project and my first time in Figma.</li>
-              <li><b>Existing brand.</b> Blue was already part of MyChart's identity, so we kept it.</li>
+              <li><b>Existing brand.</b> Blue was already part of MyChart's identity.</li>
             </ul>
           </div>
         </section>
@@ -665,19 +624,23 @@
           <h2>How we worked</h2>
           <ol class="steps">
             <li><span class="n">01</span><h3>Map</h3><p>Listed everything the app already does, from messaging to lab results.</p></li>
-            <li><span class="n">02</span><h3>Interview</h3><p>Ran contextual inquiries to find where people get lost.</p></li>
+            <li><span class="n">02</span><h3>Ask</h3><p>Surveyed about ten people and ran contextual inquiries.</p></li>
             <li><span class="n">03</span><h3>Distill</h3><p>Turned what we heard into a persona, Mark.</p></li>
-            <li><span class="n">04</span><h3>Prototype</h3><p>Went from wireframes to low- and high-fidelity prototypes in Figma.</p></li>
+            <li><span class="n">04</span><h3>Prototype</h3><p>Wireframes, then low- and high-fidelity prototypes in Figma.</p></li>
           </ol>
+          <div class="turns">
+            <div class="turn"><span class="mono">Option we rejected</span><h3>A colorful makeover</h3><p>People said the design didn't appeal to them, and a brighter palette was the obvious fix. We avoided heavy color and stayed mostly white and blue: blue is tied to healthcare and already part of MyChart's brand.</p></div>
+            <div class="turn t-fb"><span class="mono">Feedback that changed it</span><h3>"Tabs, not menus"</h3><p>People told us bottom tabs would beat nested menus. That moved navigation from one fix among many to the center of the redesign: fewer nested levels, with information where people look first.</p></div>
+          </div>
         </section>
 
         <section class="case-sec" data-toc="Research">
           <h2>Research</h2>
           <div class="prose">
-            <p>One of us had an account, so we mapped the app's existing features: direct messaging with providers, lab results as soon as they're available, and an appointment calendar showing when and where to go. Contextual inquiry then told us:</p>
+            <p>Using the one account we had, we mapped the app's features: messaging with providers, lab results as soon as they're ready, and an appointment calendar. Then we asked people how they actually use it:</p>
           </div>
           <ul class="insights">
-            <li>Most users were 40 or older.</li>
+            <li>Most were 40 or older.</li>
             <li>Many found the app hard to navigate and confusing.</li>
             <li>The visual design didn't appeal to them.</li>
             <li>They felt bottom tabs would beat nested menus.</li>
@@ -688,27 +651,29 @@
 
         <section class="case-sec" data-toc="Persona">
           <h2>Meet Mark</h2>
-          <div class="prose"><p>We organized everything from our inquiries into a persona of our typical user: Mark, a 68-year-old retired civil engineer managing a heart condition, who doesn't want to waste the time he has left waiting in line for health information he already knows.</p></div>
+          <div class="prose"><p>We distilled what we heard into a persona: Mark, a 68-year-old retired civil engineer managing a heart condition, who doesn't want to waste his time waiting in line for health information he already knows.</p></div>
           <figure><button class="shot" type="button"><img src="img/mychart_0.webp" alt="Persona sheet for Mark de la Cruz with profile, biography, goals, frustrations and medical experience" loading="lazy" width="1600" height="900" decoding="async"></button><figcaption>Persona: Mark de la Cruz.</figcaption></figure>
         </section>
 
-        <section class="case-sec" data-toc="Key features">
-          <h2>Key features</h2>
-          <div class="features">
-            <div><h3>A dashboard about you</h3><p>Upcoming appointments, recent lab work and visit results, and anything else you'd want at a glance.</p></div>
-            <div><h3>Hospital maps</h3><p>A map of your provider's building, so finding the right room is as easy as finding the right address.</p></div>
-            <div><h3>Simpler navigation</h3><p>Fewer nested menus and information surfaced where people expect it.</p></div>
-            <div><h3>Service integrations</h3><p>Connect accounts from different healthcare providers in one place.</p></div>
-            <div><h3>First-run tutorial</h3><p>A welcome that shows what the app can do and where everything lives, before the next appointment.</p></div>
-          </div>
+        <section class="case-sec" data-toc="Research → design">
+          <h2>From research to design</h2>
+          <div class="prose"><p>Each major change answers something people told us.</p></div>
+          <div class="trace-head" aria-hidden="true"><span>What we heard</span><span></span><span>What we designed</span></div>
+          <ul class="trace">
+            <li><span>It was hard to navigate, and bottom tabs would beat nested menus.</span><i aria-hidden="true">→</i><b>Simpler navigation: fewer nested menus, with information surfaced where people expect it.</b></li>
+            <li><span>The dashboard felt random rather than personal.</span><i aria-hidden="true">→</i><b>A dashboard about you: upcoming appointments, lab work and visit results at a glance.</b></li>
+            <li><span>Many found the app confusing.</span><i aria-hidden="true">→</i><b>A first-run tutorial that shows what the app can do and where everything lives.</b></li>
+            <li><span>The visual design didn't appeal to them.</span><i aria-hidden="true">→</i><b>A calm, minimal white-and-blue look.</b></li>
+          </ul>
+          <div class="prose"><p>Two more features rounded out the prototype: <b>hospital maps</b>, so finding the right room is as easy as finding the right address, and <b>service integrations</b> that connect accounts from different providers in one place.</p></div>
         </section>
 
         <section class="case-sec" data-toc="Visual design">
           <h2>Visual design</h2>
           <div class="prose">
-            <p>We went minimal and modern, mostly white and blue. Blue is closely tied to healthcare and was already part of MyChart's brand. We used simple, professional community resources in Figma and vector avatars for profile images.</p>
+            <p>Minimal and modern, built from simple, professional community resources in Figma, with vector avatars for profile images.</p>
           </div>
-          <div class="figma-frame" data-src="https://www.figma.com/embed?embed_host=share&amp;url=https%3A%2F%2Fwww.figma.com%2Fdesign%2Fq7RuYWyuYlEiKuseegkchy%2FMyChart-Mock-up%3Fnode-id%3D0%253A1%26t%3DSJgsuLsm8kySRytp-1" data-title="MyChart high-fidelity mock-up prototype in Figma">
+<div class="figma-frame" data-src="https://www.figma.com/embed?embed_host=share&amp;url=https%3A%2F%2Fwww.figma.com%2Fdesign%2Fq7RuYWyuYlEiKuseegkchy%2FMyChart-Mock-up%3Fnode-id%3D0%253A1%26t%3DSJgsuLsm8kySRytp-1" data-title="MyChart high-fidelity mock-up prototype in Figma">
               <div class="figma-poster">
                 <span class="mono">Live prototype · Figma</span>
                 <b>MyChart high-fidelity mock-up</b>
@@ -718,43 +683,34 @@
             </div>
         </section>
 
-        <section class="case-sec" data-toc="Research → design">
-          <h2>From research to design</h2>
-          <div class="prose"><p>This was a course project, so it never shipped. What I can show is how directly each design choice traces back to what users told us.</p></div>
-          <div class="trace-head" aria-hidden="true"><span>What we heard</span><span></span><span>What we designed</span></div>
-          <ul class="trace">
-            <li><span>It was hard to navigate, and bottom tabs would beat nested menus.</span><i aria-hidden="true">→</i><b>Simpler navigation: fewer nested menus, with information surfaced where people expect it.</b></li>
-            <li><span>The dashboard felt random rather than personal.</span><i aria-hidden="true">→</i><b>A dashboard about you: appointments, lab work and visit results at a glance.</b></li>
-            <li><span>Many found the app confusing to learn.</span><i aria-hidden="true">→</i><b>A first-run tutorial that shows what the app can do and where everything lives.</b></li>
-            <li><span>The visual design didn't appeal to them.</span><i aria-hidden="true">→</i><b>A calm, minimal white-and-blue look.</b></li>
-          </ul>
-        </section>
-
         <section class="case-sec" data-toc="Reflections">
           <h2>Reflections</h2>
           <div class="takeaway">
-            <div class="prose"><p>This was my first UI/UX project and my first time using Figma. It's where I learned the fundamentals I've built on since.</p><p>Looking back, I'd plan our ten weeks more carefully and hold the screens to a tighter visual standard. Small inconsistencies added up quickly, and that lesson shaped how I work on every project since.</p></div>
+            <ol class="lessons">
+              <li><h3>A prototype isn't proof</h3><p>We never put the prototype in front of users, so I can show that each change answers what people told us, but not that it works better. If I picked it up again, I'd test it against the current app with people like Mark, on three tasks:</p><ul class="test-plan"><li>Find your most recent lab result.</li><li>Find when and where your next appointment is.</li><li>Find the right room using the hospital map.</li></ul><p class="next-time"><b>Next time I'd</b> measure task success and time on both apps, and watch where people hesitate.</p></li>
+              <li><h3>Consistency compounds</h3><p>It was my first UI/UX project and my first time in Figma. Small inconsistencies between screens added up quickly, and I could have managed our ten weeks better.</p><p class="next-time"><b>Next time I'd</b> set up shared styles and components before drawing screens, and plan the semester backward from the deadline.</p></li>
+            </ol>
             <div class="printer" aria-label="Takeaways receipt">
           <div class="slot" aria-hidden="true"></div>
           <div class="receipt-clip"><div class="receipt-wrap"><div class="receipt">
             <div class="rc-head"><span class="rc-brand">Aaron Hervey Goods</span><span>Vancouver, WA</span><span>Takeaways receipt</span></div>
             <div class="rc-meta"><span>Order</span><span>Nº 03 · MyChart</span><span>Date</span><span>Dec 2022</span><span>Cashier</span><span>Aaron</span></div>
             <ul class="rc-items">
-              <li><span class="rc-line"><span>First UI/UX project</span><span>1x</span></span></li>
-              <li><span class="rc-line"><span>Figma</span><span>Learned</span></span><span class="rc-note">First time opening it.</span></li>
-              <li><span class="rc-line"><span>Visual consistency</span><span>Lesson</span></span><span class="rc-note">Small mismatches add up fast.</span></li>
-              <li><span class="rc-line"><span>Time planning</span><span>Lesson</span></span><span class="rc-note">Ten weeks goes quickly.</span></li>
+              <li><span class="rc-line"><span>Contextual inquiry results</span><span>1x</span></span></li>
+              <li><span class="rc-line"><span>Wireframes</span><span>1x</span></span></li>
+              <li><span class="rc-line"><span>Low-fidelity prototype</span><span>1x</span></span></li>
+              <li><span class="rc-line"><span>High-fidelity prototype</span><span>1x</span></span></li>
             </ul>
-            <p class="rc-sub">Taken home</p>
+            <p class="rc-sub">Not included</p>
             <ul class="rc-items">
-              <li><span class="rc-line"><span>Design fundamentals</span><span>Kept</span></span><span class="rc-note">Used on every project since.</span></li>
+              <li><span class="rc-line"><span>Usability testing</span><span>0x</span></span><span class="rc-note">See the test plan.</span></li>
             </ul>
             <div class="rc-total"><span class="rc-line"><span>Total</span><span>Prototype</span></span><span class="rc-note">High-fidelity, in Figma.</span></div>
             <div class="rc-foot"><svg class="rc-fish" aria-hidden="true"><use href="#fish"/></svg><span>Est. 2022: where it started</span><span>Thank you for visiting</span><i class="rc-bars"></i><span>Keep this receipt</span></div>
           </div></div></div>
         </div>
           </div>
-        
+        </section>
       </div>
     </div>
     <a class="next v-green" href="#intune"><div><span class="mono">Next variety · Nº 04</span><div class="flavor">InTune</div></div><span class="arrow" aria-hidden="true">→</span></a>
@@ -780,7 +736,7 @@
     <dl class="glance">
       <div><dt>Role</dt><dd>Lead designer</dd></div>
       <div><dt>Timeline</dt><dd>10 weeks, Jan – May 2023</dd></div>
-      <div><dt>Team</dt><dd>University of Tennessee course team</dd></div>
+      <div><dt>Team</dt><dd>Three designers: me, Holly Sarah Liban and Emma Thomas</dd></div>
       <div><dt>Tools</dt><dd>Figma</dd></div>
     </dl>
     <div class="case-body">
@@ -790,20 +746,19 @@
           <h2>TL;DR</h2>
           <div class="tldr">
             <div class="tldr-grid">
-              <div><span class="tag t-pain">The pain</span><p>Listeners loved Spotify Wrapped and Apple Music Replay, but got real insight into their taste only once a year. Few knew where to find more, and one interviewee resorted to scrolling Twitter search to find fans of the same artists.</p></div>
-              <div><span class="tag t-did">What I did</span><p>As lead designer, I researched what already exists, ran contextual inquiries, designed the logo and built the high-fidelity Figma prototype with my team.</p></div>
-              <div><span class="tag t-result">The result</span><p>A prototype of a year-round listening companion: detailed analytics, artist communities, curated playlists and MySpace-style profiles, shaped by what we heard in interviews.</p></div>
+              <div><span class="tag t-pain">The pain</span><p>Listeners loved Spotify Wrapped and Apple Music Replay, but got real insight into their taste only once a year. Few knew where to find more, and one resorted to scrolling Twitter search to find fans of the same artists.</p></div>
+              <div><span class="tag t-did">What I did</span><p>On a team of three designers, I led the high-fidelity Figma prototype, designed the logo and found references for each page. Together we surveyed listeners and sketched the wireframes.</p></div>
+              <div><span class="tag t-result">The result</span><p>A prototype of a year-round listening companion: detailed analytics, artist communities, curated playlists and MySpace-style profiles, shaped by what we heard.</p></div>
             </div>
             <ul class="stats">
+              <li><b>4</b><span>listeners surveyed about how they track their music</span></li>
+              <li><b>None</b><span>of them had heard of Last.fm, the best-known stats app</span></li>
               <li><b>10 wks</b><span>concept to high-fidelity prototype</span></li>
-              <li><b>4</b><span>existing products reviewed: Spotify, Apple Music, Last.fm, Receiptify</span></li>
-              <li><b>5</b><span>core features in the prototype</span></li>
             </ul>
-            <!-- METRIC NEEDED: How many people were interviewed / surveyed, and how many said they'd use a year-round Wrapped or join an artist community? -->
           </div>
           <h3 class="sub-h">Context &amp; my role</h3>
           <div class="prose">
-            <p>We wanted an app that connects like-minded listeners and serious audiophiles, blending Last.fm-style analytics with Reddit-style communities. As lead designer, I built the high-fidelity prototype, researched potential users and design references for each page, designed the brand logo, and coordinated the wireframes with my team.</p>
+            <p>We wanted an app that connects like-minded listeners and serious audiophiles, blending Last.fm-style analytics with Reddit-style communities. I worked with Holly Sarah Liban and Emma Thomas. As lead designer, I built the high-fidelity prototype, researched potential users and design references, designed the brand logo, and coordinated our wireframes.</p>
           </div>
         </section>
 
@@ -812,7 +767,7 @@
           <div class="problem">
             <span class="mono">Key question</span>
             <q>How might serious listeners see their taste all year, and find the people who share it?</q>
-            <p>Streaming services hand out a recap once a year. Last.fm has deep analytics but almost no social side, and fan-made tools mostly work only with Spotify. Before designing screens, we had to find out whether people actually wanted something in between, and what would keep them coming back beyond the numbers.</p>
+            <p>Streaming services hand out a recap once a year. Last.fm has deep analytics but almost no social side, and fan-made tools mostly work only with Spotify. Before designing screens, we had to find out whether people wanted something in between, and what would keep them coming back beyond the numbers.</p>
             <span class="mono">Constraints</span>
             <ul class="constraints">
               <li><b>10 weeks.</b> One semester for research, wireframes and a high-fidelity prototype.</li>
@@ -826,10 +781,14 @@
           <h2>How we worked</h2>
           <ol class="steps">
             <li><span class="n">01</span><h3>Research</h3><p>Looked at what Spotify, Apple Music and Last.fm already offer.</p></li>
-            <li><span class="n">02</span><h3>Ask</h3><p>Learned how listeners find their stats, and each other.</p></li>
+            <li><span class="n">02</span><h3>Ask</h3><p>Surveyed four listeners about their stats and how they find other fans.</p></li>
             <li><span class="n">03</span><h3>Sketch</h3><p>Hand-drew wireframes for analytics, communities and profiles.</p></li>
             <li><span class="n">04</span><h3>Polish</h3><p>Built the high-fidelity prototype in Figma.</p></li>
           </ol>
+          <div class="turns">
+            <div class="turn"><span class="mono">Option we rejected</span><h3>Stats and nothing else</h3><p>Last.fm already does deep analytics, with almost no social side. Numbers alone give people little reason to come back daily, so we added communities and curated playlists to the core.</p></div>
+            <div class="turn t-fb"><span class="mono">Feedback that changed it</span><h3>The Twitter scroller</h3><p>One person found fans of the same artists by scrolling Twitter search and messaging them. That's why communities are built around a single artist or genre, not general chat.</p></div>
+          </div>
         </section>
 
         <section class="case-sec" data-toc="Research">
@@ -840,29 +799,30 @@
               <li>Spotify offers Wrapped once a year but no detailed analytics on your library.</li>
               <li>Apple Music's Replay updates weekly, but still lacks depth.</li>
               <li>Last.fm has great analytics and almost no social features.</li>
-              <li>Fan-made tools like Receiptify are popular, and most support only Spotify, a sign of how accessible its API is.</li>
+              <li>Fan-made tools like Receiptify are popular, and most support only Spotify.</li>
             </ul>
-            <h3>What people told us</h3>
+            <h3>What the people we surveyed said</h3>
           </div>
           <ul class="insights">
             <li>Most streamed often, and Spotify was the clear favorite.</li>
             <li>Few knew how to find detailed analytics about their listening.</li>
             <li>They loved Wrapped and Replay and wanted something like it year-round.</li>
             <li>Nobody had heard of Last.fm, though they'd seen Receiptify posts.</li>
-            <li>Finding fans of the same artists was hard. One person scrolled Twitter search to find them.</li>
           </ul>
           <blockquote class="pull"><p>"It's not something I ever really thought about, but I'd be interested to see my music tastes and how they change more than just at the end of the year."</p><cite>Survey respondent, 18–20 years old</cite></blockquote>
         </section>
 
-        <section class="case-sec" data-toc="Key features">
-          <h2>Key features</h2>
-          <div class="features">
-            <div><h3>Detailed analytics</h3><p>Continuous tracking by day, week, year or all time, with comparisons like this week versus last and your top genres, artists and albums.</p></div>
-            <div><h3>Communities</h3><p>Spaces around an artist or genre to chat with like-minded listeners about new releases.</p></div>
-            <div><h3>Curated playlists</h3><p>AI-generated recommendations based on your habits and similar listeners, to give people a reason to return.</p></div>
-            <div><h3>Service integrations</h3><p>Connect your favorite streaming service so your history is tracked accurately.</p></div>
-            <div><h3>Profiles</h3><p>An icon, a banner and a favorite track that plays when someone visits, in the spirit of MySpace.</p></div>
-          </div>
+        <section class="case-sec" data-toc="Research → design">
+          <h2>From research to design</h2>
+          <div class="prose"><p>Most core features answer something we heard directly.</p></div>
+          <div class="trace-head" aria-hidden="true"><span>What we heard</span><span></span><span>What we designed</span></div>
+          <ul class="trace">
+            <li><span>They wanted Wrapped and Replay all year round.</span><i aria-hidden="true">→</i><b>Analytics by day, week, year or all time, with this-week-versus-last comparisons.</b></li>
+            <li><span>Few knew how to find detailed stats.</span><i aria-hidden="true">→</i><b>Stats built in: connect a streaming service and your history is tracked for you.</b></li>
+            <li><span>Finding fans of the same artists was hard.</span><i aria-hidden="true">→</i><b>Communities around each artist or genre.</b></li>
+            <li><span>They'd seen people post Receiptify snapshots of their listening.</span><i aria-hidden="true">→</i><b>Profiles with a banner and a favorite track that plays when someone visits, in the spirit of MySpace.</b></li>
+          </ul>
+          <div class="prose"><p>Curated playlists, imagined as AI recommendations from your habits and similar listeners, were our bet on giving people a reason to return.</p></div>
           <div class="gallery">
             <figure><button class="shot" type="button"><img src="img/intune_0.webp" alt="Wireframes for logo screen, service selection and home feed" loading="lazy" width="512" height="320" decoding="async"></button><figcaption>Wireframes: welcome, service picker and home.</figcaption></figure>
             <figure><button class="shot" type="button"><img src="img/intune_1.webp" alt="Wireframes for community, creative and analytics screens" loading="lazy" width="512" height="320" decoding="async"></button><figcaption>Wireframes: communities, creative and analytics.</figcaption></figure>
@@ -872,7 +832,7 @@
         <section class="case-sec" data-toc="Visual design">
           <h2>Visual design</h2>
           <div class="prose">
-            <p>To move quickly, we built on community Figma resources, then shaped them into our own visual direction as wireframes became high-fidelity screens. Next time, I'd design custom icons and vector graphics so the visuals match the vision more closely.</p>
+            <p>To move quickly, we built on community Figma resources: a minimal base with a splash of color on each page, shaped into our own direction as wireframes became high-fidelity screens.</p>
           </div>
           <div class="figma-frame" data-src="https://www.figma.com/embed?embed_host=share&amp;url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FVseYbL1HKa4afr99k7Jiou%2FInTune-High-Fidelity%3Fnode-id%3D0%253A1%26t%3DJBlKy4W2P74Eoz2o-1" data-title="InTune high-fidelity design prototype in Figma">
               <div class="figma-poster">
@@ -884,22 +844,13 @@
             </div>
         </section>
 
-        <section class="case-sec" data-toc="Research → design">
-          <h2>From research to design</h2>
-          <div class="prose"><p>InTune was a course concept, not a shipped app, so its impact lives in the reasoning: most core features answer something we heard directly.</p></div>
-          <div class="trace-head" aria-hidden="true"><span>What we heard</span><span></span><span>What we designed</span></div>
-          <ul class="trace">
-            <li><span>They wanted Wrapped and Replay all year round.</span><i aria-hidden="true">→</i><b>Analytics by day, week, year or all time, with this-week-versus-last comparisons.</b></li>
-            <li><span>Few knew how to find detailed stats.</span><i aria-hidden="true">→</i><b>Stats built in: connect a streaming service and history is tracked for you.</b></li>
-            <li><span>Finding fans of the same artists was hard.</span><i aria-hidden="true">→</i><b>Communities around each artist or genre.</b></li>
-            <li><span>They'd seen people post Receiptify snapshots of their listening.</span><i aria-hidden="true">→</i><b>Profiles with a banner and a favorite track, made to show off your taste.</b></li>
-          </ul>
-        </section>
-
         <section class="case-sec" data-toc="Reflections">
           <h2>Reflections</h2>
           <div class="takeaway">
-            <div class="prose"><p>This was my first major UI/UX project, and it showed me how engaging design can be. Working with people on something we were all passionate about was rewarding, and I kept working on it in my free time.</p></div>
+            <ol class="lessons">
+              <li><h3>Borrowed parts set the look</h3><p>Free community resources got us to high fidelity in ten weeks, but they decided more of the visual style than we did.</p><p class="next-time"><b>Next time I'd</b> design custom icons and vector graphics, so the visuals match the vision.</p></li>
+              <li><h3>Four voices is a start</h3><p>Four listeners were enough to show the gap between a yearly recap and Last.fm, not enough to prove people would switch apps for it. We never tested whether communities would actually bring people back.</p><p class="next-time"><b>Next time I'd</b> survey more widely, then test the community and analytics flows with listeners before polishing.</p></li>
+            </ol>
             <div class="printer" aria-label="Takeaways receipt">
           <div class="slot" aria-hidden="true"></div>
           <div class="receipt-clip"><div class="receipt-wrap"><div class="receipt">
@@ -911,17 +862,17 @@
               <li><span class="rc-line"><span>Figma</span><span>Leveled up</span></span></li>
               <li><span class="rc-line"><span>Free time spent</span><span>Plenty</span></span><span class="rc-note">Kept designing after class.</span></li>
             </ul>
-            <p class="rc-sub">Next time</p>
+            <p class="rc-sub">Made with</p>
             <ul class="rc-items">
-              <li><span class="rc-line"><span>Custom icons</span><span>1x</span></span><span class="rc-note">Instead of community resources.</span></li>
-              <li><span class="rc-line"><span>Custom vector graphics</span><span>1x</span></span><span class="rc-note">So visuals match the vision.</span></li>
+              <li><span class="rc-line"><span>Holly Sarah Liban</span><span>Designer</span></span></li>
+              <li><span class="rc-line"><span>Emma Thomas</span><span>Designer</span></span></li>
             </ul>
             <div class="rc-total"><span class="rc-line"><span>Total</span><span>Higher bar</span></span><span class="rc-note">Meeting it is the reward.</span></div>
             <div class="rc-foot"><svg class="rc-fish" aria-hidden="true"><use href="#fish"/></svg><span>Now playing: whatever you're into</span><span>Thank you for visiting</span><i class="rc-bars"></i><span>Keep this receipt</span></div>
           </div></div></div>
         </div>
           </div>
-        
+        </section>
       </div>
     </div>
     <a class="next v-blue" href="#mew2"><div><span class="mono">Back to the start · Nº 01</span><div class="flavor">MEW2</div></div><span class="arrow" aria-hidden="true">→</span></a>
