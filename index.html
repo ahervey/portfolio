@@ -24,9 +24,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@1,9..144,700..900,0..100,0..1&family=Shrikhand&family=Hanken+Grotesk:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="styles.css?v=202610050958">
-<link rel="stylesheet" href="theme-pastel.css?v=202610050958" id="pastel-css">
-<script>try{if(localStorage.getItem('tin-style')==='classic'){document.getElementById('pastel-css').disabled=true;document.documentElement.dataset.style='classic'}}catch(e){}</script>
+<link rel="stylesheet" href="styles.css?v=202610051614">
+<link rel="stylesheet" href="theme-pastel.css?v=202610051614" id="pastel-css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -53,10 +52,6 @@
 <div class="wrap">
   <nav aria-label="Main">
     <a class="brand" href="#top"><i></i>Aaron Hervey</a>
-    <div class="style-switch" role="group" aria-label="Packaging style">
-      <button type="button" data-style="pastel" aria-pressed="true"><i></i>Pastel</button>
-      <button type="button" data-style="classic" aria-pressed="false"><i></i>Classic</button>
-    </div>
     <div class="nav-links">
       <a href="#work" data-cases="mew2 oracle mychart intune">Work</a>
       <a href="#resume">Résumé</a>
@@ -229,162 +224,10 @@
       <div class="sec-head"><h2><svg class="utensil" aria-hidden="true"><use href="#knife"/></svg>Limited editions</h2><span class="mono">Not yet in stock</span></div>
       <p class="editions-intro">Small-batch side projects, sealed until they're ready.</p>
       <div class="editions">
-        <div class="mini-tin t-pink">
-          <div class="mini-lid"><span class="mono">Small batch</span><b>Poetry</b><span class="mini-sub">Written on the side</span></div>
-          <span class="seal mono">Sealed for now</span>
-        </div>
-        <div class="mini-tin t-mint">
-          <div class="mini-lid"><span class="mono">Small batch</span><b>Game dev</b><span class="mini-sub">Tinkering in progress</span></div>
-          <span class="seal mono">Sealed for now</span>
-        </div>
-        <a class="mini-tin t-open" href="#contact">
-          <div class="mini-lid"><span class="mono">Reserved</span><b>Your team?</b><span class="mini-sub">This spot's open. Let's talk →</span></div>
+        <a class="mini-tin t-pink" href="#intune">
+          <div class="mini-lid"><span class="mono">In development</span><b>InTune</b><span class="mini-sub">Becoming a full app →</span></div>
+          <span class="seal mono">Coming soon</span>
         </a>
-      </div>
-    </section>
-  </div>
-
-  <!-- ===================== MEW2 ===================== -->
-  <article data-view="mew2" data-title="MEW2 Web Interface" hidden>
-    <a class="back-link mono" href="#work">← All work</a>
-    <header class="case-hero v-blue">
-      <span class="mono">Nº 01 · Avangrid Renewables · June – August 2026</span>
-      <div class="flavor">MEW2</div>
-      <h1>A guided interface for editing renewable asset data without writing SQL</h1>
-      <p class="summary">MEW2 sits on top of our SQL Server databases so teams across Avangrid can maintain sites, devices and certificates through forms and a browsable tree instead of raw queries.</p>
-    </header>
-    <dl class="glance">
-      <div><dt>Role</dt><dd>Designer &amp; developer (solo)</dd></div>
-      <div><dt>Timeline</dt><dd>June – August 2026</dd></div>
-      <div><dt>Collaborators</dt><dd>My manager</dd></div>
-      <div><dt>Tools</dt><dd>React, Chakra UI, ASP.NET, Entity Framework, SQL Server</dd></div>
-      <div class="outcome"><dt>Outcome</dt><dd>Launched to our team. It replaces direct SQL edits with a guided interface and is rolling out to more teams.</dd></div>
-    </dl>
-    <div class="case-body">
-      <aside class="toc" aria-label="Contents"><span class="mono">Contents</span></aside>
-      <div>
-        <section class="case-sec" data-toc="Overview">
-          <h2>Overview</h2>
-          <div class="prose">
-            <p>I was asked to build a website that works as an interface to our SQL Server, so people could change the database without touching SQL. The goal was to let several teams across the company maintain and update our renewable inventory and its data themselves.</p>
-            <p>I was both the designer and the developer. I built an ASP.NET back-end that uses Entity Framework to make changes without raw SQL, and a React front-end with four main areas:</p>
-            <ul>
-              <li><b>Farms:</b> our renewable sites and all of their devices.</li>
-              <li><b>Certificates:</b> the certificates tied to each site.</li>
-              <li><b>History:</b> what was created or modified, by whom and when.</li>
-              <li><b>Asset management:</b> forms for creating new devices of each type directly in the database.</li>
-            </ul>
-          </div>
-          <div class="chips"><span>Website</span><span>C# / ASP.NET back-end</span><span>React front-end</span></div>
-          <section class="card recipe-card case-recipe" aria-label="Recipe for MEW2, from scratch">
-            <header><span class="mono">Recipe card · Nº 01</span><h3>MEW2, from scratch</h3></header>
-            <dl class="card-meta"><div><dt>Serves</dt><dd>Teams across Avangrid</dd></div><div><dt>Prep time</dt><dd>3 months</dd></div></dl>
-            <div class="recipe-cols">
-              <div>
-                <h4 class="mono">Ingredients</h4>
-                <ul class="ingredients">
-                  <li><b>1 cup</b> competitive analysis (Dribbble &amp; Contra)</li>
-                  <li><b>2 tbsp</b> manager feedback, every iteration</li>
-                  <li><b>1</b> ASP.NET back-end</li>
-                  <li><b>A splash</b> of Entity Framework</li>
-                  <li>React &amp; Chakra UI, <b>to taste</b></li>
-                  <li><b>2</b> Miller columns, no more</li>
-                </ul>
-              </div>
-              <div>
-                <h4 class="mono">Method</h4>
-                <ol class="method">
-                  <li><b>Study.</b> Compare dashboards that hold lots of nested data.</li>
-                  <li><b>Sketch.</b> A sidebar of sites that opens into their devices.</li>
-                  <li><b>Build.</b> Edits that wait in a pending-changes panel until you commit.</li>
-                  <li><b>Review.</b> Walk each build through with my manager, then iterate.</li>
-                </ol>
-              </div>
-            </div>
-          </section>
-        </section>
-
-        <section class="case-sec" data-toc="The problem">
-          <h2>The problem</h2>
-          <div class="problem">
-            <span class="mono">Key question</span>
-            <q>What's the best way to display and surface this information?</q>
-            <p>Every designer wrestles with how an interface should look, but here the bigger question was how to surface a lot of information so it makes sense to a first-time user. That mattered most on the Farms page, which holds sites, turbines, pads and many other devices.</p>
-          </div>
-        </section>
-
-        <section class="case-sec" data-toc="Research">
-          <h2>Research</h2>
-          <div class="prose">
-            <h3>Competitive analysis</h3>
-            <p>MEW2 is an asset management dashboard, so I started by studying similar dashboards on Dribbble and Contra. I looked at how they organize large amounts of information and how people move between a high-level overview and specific details.</p>
-            <p>One pattern kept coming up: a persistent sidebar for hierarchical navigation. I adapted it so the sidebar lists each site, and clicking a site opens its child items. People can start at the top level and narrow down to exactly what they need without leaving the page or losing context.</p>
-            <h3>Feedback loop</h3>
-            <p>MEW2 was a brand-new tool, so there were no existing users to interview. Instead I reviewed each iteration with my manager, who represented the teams that would use it, and folded his feedback into the next build.</p>
-          </div>
-        </section>
-
-        <section class="case-sec" data-toc="Key features">
-          <h2>Key features</h2>
-          <div class="features">
-            <div><h3>Review before you commit</h3><p>Edits collect in a pending-changes panel. A global indicator shows unsaved work on every tab, and people can review each change, then commit or undo it.</p></div>
-            <div><h3>Miller column navigation</h3><p>Like macOS Finder: sites in the first column, their children in a second, capped at two columns with a back button so the layout never sprawls.</p></div>
-            <div><h3>Validated asset creation</h3><p>One form that changes its fields by asset type, marks required fields, and says clearly whether the asset was created or what still needs fixing.</p></div>
-            <div><h3>History timeline</h3><p>Cards that show what was created or changed, by whom, and when.</p></div>
-            <div><h3>Tabs instead of pages</h3><p>A button group swaps content in place instead of reloading the site, so moving between views feels instant.</p></div>
-            <div><h3>Light and dark mode</h3><p>A toggle so people can match the interface to their environment and preference.</p></div>
-          </div>
-        </section>
-
-        <section class="case-sec" data-toc="Engineering">
-          <h2>Engineering for the interface</h2>
-          <div class="prose">
-            <p>I chose React for the front-end because it was the framework I knew best, which let me move faster on the interface while keeping the server in the .NET stack the team already used.</p>
-            <p>On the server, one thin API controller hands work to a service layer split into small files by job: creation, attribute updates, batch saves, search and the asset catalog. Because the database stores many assets as generic attribute records, I wrote mapping layers that translate between the field names people see and the columns underneath, and convert text input into the right data types before saving.</p>
-            <p>On the front-end, logic lives in custom hooks such as <code>useAssetCatalog</code>, <code>useAttributeEditor</code> and <code>useGlobalSearch</code>. Every server call goes through one API module with shared error handling, retries with backoff and request cancellation, so a slow connection never leaves the UI in a broken state. A global search bar highlights matching text so people can jump straight to an asset.</p>
-          </div>
-          <blockquote class="pull"><p>Small decisions like an input type can quietly damage data. I now think about validation and field types as a UX problem, not just a back-end one.</p><cite>Lesson learned: a zip code field set as a number input was silently dropping leading zeros.</cite></blockquote>
-        </section>
-
-        <section class="case-sec" data-toc="Screens">
-          <h2>Screens</h2>
-          <div class="gallery">
-            <figure class="wide"><button class="shot" type="button"><img src="img/mew2_4.webp" alt="Farm attributes being edited, with a changed field highlighted and a pending-changes badge" loading="lazy" width="1600" height="787" decoding="async"></button><figcaption>Editing a farm. Changed fields are highlighted and the header shows how many edits are waiting to be committed.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/mew2_9.webp" alt="Review pending changes panel comparing old and new values" loading="lazy" width="1600" height="788" decoding="async"></button><figcaption>Reviewing pending changes side by side before committing them in one batch.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/mew2_1.webp" alt="Inspector panel for a server asset" loading="lazy" width="1600" height="788" decoding="async"></button><figcaption>The inspector for a single server, opened from the second column.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/mew2_2.webp" alt="Create a new asset form with asset type options" loading="lazy" width="1600" height="708" decoding="async"></button><figcaption>One creation form that adapts its fields to the asset type.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/mew2_7.webp" alt="Create asset form showing a validation error" loading="lazy" width="1600" height="789" decoding="async"></button><figcaption>Validation explains what's missing before anything reaches the database.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/mew2_3.webp" alt="Activity history showing an updated server with old and new values" loading="lazy" width="1600" height="784" decoding="async"></button><figcaption>Activity history: what changed, who changed it and when.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/mew2_6.webp" alt="Certificates tab with certificate details" loading="lazy" width="1600" height="789" decoding="async"></button><figcaption>The Certificates tab.</figcaption></figure>
-            <figure class="wide"><button class="shot" type="button"><img src="img/mew2_8.webp" alt="MEW2 data explorer in dark mode" loading="lazy" width="1600" height="789" decoding="async"></button><figcaption>Dark mode.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/mew2_0.webp" alt="Empty data explorer prompting to select an asset" loading="lazy" width="1600" height="787" decoding="async"></button><figcaption>The starting state asks you to pick an asset from the sidebar.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/mew2_5.webp" alt="Baffin Bay site attributes" loading="lazy" width="1600" height="706" decoding="async"></button><figcaption>A site's attributes laid out as labeled fields.</figcaption></figure>
-          </div>
-        </section>
-
-        <section class="case-sec" data-toc="Takeaways">
-          <h2>Takeaways</h2>
-          <div class="takeaway">
-            <div class="prose"><p>The tool was needed urgently, so there was no separate prototyping phase. I designed as I built, shipped working versions quickly and iterated on my manager's feedback. I'm proud of how well it surfaces information and explains things people can miss, like what a certificate is or whether a site is solar or wind.</p></div>
-            <div class="printer" aria-label="Takeaways receipt">
-          <div class="slot" aria-hidden="true"></div>
-          <div class="receipt-clip"><div class="receipt-wrap"><div class="receipt">
-            <div class="rc-head"><span class="rc-brand">Aaron Hervey Goods</span><span>Vancouver, WA</span><span>Takeaways receipt</span></div>
-            <div class="rc-meta"><span>Order</span><span>Nº 01 · MEW2</span><span>Date</span><span>Aug 2026</span><span>Cashier</span><span>Aaron</span></div>
-            <ul class="rc-items">
-              <li><span class="rc-line"><span>Entity Framework</span><span>Learned</span></span><span class="rc-note">New to me; the CORE Alarms build gave me a head start.</span></li>
-              <li><span class="rc-line"><span>Design while building</span><span>1x</span></span><span class="rc-note">No time for a prototyping phase, so the build was the prototype.</span></li>
-              <li><span class="rc-line"><span>Feedback loops</span><span>Weekly</span></span><span class="rc-note">Each iteration reviewed with my manager.</span></li>
-            </ul>
-            <p class="rc-sub">Backordered</p>
-            <ul class="rc-items">
-              <li><span class="rc-line"><span>SQL audit table</span><span>Pending</span></span><span class="rc-note">History lives in the browser for now.</span></li>
-              <li><span class="rc-line"><span>Solar pad assets</span><span>Pending</span></span><span class="rc-note">Waiting on the solar and wind teams.</span></li>
-            </ul>
-            <div class="rc-total"><span class="rc-line"><span>Total</span><span>Launched</span></span><span class="rc-note">Rolling out to more teams.</span></div>
-            <div class="rc-foot"><svg class="rc-fish" aria-hidden="true"><use href="#fish"/></svg><span>Next visit: usability tests, more teams, bolder visuals</span><span>Thank you for visiting</span><i class="rc-bars"></i><span>Keep this receipt</span></div>
-          </div></div></div>
-        </div>
           </div>
         
       </div>
@@ -994,16 +837,6 @@
             <div class="skill-group"><b>Other</b><div class="chips"><span>JIRA</span><span>Technical support</span><span>Generative AI</span><span>Prompt engineering</span></div></div>
           </section>
           <section class="r-sec">
-            <h2>References</h2>
-            <div>
-              <div class="ref"><b>John Cawthorne</b><span>Digital Transformation Manager, Avangrid</span></div>
-              <div class="ref"><b>Daniel Madrid</b><span>Senior Software Engineer, Optum</span></div>
-              <div class="ref"><b>Crystal Nussbaum</b><span>Strategic Business Management Executive, Optum</span></div>
-              <div class="ref"><b>Carolyn Hank</b><span>Professor, University of Tennessee</span></div>
-            </div>
-            <p class="muted" style="font-size:15px">Contact details available on request.</p>
-          </section>
-          <section class="r-sec">
             <h2>Elsewhere</h2>
             <div class="r-links">
               <a href="https://www.linkedin.com/in/aahervey" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
@@ -1067,6 +900,6 @@
   <p></p>
 </dialog>
 
-<script src="app.js?v=202610050958"></script>
+<script src="app.js?v=202610051614"></script>
 </body>
 </html>
