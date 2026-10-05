@@ -44,8 +44,11 @@
     }
     const view = views.find(v => v.dataset.view === h);
     if (view && h !== 'home') {
-      show(h);
+      const changed = show(h);
       window.scrollTo(0, 0);
+      // a page that marks its heading focusable takes focus there, so keyboard and screen-reader users start at the top
+      const head = changed && view.querySelector('h1[tabindex="-1"]');
+      if (head) head.focus({ preventScroll: true });
       return;
     }
     if (!homeAnchors.includes(h)) {

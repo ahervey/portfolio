@@ -836,117 +836,104 @@ html.modal-open{overflow:hidden}
 }
 
 /* ---------- about-me page: the back of the tin ---------- */
-/* an open sardine tin holds the photo; "Now cooking" reads like a nutrition panel; "Pairs well with" is a serving
-   suggestion; the route is a shipping line. Sizes come from the scale in type.css. */
-.am{display:grid;gap:clamp(40px,5vw,64px);padding-block:8px 72px}
-.am > .back-link{margin-bottom:-24px;justify-self:start}
-.am-head{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(40px,6vw,88px);align-items:center}
-.am-copy{display:grid;gap:20px;justify-items:start}
+/* one big back-of-pack label: a lot strip, the product name with a round seal portrait, an ingredients panel
+   with its allergen line, a "Now cooking" panel, and the shipping route. Sizes come from the scale in type.css. */
+.am{display:grid;gap:36px;padding-block:8px 72px}
+.am > .back-link{margin-bottom:-18px;justify-self:start}
+.am-label{--pad:clamp(18px,3.4vw,44px);position:relative;background:var(--paper);border:3px solid var(--ink);border-radius:22px;padding:0 var(--pad) clamp(22px,3vw,36px);
+  box-shadow:0 30px 50px -36px rgba(31,42,85,.55)}
+.am-label > *{position:relative}
+/* the lot strip printed along the top edge */
+.am-strip{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 20px;margin-inline:calc(-1 * var(--pad));padding:12px var(--pad);
+  background:var(--ink);color:var(--ground);border-radius:18px 18px 0 0}
+.am-strip span:first-child{color:var(--print-butter)}
+.am-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(28px,5vw,72px);align-items:center;padding-block:clamp(28px,3.4vw,44px);border-bottom:8px solid var(--ink)}
+.am-copy{display:grid;gap:16px;justify-items:start}
 .am-kicker{color:var(--label-accent)}
 .am-title{font-family:var(--f-display);font-style:italic;font-weight:var(--w-loud,800);font-synthesis:none;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72;
   font-size:var(--t-64);line-height:.95;letter-spacing:var(--ls-display,.005em)}
-.am-intro{font-size:var(--t-20);line-height:1.6;color:var(--ink);max-width:32em;text-wrap:pretty}
+.am-title:focus{outline:none}
+.am-title:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+.am-intro{font-size:var(--t-20);line-height:1.6;max-width:34em;text-wrap:pretty}
 
-/* the photo, packed in an open tin: brushed rim, tray, the lid rolled back along the top */
-.am-tin{--rim:linear-gradient(135deg,#f6f8f9 0%,#aab2b8 16%,#eef1f3 32%,#8a949b 50%,#e3e7ea 68%,#98a1a7 86%,#d6dbde 100%);
-  position:relative;margin:0;padding:14px;border-radius:64px/56px;background:var(--rim);rotate:2deg;width:100%;max-width:520px;justify-self:center;
-  box-shadow:inset 0 2px 0 rgba(255,255,255,.85),inset 0 -3px 0 rgba(0,0,0,.22),var(--shadow-tin)}
-.am-tin::before{content:"";position:absolute;left:18%;right:18%;top:-9px;height:20px;border-radius:999px;z-index:1;
-  background:linear-gradient(to bottom,rgba(0,0,0,.3),rgba(0,0,0,0) 30%,rgba(255,255,255,.55) 46%,rgba(255,255,255,0) 60%,rgba(0,0,0,.35)),var(--print-red);
-  box-shadow:0 5px 8px -4px rgba(31,42,85,.45)}
-.am-tray{border-radius:52px/44px;overflow:hidden;box-shadow:0 0 0 2px var(--print-ink);background:var(--print-cream)}
-.am-tray img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:50% 40%}
-/* a round "est." seal stuck over the corner */
-.am-seal{position:absolute;right:-18px;bottom:-22px;z-index:2;width:116px;aspect-ratio:1;border-radius:50%;rotate:-12deg;
-  display:grid;place-content:center;justify-items:center;gap:4px;text-align:center;color:var(--print-ink);background:var(--print-butter);
-  box-shadow:0 0 0 2px var(--print-ink),inset 0 0 0 6px var(--print-butter),inset 0 0 0 7.5px var(--print-ink),0 10px 18px -10px rgba(31,42,85,.6)}
-.am-seal b{font-family:var(--f-display);font-style:italic;font-weight:var(--w-voice,600);font-size:var(--t-20);line-height:1;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72}
-.am-seal .mono{letter-spacing:.06em;line-height:1;color:var(--print-ink)}
+/* the one photo, cropped tight to a round seal on a scalloped butter badge (home shows it full-length on a label) */
+.am-badge{margin:0;display:grid;justify-items:center;gap:10px;rotate:-6deg}
+.am-badge-ring{display:grid;place-items:center;width:208px;aspect-ratio:1;background:var(--print-butter);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50.0 6.0A6.8 6.8 0 0 1 62.4 7.8A6.8 6.8 0 0 1 73.8 13.0A6.8 6.8 0 0 1 83.3 21.2A6.8 6.8 0 0 1 90.0 31.7A6.8 6.8 0 0 1 93.6 43.7A6.8 6.8 0 0 1 93.6 56.3A6.8 6.8 0 0 1 90.0 68.3A6.8 6.8 0 0 1 83.3 78.8A6.8 6.8 0 0 1 73.8 87.0A6.8 6.8 0 0 1 62.4 92.2A6.8 6.8 0 0 1 50.0 94.0A6.8 6.8 0 0 1 37.6 92.2A6.8 6.8 0 0 1 26.2 87.0A6.8 6.8 0 0 1 16.7 78.8A6.8 6.8 0 0 1 10.0 68.3A6.8 6.8 0 0 1 6.4 56.3A6.8 6.8 0 0 1 6.4 43.7A6.8 6.8 0 0 1 10.0 31.7A6.8 6.8 0 0 1 16.7 21.2A6.8 6.8 0 0 1 26.2 13.0A6.8 6.8 0 0 1 37.6 7.8A6.8 6.8 0 0 1 50.0 6.0Z'/%3E%3C/svg%3E") center/contain no-repeat;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50.0 6.0A6.8 6.8 0 0 1 62.4 7.8A6.8 6.8 0 0 1 73.8 13.0A6.8 6.8 0 0 1 83.3 21.2A6.8 6.8 0 0 1 90.0 31.7A6.8 6.8 0 0 1 93.6 43.7A6.8 6.8 0 0 1 93.6 56.3A6.8 6.8 0 0 1 90.0 68.3A6.8 6.8 0 0 1 83.3 78.8A6.8 6.8 0 0 1 73.8 87.0A6.8 6.8 0 0 1 62.4 92.2A6.8 6.8 0 0 1 50.0 94.0A6.8 6.8 0 0 1 37.6 92.2A6.8 6.8 0 0 1 26.2 87.0A6.8 6.8 0 0 1 16.7 78.8A6.8 6.8 0 0 1 10.0 68.3A6.8 6.8 0 0 1 6.4 56.3A6.8 6.8 0 0 1 6.4 43.7A6.8 6.8 0 0 1 10.0 31.7A6.8 6.8 0 0 1 16.7 21.2A6.8 6.8 0 0 1 26.2 13.0A6.8 6.8 0 0 1 37.6 7.8A6.8 6.8 0 0 1 50.0 6.0Z'/%3E%3C/svg%3E") center/contain no-repeat}
+.am-badge-ring img{display:block;width:68%;aspect-ratio:1;object-fit:cover;object-position:50% 34%;border-radius:50%;
+  box-shadow:0 0 0 3px var(--print-ink),0 0 0 7px var(--print-butter),0 0 0 8.5px var(--print-ink)}
+.am-badge figcaption{text-align:center;line-height:1.35;color:var(--label-ink)}
 
-/* the two panels */
-.am-panels{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px;align-items:start}
+/* two panels side by side, split by a hairline like the columns on a real back label */
+.am-panels{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 56px;padding-block:26px 30px;border-bottom:1px solid var(--ink)}
+.am-panels > section + section{position:relative}
+.am-panels > section + section::before{content:"";position:absolute;left:-28px;top:0;bottom:0;border-left:1px solid var(--line)}
 .am-panels h2{font-family:var(--f-display);font-style:italic;font-weight:var(--w-voice,600);font-synthesis:none;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72;
-  font-size:var(--t-28);line-height:1.1;letter-spacing:var(--ls-display,.005em)}
-.am-serving{color:var(--label-ink);margin-top:6px}
+  font-size:var(--t-28);line-height:1.1;letter-spacing:var(--ls-display,.005em);padding-bottom:12px;border-bottom:3px solid var(--ink)}
 .am-panels a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1.5px}
 .am-panels a:hover{text-decoration-color:var(--accent)}
-/* nutrition-panel rules: a heavy bar under the head, hairlines between rows */
-.am-facts{background:var(--paper);border:3px solid var(--ink);border-radius:18px;padding:22px 26px 10px}
-.am-facts .am-serving{padding-bottom:14px;border-bottom:8px solid var(--ink)}
-.am-facts dl{margin:0;display:grid}
-.am-facts dl > div{display:grid;grid-template-columns:8.5em minmax(0,1fr);gap:16px;padding:13px 0;border-bottom:1px solid var(--line);align-items:baseline}
-.am-facts dl > div:last-child{border-bottom:0}
-.am-facts dt{color:var(--label-ink);line-height:1.4}
-.am-facts dd{margin:0;font-size:var(--t-17);line-height:1.5;color:var(--muted);text-wrap:pretty}
-.am-facts dd b{color:var(--ink);font-weight:700}
-/* serving suggestion: a pastel label with a dashed inner edge */
-.am-pairs{position:relative;background:var(--print-green);color:var(--print-ink);border-radius:18px;padding:24px 28px 18px}
-.am-pairs::before{content:"";position:absolute;inset:9px;border:1.5px dashed rgba(31,42,85,.4);border-radius:12px;pointer-events:none}
-.am-pairs > *{position:relative}
-.am-pairs .am-serving{color:rgba(31,42,85,.8);padding-bottom:12px;border-bottom:2px solid var(--print-ink)}
-.am-pairs ul{list-style:none;margin:0;padding:0;display:grid}
-.am-pairs li{padding:13px 0;border-bottom:1px solid rgba(31,42,85,.18);font-size:var(--t-17);line-height:1.5;text-wrap:pretty}
-.am-pairs li:last-child{border-bottom:0}
-.am-pairs li b{font-weight:700}
-.am-pairs li a{font-weight:600;color:#9A3224}
-.am-pairs a:focus-visible{outline-color:var(--print-ink)}
+.am-ingredients ul{list-style:none;margin:0;padding:0;display:grid}
+.am-ingredients li,.am-cooking dl > div{padding:12px 0;border-bottom:1px solid var(--line);font-size:var(--t-17);line-height:1.5;color:var(--muted);text-wrap:pretty}
+.am-ingredients b,.am-cooking dd b{color:var(--ink);font-weight:700}
+.am-ingredients li a{color:var(--label-accent);font-weight:600}
+/* allergen advice: the boxed line every tin carries */
+.am-allergen{margin-top:16px;padding:12px 14px;border:2px solid var(--ink);border-radius:10px;font-size:var(--t-17);line-height:1.5;text-wrap:pretty}
+.am-allergen .mono{color:var(--label-accent);margin-right:6px}
+.am-cooking dl{margin:0;display:grid}
+.am-cooking dl > div{display:grid;grid-template-columns:8.5em minmax(0,1fr);gap:16px;align-items:baseline}
+.am-cooking dl > div:last-child{border-bottom:0}
+.am-cooking dt{color:var(--label-ink);line-height:1.4}
+.am-cooking dd{margin:0}
 
-/* where I have been: four stops on a dashed shipping line, the fish at the current one */
-.am-route{display:grid;gap:18px}
-.am-route h2{color:var(--label-accent)}
-.am-route ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;position:relative}
-.am-route ol::before{content:"";position:absolute;left:7px;right:25%;top:7px;border-top:2px dashed var(--wave,var(--line))}
-.am-route li{position:relative;display:grid;gap:4px;padding-top:30px;align-content:start}
-.am-route li::before{content:"";position:absolute;left:0;top:0;width:16px;height:16px;border-radius:50%;background:var(--ground);box-shadow:inset 0 0 0 2px var(--ink)}
-.am-route li[aria-current]::before{background:var(--accent);box-shadow:inset 0 0 0 2px var(--ink),0 0 0 4px color-mix(in srgb,var(--accent) 25%,transparent)}
-.am-route li b{font-size:var(--t-17);font-weight:700;line-height:1.3}
-.am-route li span{font-size:var(--t-14);line-height:1.4;color:var(--muted)}
+/* shipping route: four stops on a dashed line, the fish at the current one */
+.am-ship{display:grid;gap:18px;padding-top:24px}
+.am-ship h2{color:var(--label-accent)}
+.am-ship ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;position:relative}
+.am-ship ol::before{content:"";position:absolute;left:7px;right:25%;top:7px;border-top:2px dashed var(--wave,var(--line))}
+.am-ship li{position:relative;display:grid;gap:4px;padding-top:30px;align-content:start}
+.am-ship li::before{content:"";position:absolute;left:0;top:0;width:16px;height:16px;border-radius:50%;background:var(--paper);box-shadow:inset 0 0 0 2px var(--ink)}
+.am-ship li[aria-current]::before{background:var(--accent);box-shadow:inset 0 0 0 2px var(--ink),0 0 0 4px color-mix(in srgb,var(--accent) 25%,transparent)}
+.am-ship li b{font-size:var(--t-17);font-weight:700;line-height:1.3}
+.am-ship li span{font-size:var(--t-14);line-height:1.4;color:var(--muted)}
 .am-fish{position:absolute;left:28px;top:-11px;width:46px;height:28px}
 
-/* closing line under a wavy rule */
-.am-close{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 32px;padding-top:32px;position:relative}
-.am-close::before{content:"";position:absolute;top:-6px;left:0;right:0;height:12px;background:var(--wave,var(--line));
-  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='12'%3E%3Cpath d='M0 6 Q7 0 14 6 T28 6' fill='none' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E") left center/28px 12px repeat-x;
-          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='12'%3E%3Cpath d='M0 6 Q7 0 14 6 T28 6' fill='none' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E") left center/28px 12px repeat-x}
-.am-close p{font-size:var(--t-20);line-height:1.45;max-width:30em;text-wrap:pretty}
+/* closing line */
+.am-close{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 32px}
+.am-close p{font-size:var(--t-20);line-height:1.45;text-wrap:pretty}
 .am-close .ctas{padding-top:0}
+
+/* home: the short about links through to this page */
+.more-about{justify-self:start;font-size:var(--t-17);font-weight:600;color:var(--coral-text);text-underline-offset:4px}
 
 /* five items in the phone dock: a little less padding each so the pill keeps clear of the screen edge */
 @media (max-width:600px){.nav-links a{padding:0 11px}}
 @media (max-width:380px){.nav-links a{padding:0 9px}}
-
-/* home: the short about links through to this page */
-.more-about{justify-self:start;margin-top:4px;font-size:var(--t-17);font-weight:600;text-underline-offset:4px}
+/* the hero's turning label is 126% of a 296px tin: at 360 that is wider than the page, so trim it there */
+@media (max-width:380px){.hero .stage::before{width:118%}}
 
 @media (max-width:900px){
-  /* stacked: title, then the photo, then the intro, so the face arrives before the paragraph */
-  .am-head{grid-template-columns:minmax(0,1fr);gap:20px}
-  .am-copy{display:contents}
-  .am-kicker{order:1;justify-self:start}.am-title{order:2}.am-tin{order:3;margin-block:20px 28px}.am-intro{order:4}
-  .am-tin{max-width:440px}
-  .am-panels{grid-template-columns:minmax(0,1fr)}
-  .am-route ol{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}
-  .am-route ol::before{display:none}
+  .am-panels{grid-template-columns:minmax(0,1fr);gap:32px}
+  .am-panels > section + section::before{display:none}
+  .am-ship ol{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}
+  .am-ship ol::before{display:none}
 }
 @media (max-width:720px){
-  .am{gap:40px;padding-bottom:48px}
-  .am > .back-link{margin-bottom:-28px}
+  .am{gap:28px;padding-bottom:48px}
+  .am-head{grid-template-columns:minmax(0,1fr);gap:20px}
+  .am-badge{order:-1;justify-self:start;grid-auto-flow:column;align-items:center;gap:14px;rotate:-4deg}
+  .am-badge-ring{width:132px}
+  .am-badge figcaption{text-align:left}
   .am-title{font-size:var(--t-40)}
   .am-intro,.am-close p{font-size:var(--t-17)}
   .am-panels h2{font-size:var(--t-20)}
-  .am-tin{padding:10px;border-radius:44px/38px;rotate:1.5deg;max-width:340px}
-  .am-tray{border-radius:36px/30px}
-  .am-seal{width:100px;right:-4px;bottom:-20px;gap:3px}
-  .am-seal b{font-size:var(--t-17)}
-  .am-seal .mono{letter-spacing:.02em}
-  .am-facts{padding:18px 18px 6px}
-  .am-facts dl > div{grid-template-columns:minmax(0,1fr);gap:4px}
-  .am-pairs{padding:20px 20px 12px}
+  .am-cooking dl > div{grid-template-columns:minmax(0,1fr);gap:4px}
+  .am-strip span:nth-child(2){display:none}
 }
 @media (max-width:480px){
-  .am-route ol{grid-template-columns:minmax(0,1fr);row-gap:18px}
-  .am-route li{padding:0 0 0 30px}
-  .am-route li::before{top:3px}
-  .am-route ol::before{display:block;left:7px;right:auto;top:10px;bottom:24px;border-top:0;border-left:2px dashed var(--wave,var(--line))}
+  .am-ship ol{grid-template-columns:minmax(0,1fr);row-gap:18px}
+  .am-ship li{padding:0 0 0 30px}
+  .am-ship li::before{top:3px}
+  .am-ship ol::before{display:block;left:7px;right:auto;top:10px;bottom:24px;border-top:0;border-left:2px dashed var(--wave,var(--line))}
   .am-fish{left:auto;right:0;top:-4px}
 }

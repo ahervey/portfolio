@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@1,72,600..800,100,1&family=Hanken+Grotesk:wght@400..800&family=DM+Mono:wght@500&display=swap">
-<link rel="stylesheet" href="styles.css?v=202610060100">
+<link rel="stylesheet" href="styles.css?v=202610060200">
 <link rel="stylesheet" href="theme-pastel.css?v=202610052300">
 <link rel="stylesheet" href="case-visuals.css?v=202610051900">
 <link rel="stylesheet" href="type.css?v=202610052000">
@@ -176,23 +176,12 @@
           <img src="img/aj_tall.webp" alt="Aaron Hervey grinning in glasses and a blue patterned shirt, locs over the shoulders, under a green steel canopy" width="880" height="1100" loading="lazy" decoding="async">
           <figcaption>
             <span class="tl-name">Aaron (AJ) Hervey</span>
-            <span class="tl-route mono">Memphis → Knoxville → Raleigh → Vancouver,&nbsp;WA</span>
           </figcaption>
         </figure>
         <div class="about-copy">
           <p class="pov">I design the tool, then I build it myself, so nothing gets lost in handoff.</p>
           <p class="about">I studied Computer &amp; Information Sciences at the University of Tennessee, mixing UX design with programming. Now I research, design and build the tools Avangrid's engineers use to keep wind and solar sites running.</p>
-          <div class="tin-notes">
-            <h3 class="mono">Ingredients</h3>
-            <ul>
-              <li><b>Interviews before interfaces.</b> In 2020 I surveyed Knoxville businesses on COVID's impact in Qualtrics and presented at the Eureka Conference.</li>
-              <li><b>Two summers at Optum.</b> Teams of four interns, Figma to React and TypeScript: an employee discussion space, then a release-notes hub.</li>
-              <li><b>On call, too.</b> I take shifts triaging our renewable sites, so I see what happens long after handoff.</li>
-              <li><b>Writing myself in.</b> An autoethnography on being queer and Black taught me to stop editing myself out. <a href="#writing">Read&nbsp;it&nbsp;→</a></li>
-            </ul>
-            <p class="may-contain"><span class="mono">May contain</span> poetry, short stories, old Tumblr designs and the video games that got me into programming.</p>
-            <a class="more-about" href="#about-me">More about me&nbsp;→</a>
-          </div>
+          <a class="more-about" href="#about-me">More about me&nbsp;→</a>
         </div>
       </div>
     </section>
@@ -912,53 +901,57 @@
   <article data-view="about-me" data-title="About" hidden>
     <div class="am">
       <a class="back-link mono" href="#top">← Home</a>
-      <header class="am-head">
-        <div class="am-copy">
-          <span class="mono am-kicker"><span class="nw">Back of the tin</span> · <span class="nw">Aaron (AJ) Hervey</span></span>
-          <h1 class="am-title">About me</h1>
-          <p class="am-intro summary">I'm Aaron Hervey, AJ for short, a designer and developer from Memphis, Tennessee. Video games got me into computers, and writing and design were never far behind. At the University of Tennessee I studied UX design and programming side by side, and I still do both. Now I live in Vancouver, Washington, where I design and build internal tools at Avangrid Renewables and take on-call shifts for our wind and solar sites.</p>
+      <div class="am-label">
+        <div class="am-strip mono"><span>Back of the tin</span><span>Lot 0 19 AH 2026</span><span>Packed in Vancouver, WA</span></div>
+
+        <header class="am-head">
+          <div class="am-copy">
+            <span class="mono am-kicker">About · Designer &amp; developer</span>
+            <h1 class="am-title" tabindex="-1">Aaron (AJ) Hervey</h1>
+            <p class="am-intro summary">I'm Aaron, AJ for short, a designer and developer from Memphis, Tennessee. Video games got me into computers, and writing and design were never far behind. Today I'm in Vancouver, Washington, making internal tools at Avangrid Renewables, and I'm looking for UX design and software engineering roles where I can keep doing both.</p>
+          </div>
+          <figure class="am-badge">
+            <span class="am-badge-ring"><img src="img/aj.jpg" alt="Aaron smiling in glasses, locs framing his face" width="660" height="880" decoding="async"></span>
+            <figcaption class="mono">Product of<br>Memphis, TN</figcaption>
+          </figure>
+        </header>
+
+        <div class="am-panels">
+          <section class="am-ingredients" aria-labelledby="am-ing">
+            <h2 id="am-ing">Ingredients</h2>
+            <ul>
+              <li><b>Interviews before interfaces.</b> In 2020 I surveyed Knoxville businesses on COVID's impact in Qualtrics and presented at the Eureka Conference.</li>
+              <li><b>Two summers at Optum.</b> Teams of four interns, Figma to React and TypeScript: an employee discussion space, then a release-notes hub.</li>
+              <li><b>On call, too.</b> I take shifts triaging our renewable sites, so I see what happens long after handoff.</li>
+              <li><b>Writing myself in.</b> An autoethnography on being queer and Black taught me to stop editing myself out. <a href="#writing">Read&nbsp;it&nbsp;→</a></li>
+            </ul>
+            <p class="am-allergen"><span class="mono">May contain</span> poetry, short stories, old Tumblr designs and the video games that got me into programming.</p>
+          </section>
+
+          <section class="am-cooking" aria-labelledby="am-now">
+            <h2 id="am-now">Now cooking</h2>
+            <dl>
+              <div><dt class="mono">At work</dt><dd><a href="#mew2"><b>MEW2</b></a>, a guided way to edit renewable asset data without writing SQL, now rolling out to more teams.</dd></div>
+              <div><dt class="mono">Still tending</dt><dd><a href="#oracle"><b>CORE Alarms</b></a>, the alarm-history site I rebuilt from wireframe to React and Node.js. I still maintain it.</dd></div>
+              <div><dt class="mono">Side project</dt><dd><a href="#intune"><b>InTune</b></a>, a 2023 class concept with Holly Sarah Liban and Emma Thomas that I'm developing into a real app.</dd></div>
+              <div><dt class="mono">Tinkering</dt><dd><b>Game dev</b> side projects, not ready to taste yet.</dd></div>
+            </dl>
+          </section>
         </div>
-        <figure class="am-tin">
-          <div class="am-tray"><img src="img/aj_wide.webp" alt="Aaron smiling in glasses and a blue-and-white patterned shirt, locs over the shoulders, under the green steel beams of a covered walkway" width="960" height="720" decoding="async"></div>
-          <figcaption class="am-seal"><span class="mono">Est.</span><b>Memphis</b><span class="mono">Tennessee</span></figcaption>
-        </figure>
-      </header>
 
-      <div class="am-panels">
-        <section class="am-facts" aria-labelledby="am-now">
-          <h2 id="am-now">Now cooking</h2>
-          <p class="mono am-serving">What I'm working on · 2026</p>
-          <dl>
-            <div><dt class="mono">At work</dt><dd><a href="#mew2"><b>MEW2</b></a>, a guided way to edit renewable asset data without writing SQL, now rolling out to more teams.</dd></div>
-            <div><dt class="mono">Still tending</dt><dd><a href="#oracle"><b>CORE Alarms</b></a>, the alarm-history site I rebuilt from wireframe to React and Node.js. I still maintain it.</dd></div>
-            <div><dt class="mono">After hours</dt><dd><a href="#intune"><b>InTune</b></a>, a 2023 class concept with Holly Sarah Liban and Emma Thomas that I'm developing into a real app.</dd></div>
-            <div><dt class="mono">Tinkering</dt><dd><b>Game dev</b> side projects, not ready to taste yet.</dd></div>
-          </dl>
-        </section>
-
-        <section class="am-pairs" aria-labelledby="am-into">
-          <h2 id="am-into">Pairs well with</h2>
-          <p class="mono am-serving">What I'm into</p>
-          <ul>
-            <li><b>Words.</b> Poetry and short stories came first. After writing my autoethnography, I wanted to be an English major for a while. <a href="#writing">Read&nbsp;it&nbsp;→</a></li>
-            <li><b>Video games.</b> They're why I learned to program, and why I keep tinkering with making my own.</li>
-            <li><b>Making things look right.</b> Before design was my job, it was something I did for fun on my Tumblr blog.</li>
-          </ul>
+        <section class="am-ship" aria-labelledby="am-been">
+          <h2 id="am-been" class="mono">Shipping route</h2>
+          <ol>
+            <li><b>Memphis, TN</b><span>Where I'm from</span></li>
+            <li><b>Knoxville, TN</b><span>University of Tennessee · 2019–23</span></li>
+            <li><b>Raleigh, NC</b><span>Optum internships · 2022, 2023</span></li>
+            <li aria-current="step"><b>Vancouver, WA</b><span>Avangrid Renewables · 2024–now</span><svg class="am-fish" aria-hidden="true"><use href="#fish"/></svg></li>
+          </ol>
         </section>
       </div>
 
-      <section class="am-route" aria-labelledby="am-been">
-        <h2 id="am-been" class="mono">Where I've been</h2>
-        <ol>
-          <li><b>Memphis, TN</b><span>Where I'm from</span></li>
-          <li><b>Knoxville, TN</b><span>University of Tennessee · 2019–23</span></li>
-          <li><b>Raleigh, NC</b><span>Optum internships · 2022, 2023</span></li>
-          <li aria-current="step"><b>Vancouver, WA</b><span>Avangrid Renewables · 2024–now</span><svg class="am-fish" aria-hidden="true"><use href="#fish"/></svg></li>
-        </ol>
-      </section>
-
       <div class="am-close">
-        <p>I'm open to UX design and software engineering roles. The long version is on my résumé.</p>
+        <p>The long version, with dates and tools, is on my résumé.</p>
         <div class="ctas"><a class="btn primary" href="#resume">Read my résumé</a><a class="btn" href="#contact">Get in touch</a></div>
       </div>
     </div>
@@ -1170,6 +1163,6 @@
   <ol class="sheet-list" id="toc-sheet-list"></ol>
 </dialog>
 
-<script src="app.js?v=202610051700"></script>
+<script src="app.js?v=202610060200"></script>
 </body>
 </html>
