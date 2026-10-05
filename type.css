@@ -1,131 +1,147 @@
 /* Type system. Loaded last, so every font declaration on the site resolves here.
 
-   Three faces, three jobs:
-   - Fraunces (italic, soft, wonky, 700 only): the names of things. The home headline, the project
-     names ("flavors"), each page's own title, and one pull question per case study. Nothing else.
-   - Hanken Grotesk (400-800, variable): everything you read or scan. Section headings, h3s,
-     card titles, numbers, the résumé name, the body copy.
-   - DM Mono (400 only): small metadata labels, set quiet and consistent. Never body text.
+   Eight sizes, nothing else: 12 / 14 / 17 / 20 / 28 / 40 / 64 / 92.
+   Roles map onto the steps; small screens remap the roles one step down, never to an off-scale size.
 
-   Scale: ratio 1.2 on a 17px body, rounded (12 / 14 / 17 / 20 / 24 / 29 / 35 / 42 / 51 / 88).
-   The top steps are fluid so phones get a calmer version of the same hierarchy. */
+   Three faces, each with a job:
+   - Fraunces italic (soft, wonky), two registers from one variable file (600-800):
+       800 "loud"  : the home headline and project names only.
+       600 "voice" : page titles, section heads, the about line, the contact line, card titles.
+                     The quieter register keeps the brand voice running down the page.
+   - Hanken Grotesk (variable 400-800): body, h3s, UI, numbers, the résumé name.
+   - DM Mono 500: one label style. 12px, .08em, uppercase, deep ink. Never body text. */
 :root{
   --f-display:"Fraunces","Cooper Black",Georgia,serif;
   --f-body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
   --f-mono:"DM Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
 
-  --fs-meta:12px;                         /* -3  mono labels */
-  --fs-xs:14px;                           /* -2  captions, citations */
-  --fs-sm:15.5px;                         /* -1½ dense card copy */
-  --fs-0:17px;                            /*  0  body */
-  --fs-1:20px;                            /* +1  h3, lead */
-  --fs-lead:clamp(18px,1.4vw,20px);       /* +1  intro paragraphs, fluid */
-  --fs-2:clamp(21px,1.8vw,24px);          /* +2  card titles, pull lines */
-  --fs-3:clamp(24px,2.4vw,29px);          /* +3  h2 inside a page */
-  --fs-4:clamp(28px,3vw,35px);            /* +4  section h2, stat numbers */
-  --fs-5:clamp(34px,4.2vw,51px);          /* +6  big Hanken moments (résumé name, footer) */
-  --fs-name:clamp(28px,2.6vw,35px);       /*     project names on cards */
-  --fs-display:clamp(50px,6.4vw,88px);    /* +11 the one display moment per page */
+  /* the scale */
+  --t-12:12px; --t-14:14px; --t-17:17px; --t-20:20px; --t-28:28px; --t-40:40px; --t-64:64px; --t-92:92px;
 
-  --lh-display:.98; --lh-heading:1.12; --lh-ui:1.3; --lh-body:1.6; --lh-prose:1.72;
-  --ls-display:.005em; --ls-heading:-.022em; --ls-tight:-.03em; --ls-meta:.08em; --ls-chip:.06em;
-  --measure:66ch;
-  /* small coloured labels need a deeper coral than the accent to clear 4.5:1 on the cream grounds */
-  --label-accent:#B03A2C; --label-card:#9A3224;
+  /* roles */
+  --fs-label:var(--t-12);     /* mono labels, chips */
+  --fs-small:var(--t-14);     /* captions, citations, side nav */
+  --fs-lead:var(--t-20);      /* intros, pull lines */
+  --fs-h3:var(--t-20);
+  --fs-h2:var(--t-28);        /* h2 inside a page: always below the page title */
+  --fs-sec:var(--t-40);       /* home section heads, about line */
+  --fs-title:var(--t-40);     /* page titles: case-study h1, résumé name */
+  --fs-name:var(--t-40);      /* project names on cards */
+  --fs-title-xl:var(--t-64);  /* essay title, contact line */
+  --fs-hero:var(--t-92);      /* home headline, case-study project name */
+
+  --w-loud:800; --w-voice:600;
+  --lh-display:.95; --lh-heading:1.1; --lh-ui:1.3; --lh-prose:1.7;
+  --ls-display:.005em; --ls-heading:-.02em; --ls-tight:-.03em; --ls-label:.08em; --ls-chip:.06em;
+  --measure:29em;          /* about 65 characters a line in Hanken (its 0 is wide, so ch overshoots) */
+
+  /* labels: deep ink (~7:1 on the pastel grounds); coloured labels get a deeper coral */
+  --label-ink:color-mix(in srgb,var(--ink) 82%,var(--ground));
+  --label-accent:#A3352A; --label-card:#9A3224;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--label-accent:var(--accent)}}
 :root[data-theme="dark"]{--label-accent:var(--accent)}
+@media (max-width:1100px){:root{--fs-hero:var(--t-64)}}
+@media (max-width:720px){:root{
+  --fs-sec:var(--t-28); --fs-title:var(--t-28); --fs-name:var(--t-28); --fs-title-xl:var(--t-40);
+  --fs-h2:var(--t-20); --fs-h3:var(--t-17); --fs-lead:var(--t-17)}}
+@media (max-width:420px){:root{--fs-hero:var(--t-40)}}
 
-/* ---------- Fraunces: the display moments ---------- */
-.hero h1,.lid-name,.flavor,.problem q,.essay h1,.empty h1,.fold .drop::first-letter{
-  font-family:var(--f-display);font-style:italic;font-weight:700;font-synthesis:none;
+/* ---------- Fraunces 800: the loud register ---------- */
+.hero h1,.lid-name,.flavor,.mini-lid b{
+  font-family:var(--f-display);font-style:italic;font-weight:var(--w-loud);font-synthesis:none;
   font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72;letter-spacing:var(--ls-display)}
-.hero h1{font-size:var(--fs-display);line-height:var(--lh-display)}
-.hero h1 em{font-weight:700}
-.case-hero .flavor,.case-hero:has(> .hero-visual) .flavor{font-size:var(--fs-display);line-height:.92}
+.hero h1{font-size:var(--fs-hero);line-height:var(--lh-display)}
+.hero h1 em{font-weight:var(--w-loud)}
+.lid-name{font-size:var(--t-64);line-height:.92}
+.case-hero .flavor,.case-hero:has(> .hero-visual) .flavor{font-size:var(--fs-hero);line-height:.92}
 .variety .flavor{font-size:var(--fs-name);line-height:1}
-.next .flavor{font-size:var(--fs-5);line-height:1}
-.problem q{font-size:var(--fs-4);line-height:1.15}
-.essay h1{font-size:var(--fs-display);line-height:var(--lh-display)}
-.empty h1{font-size:var(--fs-5);line-height:1.02}
-.fold .drop::first-letter{font-size:64px;line-height:.8}
+.next .flavor{font-size:var(--t-64);line-height:1}
+.mini-lid b{font-size:var(--t-28);line-height:1}
+@media (max-width:720px){.next .flavor{font-size:var(--t-40)}}
 
-/* ---------- Hanken: headings that used to borrow the display face ---------- */
-.pov,.back h2,.slip-intro h1,.slip-logo,.card h3,.fold h2,.extra-title,.rc-brand,.stats b,.steps .n,.mini-lid b,.ingredients b{
+/* ---------- Fraunces 600: the voice register ---------- */
+.sec-head h2,.case-hero h1,.case-hero:has(> .hero-visual) h1,.case-sec > h2,.essay h1,.essay h2,.fold h2,
+.problem q,.pov,.back h2,.empty h1,.card h3,.extra-title,.slip-logo,.fold .drop::first-letter{
+  font-family:var(--f-display);font-style:italic;font-weight:var(--w-voice);font-synthesis:none;
+  font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72;letter-spacing:var(--ls-display);text-transform:none}
+.sec-head h2{font-size:var(--fs-sec);line-height:var(--lh-heading)}
+.case-hero h1,.case-hero:has(> .hero-visual) h1{font-size:var(--fs-title);line-height:1.12;max-width:22ch}
+.case-sec > h2,.essay h2,.fold h2{font-size:var(--fs-h2);line-height:var(--lh-heading)}
+.essay h1{font-size:var(--fs-title-xl);line-height:var(--lh-display)}
+.problem q{font-size:var(--fs-h2);line-height:1.2}
+.pov{font-size:var(--fs-sec);line-height:1.12}
+.back h2{font-size:var(--fs-title-xl);line-height:1}
+.empty h1{font-size:var(--fs-title-xl);line-height:1}
+.card h3,.extra-title{font-size:var(--t-28);line-height:1.05}
+.slip-logo{font-size:var(--t-20);line-height:1}
+.fold .drop::first-letter{font-size:var(--t-64);line-height:.8;font-weight:var(--w-loud)}
+
+/* ---------- Hanken: names, numbers, h3s, UI ---------- */
+.slip-intro h1,.rc-brand,.stats b,.steps .n,.ingredients b,.slip-title b,.tearoff b,.figma-poster b,.result strong{
   font-family:var(--f-body);font-style:normal;font-variation-settings:normal;font-weight:800;letter-spacing:var(--ls-heading)}
-.pov{font-size:var(--fs-4);line-height:1.15;font-weight:700}
-.back h2{font-size:var(--fs-5);line-height:1.02;letter-spacing:var(--ls-tight)}
-.slip-intro h1{font-size:var(--fs-5);line-height:1;letter-spacing:var(--ls-tight)}
-.slip-logo{font-size:var(--fs-2);line-height:1}
-.card h3{font-size:var(--fs-2);line-height:1.1}
-.fold h2{font-size:var(--fs-3);line-height:var(--lh-heading)}
-.extra-title{font-size:var(--fs-2);line-height:1.1}
-.rc-brand{font-size:20px;line-height:1.1;letter-spacing:-.01em}
-.stats b{font-size:var(--fs-4);line-height:1;letter-spacing:var(--ls-tight);font-variant-numeric:tabular-nums}
-.steps .n{font-size:var(--fs-2);line-height:1;letter-spacing:0;font-variant-numeric:tabular-nums}
-.mini-lid b{font-size:var(--fs-3);line-height:1}
-.ingredients b{font-size:var(--fs-0);line-height:28px;font-weight:700;letter-spacing:0}
-
-/* ---------- Hanken: the heading ladder ---------- */
-.sec-head h2{font:800 var(--fs-4)/var(--lh-heading) var(--f-body);letter-spacing:var(--ls-heading)}
-.case-sec > h2,.essay h2{font:800 var(--fs-3)/var(--lh-heading) var(--f-body);letter-spacing:var(--ls-heading)}
-.case-hero h1,.case-hero:has(> .hero-visual) h1{font:700 var(--fs-2)/1.22 var(--f-body);letter-spacing:-.012em}
-.case-sec h3,.role h3,.variety h3,.decisions h3,.features h3{font-family:var(--f-body);font-size:var(--fs-1);line-height:var(--lh-ui);letter-spacing:-.01em}
+.slip-intro h1{font-size:var(--fs-title);line-height:1;letter-spacing:var(--ls-tight)}
+.rc-brand{font-size:var(--t-20);line-height:1.1}
+.stats b{font-size:var(--t-28);line-height:1;letter-spacing:var(--ls-tight);font-variant-numeric:tabular-nums}
+.steps .n{font-size:var(--t-20);line-height:1;letter-spacing:0;font-variant-numeric:tabular-nums}
+.ingredients b{font-size:var(--t-17);line-height:28px;font-weight:700;letter-spacing:0}
+.slip-title b{font-size:var(--t-28)}
+.tearoff b,.figma-poster b,.result strong{font-size:var(--t-20)}
+.case-sec h3,.role h3,.variety h3,.decisions h3,.features h3{font-family:var(--f-body);font-size:var(--fs-h3);line-height:var(--lh-ui);letter-spacing:-.01em}
 .case-sec h3,.role h3{font-weight:700}
-.variety h3{font-weight:500}
-.steps h3{font-size:var(--fs-0)}
-.slip-title b{font-size:var(--fs-3);letter-spacing:-.01em}
-.tearoff b,.figma-poster b{font-size:var(--fs-2);letter-spacing:-.02em}
-.result strong{font-size:var(--fs-1);letter-spacing:-.02em}
-.glance .outcome dd{font-size:var(--fs-0)}
-.pull p{font-size:var(--fs-2);line-height:1.4}
+.variety h3{font-weight:500;font-size:var(--t-20)}
+.steps h3{font-size:var(--t-17)}
+.glance dd,.glance .outcome dd{font-size:var(--t-17)}
+.pull p{font-size:var(--fs-lead);line-height:1.4}
+.banner{font-size:var(--t-12)}
+.btn,.hero .ctas .btn{font-size:var(--t-17)}
+.copy,.toc button,.toc-pill{font-size:var(--t-14)}
+.nav-links a{font-size:var(--t-17)}
+@media (max-width:600px){.nav-links a{font-size:var(--t-14)}}
+@media (max-width:720px){.variety h3{font-size:var(--t-17)}}
 
-/* ---------- body copy: one reading size, one long-form size, a set measure ---------- */
+/* ---------- body copy: three sizes and a measure ---------- */
 .lede,.about,.case-hero .summary,.case-hero:has(> .hero-visual) .summary,.essay .sub,.slip-intro p,.editions-intro,.empty p{font-size:var(--fs-lead);line-height:1.55}
-.case-hero .summary{line-height:var(--lh-body)}
-.essay p,.fold p{font-size:18px;line-height:var(--lh-prose)}
-.prose,.brief,.problem p,.fold p,.impact,.about{max-width:var(--measure)}
-.tldr-grid p,.steps p,.steps li,.decisions p,.constraints li,.trace li > span:first-child,.role ul,.side-block p,.side-block li,.extra-sub,.contains{font-size:var(--fs-sm)}
-figcaption,.pull cite,.stats span,.result span,.mini-sub,.gallery figcaption{font-size:var(--fs-xs)}
+.essay p,.fold p{font-size:var(--t-17);line-height:var(--lh-prose)}
+.prose,.brief,.problem p,.fold p,.essay p,.defn,.impact,.about{max-width:var(--measure)}
+.tldr-grid p,.steps p,.steps li,.decisions p,.constraints li,.trace li > span:first-child,.role ul,.side-block p,.side-block li,
+.extra-sub,.contains,.insights li,.features p,.defn,.ref span,.skill-group b{font-size:var(--t-17)}
+figcaption,.gallery figcaption,.pull cite,.stats span,.result span,.mini-sub,.lb-cap{font-size:var(--fs-small)}
+.extra-go{font-size:var(--t-20)}
+.next .arrow{font-size:var(--t-28)}
 
-/* ---------- DM Mono: small, quiet, uniform ---------- */
-.mono,.sub-h,.case-sec h3.sub-h,.r-sec > h2,.glance dt,.slip-fields dt,.trace-head span,.role time,.card-meta,.steps li::before,.lot{
-  font-family:var(--f-mono);font-size:var(--fs-meta);font-weight:400;letter-spacing:var(--ls-meta);text-transform:uppercase}
-.case-sec h3.sub-h{color:var(--muted);margin-top:10px}
+/* ---------- DM Mono 500: one label style ---------- */
+.mono,.sub-h,.case-sec h3.sub-h,.r-sec > h2,.glance dt,.slip-fields dt,.trace-head span,.role time,.card-meta,.steps li::before,.lot,
+.method-row h3,.status,.tags span,.chips span,.skill-group .chips span,.tag,.hv-tag,.detail-tag,.compare-tag,.seal,.swatches span,
+.hv-bar span,.lid .mono,.mini-lid .mono,.portrait figcaption,.extra .mono,.barcode .mono,.toc-pill-k,.sheet-list button .mono,
+.gallery::before,.lb-cap::after,.sheet-list button[aria-current]::after,.recipe-cols h4,.slip-cols,.fold-head,.slip-foot{
+  font-family:var(--f-mono);font-size:var(--fs-label);font-weight:500;letter-spacing:var(--ls-label);text-transform:uppercase;font-style:normal}
+.tags span,.chips span,.skill-group .chips span,.tag,.hv-tag,.detail-tag,.compare-tag,.seal,.swatches span{letter-spacing:var(--ls-chip)}
+.swatches span{text-transform:none}
 .role time{text-transform:none;letter-spacing:.02em;font-variant-numeric:tabular-nums}
 .glance dt,.slip-fields dt{line-height:1.2}
-/* pills and chips: same size, slightly tighter tracking so they stay on one line */
-.tags span,.chips span,.skill-group .chips span,.tag,.hv-tag,.detail-tag,.compare-tag,.seal,.swatches span{font-family:var(--f-mono);font-size:var(--fs-meta);font-weight:400;letter-spacing:var(--ls-chip)}
-.hv-bar span,.method-row h3,.lid .mono,.mini-lid .mono,.portrait figcaption,.extra .mono,.barcode .mono,.toc-pill-k,.sheet-list button .mono{font-size:var(--fs-meta)}
-.hv-tag{padding-block:3px}
-.hv-pin{font:800 11.5px/20px var(--f-body);letter-spacing:0}
-.gallery::before,.lb-cap::after,.sheet-list button[aria-current]::after{font-size:var(--fs-meta);font-weight:400}
-.compare-tag{font-size:var(--fs-meta)}
-.hv-bar span,.method-row h3{font-weight:400}
-.hv-tag b{font:800 11px/1 var(--f-body)}
+.case-sec h3.sub-h{margin-top:10px}
+/* quiet, but dark: the grey labels move to deep ink */
+.sec-head .mono,.glance dt,.slip-fields dt,.r-sec > h2,.role time,.trace-head span,.case-sec h3.sub-h,.toc .mono,.extra .mono,
+.portrait figcaption,.links > .mono,.fine-print .mono,.status,.slip-foot,.slip-cols,.mono.muted{color:var(--label-ink)}
 .method-row h3,.lot,.tear-here,.figma-poster .mono{color:var(--label-accent)}
 .fold-head,.fold-cta .mono{color:var(--label-card)}
 .mini-lid .mono{opacity:.85}
-.status{font-size:var(--fs-meta)}
-.email code{font-weight:400;font-size:clamp(16px,1.8vw,20px)}
+.hv-tag{padding-block:3px}
+.hv-tag b{font:800 var(--t-12)/1 var(--f-body)}
+.hv-pin{font:800 var(--t-12)/20px var(--f-body);letter-spacing:0}
+.email code{font-weight:500;font-size:var(--t-20)}
 .fold-head > :last-child{white-space:nowrap}
-/* the case-study steps print their own number, so the list counter stays off there */
 .steps li:has(> .n)::before{content:none}
 
-/* the takeaways receipt is a mono object; keep its small print at the label size */
-.rc-head,.rc-meta,.rc-sub,.rc-note,.rc-foot,.rc-foot span:first-child{font-size:var(--fs-meta)}
-.rc-line{font-weight:400}
-.rc-total .rc-line{font-weight:400}
-.stamp{font-weight:400}
+/* the takeaways receipt: a mono object on the same steps */
+.receipt{font-size:var(--t-14)}
+.rc-head,.rc-meta,.rc-sub,.rc-note,.rc-foot,.rc-foot span:first-child{font-size:var(--t-12)}
+.rc-line{font-weight:500}
+.rc-total .rc-line{font-size:var(--t-20);font-weight:500}
+.stamp{font-size:var(--t-14);font-weight:500}
 
-@media (max-width:720px){
-  .stats b{font-size:var(--fs-3)}
-  .steps .n{font-size:var(--fs-1)}
-}
-@media (max-width:480px){
-  /* narrow cards: tighter tracking keeps eyebrows like "Nº 02 · Avangrid Renewables · 2024-25" on one line */
-  .variety > .mono,.next .mono{letter-spacing:.04em}
-}
-@media (max-width:360px){
-  .status{font-size:11.5px;letter-spacing:.04em}
-}
+@media (max-width:480px){.variety > .mono,.next .mono{letter-spacing:.04em}}
+@media (max-width:360px){.status{letter-spacing:.04em}}
+/* one inline style in the résumé markup sets 15px; pull it onto the scale */
+.slip-side p.muted[style]{font-size:var(--t-14)!important}
