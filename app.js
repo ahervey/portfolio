@@ -439,10 +439,17 @@
     addEventListener('hashchange', () => setTimeout(countView, 50));
   }
 
-  /* ---------- limited editions: tap a tin to lift its lid ---------- */
-  document.querySelectorAll('button.ed-tin').forEach(tin => tin.addEventListener('click', () => {
-    tin.setAttribute('aria-expanded', String(tin.getAttribute('aria-expanded') !== 'true'));
-  }));
+  /* ---------- limited editions: opening a tin lifts its lid and shows the back of the tin ---------- */
+  // Notes stay visible without JS; with JS they start hidden so opening a tin reveals them.
+  document.querySelectorAll('button.ed-tin').forEach(tin => {
+    const note = document.getElementById(tin.getAttribute('aria-controls'));
+    if (note) note.hidden = true;
+    tin.addEventListener('click', () => {
+      const open = tin.getAttribute('aria-expanded') !== 'true';
+      tin.setAttribute('aria-expanded', String(open));
+      if (note) note.hidden = !open;
+    });
+  });
 
   route();
 })();

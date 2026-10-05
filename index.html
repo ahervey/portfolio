@@ -175,34 +175,23 @@
     <section class="home-sec" id="about">
       <div class="sec-head"><h2><svg class="utensil" aria-hidden="true"><use href="#spoon"/></svg>What's in the tin</h2><span class="mono">About Aaron</span></div>
       <div class="about-grid">
-        <div class="about-side">
-          <figure class="polaroid">
-            <svg class="clip" viewBox="0 0 28 74" aria-hidden="true"><path d="M8 20V10a6 6 0 0 1 12 0v46a9 9 0 0 1-18 0V18" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>
-            <img src="img/aj_wide.webp" alt="Aaron Hervey smiling in glasses and a blue patterned shirt, under a green steel canopy" width="960" height="720" loading="lazy" decoding="async">
-            <figcaption>Aaron, or AJ</figcaption>
-          </figure>
-          <div class="origin">
-            <h3 class="mono">Point of origin</h3>
-            <ol>
-              <li><b>Memphis, TN</b><span>Where I'm from</span></li>
-              <li><b>Knoxville, TN</b><span>University of Tennessee · 2019–23</span></li>
-              <li><b>Raleigh, NC</b><span>Optum internships · summers 2022 &amp; 2023</span></li>
-              <li><b>Vancouver, WA</b><span>Avangrid Renewables · 2024–now</span></li>
-            </ol>
-          </div>
-        </div>
+        <figure class="tin-label">
+          <img src="img/aj_wide.webp" alt="Aaron Hervey smiling in glasses and a blue patterned shirt, under a green steel canopy" width="960" height="720" loading="lazy" decoding="async">
+          <figcaption>
+            <span class="tl-name">Aaron (AJ) Hervey</span>
+            <span class="tl-route mono">Memphis → Knoxville → Raleigh → Vancouver,&nbsp;WA</span>
+          </figcaption>
+        </figure>
         <div class="about-copy">
           <p class="pov">I design the tool, then I build it myself, so nothing gets lost in handoff.</p>
-          <p class="about">I studied Computer &amp; Information Sciences at the University of Tennessee, mixing UX design with programming. Now I research, design and build the tools engineers at Avangrid use to keep wind and solar sites running. Here's what went into me first.</p>
+          <p class="about">I studied Computer &amp; Information Sciences at the University of Tennessee, mixing UX design with programming. Now I research, design and build the tools engineers at Avangrid use to keep wind and solar sites running.</p>
           <div class="ingredients-label">
-            <div class="il-head"><h3>Ingredients</h3><span class="mono">What went in, roughly in order</span></div>
+            <div class="il-head"><h3>Ingredients</h3><span class="mono">Four that shaped how I work</span></div>
             <ol class="tin-ingredients">
-              <li><span class="mono">First</span><div><b>Video games.</b> They're how I got into computers and programming in the first place, and why game dev is still on my shelf.</div></li>
-              <li><span class="mono">Free time</span><div><b>A Tumblr blog.</b> I wrote short stories and poetry and made designs for my Tumblr long before anyone paid me to design.</div></li>
-              <li><span class="mono">2020</span><div><b>Interviews before interfaces.</b> My first research job had me interviewing Knoxville businesses about COVID's impact. I built the Qualtrics survey and presented the findings at the Eureka Conference.</div></li>
-              <li><span class="mono">2021</span><div><b>Writing myself in.</b> An autoethnography on being queer and Black was the first paper that asked me to write in the first person. I stopped editing myself out of the work. <a href="#writing">Read it&nbsp;→</a></div></li>
-              <li><span class="mono">2022–23</span><div><b>Two summers at Optum.</b> On teams of four interns I designed in Figma, built in React and TypeScript and tested with users: a discussion space for employees, then a hub that gathers release notes in one place.</div></li>
-              <li><span class="mono">Now</span><div><b>On call, too.</b> Besides designing and building, I take shifts in the on-call rotation, triaging issues across our renewable sites. I get to see what happens long after handoff.</div></li>
+              <li><span class="mono">2020 · Knoxville</span><div><b>Interviews before interfaces.</b> My first research job had me interviewing local businesses about COVID's impact. I built the Qualtrics survey and presented the findings at the Eureka Conference.</div></li>
+              <li><span class="mono">2021 · Writing</span><div><b>Writing myself in.</b> An autoethnography on being queer and Black was the first paper that asked me to write in the first person. I stopped editing myself out of the work. <a href="#writing">Read it&nbsp;→</a></div></li>
+              <li><span class="mono">2022–23 · Optum</span><div><b>Two summers, two platforms.</b> On teams of four interns I designed in Figma, built in React and TypeScript and tested with users: a discussion space for employees, then a hub for release notes.</div></li>
+              <li><span class="mono">Now · Avangrid</span><div><b>On call, too.</b> Besides designing and building, I take shifts in the on-call rotation, triaging issues across our renewable sites. I see what happens long after handoff.</div></li>
             </ol>
           </div>
         </div>
@@ -210,42 +199,51 @@
     </section>
     <section class="home-sec" id="editions">
       <div class="sec-head"><h2><svg class="utensil" aria-hidden="true"><use href="#knife"/></svg>Limited editions</h2><span class="mono">Small batch · 3 tins</span></div>
-      <p class="editions-intro">What I'm making off the clock. Tap a tin to lift the lid.</p>
+      <p class="editions-intro">What I'm making off the clock. Open a tin to read the back.</p>
       <div class="editions">
         <article class="ed">
-          <button class="mini-tin ed-tin t-mint" type="button" aria-expanded="false" aria-controls="ed-in-1">
-            <span class="ed-inside" id="ed-in-1"><img src="img/intune_1.webp" alt="Hand-drawn InTune wireframes from 2023" width="512" height="320" loading="lazy" decoding="async"></span>
-            <span class="mini-lid"><span class="mono">Small batch</span><b>InTune</b><span class="mini-sub">A music social app</span></span>
+          <button class="mini-tin ed-tin t-mint" type="button" aria-expanded="false" aria-controls="ed-note-1" aria-label="InTune, now cooking. Open the tin">
+            <span class="ed-inside"><img src="img/intune_1.webp" alt="" width="512" height="320" loading="lazy" decoding="async"></span>
+            <span class="mini-lid"><span class="lid-back"></span><span class="mono">Small batch</span><b>InTune</b><span class="mini-sub">A music social app</span></span>
             <span class="seal mono">Now cooking</span>
           </button>
           <span class="ed-shelf" aria-hidden="true"></span>
-          <div class="ed-note">
-            <span class="mono note-file">intune.txt</span>
-            <p>Started in spring 2023 as a ten-week University of Tennessee project with Holly Sarah Liban and Emma Thomas. As lead designer I ran the research, drew the logo and built the Figma prototype: year-round listening stats, communities around artists, and profiles with a song that plays when someone visits.</p>
-            <p><b>Now:</b> I'm developing it into a real app.</p>
-            <a class="note-link" href="#intune">Read the 2023 case study →</a>
+          <div class="ed-note" id="ed-note-1">
+            <span class="note-head mono"><span>Back of the tin</span><span>Nº 01</span></span>
+            <div class="note-body">
+              <p>Began in spring 2023 as a ten-week University of Tennessee project with Holly Sarah Liban and Emma Thomas. I was lead designer: the research, the logo and the Figma prototype. Under the lid: our hand-drawn wireframes.</p>
+              <p><b>Now:</b> I'm developing it into a real app.</p>
+              <a class="note-link" href="#intune">Read the 2023 case study →</a>
+            </div>
           </div>
         </article>
         <article class="ed">
-          <button class="mini-tin ed-tin t-pink" type="button" aria-expanded="false" aria-controls="ed-in-2">
-            <span class="ed-inside ed-empty" id="ed-in-2"><span class="mono">Still sealed. Check back soon.</span></span>
-            <span class="mini-lid"><span class="mono">Small batch</span><b>Game dev</b><span class="mini-sub">Tinkering in progress</span></span>
+          <button class="mini-tin ed-tin t-pink" type="button" aria-expanded="false" aria-controls="ed-note-2" aria-label="Game dev, sealed for now. Open the tin">
+            <span class="ed-inside ed-text"><b>Tinkering in progress</b><span class="mono">Nothing to taste yet</span></span>
+            <span class="mini-lid"><span class="lid-back"></span><span class="mono">Small batch</span><b>Game dev</b><span class="mini-sub">Side projects</span></span>
             <span class="seal mono">Sealed for now</span>
           </button>
           <span class="ed-shelf" aria-hidden="true"></span>
-          <div class="ed-note">
-            <span class="mono note-file">game-dev.txt</span>
-            <p>Video games are how I got into programming, so game dev is where I go back to play. These are side projects I tinker on, sealed until they're ready to show.</p>
+          <div class="ed-note" id="ed-note-2">
+            <span class="note-head mono"><span>Back of the tin</span><span>Nº 02</span></span>
+            <div class="note-body">
+              <p>Video games are how I got into computers and programming, so game dev is where I go back to play. These are side projects I tinker on, sealed until they're ready to show.</p>
+            </div>
           </div>
         </article>
         <article class="ed">
-          <a class="mini-tin ed-tin t-open" href="#contact">
-            <span class="mini-lid"><span class="mono">Reserved</span><b>Your team?</b><span class="mini-sub">This spot's open. Let's talk →</span></span>
-          </a>
+          <button class="mini-tin ed-tin t-blue" type="button" aria-expanded="false" aria-controls="ed-note-3" aria-label="Your team? Reserved. Open the tin">
+            <span class="ed-inside ed-text"><b>Room for one more</b><span class="mono">Your project here</span></span>
+            <span class="mini-lid"><span class="lid-back"></span><span class="mono">Reserved</span><b>Your team?</b><span class="mini-sub">This spot's open</span></span>
+            <span class="seal mono">Reserved</span>
+          </button>
           <span class="ed-shelf" aria-hidden="true"></span>
-          <div class="ed-note">
-            <span class="mono note-file">reserved.txt</span>
-            <p>The shelf has room. I'm looking for UX design and software engineering roles where I can design for real users and build the result myself.</p>
+          <div class="ed-note" id="ed-note-3">
+            <span class="note-head mono"><span>Back of the tin</span><span>Nº 03</span></span>
+            <div class="note-body">
+              <p>The shelf has room. I'm looking for UX design and software engineering roles where I can design for real users and build the result myself.</p>
+              <a class="note-link" href="#contact">Let's talk →</a>
+            </div>
           </div>
         </article>
       </div>
