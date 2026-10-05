@@ -146,27 +146,6 @@
     hero.addEventListener('pointerleave', () => { tin.style.setProperty('--tx', '0deg'); tin.style.setProperty('--ty', '0deg'); });
   }
 
-  /* ---------- packaging style switch: pastel (default) or classic ---------- */
-  const pastelCss = document.getElementById('pastel-css');
-  const styleBtns = [...document.querySelectorAll('.style-switch button')];
-  function applyStyle(style) {
-    pastelCss.disabled = style === 'classic';
-    document.documentElement.dataset.style = style;
-    styleBtns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.style === style)));
-    try { localStorage.setItem('tin-style', style); } catch (e) {}
-  }
-  applyStyle(document.documentElement.dataset.style === 'classic' ? 'classic' : 'pastel');
-  styleBtns.forEach(b => b.addEventListener('click', () => {
-    const style = b.dataset.style;
-    if (style === document.documentElement.dataset.style) return;
-    const r = stage.getBoundingClientRect();
-    const tinInView = current === 'home' && r.bottom > 0 && r.top < innerHeight;
-    if (reduce || !tinInView || p < .5) return applyStyle(style);
-    // close the lid, swap the label, open it again
-    animateTo(0, 450);
-    setTimeout(() => { applyStyle(style); animateTo(1, 900); }, 500);
-  }));
-
   /* ---------- case study contents: built from each section's heading ---------- */
   let tocObserver = null;
   function setupToc(name) {
