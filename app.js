@@ -35,8 +35,14 @@
     return true;
   }
 
+  // a sardine's exit animation delays its navigation; any other navigation in the meantime wins
+  let pendingNav = null;
   function route() {
-    const h = decodeURIComponent(location.hash.slice(1)) || 'top';
+    pendingNav = null;
+    // the boot style in <head> painted the routed page before this script ran; from here the router owns it
+    document.getElementById('route-boot')?.remove();
+    let h;
+    try { h = decodeURIComponent(location.hash.slice(1)) || 'top'; } catch { h = location.hash.slice(1); }
     if (h === 'contact') {
       if (!current) show('home');
       document.getElementById('contact').scrollIntoView();
@@ -192,7 +198,17 @@
     const dir = a.parentElement.classList.contains('flip') ? -1 : 1;
     const anim = a.animate([{ translate: '0 0', rotate: '0deg' }, { translate: `${-dir * 4}% -6%`, rotate: `${-dir * 3}deg`, offset: .3 }, { translate: `${dir * 70}% -14%`, rotate: `${dir * 6}deg`, opacity: 0 }],
       { duration: 340, easing: 'cubic-bezier(.5,0,.75,0)', fill: 'forwards' });
-    anim.onfinish = () => { location.hash = a.getAttribute('href'); setTimeout(() => anim.cancel(), 120); };
+    // navigate when the fish has left, or after 450 ms if the animation never finishes (hidden tab, cancelled);
+    // if anything else navigated meanwhile (a nav tap, back), that navigation stands
+    const href = a.getAttribute('href'), from = location.hash, token = pendingNav = {};
+    const go = () => {
+      if (pendingNav !== token) return;
+      pendingNav = null;
+      if (location.hash === from) location.hash = href;
+      setTimeout(() => anim.cancel(), 120);
+    };
+    anim.finished.then(go, go);
+    setTimeout(go, 450);
   }));
 
   if (!reduce && matchMedia('(hover: hover)').matches) {

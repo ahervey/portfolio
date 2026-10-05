@@ -1,28 +1,32 @@
 /* Aj Hervey portfolio
    Layout: packaging metaphor. Home = the tin + "varieties" (projects); each case study opens
    like a product label (flavor name, at-a-glance panel, method); the footer is the back of the pack. */
+/* The tokens carry the pastel palette (the only theme), so if theme-pastel.css or type.css fails to load
+   the page still comes up pastel with navy ink, never the old blue "classic" look. */
 :root{
-  --ground:#E6ECF0; --paper:#F7F9FA; --ink:#121A2B; --muted:#56617A; --line:rgba(18,26,43,.14);
-  --accent:#2340C8;
+  --ground:#FBF0EC; --paper:#FFFAF5; --ink:#1F2A55; --muted:#5E6589; --line:rgba(31,42,85,.14);
+  --accent:#E2574C; --wave:rgba(31,42,85,.28);
   /* print colours live on their own surfaces, so they stay fixed in both themes */
-  --print-blue:#1F37B5; --print-red:#B3301C; --print-butter:#F5C842; --print-cream:#FFF6DC; --print-ink:#121A2B; --print-green:#17694F;
-  --f-display:"Shrikhand","Cooper Black",Georgia,serif;
+  --print-blue:#BCD8F0; --print-red:#F7BDB6; --print-butter:#FBE29A; --print-green:#BFE3CC; --print-lilac:#D9CEF3;
+  --print-cream:#FFFAF2; --print-ink:#1F2A55; --print-coral:#E2574C;
+  /* Hanken sits second so the arrows DM Mono and Fraunces lack come from Hanken, not a system font */
+  --f-display:"Fraunces","Hanken Grotesk","Cooper Black",Georgia,serif;
   --f-body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --f-mono:"DM Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
-  --shadow-tin:0 40px 70px -28px rgba(18,26,43,.55),0 14px 24px -12px rgba(18,26,43,.35);
+  --f-mono:"DM Mono","Hanken Grotesk",ui-monospace,"Cascadia Mono",Consolas,monospace;
+  --shadow-tin:0 40px 70px -28px rgba(31,42,85,.45),0 14px 24px -12px rgba(31,42,85,.3);
   --shadow-shot:0 24px 44px -26px rgba(18,26,43,.5);
   /* mascot fish */
   --fish-body:var(--print-red); --fish-belly:var(--print-cream); --fish-fin:var(--print-butter); --fish-line:var(--print-ink);
   /* paper objects (recipe cards, packing slip stamps) */
-  --shelf:#B98E62; --shelf-top:#D7B48B; --card-paper:#FFFDF6; --card-ink:#2A2A35; --card-rule:#BCD0E8; --card-margin:#C0452F; --stamp:#C8452F;
+  --shelf:#E3CFC6; --shelf-top:#F1E3DC; --card-paper:#FFFDF6; --card-ink:#2A2A35; --card-rule:#BCD0E8; --card-margin:#C0452F; --stamp:#E2574C;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --ground:#0C1221; --paper:#141C2F; --ink:#E8ECF4; --muted:#9BA6BF; --line:rgba(232,236,244,.14);
-  --accent:#8EA0FF; --shadow-tin:0 40px 70px -28px rgba(0,0,0,.8),0 14px 24px -12px rgba(0,0,0,.6);
+  --ground:#141A33; --paper:#1D2444; --ink:#F4EFEA; --muted:#AEB3CF; --line:rgba(244,239,234,.14);
+  --accent:#FF9C8F; --wave:rgba(244,239,234,.3); --shadow-tin:0 40px 70px -28px rgba(0,0,0,.8),0 14px 24px -12px rgba(0,0,0,.6);
   --shadow-shot:0 24px 44px -26px rgba(0,0,0,.8); color-scheme:dark}}
 :root[data-theme="dark"]{
-  --ground:#0C1221; --paper:#141C2F; --ink:#E8ECF4; --muted:#9BA6BF; --line:rgba(232,236,244,.14);
-  --accent:#8EA0FF; --shadow-tin:0 40px 70px -28px rgba(0,0,0,.8),0 14px 24px -12px rgba(0,0,0,.6);
+  --ground:#141A33; --paper:#1D2444; --ink:#F4EFEA; --muted:#AEB3CF; --line:rgba(244,239,234,.14);
+  --accent:#FF9C8F; --wave:rgba(244,239,234,.3); --shadow-tin:0 40px 70px -28px rgba(0,0,0,.8),0 14px 24px -12px rgba(0,0,0,.6);
   --shadow-shot:0 24px 44px -26px rgba(0,0,0,.8); color-scheme:dark}
 
 *{box-sizing:border-box}
