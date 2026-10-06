@@ -19,15 +19,17 @@
   --fish-body:var(--print-red); --fish-belly:var(--print-cream); --fish-fin:var(--print-butter); --fish-line:var(--print-ink);
   /* paper objects (recipe cards, packing slip stamps) */
   --shelf:#E3CFC6; --shelf-top:#F1E3DC; --card-paper:#FFFDF6; --card-ink:#2A2A35; --card-rule:#BCD0E8; --card-margin:#C0452F; --stamp:#E2574C;
+  /* graph-paper ground: a faint grid so the printed objects sit on something */
+  --grid:rgba(31,42,85,.055);
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --ground:#141A33; --paper:#1D2444; --ink:#F4EFEA; --muted:#AEB3CF; --line:rgba(244,239,234,.14);
   --accent:#FF9C8F; --wave:rgba(244,239,234,.3); --shadow-tin:0 40px 70px -28px rgba(0,0,0,.8),0 14px 24px -12px rgba(0,0,0,.6);
-  --shadow-shot:0 24px 44px -26px rgba(0,0,0,.8); color-scheme:dark}}
+  --shadow-shot:0 24px 44px -26px rgba(0,0,0,.8); color-scheme:dark; --grid:rgba(244,239,234,.04)}}
 :root[data-theme="dark"]{
   --ground:#141A33; --paper:#1D2444; --ink:#F4EFEA; --muted:#AEB3CF; --line:rgba(244,239,234,.14);
   --accent:#FF9C8F; --wave:rgba(244,239,234,.3); --shadow-tin:0 40px 70px -28px rgba(0,0,0,.8),0 14px 24px -12px rgba(0,0,0,.6);
-  --shadow-shot:0 24px 44px -26px rgba(0,0,0,.8); color-scheme:dark}
+  --shadow-shot:0 24px 44px -26px rgba(0,0,0,.8); color-scheme:dark; --grid:rgba(244,239,234,.04)}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
