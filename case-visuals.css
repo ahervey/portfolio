@@ -401,8 +401,6 @@
 .case-sec .stats.loose b{font-size:var(--t-28)}
 .out-row{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px;align-items:start}
 .out-row .impact{max-width:none}
-[data-view="mew2"] .case-sec,[data-view="oracle"] .case-sec{padding-block:36px}
-[data-view="mew2"] .case-sec:first-child,[data-view="oracle"] .case-sec:first-child{padding-top:0}
 
 @media (max-width:860px){
   .dec{grid-template-columns:minmax(0,1fr);gap:16px}
@@ -430,7 +428,7 @@
   .compare-big .compare{aspect-ratio:1/1}
   .compare-big .compare img{height:100%;object-fit:cover;object-position:left top}
   .cons-row li{font-size:var(--t-12);padding:6px 11px}
-  [data-view="mew2"] .case-sec,[data-view="oracle"] .case-sec{padding-block:26px}
+  .case-sec{padding-block:26px}
   .problem .trace li{padding:10px 14px;gap:2px}
   .problem .trace li > i{display:none}
   .problem .trace li > span:first-child{font-size:var(--t-14)}
