@@ -179,7 +179,7 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:16px;paddi
 .case-hero .summary{font-size:19px;max-width:56ch;opacity:.9}
 .case-hero .hero-shot{margin-top:14px}
 /* case hero: copy beside a framed screenshot of the shipped work */
-.case-hero{grid-template-columns:minmax(0,1fr);gap:clamp(28px,4vw,44px);padding-bottom:0;overflow:hidden}
+.case-hero{grid-template-columns:minmax(0,1fr);gap:clamp(24px,3vw,32px);padding-bottom:0;padding-top:clamp(28px,3.6vw,44px);overflow:hidden}
 .case-hero-text{grid-template-columns:minmax(0,1fr)}
 @media (min-width:1000px){
   .case-hero-text{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);column-gap:48px;row-gap:14px;align-items:end}
@@ -189,7 +189,7 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:16px;paddi
 .case-hero-text{display:grid;gap:18px;align-content:center;min-width:0}
 .eyebrow{display:grid;gap:4px}
 .case-hero h1{overflow-wrap:break-word;hyphens:manual}
-.case-hero .flavor{font-size:clamp(56px,7.4vw,100px)}
+.case-hero .flavor{font-size:clamp(56px,6.4vw,88px)}
 .case-hero h1{font-size:clamp(24px,3vw,38px);max-width:26ch}
 .case-hero .summary{font-size:18px}
 .hero-shot{margin:0 auto clamp(28px,4vw,44px);width:100%;max-width:1040px;transition:transform .3s ease}
