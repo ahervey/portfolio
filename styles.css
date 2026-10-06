@@ -207,7 +207,7 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:16px;paddi
 
 /* varieties (project cards) */
 .varieties{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
-/* the writing sample and résumé, as one quiet line under the cards (phones have them in the dock) */
+/* the résumé, as one quiet line under the cards (phones have it in the dock) */
 .also{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 28px;margin:36px 0 0;color:var(--label-ink)}
 .also a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--line);padding-bottom:2px;transition:border-color .2s ease}
 .also a:hover{border-color:var(--accent)}
@@ -396,13 +396,6 @@ figcaption{font-size:14px;color:var(--muted);line-height:1.45}
 .r-links a{display:flex;justify-content:space-between;text-decoration:none;font-weight:600;padding-block:8px;border-bottom:1px solid var(--line)}
 .r-links a span{color:var(--muted)}
 
-/* ---------- writing ---------- */
-.essay{max-width:720px;margin-inline:auto;padding-block:24px 72px;display:grid;gap:22px}
-.essay h1{font:400 clamp(27px,7.2vw,84px)/.95 var(--f-display);overflow-wrap:anywhere}
-.essay .sub{font-size:20px;color:var(--muted)}
-.essay h2{font:800 28px/1.15 var(--f-body);letter-spacing:-.02em;margin-top:26px}
-.essay p{font-size:18px;line-height:1.75}
-
 /* ---------- mascot fish + utensil icons ---------- */
 .sprite{position:absolute;width:0;height:0;overflow:hidden}
 .utensil{width:30px;height:30px;color:var(--accent);flex:none}
@@ -432,25 +425,6 @@ figcaption{font-size:14px;color:var(--muted);line-height:1.45}
 .method li{counter-increment:step;position:relative;padding-left:24px}
 .method li::before{content:counter(step) ".";position:absolute;left:0;top:0;font:500 13px/28px var(--f-mono);color:var(--card-margin)}
 
-/* ---------- writing: a folded leaflet that unfolds ---------- */
-.leaflet{display:grid;perspective:1800px;margin-top:10px}
-.fold{position:relative;background:var(--card-paper);color:var(--card-ink);padding:28px clamp(20px,5vw,52px) 34px;display:grid;gap:16px;transform-origin:top center;box-shadow:0 22px 26px -24px rgba(18,26,43,.45)}
-.fold:first-child{border-radius:6px 6px 0 0}
-.fold:last-child{border-radius:0 0 6px 6px}
-.fold:nth-child(odd){background-image:linear-gradient(to bottom,rgba(255,255,255,.7),transparent 22%,transparent 78%,rgba(0,0,0,.05))}
-.fold:nth-child(even){background-image:linear-gradient(to bottom,rgba(0,0,0,.06),transparent 26%,transparent 82%,rgba(255,255,255,.5))}
-.fold + .fold{border-top:1px dashed rgba(42,42,53,.2)}
-.fold-head{display:flex;justify-content:space-between;gap:12px;font-size:11px;color:var(--card-margin);padding-bottom:8px;border-bottom:1px solid rgba(42,42,53,.12)}
-.fold h2{font:400 clamp(26px,3.6vw,36px)/1.05 var(--f-display);color:var(--card-ink);margin:0}
-.fold p{font-size:18px;line-height:1.75;max-width:64ch}
-.fold .drop::first-letter{font:400 64px/.8 var(--f-display);float:left;padding:8px 10px 0 0;color:var(--card-margin)}
-.defn{border-left:3px solid var(--card-margin);padding:4px 0 4px 16px;font-size:16px;line-height:1.55;color:rgba(42,42,53,.85)}
-.defn b{font-weight:700;letter-spacing:.02em}
-.fold-cta{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:14px;border-top:1px dashed rgba(42,42,53,.2)}
-.fold-cta .mono{color:var(--card-margin)}
-.fold .btn.primary{background:var(--card-ink);color:var(--card-paper);border-color:var(--card-ink)}
-.leaflet.unfold .fold{animation:unfold .75s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i) * .16s)}
-@keyframes unfold{from{transform:rotateX(-75deg);opacity:.15}to{transform:none;opacity:1}}
 /* ---------- résumé: packing slip ---------- */
 .slip{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:clamp(20px,4vw,48px);margin-block:8px 64px;
   box-shadow:0 30px 50px -36px rgba(18,26,43,.5);position:relative}
@@ -871,7 +845,7 @@ html.modal-open{overflow:hidden}
   .lb-cap{padding-inline:68px;font-size:14px;min-height:58px}
 }
 @media (hover:none){.lb-cap::after{content:"Tap the image to zoom · swipe for the next one"}}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}.tin,.sardine a,.sd-eye,.sd-tail,.pull-ring svg,.stage::before{animation:none!important}.bubble{display:none}.leaflet.unfold .fold,.toc-sheet[open]{animation:none}html{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.tin,.sardine a,.sd-eye,.sd-tail,.pull-ring svg,.stage::before{animation:none!important}.bubble{display:none}.toc-sheet[open]{animation:none}html{scroll-behavior:auto}}
 /* the big .n numeral already labels each step; drop the older counter so the grid keeps two columns */
 .steps li::before{content:none;display:none}
 @media (max-width:720px){
@@ -882,19 +856,21 @@ html.modal-open{overflow:hidden}
 /* home: the short about links through to this page */
 .more-about{justify-self:start;font-size:var(--t-17);font-weight:600;color:var(--coral-text);text-underline-offset:4px}
 
-/* five items in the phone dock: a little less padding each so the pill keeps clear of the screen edge */
-@media (max-width:600px){.nav-links a{padding:0 11px}}
-@media (max-width:380px){.nav-links a{padding:0 9px}}
+/* four items in the phone dock, each the same width so the pill reads as one even row of tabs */
+@media (max-width:600px){.nav-links{display:grid;grid-auto-flow:column;grid-auto-columns:1fr}.nav-links a{justify-content:center;min-width:76px;padding:0 14px}}
+@media (max-width:380px){.nav-links a{min-width:70px;padding:0 10px}}
 /* the hero's turning label is 126% of a 296px tin: at 360 that is wider than the page, so trim it there */
 @media (max-width:380px){.hero .stage::before{width:118%}}
 
 /* ---------- about-me pantry ---------- */
-/* The about page is a pantry cabinet: two wooden shelves of hand-drawn jars, a cookbook, the house tin (the one photo),
-   a pot on a little stove and a game-cartridge tin. Each item is a button; its label opens in the panel under the cabinet.
+/* The about page is a pantry cabinet: two wooden shelves of hand-drawn jars, a "House blend" tin,
+   a game-cartridge tin and a pot on a little stove. The one photo sits up top, beside the intro. Each item is a button; its label opens in the panel under the cabinet.
    Line work matches the mascot fish: navy ink, ~2.4px, round joins. Print colours stay fixed in both themes. */
 .pn{--wood:#EEC79B;--wood-d:#D9A673;--wood-l:#F7E0C2;--glass:rgba(255,255,255,.55);display:grid;gap:40px;padding-block:8px 72px}
 .pn > .back-link{margin-bottom:-22px;justify-self:start}
-.pn-head{display:grid;gap:16px;justify-items:start}
+.pn-head{display:grid;gap:16px;justify-items:start;grid-template-columns:minmax(0,1fr) clamp(220px,22vw,290px);column-gap:clamp(28px,5vw,72px);
+  grid-template-areas:"kick photo" "title photo" "intro photo" "strip photo";align-items:center}
+.pn-kicker{grid-area:kick}.pn-title{grid-area:title}.pn-intro{grid-area:intro}.pn-strip{grid-area:strip}
 .pn-kicker{color:var(--label-accent)}
 .pn-title{font-family:var(--f-display);font-style:italic;font-weight:var(--w-loud,800);font-synthesis:none;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72;
   font-size:var(--t-64);line-height:.95;letter-spacing:var(--ls-display,.005em)}
@@ -906,9 +882,18 @@ html.modal-open{overflow:hidden}
 .pn-strip li{padding:7px 12px 6px;border:2px solid var(--ink);border-radius:999px;background:var(--paper);font:500 var(--t-12)/1.2 var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
 .pn-strip b{font-weight:500}
 .pn-strip li:has(b){background:var(--print-butter);color:var(--print-ink);border-color:var(--print-ink)}
+/* the portrait: a round print in a thin ink ring, on a scalloped butter label set a little askew */
+.pn-portrait{grid-area:photo;position:relative;justify-self:center;align-self:center;width:100%;aspect-ratio:1;margin:0}
+.pn-scallop{position:absolute;inset:0;width:100%;height:100%;rotate:-8deg;overflow:visible;filter:drop-shadow(0 6px 0 rgba(31,42,85,.14))}
+.pn-scallop path{fill:var(--print-butter);stroke:var(--print-ink);stroke-width:2.6;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pn-scallop circle{fill:none;stroke:rgba(31,42,85,.35);stroke-width:1.5;stroke-dasharray:3 5;vector-effect:non-scaling-stroke}
+.pn-portrait img{position:absolute;inset:17%;width:66%;height:66%;object-fit:cover;object-position:50% 34%;border-radius:50%;
+  box-shadow:0 0 0 2.6px var(--print-ink),0 0 0 7px var(--print-cream),0 0 0 9.4px var(--print-ink)}
+.pn-portrait figcaption{position:absolute;left:50%;bottom:4%;translate:-50% 0;rotate:-3deg;padding:5px 10px 4px;background:var(--print-ink);color:var(--print-butter);
+  white-space:nowrap;border-radius:3px;box-shadow:0 0 0 2px var(--print-butter),0 0 0 4px var(--print-ink)}
 
 .pn-pantry{position:relative;display:grid;grid-template-columns:minmax(0,1fr)}
-.pn,.pn-head{grid-template-columns:minmax(0,1fr)}
+.pn{grid-template-columns:minmax(0,1fr)}
 .pn-defs{position:absolute;width:0;height:0;overflow:hidden}
 .pn-how{display:flex;align-items:center;gap:10px;margin-bottom:14px;color:var(--label-ink)}
 .pn-how-dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 22%,transparent);animation:pn-pulse 2.4s ease-in-out infinite}
@@ -978,30 +963,16 @@ html.modal-open{overflow:hidden}
 .pn-label .mono{font-size:var(--t-12);letter-spacing:.04em;white-space:nowrap}
 .pn-jar{--w:150}
 .pn-jar .pn-label{left:10%;right:10%;top:44.5%;height:31%}
-.pn-book{--w:162}
-.pn-book .pn-label{left:21%;right:15%;top:17%;height:27%;background:var(--print-cream)}
 .pn-mason{--w:188}
 .pn-mason .pn-label.pn-tagged{left:17%;right:17%;top:69%;height:auto;padding:12px 8px;rotate:-3deg;background:var(--print-butter);
   -webkit-mask:none;mask:none;border:2px solid var(--print-ink);border-radius:4px 14px 14px 4px;box-shadow:0 4px 0 -1px rgba(31,42,85,.2)}
 .pn-mason .pn-tagged::before{inset:auto;left:-7px;top:50%;width:8px;height:8px;translate:0 -50%;border:2px solid var(--print-ink);border-radius:50%;background:var(--print-cream)}
-.pn-tin{--w:244}
+.pn-tin{--w:196}
+.pn-tin .pn-label{left:15%;right:15%;top:42%;height:26%}
 .pn-pot{--w:272}
 .pn-pot .pn-label{left:27%;right:27%;top:49.5%;height:21%}
 .pn-game{--w:178}
 .pn-game .pn-label{left:13%;right:13%;top:63%;height:28%}
-
-/* the house tin: the one photo as a medallion on a pink label, a sibling of the hero tin's lid */
-.pn-tinlabel{position:absolute;left:10.5%;right:10.5%;top:27%;bottom:15%;display:grid;align-content:center;justify-items:center;gap:6px;pointer-events:none;color:var(--print-ink);
-  background:linear-gradient(90deg,rgba(31,42,85,.2),transparent 18%,rgba(255,255,255,.35) 30%,transparent 42%,transparent 80%,rgba(31,42,85,.22)),
-    radial-gradient(circle,rgba(31,42,85,.1) 1.2px,transparent 1.6px) 0 0/12px 12px,var(--print-red);
-  -webkit-mask:radial-gradient(circle 5px at 50% 0,transparent 96%,#000) top/14px 51% repeat-x,radial-gradient(circle 5px at 50% 100%,transparent 96%,#000) bottom/14px 51% repeat-x;
-          mask:radial-gradient(circle 5px at 50% 0,transparent 96%,#000) top/14px 51% repeat-x,radial-gradient(circle 5px at 50% 100%,transparent 96%,#000) bottom/14px 51% repeat-x}
-.pn-medal{width:70px;aspect-ratio:1;border-radius:50%;overflow:hidden;box-shadow:0 0 0 3px var(--print-ink),0 0 0 7px var(--print-butter),0 0 0 9px var(--print-ink)}
-.pn-medal img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
-.pn-tinlabel b{margin-top:8px;font-family:var(--f-display);font-style:italic;font-weight:800;font-synthesis:none;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72;
-  font-size:var(--t-40);line-height:.9;text-shadow:2px 3px 0 var(--print-cream),4px 5px 0 var(--print-coral)}
-.pn-banner{padding:5px 10px 4px;background:var(--print-ink);color:var(--print-butter);font-size:var(--t-12);letter-spacing:.06em;white-space:nowrap;
-  clip-path:polygon(0 0,100% 0,94% 50%,100% 100%,0 100%,6% 50%)}
 
 /* ---------- hover life ---------- */
 .pn-lid,.pn-cart,.pn-art .pn-steam path{transform-box:fill-box;transition:transform .38s cubic-bezier(.3,1.6,.5,1)}
@@ -1010,8 +981,6 @@ html.modal-open{overflow:hidden}
 .pn-item:is(:hover,:focus-visible,[aria-expanded="true"]) .pn-lid{transform:translateY(-9px) rotate(-6deg)}
 .pn-mason:is(:hover,:focus-visible,[aria-expanded="true"]) .pn-lid{transform:translate(-2px,-8px) rotate(14deg)}
 .pn-tin:is(:hover,:focus-visible,[aria-expanded="true"]) .pn-lid{transform:translateY(-12px) rotate(-4deg)}
-.pn-book{transform-origin:12% 100%;transition:rotate .4s cubic-bezier(.3,1.6,.5,1),translate .3s ease}
-.pn-book:is(:hover,:focus-visible,[aria-expanded="true"]){rotate:-7deg}
 .pn-game:is(:hover,:focus-visible,[aria-expanded="true"]) .pn-cart{transform:translateY(-16px)}
 .pn-pot .pn-lid{transform-origin:50% 100%}
 .pn-pot:is(:hover,:focus-visible,[aria-expanded="true"]) .pn-lid{transform:translateY(-5px)}
@@ -1052,10 +1021,6 @@ html.modal-open{overflow:hidden}
 .pn-index-list b{font-size:var(--t-17);line-height:1.2}
 .pn-index-list span{font-size:var(--t-14);line-height:1.3}
 .pn-story h3:focus{outline:none}
-/* the house tin's label: a round portrait, the line, and the facts */
-.pn-story.pn-story-me{grid-template-columns:136px minmax(0,1fr) minmax(220px,290px);align-items:center}
-.pn-me{position:relative;display:block;width:136px;aspect-ratio:1;object-fit:cover;object-position:50% 30%;border-radius:50%;
-  box-shadow:0 0 0 3px var(--print-ink),0 0 0 8px var(--print-butter),0 0 0 10.5px var(--print-ink)}
 .pn-story{--tone:var(--print-butter);position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,290px);gap:24px clamp(24px,4vw,56px);align-items:start;
   padding:44px clamp(26px,4.4vw,60px);background:var(--tone);color:var(--print-ink);border-radius:22px;transform-origin:50% 0;
   -webkit-mask:radial-gradient(circle 7px at 50% 0,transparent 96%,#000) top/20px 51% repeat-x,radial-gradient(circle 7px at 50% 100%,transparent 96%,#000) bottom/20px 51% repeat-x;
@@ -1139,6 +1104,13 @@ html.modal-open{overflow:hidden}
   .pn{gap:30px;padding-bottom:48px}
   .pn-title{font-size:var(--t-40)}
   .pn-intro,.pn-close p{font-size:var(--t-17)}
+  /* the portrait shrinks to sit beside the name; the intro and strip run full width below */
+  .pn-head{grid-template-columns:minmax(0,1fr) clamp(112px,28vw,190px);column-gap:16px;row-gap:12px;
+    grid-template-areas:"kick photo" "title photo" "intro intro" "strip strip"}
+  .pn-portrait{align-self:end}
+}
+@media (max-width:600px){
+  .pn-portrait figcaption{display:none}
   .pn-cab{--px:0px;padding:12px 0 0;border-width:10px;border-radius:22px}
   .pn-shelf{padding-top:40px}
   .pn-shelf + .pn-shelf{margin-top:0}
@@ -1155,26 +1127,21 @@ html.modal-open{overflow:hidden}
   .pn-shelf + .pn-shelf .pn-row{--liner:var(--print-butter)}
   .pn-row li .pn-item{z-index:1;margin-bottom:-11px}
   .pn-item{--s:.8}
-  .pn-book{--s:.7}
   .pn-mason{--s:.9}
   .pn-cap{width:clamp(128px,100%,150px)}
   .pn-row li{padding-inline:2px}
   :is(.pn-jar,.pn-game,.pn-mason) .pn-label .mono{display:none}
-  .pn-tin{--s:.6}
+  .pn-tin{--s:.84}
+  .pn-tin .pn-label{left:7%;right:7%}
   .pn-game{--s:.72}
   .pn-pot{--s:.76}
   .pn-pot .pn-label{left:21%;right:21%}
-  .pn-tinlabel{gap:4px}
-  .pn-medal{width:50px}
-  .pn-tinlabel b{font-size:var(--t-28);margin-top:4px}
-  .pn-banner{display:none}
-  .pn-story,.pn-story.pn-story-me,.pn-story.pn-index{grid-template-columns:minmax(0,1fr);padding:34px 24px 30px}
+  .pn-story,.pn-story.pn-index{grid-template-columns:minmax(0,1fr);padding:34px 24px 30px}
   .pn-story h3{font-size:var(--t-28)}
   .pn-story p{font-size:var(--t-17)}
   .pn-story:has(.pn-x) > .pn-facts:not(:last-child){margin-top:0}
   .pn-story:has(.pn-x) .pn-story-main{padding-right:40px}
   .pn-x{top:14px;right:10px}
-  .pn-me{width:92px}
   .pn-crate{padding:18px 40px 24px}
   .pn-crate::before,.pn-crate::after{width:24px}
   .pn-crate-head h2{font-size:var(--t-20)}

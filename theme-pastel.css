@@ -5,7 +5,7 @@
    fails to load; this file holds only the component styling. */
 
 /* display type: soft, wonky, italic */
-.hero h1,.lid-name,.flavor,.problem q,.back h2,.slip-intro h1,.slip-logo,.essay h1,.card h3,.fold h2,.extra-title,.pov,.rc-brand{
+.hero h1,.lid-name,.flavor,.problem q,.back h2,.slip-intro h1,.slip-logo,.card h3,.extra-title,.pov,.rc-brand{
   font-family:var(--f-display);font-style:italic;font-weight:800;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72;letter-spacing:.01em}
 .hero h1{letter-spacing:.01em;line-height:.95}
 .hero h1 em{color:var(--accent);font-style:italic;font-weight:800}

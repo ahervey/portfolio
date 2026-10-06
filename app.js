@@ -32,11 +32,6 @@
       if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
     });
     if (name === 'home') tinIntro();
-    if (name === 'writing') {
-      // replay the leaflet unfolding each time the page opens
-      const leaflet = document.getElementById('leaflet');
-      leaflet.classList.remove('unfold'); void leaflet.offsetWidth; leaflet.classList.add('unfold');
-    }
     setupToc(name);
     return true;
   }
@@ -729,7 +724,7 @@
     // the caret is measured while the page is hidden on a deep link elsewhere; measure again once it shows
     addEventListener('hashchange', () => requestAnimationFrame(pnCaret));
     if (document.fonts) document.fonts.ready.then(pnCaret);
-    // the house tin's label is open when you arrive, so the pattern is plain at a glance
+    // the house blend's label is open when you arrive, so the pattern is plain at a glance
     const first = pnItems.find(b => b.hasAttribute('data-default'));
     if (first) pnShow(first, false);
   }
