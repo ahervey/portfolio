@@ -870,74 +870,6 @@ html.modal-open{overflow:hidden}
   .steps li > h3,.steps li > p{grid-column:2}
 }
 
-/* ---------- about-me page: the back of the tin ---------- */
-/* one big back-of-pack label: a lot strip, the product name with a round seal portrait, an ingredients panel
-   with its allergen line, a "Now cooking" panel, and the shipping route. Sizes come from the scale in type.css. */
-.am{display:grid;gap:36px;padding-block:8px 72px}
-.am > .back-link{margin-bottom:-18px;justify-self:start}
-.am-label{--pad:clamp(18px,3.4vw,44px);position:relative;background:var(--paper);border:3px solid var(--ink);border-radius:22px;padding:0 var(--pad) clamp(22px,3vw,36px);
-  box-shadow:0 30px 50px -36px rgba(31,42,85,.55)}
-.am-label > *{position:relative}
-/* the lot strip printed along the top edge */
-.am-strip{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 20px;margin-inline:calc(-1 * var(--pad));padding:12px var(--pad);
-  background:var(--ink);color:var(--ground);border-radius:18px 18px 0 0}
-.am-strip span:first-child{color:var(--print-butter)}
-.am-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(28px,5vw,72px);align-items:center;padding-block:clamp(28px,3.4vw,44px);border-bottom:8px solid var(--ink)}
-.am-copy{display:grid;gap:16px;justify-items:start}
-.am-kicker{color:var(--label-accent)}
-.am-title{font-family:var(--f-display);font-style:italic;font-weight:var(--w-loud,800);font-synthesis:none;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72;
-  font-size:var(--t-64);line-height:.95;letter-spacing:var(--ls-display,.005em)}
-.am-title:focus{outline:none}
-.am-title:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
-.am-intro{font-size:var(--t-20);line-height:1.6;max-width:34em;text-wrap:pretty}
-
-/* the one photo, cropped tight to a round seal on a scalloped butter badge (home shows it full-length on a label) */
-.am-badge{margin:0;display:grid;justify-items:center;gap:10px;rotate:-6deg}
-.am-badge-ring{display:grid;place-items:center;width:208px;aspect-ratio:1;background:var(--print-butter);
-  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50.0 6.0A6.8 6.8 0 0 1 62.4 7.8A6.8 6.8 0 0 1 73.8 13.0A6.8 6.8 0 0 1 83.3 21.2A6.8 6.8 0 0 1 90.0 31.7A6.8 6.8 0 0 1 93.6 43.7A6.8 6.8 0 0 1 93.6 56.3A6.8 6.8 0 0 1 90.0 68.3A6.8 6.8 0 0 1 83.3 78.8A6.8 6.8 0 0 1 73.8 87.0A6.8 6.8 0 0 1 62.4 92.2A6.8 6.8 0 0 1 50.0 94.0A6.8 6.8 0 0 1 37.6 92.2A6.8 6.8 0 0 1 26.2 87.0A6.8 6.8 0 0 1 16.7 78.8A6.8 6.8 0 0 1 10.0 68.3A6.8 6.8 0 0 1 6.4 56.3A6.8 6.8 0 0 1 6.4 43.7A6.8 6.8 0 0 1 10.0 31.7A6.8 6.8 0 0 1 16.7 21.2A6.8 6.8 0 0 1 26.2 13.0A6.8 6.8 0 0 1 37.6 7.8A6.8 6.8 0 0 1 50.0 6.0Z'/%3E%3C/svg%3E") center/contain no-repeat;
-          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50.0 6.0A6.8 6.8 0 0 1 62.4 7.8A6.8 6.8 0 0 1 73.8 13.0A6.8 6.8 0 0 1 83.3 21.2A6.8 6.8 0 0 1 90.0 31.7A6.8 6.8 0 0 1 93.6 43.7A6.8 6.8 0 0 1 93.6 56.3A6.8 6.8 0 0 1 90.0 68.3A6.8 6.8 0 0 1 83.3 78.8A6.8 6.8 0 0 1 73.8 87.0A6.8 6.8 0 0 1 62.4 92.2A6.8 6.8 0 0 1 50.0 94.0A6.8 6.8 0 0 1 37.6 92.2A6.8 6.8 0 0 1 26.2 87.0A6.8 6.8 0 0 1 16.7 78.8A6.8 6.8 0 0 1 10.0 68.3A6.8 6.8 0 0 1 6.4 56.3A6.8 6.8 0 0 1 6.4 43.7A6.8 6.8 0 0 1 10.0 31.7A6.8 6.8 0 0 1 16.7 21.2A6.8 6.8 0 0 1 26.2 13.0A6.8 6.8 0 0 1 37.6 7.8A6.8 6.8 0 0 1 50.0 6.0Z'/%3E%3C/svg%3E") center/contain no-repeat}
-.am-badge-ring img{display:block;width:68%;aspect-ratio:1;object-fit:cover;object-position:50% 34%;border-radius:50%;
-  box-shadow:0 0 0 3px var(--print-ink),0 0 0 7px var(--print-butter),0 0 0 8.5px var(--print-ink)}
-.am-badge figcaption{text-align:center;line-height:1.35;color:var(--label-ink)}
-
-/* two panels side by side, split by a hairline like the columns on a real back label */
-.am-panels{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 56px;padding-block:26px 30px;border-bottom:1px solid var(--ink)}
-.am-panels > section + section{position:relative}
-.am-panels > section + section::before{content:"";position:absolute;left:-28px;top:0;bottom:0;border-left:1px solid var(--line)}
-.am-panels h2{font-family:var(--f-display);font-style:italic;font-weight:var(--w-voice,600);font-synthesis:none;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72;
-  font-size:var(--t-28);line-height:1.1;letter-spacing:var(--ls-display,.005em);padding-bottom:12px;border-bottom:3px solid var(--ink)}
-.am-panels a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1.5px}
-.am-panels a:hover{text-decoration-color:var(--accent)}
-.am-ingredients ul{list-style:none;margin:0;padding:0;display:grid}
-.am-ingredients li,.am-cooking dl > div{padding:12px 0;border-bottom:1px solid var(--line);font-size:var(--t-17);line-height:1.5;color:var(--muted);text-wrap:pretty}
-.am-ingredients b,.am-cooking dd b{color:var(--ink);font-weight:700}
-.am-ingredients li a{color:var(--label-accent);font-weight:600}
-/* allergen advice: the boxed line every tin carries */
-.am-allergen{margin-top:16px;padding:12px 14px;border:2px solid var(--ink);border-radius:10px;font-size:var(--t-17);line-height:1.5;text-wrap:pretty}
-.am-allergen .mono{color:var(--label-accent);margin-right:6px}
-.am-cooking dl{margin:0;display:grid}
-.am-cooking dl > div{display:grid;grid-template-columns:8.5em minmax(0,1fr);gap:16px;align-items:baseline}
-.am-cooking dl > div:last-child{border-bottom:0}
-.am-cooking dt{color:var(--label-ink);line-height:1.4}
-.am-cooking dd{margin:0}
-
-/* shipping route: four stops on a dashed line, the fish at the current one */
-.am-ship{display:grid;gap:18px;padding-top:24px}
-.am-ship h2{color:var(--label-accent)}
-.am-ship ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;position:relative}
-.am-ship ol::before{content:"";position:absolute;left:7px;right:25%;top:7px;border-top:2px dashed var(--wave,var(--line))}
-.am-ship li{position:relative;display:grid;gap:4px;padding-top:30px;align-content:start}
-.am-ship li::before{content:"";position:absolute;left:0;top:0;width:16px;height:16px;border-radius:50%;background:var(--paper);box-shadow:inset 0 0 0 2px var(--ink)}
-.am-ship li[aria-current]::before{background:var(--accent);box-shadow:inset 0 0 0 2px var(--ink),0 0 0 4px color-mix(in srgb,var(--accent) 25%,transparent)}
-.am-ship li b{font-size:var(--t-17);font-weight:700;line-height:1.3}
-.am-ship li span{font-size:var(--t-14);line-height:1.4;color:var(--muted)}
-.am-fish{position:absolute;left:28px;top:-11px;width:46px;height:28px}
-
-/* closing line */
-.am-close{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 32px}
-.am-close p{font-size:var(--t-20);line-height:1.45;text-wrap:pretty}
-.am-close .ctas{padding-top:0}
-
 /* home: the short about links through to this page */
 .more-about{justify-self:start;font-size:var(--t-17);font-weight:600;color:var(--coral-text);text-underline-offset:4px}
 
@@ -947,28 +879,280 @@ html.modal-open{overflow:hidden}
 /* the hero's turning label is 126% of a 296px tin: at 360 that is wider than the page, so trim it there */
 @media (max-width:380px){.hero .stage::before{width:118%}}
 
-@media (max-width:900px){
-  .am-panels{grid-template-columns:minmax(0,1fr);gap:32px}
-  .am-panels > section + section::before{display:none}
-  .am-ship ol{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}
-  .am-ship ol::before{display:none}
+/* ---------- about-me pantry ---------- */
+/* The about page is a pantry cabinet: two wooden shelves of hand-drawn jars, a cookbook, the house tin (the one photo),
+   a pot on a little stove and a game-cartridge tin. Each item is a button; its label opens in the panel under the cabinet.
+   Line work matches the mascot fish: navy ink, ~2.4px, round joins. Print colours stay fixed in both themes. */
+.pn{--wood:#EEC79B;--wood-d:#D9A673;--wood-l:#F7E0C2;--glass:rgba(255,255,255,.55);display:grid;gap:40px;padding-block:8px 72px}
+.pn > .back-link{margin-bottom:-22px;justify-self:start}
+.pn-head{display:grid;gap:16px;justify-items:start}
+.pn-kicker{color:var(--label-accent)}
+.pn-title{font-family:var(--f-display);font-style:italic;font-weight:var(--w-loud,800);font-synthesis:none;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72;
+  font-size:var(--t-64);line-height:.95;letter-spacing:var(--ls-display,.005em)}
+/* the router focuses this heading on arrival; it never shows a ring, whatever the browser thinks of the input */
+.pn-title:focus,.pn-title:focus-visible{outline:none}
+.pn-intro{font-size:var(--t-20);line-height:1.6;max-width:34em;text-wrap:pretty}
+
+.pn-pantry{position:relative;display:grid;grid-template-columns:minmax(0,1fr)}
+.pn,.pn-head{grid-template-columns:minmax(0,1fr)}
+.pn-defs{position:absolute;width:0;height:0;overflow:hidden}
+.pn-how{display:flex;align-items:center;gap:10px;margin-bottom:14px;color:var(--label-ink)}
+.pn-how-dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 22%,transparent);animation:pn-pulse 2.4s ease-in-out infinite}
+@keyframes pn-pulse{50%{box-shadow:0 0 0 7px color-mix(in srgb,var(--accent) 8%,transparent)}}
+.pn-pantry:not(.is-live) .pn-how{display:none}
+
+/* the cabinet: a honey-wood frame round a beadboard back wall */
+.pn-cab{--px:clamp(18px,3vw,44px);position:relative;padding:34px var(--px) 0;border:14px solid var(--wood);border-radius:28px;
+  background:repeating-linear-gradient(90deg,transparent 0 54px,rgba(31,42,85,.07) 54px 56px,rgba(255,255,255,.6) 56px 58px),var(--print-cream);
+  box-shadow:0 0 0 3px var(--print-ink),inset 0 0 0 3px var(--print-ink),inset 0 22px 30px -20px rgba(31,42,85,.32),0 34px 50px -34px rgba(31,42,85,.55)}
+.pn-shelf{position:relative}
+.pn-shelf + .pn-shelf{margin-top:50px}
+/* the lower plank is the cabinet floor: it sits on the frame, so no brackets and no bottom gap */
+.pn-shelf:last-child .pn-bracket{display:none}
+.pn-shelf:last-child .pn-plank{border-bottom:0;height:44px}
+.pn-track{position:relative}
+.pn-row{list-style:none;margin:0 0 -11px;padding:0 clamp(4px,2vw,30px);display:flex;align-items:flex-end;justify-content:space-around;gap:16px;position:relative;z-index:2}
+.pn-row li{display:flex}
+
+/* a plank: lighter top face, grained front, a scalloped paper liner hanging over the edge, two brackets underneath */
+.pn-plank{position:relative;height:48px;margin-inline:calc(-1 * var(--px));border-block:2.6px solid var(--print-ink);
+  background:linear-gradient(var(--wood-l) 0 12px,var(--print-ink) 12px 14.6px,var(--wood) 14.6px)}
+.pn-plank::after{content:"";position:absolute;left:0;right:0;top:14.6px;height:18px;pointer-events:none;
+  background:radial-gradient(circle at 50% 0,var(--liner,var(--print-red)) 9px,transparent 9.6px) 0 7px/22px 22px repeat-x,linear-gradient(var(--liner,var(--print-red)),var(--liner,var(--print-red))) top/100% 7px no-repeat;
+  filter:drop-shadow(0 2px 0 var(--print-ink))}
+.pn-shelf + .pn-shelf .pn-plank{--liner:var(--print-butter)}
+.pn-grain{position:absolute;left:0;right:0;bottom:0;width:100%;height:20px;fill:none;stroke:rgba(31,42,85,.32);stroke-width:1.5;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.pn-grain path{vector-effect:non-scaling-stroke}
+.pn-bracket{position:absolute;top:calc(100% + 2px);left:9%;width:34px;height:42px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 44'%3E%3Cpath d='M3 0H33V6Q33 30 6 42Q3 43 3 40Z' fill='%23D9A673' stroke='%231F2A55' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='10' cy='8' r='1.8' fill='%231F2A55'/%3E%3C/svg%3E") center/contain no-repeat}
+.pn-bracket + .pn-bracket{left:auto;right:9%;scale:-1 1}
+/* a metal label-holder clipped to each plank */
+.pn-tag{position:absolute;z-index:3;left:50%;bottom:7px;translate:-50% 0;padding:4px 14px 3px;background:var(--print-cream);color:var(--print-ink);border:2px solid var(--print-ink);border-radius:4px;
+  box-shadow:0 0 0 3px #C9D0D5,0 0 0 4.6px var(--print-ink);white-space:nowrap;line-height:1.3;pointer-events:none}
+
+/* ---------- the items ---------- */
+.pn-item{--s:1;position:relative;display:block;width:calc(var(--w) * var(--s) * 1px);min-width:44px;padding:0;margin:0;border:0;background:none;color:var(--print-ink);
+  font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:translate .3s cubic-bezier(.3,1.5,.5,1)}
+.pn-item:focus-visible{outline:3px solid var(--accent);outline-offset:6px;border-radius:16px}
+.pn-art{display:block;width:100%;height:auto;overflow:visible}
+.pn-art :is(path,rect,circle,ellipse){stroke:var(--print-ink);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pn-art use{color:var(--print-ink)}
+.pn-art .t,.pn-art .t :is(path,rect,circle,ellipse){stroke-width:1.7}
+.pn-art .n,.pn-art .n *{stroke:none}
+.pn-art .pn-sh{fill:rgba(31,42,85,.16);stroke:none}
+.pn-art .f-c{fill:var(--c)} .pn-art .f-c2{fill:var(--c2)}
+.pn-art .f-glass{fill:color-mix(in srgb,var(--c) 26%,var(--glass))}
+.pn-art .f-cream{fill:var(--print-cream)} .pn-art .f-white{fill:#fff}
+.pn-art .f-ink{fill:var(--print-ink)} .pn-art .f-coral{fill:var(--print-coral)}
+.pn-art .f-butter{fill:var(--print-butter)} .pn-art .f-red{fill:var(--print-red)} .pn-art .f-blue{fill:var(--print-blue)}
+.pn-art .f-green{fill:var(--print-green)} .pn-art .f-green-d{fill:#8FCCA6} .pn-art .f-lilac{fill:var(--print-lilac)}
+.pn-art .f-metal{fill:url(#pn-metal)} .pn-art .f-metal-top{fill:#E3E8EB}
+.pn-art .f-none,.pn-art .nofill,.pn-art .nofill *{fill:none}
+.pn-art .ridge{stroke:rgba(31,42,85,.45)}
+.pn-art .frame{stroke:rgba(31,42,85,.4)}
+.pn-art .shine{fill:none;stroke:rgba(255,255,255,.85);stroke-width:4.5}
+.pn-art .shine-ink{stroke:rgba(255,255,255,.75);stroke-width:3}
+.pn-art .wire{stroke:#8D969D;stroke-width:2.2}
+.pn-art .pn-handle{stroke-width:6}
+
+/* the paper labels: cream, scalloped top and bottom like every label on the site, crisp HTML text */
+.pn-label{position:absolute;display:grid;place-content:center;justify-items:center;gap:4px;padding:8px 4px;background:var(--print-cream);color:var(--print-ink);text-align:center;line-height:1;pointer-events:none;
+  -webkit-mask:radial-gradient(circle 3.6px at 50% 0,transparent 96%,#000) top/10px 51% repeat-x,radial-gradient(circle 3.6px at 50% 100%,transparent 96%,#000) bottom/10px 51% repeat-x;
+          mask:radial-gradient(circle 3.6px at 50% 0,transparent 96%,#000) top/10px 51% repeat-x,radial-gradient(circle 3.6px at 50% 100%,transparent 96%,#000) bottom/10px 51% repeat-x}
+.pn-label::before{content:"";position:absolute;inset:7px 4px;border-block:1.5px solid rgba(31,42,85,.3);pointer-events:none}
+.pn-label b{font-family:var(--f-display);font-style:italic;font-weight:800;font-synthesis:none;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72;font-size:var(--t-17);white-space:nowrap}
+.pn-label .mono{font-size:var(--t-12);letter-spacing:.04em;white-space:nowrap}
+.pn-jar{--w:150}
+.pn-jar .pn-label{left:10%;right:10%;top:44.5%;height:31%}
+.pn-book{--w:162}
+.pn-book .pn-label{left:21%;right:15%;top:17%;height:27%;background:var(--print-cream)}
+.pn-mason{--w:188}
+.pn-mason .pn-label.pn-tagged{left:17%;right:17%;top:69%;height:auto;padding:12px 8px;rotate:-3deg;background:var(--print-butter);
+  -webkit-mask:none;mask:none;border:2px solid var(--print-ink);border-radius:4px 14px 14px 4px;box-shadow:0 4px 0 -1px rgba(31,42,85,.2)}
+.pn-mason .pn-tagged::before{inset:auto;left:-7px;top:50%;width:8px;height:8px;translate:0 -50%;border:2px solid var(--print-ink);border-radius:50%;background:var(--print-cream)}
+.pn-tin{--w:244}
+.pn-pot{--w:272}
+.pn-pot .pn-label{left:27%;right:27%;top:49.5%;height:21%}
+.pn-game{--w:178}
+.pn-game .pn-label{left:13%;right:13%;top:63%;height:28%}
+
+/* the house tin: the one photo as a medallion on a pink label, a sibling of the hero tin's lid */
+.pn-tinlabel{position:absolute;left:10.5%;right:10.5%;top:27%;bottom:15%;display:grid;align-content:center;justify-items:center;gap:6px;pointer-events:none;color:var(--print-ink);
+  background:linear-gradient(90deg,rgba(31,42,85,.2),transparent 18%,rgba(255,255,255,.35) 30%,transparent 42%,transparent 80%,rgba(31,42,85,.22)),
+    radial-gradient(circle,rgba(31,42,85,.1) 1.2px,transparent 1.6px) 0 0/12px 12px,var(--print-red);
+  -webkit-mask:radial-gradient(circle 5px at 50% 0,transparent 96%,#000) top/14px 51% repeat-x,radial-gradient(circle 5px at 50% 100%,transparent 96%,#000) bottom/14px 51% repeat-x;
+          mask:radial-gradient(circle 5px at 50% 0,transparent 96%,#000) top/14px 51% repeat-x,radial-gradient(circle 5px at 50% 100%,transparent 96%,#000) bottom/14px 51% repeat-x}
+.pn-medal{width:70px;aspect-ratio:1;border-radius:50%;overflow:hidden;box-shadow:0 0 0 3px var(--print-ink),0 0 0 7px var(--print-butter),0 0 0 9px var(--print-ink)}
+.pn-medal img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.pn-tinlabel b{margin-top:8px;font-family:var(--f-display);font-style:italic;font-weight:800;font-synthesis:none;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72;
+  font-size:var(--t-40);line-height:.9;text-shadow:2px 3px 0 var(--print-cream),4px 5px 0 var(--print-coral)}
+.pn-banner{padding:5px 10px 4px;background:var(--print-ink);color:var(--print-butter);font-size:var(--t-12);letter-spacing:.06em;white-space:nowrap;
+  clip-path:polygon(0 0,100% 0,94% 50%,100% 100%,0 100%,6% 50%)}
+
+/* ---------- hover life ---------- */
+.pn-lid,.pn-cart,.pn-art .pn-steam path{transform-box:fill-box;transition:transform .38s cubic-bezier(.3,1.6,.5,1)}
+.pn-jar .pn-lid,.pn-tin .pn-lid{transform-origin:12% 100%}
+.pn-mason .pn-lid{transform-origin:100% 100%}
+.pn-item:is(:hover,:focus-visible,[aria-expanded="true"]) .pn-lid{transform:translateY(-9px) rotate(-6deg)}
+.pn-mason:is(:hover,:focus-visible,[aria-expanded="true"]) .pn-lid{transform:translate(-2px,-8px) rotate(14deg)}
+.pn-tin:is(:hover,:focus-visible,[aria-expanded="true"]) .pn-lid{transform:translateY(-12px) rotate(-4deg)}
+.pn-book{transform-origin:12% 100%;transition:rotate .4s cubic-bezier(.3,1.6,.5,1),translate .3s ease}
+.pn-book:is(:hover,:focus-visible,[aria-expanded="true"]){rotate:-7deg}
+.pn-game:is(:hover,:focus-visible,[aria-expanded="true"]) .pn-cart{transform:translateY(-16px)}
+.pn-pot .pn-lid{transform-origin:50% 100%}
+.pn-pot:is(:hover,:focus-visible,[aria-expanded="true"]) .pn-lid{transform:translateY(-5px)}
+.pn-pot:is(:hover,:focus-visible) .pn-lid{animation:pn-rattle .28s ease-in-out 3}
+@keyframes pn-rattle{25%{transform:translateY(-4px) rotate(-3deg)}75%{transform:translateY(-3px) rotate(3deg)}}
+.pn-mason .pn-bits{transform-box:fill-box;transform-origin:50% 100%}
+.pn-mason:is(:hover,:focus-visible) .pn-bits{animation:pn-jiggle .5s ease-in-out}
+@keyframes pn-jiggle{30%{transform:rotate(-1.6deg)}70%{transform:rotate(1.4deg)}}
+/* steam always curls up gently; reaching for the pot turns it up */
+.pn-steam path{stroke:rgba(31,42,85,.7);stroke-width:2.4;opacity:0;animation:pn-steam 3.6s ease-in-out infinite}
+.pn-steam path:nth-child(2){animation-delay:1.2s}
+.pn-steam path:nth-child(3){animation-delay:2.4s}
+@keyframes pn-steam{0%{opacity:0;transform:translateY(14px) scaleY(.7)}35%{opacity:1}100%{opacity:0;transform:translateY(-16px) scaleY(1.1)}}
+.pn-pot:is(:hover,:focus-visible,[aria-expanded="true"]) .pn-steam path{animation-duration:1.8s}
+.pn-light{animation:pn-glow 2.6s ease-in-out infinite}
+@keyframes pn-glow{50%{fill:#FFB3A8}}
+/* the picked item: lifted a touch, with a coral pin on the plank under it */
+.pn-item[aria-expanded="true"]{translate:0 -4px}
+.pn-item[aria-expanded="true"]::after{content:"";position:absolute;left:50%;bottom:-25px;width:12px;height:12px;translate:-50% 0;border-radius:50%;background:var(--print-coral);
+  box-shadow:0 0 0 2.4px var(--print-ink),0 0 0 5px rgba(255,255,255,.7)}
+.pn-swipe{display:none}
+
+/* ---------- the label panel under the cabinet ---------- */
+.pn-panel{position:relative;margin-top:34px;perspective:1400px;scroll-margin-block:90px 110px}
+.pn-pantry:not(.is-live) .pn-panel{display:grid;gap:20px}
+.pn-caret{display:none;position:absolute;z-index:2;top:-17px;left:var(--x,50%);width:30px;height:18px;translate:-50% 0;background:var(--tone,var(--print-butter));
+  clip-path:polygon(50% 0,100% 100%,0 100%);transition:left .35s cubic-bezier(.3,1.3,.5,1)}
+.pn-panel.has-open .pn-caret{display:block}
+.pn-empty{display:none}
+.is-live .pn-panel:not(.has-open) .pn-empty{display:block;padding:30px;border:2px dashed var(--wave);border-radius:22px;text-align:center;font-size:var(--t-17);color:var(--muted)}
+.pn-story{--tone:var(--print-butter);position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,290px);gap:24px clamp(24px,4vw,56px);align-items:start;
+  padding:44px clamp(26px,4.4vw,60px);background:var(--tone);color:var(--print-ink);border-radius:22px;transform-origin:50% 0;
+  -webkit-mask:radial-gradient(circle 7px at 50% 0,transparent 96%,#000) top/20px 51% repeat-x,radial-gradient(circle 7px at 50% 100%,transparent 96%,#000) bottom/20px 51% repeat-x;
+          mask:radial-gradient(circle 7px at 50% 0,transparent 96%,#000) top/20px 51% repeat-x,radial-gradient(circle 7px at 50% 100%,transparent 96%,#000) bottom/20px 51% repeat-x}
+.pn-story::before{content:"";position:absolute;inset:16px 12px;border:2px dashed rgba(31,42,85,.28);border-radius:14px;pointer-events:none}
+.pn-story.is-in{animation:pn-open .55s cubic-bezier(.2,.9,.25,1.12) both}
+@keyframes pn-open{from{opacity:0;transform:rotateX(-80deg) translateY(-8px)}}
+.pn-story-main{position:relative;display:grid;gap:12px;align-content:start;justify-items:start}
+.pn-story .mono{color:var(--print-ink)}
+.pn-story h3{font-size:var(--t-40);font-weight:800;line-height:1.05;letter-spacing:-.02em}
+.pn-story p{font-size:var(--t-20);line-height:1.55;max-width:32em;text-wrap:pretty}
+.pn-go{display:inline-flex;align-items:center;min-height:44px;font-weight:700;color:var(--print-ink);text-decoration-thickness:2px;text-underline-offset:4px}
+.pn-go:hover{text-decoration-color:var(--print-coral)}
+.pn-go:focus-visible,.pn-x:focus-visible{outline-color:var(--print-ink)}
+.pn-x{position:absolute;z-index:2;top:22px;right:20px;display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:50%;background:transparent;color:var(--print-ink);cursor:pointer}
+.pn-x::before{content:"";width:30px;height:30px;border-radius:50%;background:var(--print-cream);border:2px solid var(--print-ink);
+  background-image:linear-gradient(45deg,transparent 46%,var(--print-ink) 46% 54%,transparent 54%),linear-gradient(-45deg,transparent 46%,var(--print-ink) 46% 54%,transparent 54%);background-size:14px 14px;background-position:center;background-repeat:no-repeat;transition:rotate .25s ease}
+.pn-x:hover::before{rotate:90deg}
+.pn-story:has(.pn-x) .pn-facts{margin-top:40px}
+/* "label facts": the back-of-tin panel each story carries */
+.pn-facts{position:relative;margin:0;padding:12px 16px 6px;list-style:none;background:var(--print-cream);border:2.5px solid var(--print-ink);border-radius:10px;display:grid}
+.pn-facts::before{content:"Label facts";display:block;padding-bottom:6px;margin-bottom:2px;border-bottom:6px solid var(--print-ink);font:500 var(--t-12)/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase}
+.pn-facts > :is(div,li){display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:8px 0;border-bottom:1px solid rgba(31,42,85,.2);font-size:var(--t-14);line-height:1.35}
+.pn-facts > :is(div,li):last-child{border-bottom:0}
+.pn-facts dt{font:500 var(--t-12)/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase}
+.pn-facts dd{margin:0;font-weight:700;text-align:right}
+.pn-traces::before{content:"Traces of"}
+.pn-traces li{font-weight:700}
+.pn-traces li::after{content:"";width:9px;height:9px;flex:none;border-radius:50%;background:var(--print-coral);box-shadow:0 0 0 1.6px var(--print-ink)}
+.pn-photo{padding:12px;gap:10px;justify-items:center}
+.pn-photo::before{display:none}
+.pn-photo img{display:block;width:100%;aspect-ratio:1;object-fit:cover;object-position:50% 30%;border-radius:6px;border:2px solid var(--print-ink)}
+.pn-photo figcaption{text-align:center}
+.pn-story-wide{grid-template-columns:minmax(0,1fr)}
+.pn-dishes{position:relative;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.pn-dishes li{display:grid;grid-template-rows:auto auto 1fr auto;gap:8px;padding:18px 18px 8px;background:var(--print-cream);border:2.5px solid var(--print-ink);border-radius:14px}
+.pn-dishes b{font-family:var(--f-display);font-style:italic;font-weight:800;font-synthesis:none;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72;font-size:var(--t-28);line-height:1}
+.pn-dishes p{font-size:var(--t-17);line-height:1.5}
+
+/* ---------- the shipping crate ---------- */
+.pn-crate{position:relative;padding:22px clamp(46px,6vw,70px) 30px;border:3px solid var(--print-ink);border-radius:12px;color:var(--print-ink);
+  background:repeating-linear-gradient(180deg,var(--wood) 0 56px,var(--print-ink) 56px 58.6px,var(--wood-l) 58.6px 61px,var(--wood) 61px 116px);
+  box-shadow:0 30px 44px -32px rgba(31,42,85,.55)}
+/* corner battens with nail heads */
+.pn-crate::before,.pn-crate::after{content:"";position:absolute;top:-3px;bottom:-3px;left:-3px;width:clamp(26px,3.6vw,40px);border:3px solid var(--print-ink);border-radius:12px 0 0 12px;
+  background:radial-gradient(circle,var(--print-ink) 2.2px,transparent 2.8px) 50% 14px/100% 50% no-repeat,radial-gradient(circle,var(--print-ink) 2.2px,transparent 2.8px) 50% calc(100% - 14px)/100% 50% no-repeat,var(--wood-d)}
+.pn-crate::after{left:auto;right:-3px;border-radius:0 12px 12px 0}
+.pn-crate-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 20px}
+.pn-crate-head h2{font-size:var(--t-28);font-weight:800;letter-spacing:.14em;text-transform:uppercase;line-height:1.2;color:rgba(31,42,85,.85)}
+.pn-crate-head .mono{opacity:.8}
+.pn-waybill{position:relative;margin-top:16px;padding:18px clamp(14px,2.4vw,28px) 22px;background:var(--print-cream);border:2.5px solid var(--print-ink);border-radius:12px;rotate:-.5deg;
+  box-shadow:0 12px 20px -14px rgba(31,42,85,.6)}
+.pn-map{display:block;width:100%;height:auto;overflow:visible}
+.pn-map :is(path,circle){stroke:var(--print-ink);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pn-map-land{fill:var(--print-green);opacity:.55;stroke-dasharray:2 7}
+.pn-map-route{fill:none;stroke:var(--print-coral)!important;stroke-width:3!important;stroke-dasharray:9 8;animation:pn-route 22s linear infinite}
+@keyframes pn-route{to{stroke-dashoffset:-340}}
+.pn-pin circle{fill:var(--print-cream)}
+.pn-pin text,.pn-compass text{font:800 19px var(--f-body);fill:var(--print-ink);text-anchor:middle}
+.pn-pin-now circle{fill:var(--print-coral)}
+.pn-pin-now text{fill:var(--print-cream)}
+.pn-compass circle{fill:none;stroke-width:1.6}
+.pn-compass path{stroke-width:1.6;fill:none}
+.pn-compass .pn-compass-n{fill:var(--print-ink)}
+.pn-compass text{font-size:14px}
+.pn-map-fish{--fish-body:var(--print-red)}
+.pn-stops{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;counter-reset:stop}
+.pn-stops li{position:relative;display:grid;gap:3px;padding-left:38px;counter-increment:stop}
+.pn-stops li::before{content:counter(stop);position:absolute;left:0;top:0;width:28px;height:28px;display:grid;place-items:center;border-radius:50%;background:var(--print-cream);box-shadow:inset 0 0 0 2.4px var(--print-ink);font:800 14px/1 var(--f-body)}
+.pn-stops li[aria-current]::before{background:var(--print-coral);color:var(--print-cream)}
+.pn-stops b{font-size:var(--t-17);line-height:1.3}
+.pn-stops span{font-size:var(--t-14);line-height:1.4}
+
+.pn-close{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 32px}
+.pn-close p{font-size:var(--t-20);line-height:1.45;text-wrap:pretty}
+.pn-close .ctas{padding-top:0}
+
+@media (max-width:1000px){
+  .pn-item{--s:.86}
+  .pn-dishes{grid-template-columns:minmax(0,1fr)}
+  .pn-dishes li{grid-template-rows:none}
 }
-@media (max-width:720px){
-  .am{gap:28px;padding-bottom:48px}
-  .am-head{grid-template-columns:minmax(0,1fr);gap:20px}
-  .am-badge{order:-1;justify-self:start;grid-auto-flow:column;align-items:center;gap:14px;rotate:-4deg}
-  .am-badge-ring{width:132px}
-  .am-badge figcaption{text-align:left}
-  .am-title{font-size:var(--t-40)}
-  .am-intro,.am-close p{font-size:var(--t-17)}
-  .am-panels h2{font-size:var(--t-20)}
-  .am-cooking dl > div{grid-template-columns:minmax(0,1fr);gap:4px}
-  .am-strip span:nth-child(2){display:none}
+/* phones and small tablets: each shelf scrolls sideways (with the plank) and snaps item by item */
+@media (max-width:820px){
+  .pn{gap:30px;padding-bottom:48px}
+  .pn-title{font-size:var(--t-40)}
+  .pn-intro,.pn-close p{font-size:var(--t-17)}
+  .pn-cab{--px:0px;padding:20px 0 0;border-width:10px;border-radius:22px}
+  .pn-scroll{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;padding-top:22px;margin-top:-22px;scroll-padding-inline:14px}
+  .pn-scroll::-webkit-scrollbar{display:none}
+  .pn-track{width:max-content;min-width:100%}
+  .pn-row{justify-content:flex-start;gap:12px;padding-inline:14px 30px}
+  .pn-row li{scroll-snap-align:start}
+  .pn-item{--s:.82}
+  .pn-tin{--s:.92}
+  .pn-plank{margin-inline:0}
+  .pn-bracket{left:24px}.pn-bracket + .pn-bracket{left:auto;right:24px}
+  .pn-tag{left:14px;translate:none}
+  .pn-swipe{display:block;margin-top:12px;text-align:right;color:var(--label-ink)}
+  .pn-story{grid-template-columns:minmax(0,1fr);padding:34px 26px 30px}
+  .pn-story h3{font-size:var(--t-28)}
+  .pn-story p{font-size:var(--t-17)}
+  .pn-story:has(.pn-x) .pn-facts{margin-top:0}
+  .pn-story:has(.pn-x) .pn-story-main{padding-right:40px}
+  .pn-x{top:14px;right:10px}
+  .pn-photo{max-width:200px;justify-self:start}
+  .pn-tinlabel{gap:4px}
+  .pn-medal{width:56px}
+  .pn-tinlabel b{font-size:var(--t-28);margin-top:6px}
+  .pn-banner{letter-spacing:.02em;padding-inline:9px}
+  .pn-crate{padding:18px 40px 24px}
+  .pn-crate::before,.pn-crate::after{width:24px}
+  .pn-crate-head h2{font-size:var(--t-20)}
+  .pn-stops{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:18px}
 }
 @media (max-width:480px){
-  .am-ship ol{grid-template-columns:minmax(0,1fr);row-gap:18px}
-  .am-ship li{padding:0 0 0 30px}
-  .am-ship li::before{top:3px}
-  .am-ship ol::before{display:block;left:7px;right:auto;top:10px;bottom:24px;border-top:0;border-left:2px dashed var(--wave,var(--line))}
-  .am-fish{left:auto;right:0;top:-4px}
+  .pn-crate{padding:16px 30px 22px}
+  .pn-crate::before,.pn-crate::after{width:18px}
+  .pn-crate-head .mono{display:none}
+  .pn-waybill{padding:12px 12px 16px}
+  .pn-stops{grid-template-columns:minmax(0,1fr)}
+  .pn-close .ctas{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  .pn-how-dot,.pn-steam path,.pn-light,.pn-map-route,.pn-story.is-in,.pn-item .pn-lid,.pn-bits{animation:none!important}
+  .pn-steam path{opacity:.7}
+  .pn-steam path:nth-child(2){transform:translateY(-6px)}
 }

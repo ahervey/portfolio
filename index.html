@@ -219,7 +219,7 @@ document.head.appendChild(s)})();</script>
         </article>
         <article class="ed">
           <button class="mini-tin ed-tin t-pink" type="button" aria-expanded="false" aria-controls="ed-note-2" aria-label="Game dev, sealed for now. Open the tin">
-            <span class="ed-inside ed-text"><b>Tinkering in progress</b><span class="mono">Nothing to taste yet</span></span>
+            <span class="ed-inside ed-text"><b>Tinkering in progress</b> <span class="mono">Nothing to taste yet</span></span>
             <span class="mini-lid"><span class="lid-back"></span><span class="mono">Small batch</span><b>Game dev</b><span class="mini-sub">Side projects</span></span>
             <span class="seal mono">Sealed for now</span>
           </button>
@@ -233,7 +233,7 @@ document.head.appendChild(s)})();</script>
         </article>
         <article class="ed">
           <button class="mini-tin ed-tin t-blue" type="button" aria-expanded="false" aria-controls="ed-note-3" aria-label="Your team? Reserved. Open the tin">
-            <span class="ed-inside ed-text"><b>Room for one more</b><span class="mono">Your project here</span></span>
+            <span class="ed-inside ed-text"><b>Room for one more</b> <span class="mono">Your project here</span></span>
             <span class="mini-lid"><span class="lid-back"></span><span class="mono">Reserved</span><b>Your team?</b><span class="mini-sub">This spot's open</span></span>
             <span class="seal mono">Reserved</span>
           </button>
@@ -923,60 +923,281 @@ document.head.appendChild(s)})();</script>
     </div>
   </article>
 
-  <!-- ===================== ABOUT ME: the back of the tin ===================== -->
+  <!-- ===================== ABOUT ME: the pantry shelf ===================== -->
+  <!-- Every item on the shelf is a button that opens its label in the panel under the cabinet.
+       Without JS the panel simply lists every label, so the stories are always there to read. -->
   <article data-view="about-me" data-title="About" hidden>
-    <div class="am">
+    <div class="pn">
       <a class="back-link mono" href="#top">← Home</a>
-      <div class="am-label">
-        <div class="am-strip mono"><span>Back of the tin</span><span>Lot 0 19 AH 2026</span><span>Packed in Vancouver, WA</span></div>
+      <header class="pn-head">
+        <span class="mono pn-kicker">About · Designer &amp; developer</span>
+        <h1 class="pn-title" tabindex="-1">Aaron (AJ) Hervey</h1>
+        <p class="pn-intro summary">I'm Aaron, AJ for short, a designer and developer from Memphis, Tennessee. Video games got me into computers, and writing and design were never far behind. Today I'm in Vancouver, Washington, making internal tools at Avangrid Renewables, and I'm looking for UX design and software engineering roles where I can keep doing both.</p>
+      </header>
 
-        <header class="am-head">
-          <div class="am-copy">
-            <span class="mono am-kicker">About · Designer &amp; developer</span>
-            <h1 class="am-title" tabindex="-1">Aaron (AJ) Hervey</h1>
-            <p class="am-intro summary">I'm Aaron, AJ for short, a designer and developer from Memphis, Tennessee. Video games got me into computers, and writing and design were never far behind. Today I'm in Vancouver, Washington, making internal tools at Avangrid Renewables, and I'm looking for UX design and software engineering roles where I can keep doing both.</p>
+      <section class="pn-pantry" id="pantry" aria-labelledby="pn-h">
+        <h2 id="pn-h" class="sr-only">What's on my shelf</h2>
+        <p class="pn-how mono" aria-hidden="true"><span class="pn-how-dot"></span><span class="pn-how-t">Pick anything off the shelf to read its label</span></p>
+        <!-- shared paint for the tins: one brushed-metal gradient -->
+        <svg class="pn-defs" aria-hidden="true" focusable="false"><defs>
+          <linearGradient id="pn-metal" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9AA3AA"/><stop offset=".22" stop-color="#EEF1F3"/><stop offset=".5" stop-color="#C3CACF"/><stop offset=".78" stop-color="#F4F6F7"/><stop offset="1" stop-color="#8D969D"/></linearGradient>
+          <linearGradient id="pn-curve" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1F2A55" stop-opacity=".22"/><stop offset=".18" stop-color="#1F2A55" stop-opacity="0"/><stop offset=".3" stop-color="#fff" stop-opacity=".35"/><stop offset=".42" stop-color="#fff" stop-opacity="0"/><stop offset=".8" stop-color="#1F2A55" stop-opacity="0"/><stop offset="1" stop-color="#1F2A55" stop-opacity=".25"/></linearGradient>
+        </defs></svg>
+
+        <div class="pn-cab">
+          <!-- ===== top shelf: ingredients ===== -->
+          <div class="pn-shelf">
+            <div class="pn-scroll"><div class="pn-track">
+              <ul class="pn-row" aria-labelledby="pn-tag-1">
+                <li><button type="button" class="pn-item pn-jar" style="--c:var(--print-blue);--c2:#93BCE2" aria-controls="pn-s-interviews">
+                  <svg class="pn-art" viewBox="0 0 120 160" aria-hidden="true" focusable="false">
+                    <ellipse class="pn-sh" cx="60" cy="156" rx="48" ry="4"/>
+                    <path class="f-glass" d="M34 40H86V44Q86 50 96 52Q108 55 108 66V146Q108 155 99 155H21Q12 155 12 146V66Q12 55 24 52Q34 50 34 44Z"/>
+                    <path class="f-c t" d="M15 124C30 118 44 127 60 121S90 118 105 123V146Q105 152 98 152H22Q15 152 15 146Z"/>
+                    <g class="t"><path class="f-cream" d="M22 128H44Q49 128 49 133V138Q49 143 44 143H32L26 148V143H22Q17 143 17 138V133Q17 128 22 128Z"/><path class="f-butter" d="M58 131H82Q87 131 87 136V141Q87 146 82 146H74V151L68 146H58Q53 146 53 141V136Q53 131 58 131Z"/><path class="f-red" d="M88 124H99Q104 124 104 129V133Q104 138 99 138H96L92 142V138H88Q84 138 84 133V129Q84 124 88 124Z"/></g>
+                    <g class="n f-ink"><circle cx="27" cy="135.5" r="1.4"/><circle cx="33" cy="135.5" r="1.4"/><circle cx="39" cy="135.5" r="1.4"/><circle cx="64" cy="138.5" r="1.4"/><circle cx="70" cy="138.5" r="1.4"/><circle cx="76" cy="138.5" r="1.4"/></g>
+                    <path class="t f-cream" d="M76 56H94Q98 56 98 60V63Q98 67 94 67H84L80 71V67H76Q72 67 72 63V60Q72 56 76 56Z"/>
+                    <path class="shine" d="M21 72Q19 100 21 116"/>
+                    <g class="pn-lid"><rect class="f-c2" x="30" y="20" width="60" height="22" rx="6"/><path class="t ridge" d="M39 25V37M47 25V37M55 25V37M63 25V37M71 25V37M79 25V37"/></g>
+                  </svg>
+                  <span class="pn-label"><b>Interviews</b> <span class="mono">Est. 2020</span></span>
+                </button></li>
+                <li><button type="button" class="pn-item pn-jar" style="--c:var(--print-red);--c2:#EE958C" aria-controls="pn-s-optum">
+                  <svg class="pn-art" viewBox="0 0 120 160" aria-hidden="true" focusable="false">
+                    <ellipse class="pn-sh" cx="60" cy="156" rx="48" ry="4"/>
+                    <path class="f-glass" d="M34 40H86V44Q86 50 96 52Q108 55 108 66V146Q108 155 99 155H21Q12 155 12 146V66Q12 55 24 52Q34 50 34 44Z"/>
+                    <path class="f-c t" d="M15 122C32 128 46 117 62 123S92 126 105 119V146Q105 152 98 152H22Q15 152 15 146Z"/>
+                    <g class="t"><rect class="f-butter" x="22" y="128" width="13" height="13" rx="2" transform="rotate(-12 28 134)"/><circle class="f-blue" cx="50" cy="141" r="7"/><path class="f-green" d="M70 128L80 145H60Z"/><rect class="f-lilac" x="86" y="131" width="12" height="12" rx="6"/><path class="nofill" d="M38 146L33 149L38 152M44 145L41 153M47 146L52 149L47 152"/></g>
+                    <g class="t"><rect class="f-butter" x="78" y="56" width="10" height="10" rx="2" transform="rotate(14 83 61)"/></g>
+                    <path class="shine" d="M21 72Q19 100 21 116"/>
+                    <g class="pn-lid"><rect class="f-c2" x="30" y="20" width="60" height="22" rx="6"/><path class="t ridge" d="M39 25V37M47 25V37M55 25V37M63 25V37M71 25V37M79 25V37"/></g>
+                  </svg>
+                  <span class="pn-label"><b>Optum</b> <span class="mono">2022 &amp; 2023</span></span>
+                </button></li>
+                <li><button type="button" class="pn-item pn-jar" style="--c:var(--print-butter);--c2:#F2C95E" aria-controls="pn-s-oncall">
+                  <svg class="pn-art" viewBox="0 0 120 160" aria-hidden="true" focusable="false">
+                    <ellipse class="pn-sh" cx="60" cy="156" rx="48" ry="4"/>
+                    <path class="f-glass" d="M34 40H86V44Q86 50 96 52Q108 55 108 66V146Q108 155 99 155H21Q12 155 12 146V66Q12 55 24 52Q34 50 34 44Z"/>
+                    <path class="f-c t" d="M15 120C28 125 42 116 58 121S90 125 105 118V146Q105 152 98 152H22Q15 152 15 146Z"/>
+                    <g class="t f-coral"><path d="M32 126L24 139H31L27 150L40 135H33L38 126Z"/><path d="M80 127L73 138H79L76 148L87 135H81L85 127Z"/></g>
+                    <g class="t"><path class="nofill" d="M56 150V134"/><circle class="f-cream" cx="56" cy="133" r="2.2"/><path class="f-cream" d="M56 133L54 124Q56 122 58 124ZM56 133L64 136Q64 139 61 139ZM56 133L49 138Q47 136 49 134Z"/></g>
+                    <g class="t f-coral"><path d="M86 56L81 64H85L83 70L90 62H86L88 56Z"/></g>
+                    <path class="shine" d="M21 72Q19 100 21 116"/>
+                    <g class="pn-lid"><rect class="f-c2" x="30" y="20" width="60" height="22" rx="6"/><path class="t ridge" d="M39 25V37M47 25V37M55 25V37M63 25V37M71 25V37M79 25V37"/></g>
+                  </svg>
+                  <span class="pn-label"><b>On call</b> <span class="mono">Triage shifts</span></span>
+                </button></li>
+                <li><button type="button" class="pn-item pn-book" style="--c:var(--print-lilac);--c2:#B9A8E6" aria-controls="pn-s-writing">
+                  <svg class="pn-art" viewBox="0 0 140 190" aria-hidden="true" focusable="false">
+                    <ellipse class="pn-sh" cx="72" cy="185" rx="58" ry="4"/>
+                    <path class="f-cream" d="M30 14H124Q131 14 131 21V172Q131 179 124 179H30Z"/>
+                    <path class="t ridge" d="M126 30V164M129 40V150"/>
+                    <path class="f-c" d="M18 9H117Q124 9 124 16V173Q124 180 117 180H18Z"/>
+                    <rect class="t f-none frame" x="36" y="22" width="76" height="144" rx="7"/>
+                    <rect class="f-c2" x="9" y="7" width="20" height="175" rx="6"/>
+                    <path class="t ridge" d="M9 28H29M9 34H29M9 155H29M9 161H29"/>
+                    <path class="f-coral t" d="M96 178V189L101 185L106 189V178"/>
+                    <g class="pn-ute"><use href="#fork" x="44" y="118" width="32" height="32"/><use href="#spoon" x="72" y="118" width="32" height="32"/></g>
+                  </svg>
+                  <span class="pn-label"><b>Writing</b> <span class="mono">15 pages</span></span>
+                </button></li>
+                <li><button type="button" class="pn-item pn-mason" style="--c:var(--print-green);--c2:#8FCCA6" aria-controls="pn-s-maycontain">
+                  <svg class="pn-art" viewBox="0 0 160 170" aria-hidden="true" focusable="false">
+                    <ellipse class="pn-sh" cx="80" cy="166" rx="66" ry="4"/>
+                    <path class="f-glass" d="M30 46H130Q146 48 146 64V150Q146 164 132 164H28Q14 164 14 150V64Q14 48 30 46Z"/>
+                    <g class="t pn-bits">
+                      <path class="f-c" d="M17 142C40 136 60 146 84 140S124 136 143 142V150Q143 161 132 161H28Q17 161 17 150Z"/>
+                      <g transform="translate(-4 -30) rotate(-8 50 140)"><path class="f-lilac" d="M30 132Q30 126 38 126H62Q70 126 70 132V144Q70 152 62 152Q56 152 52 146H48Q44 152 38 152Q30 152 30 144Z"/><path class="nofill" d="M37 135V143M33 139H41"/><circle class="f-coral" cx="60" cy="136" r="2.6"/><circle class="f-butter" cx="64" cy="142" r="2.6"/></g>
+                      <g transform="translate(-4 -28) rotate(10 116 138)"><rect class="f-red" x="100" y="118" width="32" height="38" rx="3"/><path class="nofill" d="M106 118V156M110 128H126M110 134H124"/></g>
+                      <g transform="translate(-2 -40) rotate(-8 62 108)"><rect class="f-cream" x="38" y="100" width="50" height="16" rx="3"/><ellipse class="f-cream" cx="38" cy="108" rx="4" ry="8"/><ellipse class="f-cream" cx="88" cy="108" rx="4" ry="8"/><path class="nofill" d="M46 106H78M46 111H70"/><path class="f-coral" d="M60 116L57 124L61 121L64 125L63 116Z"/></g>
+                      <g transform="translate(-58 -2) rotate(-6 108 86)"><rect class="f-blue" x="88" y="70" width="42" height="32" rx="4"/><path class="nofill" d="M88 78H130"/><circle class="n f-ink" cx="93" cy="74" r="1.3"/><circle class="n f-ink" cx="98" cy="74" r="1.3"/><path class="f-coral" d="M109 98C100 92 101 84 105 84C107 84 109 86 109 88C109 86 111 84 113 84C117 84 118 92 109 98Z"/></g>
+                      <path class="n f-white" d="M120 60Q121 66 127 67Q121 68 120 74Q119 68 113 67Q119 66 120 60Z"/><path class="n f-white" d="M84 108Q85 112 89 113Q85 114 84 118Q83 114 79 113Q83 112 84 108Z"/>
+                    </g>
+                    <path class="shine" d="M22 66Q20 96 22 126"/>
+                    <rect class="f-glass" x="30" y="34" width="100" height="14" rx="4"/>
+                    <g class="pn-lid"><path class="f-glass" d="M26 34Q80 8 134 34Z"/><rect class="f-coral" x="24" y="31" width="112" height="6" rx="3"/></g>
+                    <path class="t nofill wire" d="M18 76Q14 40 34 30M142 76Q146 40 126 30"/>
+                  </svg>
+                  <span class="pn-label pn-tagged"><b>May contain</b> <span class="mono">Odds &amp; ends</span></span>
+                </button></li>
+              </ul>
+              <div class="pn-plank" aria-hidden="true">
+                <svg class="pn-grain" viewBox="0 0 1000 30" preserveAspectRatio="none" focusable="false"><path d="M0 12Q120 7 240 12T480 11Q560 9 600 14T820 12Q900 9 1000 13M30 21Q200 17 360 22T700 21Q840 18 980 22M640 7Q690 4 760 8"/><path d="M180 17q12-5 24 0q-12 5-24 0Z"/></svg>
+                <i class="pn-bracket"></i><i class="pn-bracket"></i>
+              </div>
+            </div></div>
+            <p class="pn-tag mono" id="pn-tag-1">Ingredients</p>
           </div>
-          <figure class="am-badge">
-            <span class="am-badge-ring"><img src="img/aj.jpg" alt="Aaron smiling in glasses, locs framing his face" width="660" height="880" decoding="async"></span>
-            <figcaption class="mono">Product of<br>Memphis, TN</figcaption>
-          </figure>
-        </header>
 
-        <div class="am-panels">
-          <section class="am-ingredients" aria-labelledby="am-ing">
-            <h2 id="am-ing">Ingredients</h2>
-            <ul>
-              <li><b>Interviews before interfaces.</b> In 2020 I surveyed Knoxville businesses on COVID's impact in Qualtrics and presented at the Eureka Conference.</li>
-              <li><b>Two summers at Optum.</b> Teams of four interns, Figma to React and TypeScript: an employee discussion space, then a release-notes hub.</li>
-              <li><b>On call, too.</b> I take shifts triaging our renewable sites, so I see what happens long after handoff.</li>
-              <li><b>Writing myself in.</b> An autoethnography on being queer and Black taught me to stop editing myself out. <a href="#writing">Read&nbsp;it&nbsp;→</a></li>
-            </ul>
-            <p class="am-allergen"><span class="mono">May contain</span> poetry, short stories, old Tumblr designs and the video games that got me into programming.</p>
+          <!-- ===== bottom shelf: the house tin, the stove, the game tin ===== -->
+          <div class="pn-shelf">
+            <div class="pn-scroll"><div class="pn-track">
+              <ul class="pn-row" aria-labelledby="pn-tag-2">
+                <li><button type="button" class="pn-item pn-tin" style="--c:var(--print-red);--c2:#EE958C" aria-controls="pn-s-aj" data-default>
+                  <svg class="pn-art" viewBox="0 0 210 260" aria-hidden="true" focusable="false">
+                    <ellipse class="pn-sh" cx="105" cy="254" rx="96" ry="5"/>
+                    <path class="f-c" d="M22 50H188V232Q188 248 105 250Q22 248 22 232Z"/>
+                    <path class="f-metal" d="M22 224Q22 238 105 240Q188 238 188 224V232Q188 248 105 250Q22 248 22 232Z"/>
+                    <g class="pn-lid">
+                      <path class="f-metal" d="M17 30H193V56Q193 66 105 68Q17 66 17 56Z"/>
+                      <ellipse class="f-metal-top" cx="105" cy="30" rx="88" ry="14"/>
+                      <ellipse class="t f-none ridge" cx="105" cy="30" rx="72" ry="9"/>
+                      <path class="t nofill ridge" d="M17 46Q17 56 105 58Q193 56 193 46"/>
+                    </g>
+                  </svg>
+                  <span class="pn-tinlabel">
+                    <span class="pn-medal"><img src="img/aj.jpg" alt="" width="660" height="880" loading="lazy" decoding="async"></span>
+                    <b>AJ</b><span class="sr-only">, the house tin</span>
+                    <span class="pn-banner mono">Product of Memphis</span>
+                  </span>
+                </button></li>
+                <li><button type="button" class="pn-item pn-pot" style="--c:var(--print-blue);--c2:#93BCE2" aria-controls="pn-s-cooking">
+                  <svg class="pn-art" viewBox="0 0 250 250" aria-hidden="true" focusable="false">
+                    <g class="pn-steam nofill"><path d="M102 64C92 54 112 46 102 34S106 16 100 8"/><path d="M126 58C116 46 136 38 126 26S130 8 124 0"/><path d="M150 64C140 54 160 46 150 34S154 16 148 8"/></g>
+                    <ellipse class="pn-sh" cx="125" cy="244" rx="104" ry="5"/>
+                    <rect class="f-green" x="30" y="194" width="190" height="46" rx="11"/>
+                    <rect class="f-green-d" x="22" y="184" width="206" height="14" rx="6"/>
+                    <circle class="f-cream" cx="64" cy="217" r="10"/><path class="nofill" d="M64 217L58 210"/>
+                    <circle class="f-cream" cx="186" cy="217" r="10"/><path class="nofill" d="M186 217L193 211"/>
+                    <circle class="f-coral t pn-light" cx="125" cy="217" r="4.5"/>
+                    <ellipse class="f-ink" cx="125" cy="185" rx="66" ry="5"/>
+                    <path class="pn-handle nofill" d="M50 124H34Q26 124 26 132V136Q26 144 34 144H50M200 124H216Q224 124 224 132V136Q224 144 216 144H200"/>
+                    <path class="f-c" d="M50 112H200V160Q200 184 174 184H76Q50 184 50 160Z"/>
+                    <g class="n f-white pn-speck"><circle cx="62" cy="120" r="2"/><circle cx="190" cy="168" r="2.4"/><circle cx="184" cy="120" r="1.6"/><circle cx="60" cy="170" r="1.8"/><circle cx="72" cy="178" r="1.3"/></g>
+                    <rect class="f-c2" x="43" y="104" width="164" height="12" rx="6"/>
+                    <g class="pn-lid"><path class="f-c2" d="M54 104Q125 56 196 104Z"/><path class="t nofill shine-ink" d="M82 92Q100 78 122 75"/><rect class="f-cream" x="113" y="64" width="24" height="13" rx="5"/></g>
+                  </svg>
+                  <span class="pn-label"><b>Now cooking</b> <span class="mono">3 dishes</span></span>
+                </button></li>
+                <li><button type="button" class="pn-item pn-game" style="--c:var(--print-green);--c2:#8FCCA6" aria-controls="pn-s-games">
+                  <svg class="pn-art" viewBox="0 0 160 180" aria-hidden="true" focusable="false">
+                    <ellipse class="pn-sh" cx="80" cy="175" rx="68" ry="4"/>
+                    <g transform="rotate(-11 62 90)"><rect class="f-butter" x="30" y="40" width="64" height="86" rx="6"/><path class="t ridge" d="M40 46H84M40 51H84"/><rect class="f-cream t" x="38" y="60" width="48" height="34" rx="3"/></g>
+                    <g class="pn-cart"><rect class="f-lilac" x="62" y="26" width="72" height="94" rx="7"/><path class="t ridge" d="M72 32H124M72 37H124M72 42H124"/><rect class="f-cream t" x="70" y="50" width="56" height="40" rx="3"/>
+                      <path class="n f-coral" d="M88 60h6v3h3v-3h6v3h3v9h-3v3h-3v3h-3v3h-3v-3h-3v-3h-3v-3h-3v-9h3z"/></g>
+                    <path class="f-c" d="M14 102H146V164Q146 174 136 174H24Q14 174 14 164Z"/>
+                    <rect class="f-metal" x="10" y="94" width="140" height="13" rx="5"/>
+                  </svg>
+                  <span class="pn-label"><b>Game dev</b> <span class="mono">Not ready yet</span></span>
+                </button></li>
+              </ul>
+              <div class="pn-plank" aria-hidden="true">
+                <svg class="pn-grain" viewBox="0 0 1000 30" preserveAspectRatio="none" focusable="false"><path d="M0 14Q140 9 280 14T560 13Q660 10 720 15T1000 12M20 22Q240 18 420 23T800 21Q900 19 990 23M300 6Q360 3 430 7"/><path d="M620 18q12-5 24 0q-12 5-24 0Z"/></svg>
+                <i class="pn-bracket"></i><i class="pn-bracket"></i>
+              </div>
+            </div></div>
+            <p class="pn-tag mono" id="pn-tag-2">On the stove</p>
+          </div>
+        </div>
+        <p class="pn-swipe mono" aria-hidden="true">Swipe the shelves →</p>
+
+        <!-- the labels: one shows at a time once JS is running; without it they're all here as a list -->
+        <div class="pn-panel" id="pn-panel">
+          <i class="pn-caret" aria-hidden="true"></i>
+          <p class="pn-empty">The shelf's all yours. Pick a jar, a book or a tin and its label opens here.</p>
+
+          <section class="pn-story" id="pn-s-aj" style="--tone:var(--print-red)" aria-labelledby="pn-s-aj-h">
+            <div class="pn-story-main">
+              <span class="mono">The house tin · Nº 00</span>
+              <h3 id="pn-s-aj-h">Aaron (AJ) Hervey</h3>
+              <p>Product of Memphis, Tennessee. Packed in Vancouver, Washington. I take internal tools from user interviews to production front-ends, so data-heavy systems feel simple.</p>
+            </div>
+            <figure class="pn-facts pn-photo"><img src="img/aj.jpg" alt="Aaron smiling in glasses, locs framing his face" width="660" height="880" loading="lazy" decoding="async"><figcaption class="mono">Open to UX &amp; SWE roles</figcaption></figure>
           </section>
 
-          <section class="am-cooking" aria-labelledby="am-now">
-            <h2 id="am-now">Now cooking</h2>
-            <dl>
-              <div><dt class="mono">At work</dt><dd><a href="#mew2"><b>MEW2</b></a>, a guided way to edit renewable asset data without writing SQL, now rolling out to more teams.</dd></div>
-              <div><dt class="mono">Still tending</dt><dd><a href="#oracle"><b>CORE Alarms</b></a>, the alarm-history site I rebuilt from wireframe to React and Node.js. I still maintain it.</dd></div>
-              <div><dt class="mono">Side project</dt><dd><a href="#intune"><b>InTune</b></a>, a 2023 class concept with Holly Sarah Liban and Emma Thomas that I'm developing into a real app.</dd></div>
-              <div><dt class="mono">Tinkering</dt><dd><b>Game dev</b> side projects, not ready to taste yet.</dd></div>
-            </dl>
+          <section class="pn-story" id="pn-s-interviews" style="--tone:var(--print-blue)" aria-labelledby="pn-s-interviews-h">
+            <div class="pn-story-main">
+              <span class="mono">Ingredient Nº 01 · Research</span>
+              <h3 id="pn-s-interviews-h">Interviews before interfaces</h3>
+              <p>In 2020 I surveyed Knoxville businesses on COVID's impact in Qualtrics and presented at the Eureka Conference.</p>
+            </div>
+            <dl class="pn-facts"><div><dt>Year</dt><dd>2020</dd></div><div><dt>Where</dt><dd>Knoxville, TN</dd></div><div><dt>Tool</dt><dd>Qualtrics</dd></div><div><dt>Served at</dt><dd>Eureka Conference</dd></div></dl>
+          </section>
+
+          <section class="pn-story" id="pn-s-optum" style="--tone:var(--print-red)" aria-labelledby="pn-s-optum-h">
+            <div class="pn-story-main">
+              <span class="mono">Ingredient Nº 02 · Internships</span>
+              <h3 id="pn-s-optum-h">Two summers at Optum</h3>
+              <p>Teams of four interns, Figma to React and TypeScript: an employee discussion space the first summer, then a release-notes hub the next.</p>
+            </div>
+            <dl class="pn-facts"><div><dt>Summers</dt><dd>2022, 2023</dd></div><div><dt>Where</dt><dd>Raleigh, NC</dd></div><div><dt>Team</dt><dd>4 interns</dd></div><div><dt>Stack</dt><dd>Figma, React, TypeScript</dd></div></dl>
+          </section>
+
+          <section class="pn-story" id="pn-s-oncall" style="--tone:var(--print-butter)" aria-labelledby="pn-s-oncall-h">
+            <div class="pn-story-main">
+              <span class="mono">Ingredient Nº 03 · Operations</span>
+              <h3 id="pn-s-oncall-h">On call, too</h3>
+              <p>I take shifts triaging our renewable sites, so I see what happens long after handoff.</p>
+            </div>
+            <dl class="pn-facts"><div><dt>Shifts</dt><dd>Triage</dd></div><div><dt>Sites</dt><dd>Renewable</dd></div><div><dt>Where</dt><dd>Avangrid Renewables</dd></div></dl>
+          </section>
+
+          <section class="pn-story" id="pn-s-writing" style="--tone:var(--print-lilac)" aria-labelledby="pn-s-writing-h">
+            <div class="pn-story-main">
+              <span class="mono">Ingredient Nº 04 · Writing</span>
+              <h3 id="pn-s-writing-h">Writing myself in</h3>
+              <p>An autoethnography on being queer and Black taught me to stop editing myself out.</p>
+              <a class="pn-go" href="#writing">Read the writing sample →</a>
+            </div>
+            <dl class="pn-facts"><div><dt>Form</dt><dd>Autoethnography</dd></div><div><dt>Length</dt><dd>15 pages</dd></div></dl>
+          </section>
+
+          <section class="pn-story" id="pn-s-maycontain" style="--tone:var(--print-green)" aria-labelledby="pn-s-maycontain-h">
+            <div class="pn-story-main">
+              <span class="mono">Allergen advice</span>
+              <h3 id="pn-s-maycontain-h">May contain</h3>
+              <p>Poetry, short stories, old Tumblr designs and the video games that got me into programming.</p>
+            </div>
+            <ul class="pn-facts pn-traces"><li>Poetry</li><li>Short stories</li><li>Old Tumblr designs</li><li>Video games</li></ul>
+          </section>
+
+          <section class="pn-story pn-story-wide" id="pn-s-cooking" style="--tone:var(--print-blue)" aria-labelledby="pn-s-cooking-h">
+            <div class="pn-story-main">
+              <span class="mono">On the stove · 3 dishes</span>
+              <h3 id="pn-s-cooking-h">Now cooking</h3>
+            </div>
+            <ul class="pn-dishes">
+              <li><span class="mono">At work</span><b>MEW2</b><p>A guided way to edit renewable asset data without writing SQL, now rolling out to more teams.</p><a class="pn-go" href="#mew2">Open the MEW2 case →</a></li>
+              <li><span class="mono">Still tending</span><b>CORE Alarms</b><p>The alarm-history site I rebuilt from wireframe to React and Node.js. I still maintain it.</p><a class="pn-go" href="#oracle">Open the Alarms case →</a></li>
+              <li><span class="mono">Side project</span><b>InTune</b><p>A 2023 class concept with Holly Sarah Liban and Emma Thomas that I'm developing into a real app.</p><a class="pn-go" href="#intune">Open the InTune case →</a></li>
+            </ul>
+          </section>
+
+          <section class="pn-story" id="pn-s-games" style="--tone:var(--print-green)" aria-labelledby="pn-s-games-h">
+            <div class="pn-story-main">
+              <span class="mono">Small batch · Tinkering</span>
+              <h3 id="pn-s-games-h">Game dev</h3>
+              <p>Side projects, not ready to taste yet. Video games are what got me into computers in the first place, so this tin stays on the shelf.</p>
+            </div>
+            <dl class="pn-facts"><div><dt>Status</dt><dd>Not ready to taste</dd></div><div><dt>Batch</dt><dd>Side projects</dd></div></dl>
           </section>
         </div>
+      </section>
 
-        <section class="am-ship" aria-labelledby="am-been">
-          <h2 id="am-been" class="mono">Shipping route</h2>
-          <ol>
+      <!-- ===== the shipping crate: where the tin has travelled ===== -->
+      <section class="pn-crate" aria-labelledby="pn-route-h">
+        <div class="pn-crate-head"><h2 id="pn-route-h">Shipping route</h2><span class="mono" aria-hidden="true">This side up ↑ · Handle with care</span></div>
+        <div class="pn-waybill">
+          <svg class="pn-map" viewBox="0 0 800 230" aria-hidden="true" focusable="false">
+            <path class="pn-map-land" d="M40 70Q60 40 130 46Q220 30 330 50Q450 34 560 56Q680 44 740 74Q768 104 744 140Q760 176 700 190Q600 206 520 196Q420 212 320 196Q210 210 120 190Q50 186 44 146Q24 110 40 70Z"/>
+            <path class="pn-map-route" d="M460 158Q540 120 610 140Q660 152 712 132C760 60 520 0 300 24Q150 36 92 92"/>
+            <g class="pn-pin"><circle cx="460" cy="158" r="17"/><text x="460" y="164">1</text></g>
+            <g class="pn-pin"><circle cx="610" cy="140" r="17"/><text x="610" y="146">2</text></g>
+            <g class="pn-pin"><circle cx="712" cy="132" r="17"/><text x="712" y="138">3</text></g>
+            <g class="pn-pin pn-pin-now"><circle cx="92" cy="92" r="19"/><text x="92" y="98">4</text></g>
+            <use class="pn-map-fish" href="#fish" x="118" y="102" width="72" height="42"/>
+            <g class="pn-compass"><circle cx="300" cy="150" r="22"/><path d="M300 126V174M276 150H324"/><path class="pn-compass-n" d="M300 128L306 150H294Z"/><text x="300" y="120">N</text></g>
+          </svg>
+          <ol class="pn-stops">
             <li><b>Memphis, TN</b><span>Where I'm from</span></li>
             <li><b>Knoxville, TN</b><span>University of Tennessee · 2019–23</span></li>
             <li><b>Raleigh, NC</b><span>Optum internships · 2022, 2023</span></li>
-            <li aria-current="step"><b>Vancouver, WA</b><span>Avangrid Renewables · 2024–now</span><svg class="am-fish" aria-hidden="true"><use href="#fish"/></svg></li>
+            <li aria-current="step"><b>Vancouver, WA</b><span>Avangrid Renewables · 2024–now</span></li>
           </ol>
-        </section>
-      </div>
+        </div>
+      </section>
 
-      <div class="am-close">
+      <div class="pn-close">
         <p>The long version, with dates and tools, is on my résumé.</p>
         <div class="ctas"><a class="btn primary" href="#resume">Read my résumé</a><a class="btn" href="#contact">Get in touch</a></div>
       </div>
