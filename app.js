@@ -13,8 +13,14 @@
 
   function show(name) {
     if (current === name) return false;
+    const first = current === null;
     views.forEach(v => { v.hidden = v.dataset.view !== name; });
     current = name;
+    const next = views.find(v => v.dataset.view === name);
+    if (!first && !reduce && next && next.animate) {
+      next.animate([{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'none' }],
+        { duration: 260, easing: 'cubic-bezier(.2,.7,.2,1)' });
+    }
     document.title = titles[name] || titles.home;
     if (descTag) {
       const sum = views.find(v => v.dataset.view === name)?.querySelector('.summary');
@@ -301,7 +307,7 @@
   }
   function markToc(i, btns) {
     tocActive = i;
-    btns.forEach((b, j) => b.classList.toggle('on', i === j));
+    btns.forEach((b, j) => { b.classList.toggle('on', i === j); b.classList.toggle('done', j < i); });
     if (pillV && tocSecs[i]) pillV.textContent = secLabel(tocSecs[i]);
   }
   function setupToc(name) {
@@ -344,6 +350,7 @@
         b.innerHTML = `<span class="mono">${String(i + 1).padStart(2, '0')}</span>`;
         b.append(secLabel(s));
         if (i === tocActive) b.setAttribute('aria-current', 'true');
+        else if (i < tocActive) b.classList.add('done');
         b.addEventListener('click', () => { sheet.close(); goToSection(s); });
         li.appendChild(b);
         sheetList.appendChild(li);
@@ -561,7 +568,11 @@
   /* ---------- copy email ---------- */
   const copy = document.getElementById('copy'), email = document.getElementById('email');
   copy.addEventListener('click', () => {
-    const done = () => { copy.textContent = 'Copied'; setTimeout(() => { copy.textContent = 'Copy email'; }, 1600); };
+    const done = () => {
+      copy.innerHTML = 'Copied <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>';
+      copy.classList.add('done');
+      setTimeout(() => { copy.textContent = 'Copy email'; copy.classList.remove('done'); }, 1800);
+    };
     const fallback = () => {
       const r = document.createRange(); r.selectNodeContents(email);
       const s = getSelection(); s.removeAllRanges(); s.addRange(r);
@@ -570,16 +581,6 @@
     if (navigator.clipboard) navigator.clipboard.writeText(email.textContent).then(done, fallback); else fallback();
   });
 
-  /* ---------- barcode ---------- */
-  const bars = document.getElementById('bars');
-  let seed = 7;
-  for (let i = 0; i < 46; i++) {
-    seed = (seed * 9301 + 49297) % 233280;
-    const b = document.createElement('i');
-    b.style.width = (1 + (seed % 3)) + 'px';
-    b.style.marginRight = (1 + (seed % 2) * 2) + 'px';
-    bars.appendChild(b);
-  }
 
   /* ---------- privacy-friendly visit counts (GoatCounter: no cookies, no personal data) ---------- */
   const gcCode = (document.querySelector('meta[name="goatcounter"]') || {}).content;
