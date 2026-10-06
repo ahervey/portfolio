@@ -643,10 +643,12 @@
   // Without this block every label is listed under the shelf. With it, one label shows at a time:
   // each shelf item is a disclosure button (aria-expanded/aria-controls), a caret points from the label
   // back up to its item, the same item or the label's close button puts it back, and Escape closes it.
+  // With nothing picked, the panel shows "What's on the shelf", an index card whose buttons open the same labels.
   const pantry = document.getElementById('pantry');
   if (pantry) {
     const pnItems = [...pantry.querySelectorAll('.pn-item')];
     const pnPanel = document.getElementById('pn-panel');
+    const pnIndex = document.getElementById('pn-index');
     const pnStory = b => document.getElementById(b.getAttribute('aria-controls'));
     let pnOpen = null;
     pantry.classList.add('is-live');
@@ -661,6 +663,7 @@
       x.addEventListener('click', () => pnClose(true));
       s.prepend(x);
     });
+    const pnFlip = el => { el.classList.remove('is-in'); void el.offsetWidth; el.classList.add('is-in'); };
     // the caret sits under the middle of the picked item (kept inside the label's rounded corners)
     function pnCaret() {
       if (!pnOpen) return;
@@ -668,20 +671,33 @@
       const x = Math.min(Math.max(r.left + r.width / 2 - p.left, 40), p.width - 40);
       pnPanel.style.setProperty('--x', x + 'px');
     }
-    function pnShow(b, scroll) {
+    // Bring the label onto the screen: its top clears the sticky header, and as much of it as fits
+    // sits above the phone's bottom dock. Smooth unless reduced motion asks otherwise.
+    // (measured on the panel: the label itself is mid-flip, so its own box is squashed)
+    function pnReveal() {
+      const r = pnPanel.getBoundingClientRect();
+      const headEl = document.getElementById('site-head');
+      const top = (headEl && getComputedStyle(headEl).position !== 'static' ? headEl.offsetHeight : 0) + 34;
+      const dock = document.querySelector('.nav-links');
+      const dockTop = dock && getComputedStyle(dock).position === 'fixed' ? dock.getBoundingClientRect().top : innerHeight;
+      const bottom = Math.min(innerHeight, dockTop) - 16;
+      if (r.top >= top && r.bottom <= bottom) return;
+      const dy = Math.min(r.bottom - bottom, r.top - top);
+      if (Math.abs(dy) > 4) scrollBy({ top: dy, behavior: reduce ? 'auto' : 'smooth' });
+    }
+    function pnShow(b, reveal) {
       if (pnOpen) { pnOpen.setAttribute('aria-expanded', 'false'); pnStory(pnOpen).hidden = true; }
       pnOpen = b;
       const s = pnStory(b);
       b.setAttribute('aria-expanded', 'true');
+      pnIndex.hidden = true;
       s.hidden = false;
-      s.classList.remove('is-in'); void s.offsetWidth; s.classList.add('is-in');
+      pnFlip(s);
       pnPanel.classList.add('has-open');
       pnPanel.style.setProperty('--tone', s.style.getPropertyValue('--tone'));
       pnCaret();
-      // on a phone the label lands below the fold: bring it up just enough to read
-      if (scroll && s.getBoundingClientRect().bottom > innerHeight - 90) {
-        s.scrollIntoView({ block: 'nearest', behavior: reduce ? 'auto' : 'smooth' });
-      }
+      if (reveal) pnReveal();
+      return s;
     }
     function pnClose(refocus) {
       if (!pnOpen) return;
@@ -689,20 +705,30 @@
       b.setAttribute('aria-expanded', 'false');
       pnStory(b).hidden = true;
       pnPanel.classList.remove('has-open');
+      pnIndex.hidden = false;
+      pnFlip(pnIndex);
       pnOpen = null;
       if (refocus) b.focus();
     }
     pnItems.forEach(b => b.addEventListener('click', () => { if (b === pnOpen) pnClose(false); else pnShow(b, true); }));
+    // the index card's buttons open a label in its place; focus moves to that label's heading
+    pnIndex.addEventListener('click', e => {
+      const btn = e.target.closest('button[data-open]');
+      if (!btn) return;
+      const item = pnItems.find(b => b.getAttribute('aria-controls') === btn.dataset.open);
+      if (!item) return;
+      const h = pnShow(item, true).querySelector('h3');
+      h.tabIndex = -1;
+      h.focus({ preventScroll: true });
+    });
     document.addEventListener('keydown', e => {
       if (e.key !== 'Escape' || !pnOpen || pantry.closest('[data-view]').hidden) return;
-      const inside = pantry.contains(document.activeElement);
-      pnClose(inside);
+      pnClose(pantry.contains(document.activeElement));
     });
     addEventListener('resize', pnCaret);
     // the caret is measured while the page is hidden on a deep link elsewhere; measure again once it shows
     addEventListener('hashchange', () => requestAnimationFrame(pnCaret));
     if (document.fonts) document.fonts.ready.then(pnCaret);
-    pantry.querySelectorAll('.pn-scroll').forEach(sc => sc.addEventListener('scroll', pnCaret, { passive: true }));
     // the house tin's label is open when you arrive, so the pattern is plain at a glance
     const first = pnItems.find(b => b.hasAttribute('data-default'));
     if (first) pnShow(first, false);
