@@ -240,7 +240,7 @@
     const shot = e.target.closest('.shot');
     if (!shot) return;
     const img = shot.querySelector('img');
-    boxImg.src = img.src;
+    boxImg.src = img.dataset.full || img.currentSrc || img.src;
     boxImg.alt = img.alt;
     const cap = shot.closest('figure') && shot.closest('figure').querySelector('figcaption');
     boxCap.textContent = cap ? cap.textContent : img.alt;
