@@ -436,6 +436,17 @@
   const lbCount = document.getElementById('lb-count'), lbZoom = document.getElementById('lb-zoom');
   const lbPrev = box.querySelector('.lb-prev'), lbNext = box.querySelector('.lb-next');
   let lbSet = [], lbIdx = 0, zoomed = false, swiped = false;
+  // pins from an annotated frame ride on a layer sized to the shown image (it scrolls with the image when zoomed)
+  const lbPins = document.createElement('div');
+  lbPins.className = 'lb-pins'; lbPins.setAttribute('aria-hidden', 'true');
+  lbStage.appendChild(lbPins);
+  function placePins() {
+    lbPins.hidden = !lbPins.childElementCount || !boxImg.complete;
+    if (lbPins.hidden) return;
+    Object.assign(lbPins.style, { left: boxImg.offsetLeft + 'px', top: boxImg.offsetTop + 'px', width: boxImg.offsetWidth + 'px', height: boxImg.offsetHeight + 'px' });
+  }
+  boxImg.addEventListener('load', placePins);
+  addEventListener('resize', placePins);
   // touch wording in the hint follows the input actually used, not just what the device claims
   addEventListener('pointerdown', e => document.documentElement.classList.toggle('touch-input', e.pointerType === 'touch'), { capture: true, passive: true });
 
@@ -446,7 +457,11 @@
     const alt = el.dataset.fullAlt || (img ? img.alt : '');
     const fig = el.closest('figure'), cap = fig && fig.querySelector('figcaption:not(.sr-only)');
     let text = el.dataset.caption || (!el.dataset.full && cap ? cap.textContent : '') || alt;
-    return { el, src, alt, text: text.replace(/\s+/g, ' ').trim() };
+    // annotated frames bring their pins and numbered key along
+    const stage = el.closest('.fr-stage'), keyEl = stage && document.getElementById(el.getAttribute('aria-describedby') || '');
+    const pins = stage ? [...stage.querySelectorAll('.pt')] : [];
+    const key = keyEl ? [...keyEl.children].map(li => li.textContent.replace(/\s+/g, ' ').trim()) : [];
+    return { el, src, alt, pins, key, text: text.replace(/\s+/g, ' ').trim() };
   }
   function lbBuild(scope) {
     const seen = new Map();
@@ -466,11 +481,12 @@
     box.classList.toggle('zoomed', on);
     lbZoom.setAttribute('aria-pressed', on);
     lbZoom.textContent = on ? 'Fit to screen' : 'Zoom in';
-    if (!on) { boxImg.style.width = ''; lbStage.scrollTo(0, 0); return; }
+    if (!on) { boxImg.style.width = ''; lbStage.scrollTo(0, 0); requestAnimationFrame(placePins); return; }
     // at least the image's own pixels (capped at 2.6x the screen) so small text becomes legible
     const w = Math.max(lbStage.clientWidth * 1.6, Math.min(boxImg.naturalWidth || 1600, lbStage.clientWidth * 2.6));
     boxImg.style.width = Math.round(w) + 'px';
     requestAnimationFrame(() => {
+      placePins();
       lbStage.scrollLeft = fx * boxImg.offsetWidth - lbStage.clientWidth / 2;
       lbStage.scrollTop = fy * boxImg.offsetHeight - lbStage.clientHeight / 2;
     });
@@ -482,6 +498,16 @@
     boxImg.src = it.src;
     boxImg.alt = it.alt;
     boxCap.textContent = it.text;
+    lbPins.replaceChildren(...(it.pins || []).map(p => {
+      const c = p.cloneNode(true);
+      ['id', 'tabindex', 'role', 'aria-label', 'aria-describedby'].forEach(a => c.removeAttribute(a));
+      return c;
+    }));
+    (it.key || []).forEach((k, n) => {
+      const s = document.createElement('span'), b = document.createElement('b');
+      s.className = 'lb-key'; b.textContent = n + 1; s.append(b, k); boxCap.append(' ', s);
+    });
+    requestAnimationFrame(placePins);
     const many = lbSet.length > 1;
     lbCount.textContent = many ? `${lbIdx + 1} / ${lbSet.length}` : '';
     lbPrev.hidden = lbNext.hidden = !many;

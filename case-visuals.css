@@ -356,12 +356,38 @@
 .dec > .frame,.dec > .dec-foot{grid-column:1/-1}
 .frame{margin:0}
 .frame .shot{border:2px solid var(--print-ink);border-radius:14px;box-shadow:8px 10px 0 rgba(31,42,85,.14),0 26px 44px -30px rgba(31,42,85,.55)}
-.frame .hv-pin{z-index:1;transition:transform .2s ease}
 .frame .shot::after{right:auto;left:10px}
-.dec:has(.callouts li:nth-child(1):hover) .hv-pin:nth-of-type(1),
-.dec:has(.callouts li:nth-child(2):hover) .hv-pin:nth-of-type(2),
-.dec:has(.callouts li:nth-child(3):hover) .hv-pin:nth-of-type(3),
-.dec:has(.callouts li:nth-child(4):hover) .hv-pin:nth-of-type(4){transform:scale(1.4)}
+/* pins sit beside what they label: a dot on the target's edge, a short leader, the number offset into empty space.
+   Each pin and its list item are a focusable pair (aria-describedby both ways); hover or focus on either lights up the other. */
+.fr-stage,.lb-pins{--k:1}
+.fr-stage{position:relative}
+.pt{position:absolute;left:var(--x);top:var(--y);width:0;height:0;z-index:1;outline:none}
+.pt::before{content:"";position:absolute;left:-3.5px;top:-3.5px;width:7px;height:7px;border-radius:50%;background:#B23A2B;box-shadow:0 0 0 1.5px #fff;pointer-events:none}
+.pt::after{content:"";position:absolute;left:0;top:-1px;height:2px;width:max(0px,calc(hypot(var(--dx),var(--dy)) * var(--k) * 1px - 12px));background:#B23A2B;
+  box-shadow:0 0 0 1px rgba(255,255,255,.8);transform-origin:0 50%;transform:rotate(atan2(var(--dy),var(--dx)));pointer-events:none}
+.pt b{position:absolute;left:calc(var(--dx) * var(--k) * 1px);top:calc(var(--dy) * var(--k) * 1px);width:24px;height:24px;margin:-12px 0 0 -12px;border-radius:50%;
+  display:grid;place-items:center;background:#B23A2B;color:#fff;font:700 var(--t-12)/1 var(--f-mono);border:2px solid #fff;
+  box-shadow:0 0 0 1.5px #B23A2B,0 3px 8px rgba(0,0,0,.25);transition:transform .2s ease;cursor:default}
+.pt:focus-visible b{outline:3px solid var(--print-ink);outline-offset:3px}
+.callouts li{border-radius:8px;transition:background-color .2s ease,box-shadow .2s ease;outline:none}
+.callouts li:focus-visible{box-shadow:0 0 0 3px var(--accent)}
+.pt:is(:hover,:focus-visible) b,
+.dec:has(.callouts li:nth-child(1):is(:hover,:focus-visible)) .pt:nth-of-type(1) b,
+.dec:has(.callouts li:nth-child(2):is(:hover,:focus-visible)) .pt:nth-of-type(2) b,
+.dec:has(.callouts li:nth-child(3):is(:hover,:focus-visible)) .pt:nth-of-type(3) b,
+.dec:has(.callouts li:nth-child(4):is(:hover,:focus-visible)) .pt:nth-of-type(4) b{transform:scale(1.35)}
+.callouts li:is(:hover,:focus-visible),
+.dec:has(.pt:nth-of-type(1):is(:hover,:focus-visible)) .callouts li:nth-child(1),
+.dec:has(.pt:nth-of-type(2):is(:hover,:focus-visible)) .callouts li:nth-child(2),
+.dec:has(.pt:nth-of-type(3):is(:hover,:focus-visible)) .callouts li:nth-child(3),
+.dec:has(.pt:nth-of-type(4):is(:hover,:focus-visible)) .callouts li:nth-child(4){background:var(--print-butter);color:var(--print-ink)}
+.callouts li:is(:hover,:focus-visible){box-shadow:0 0 0 6px var(--print-butter)}
+.callouts li:focus-visible{box-shadow:0 0 0 6px var(--print-butter),0 0 0 9px var(--accent)}
+/* the lightbox keeps the annotations: pins over the image, the key in the caption */
+.lb-stage{position:relative}
+.lb-pins{position:absolute;left:0;top:0;pointer-events:none}
+.lb-key{display:inline-flex;align-items:baseline;gap:6px;margin:8px 14px 0 0;text-align:left}
+.lb-key b{flex:none;display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#B23A2B;color:#fff;font:700 var(--t-12)/1 var(--f-mono)}
 .dec-foot{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px;align-items:start}
 .dec-trade{margin:0;padding:2px 0 2px 16px;border-left:3px dashed var(--line);font-size:var(--t-17);line-height:1.5;color:var(--muted)}
 .dec-trade b{display:block;margin-bottom:8px;font:500 var(--t-12)/1 var(--f-mono);letter-spacing:var(--ls-label);text-transform:uppercase;color:var(--ink)}
@@ -392,8 +418,14 @@
   .callouts li{padding-left:32px}
   .callouts li::before{width:22px;height:22px;line-height:22px}
   .frame .shot{border-radius:10px;box-shadow:5px 6px 0 rgba(31,42,85,.14)}
-  .frame .hv-pin{width:18px;height:18px;margin:-9px 0 0 -9px;font-size:var(--t-12);line-height:14px;border-width:1.5px}
-  .frame .hv-pin::after{inset:-5px}
+  .fr-stage,.lb-pins{--k:.55}
+  .pt::after{width:max(0px,calc(hypot(var(--dx),var(--dy)) * var(--k) * 1px - 10px))}
+  .pt b{width:20px;height:20px;margin:-10px 0 0 -10px;border-width:1.5px}
+  /* phones: the overview is too small to read, so each callout carries a 1:1 close-up of its spot in the same screenshot */
+  .callouts li::after{content:"";display:block;height:76px;margin:8px 0 4px -32px;border:1.5px solid var(--print-ink);border-radius:8px;
+    --iw:1600px;--ih:calc(var(--iw) * var(--ar));
+    background:var(--img) no-repeat var(--print-cream);background-size:var(--iw) var(--ih);
+    background-position:max(100%,min(0%,calc(50% + (.5 - var(--fx)) * var(--iw)))) max(100%,min(0%,calc(50% + (.5 - var(--fy)) * var(--ih))))}
   /* phones: crop the slider to the query side of both screens so it's readable */
   .compare-big .compare{aspect-ratio:1/1}
   .compare-big .compare img{height:100%;object-fit:cover;object-position:left top}
