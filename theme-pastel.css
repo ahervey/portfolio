@@ -91,3 +91,112 @@
 
 .t-pink .mini-lid,.t-mint .mini-lid,.t-blue .mini-lid{color:var(--print-ink)}
 .seal{background:var(--paper);color:var(--ink);border:1.5px solid var(--ink)}
+
+/* =====================================================================
+   Theme system, round 4: fewer jokes, more craft.
+   Three devices, each carrying information:
+   1. graph-paper ground, so the printed objects (tins, labels, cards) pop
+   2. one ink stamp for status (shipped / class project / open to roles)
+   3. shipping + kitchen paperwork where it's accurate: a shipping label for contact,
+      a recipe card for each case's facts, a packing list that ticks off as you read
+   ===================================================================== */
+body{background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:32px 32px;background-position:center -1px}
+
+/* ---------- the ink stamp: one component, reused for every status ---------- */
+.ink-stamp{--st:var(--print-ink);position:absolute;z-index:2;right:24px;top:24px;display:inline-grid;justify-items:center;gap:3px;
+  font:500 var(--t-14)/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;color:var(--st);
+  padding:9px 12px 8px;border:2.5px solid var(--st);border-radius:5px;background:rgba(255,250,242,.94);
+  box-shadow:inset 0 0 0 2px rgba(255,250,242,.94),inset 0 0 0 3.5px var(--st),0 6px 14px -8px rgba(31,42,85,.45);rotate:-4deg;
+  transition:rotate .25s cubic-bezier(.3,1.4,.5,1);
+  -webkit-mask:var(--ink-grain);mask:var(--ink-grain);
+  --ink-grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='2' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -3.4 2.75'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* shipped work gets a tick; concepts get a dashed frame and no tick */
+.ink-stamp.is-shipped{padding-left:30px}
+.ink-stamp.is-shipped::after{content:"";position:absolute;left:10px;top:50%;width:13px;height:13px;translate:0 -50%;background:currentColor;
+  -webkit-mask:var(--tick) center/contain no-repeat;mask:var(--tick) center/contain no-repeat;
+  --tick:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.2 6.4 4.9 9 9.8 3.2' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.ink-stamp.is-concept{border-style:dashed;box-shadow:0 6px 14px -8px rgba(31,42,85,.45);rotate:3deg}
+.ink-stamp.is-big{position:relative;inset:auto;font-size:var(--t-14);padding:12px 16px 10px;rotate:-7deg;--st:var(--card-margin);background:transparent;
+  box-shadow:inset 0 0 0 2px var(--paper),inset 0 0 0 3.5px var(--st)}
+.ink-stamp small{font-size:var(--t-12);letter-spacing:.1em}
+.variety:hover .ink-stamp{rotate:-7deg}
+.variety:hover .ink-stamp.is-concept{rotate:5deg}
+
+/* the editions' seals speak the same stamp language */
+.seal{background:rgba(255,250,242,.96);color:var(--print-ink);border:2px dashed var(--print-ink);border-radius:5px;box-shadow:0 6px 14px -8px rgba(31,42,85,.45)}
+
+/* ---------- steam off the tin that's still cooking ---------- */
+.ed{position:relative}
+.steam{position:absolute;z-index:0;left:50%;top:-58px;width:110px;height:58px;translate:-50% 0;pointer-events:none;color:var(--muted)}
+.steam svg{width:100%;height:100%;overflow:visible}
+.steam path{fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;opacity:.55;animation:steam 3.2s ease-in-out infinite}
+.steam path:nth-child(2){animation-delay:-1.1s}
+.steam path:nth-child(3){animation-delay:-2.2s}
+@keyframes steam{0%{translate:0 10px;opacity:0}35%{opacity:.6}100%{translate:0 -8px;opacity:0}}
+.ed:has(.ed-tin[aria-expanded="true"]) .steam{display:none}
+@media (prefers-reduced-motion:reduce){.steam path{animation:none;opacity:.4}}
+
+/* ---------- a fork for picking things out of tins (fine pointers only; text keeps its caret) ---------- */
+@media (hover:hover) and (pointer:fine){
+  .sardine a,.mini-tin{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 3v5a3 3 0 0 0 6 0V3M10 3v5M10 11v10' stroke='%23fff' stroke-width='4.2'/%3E%3Cpath d='M7 3v5a3 3 0 0 0 6 0V3M10 3v5M10 11v10' stroke='%231F2A55' stroke-width='1.9'/%3E%3C/g%3E%3C/svg%3E") 10 3,pointer}
+}
+
+/* ---------- recipe card: each case's facts ---------- */
+.recipe-glance{background:var(--card-paper);color:var(--card-ink);border:0;border-radius:10px;gap:0;overflow:visible;position:relative;
+  box-shadow:0 0 0 1px rgba(31,42,85,.16),0 18px 30px -22px rgba(18,26,43,.55);padding-top:10px}
+/* the red rule across the top of an index card */
+.recipe-glance::before{content:"";position:absolute;left:0;right:0;top:0;height:10px;border-radius:10px 10px 0 0;
+  background:linear-gradient(transparent 6px,var(--card-margin) 6px 8px,transparent 8px)}
+.recipe-glance div{background:transparent;padding:16px 18px 18px}
+.recipe-glance div + div{border-left:1px dashed rgba(42,42,53,.25)}
+.recipe-glance dt{color:var(--card-margin)}
+.recipe-glance dd{color:var(--card-ink)}
+
+/* ---------- packing list: contents tick off as you read past them ---------- */
+.toc button{position:relative;padding-left:28px;border-left:0}
+.toc button::before{content:"";position:absolute;left:2px;top:9px;width:14px;height:14px;box-sizing:border-box;border:1.5px solid currentColor;border-radius:3px;opacity:.6}
+.toc button.on{border-left:0}
+.toc button.on::before{opacity:1;border-color:var(--accent);box-shadow:inset 0 0 0 2.5px var(--ground),inset 0 0 0 7px var(--accent)}
+.toc button.done{color:var(--ink)}
+.toc button.done::before{opacity:1;border-color:var(--ink);background:var(--ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.2 6.4 4.9 9 9.8 3.2' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/10px no-repeat}
+
+/* ---------- contact: a shipping label ---------- */
+.ship-label{margin-top:30px;max-width:640px;background:var(--card-paper);color:var(--card-ink);border:2px solid var(--print-ink);border-radius:12px;
+  box-shadow:0 18px 30px -22px rgba(18,26,43,.55);overflow:hidden}
+.sl-fields{display:grid;grid-template-columns:1fr 1fr;margin:0;border-bottom:2px solid var(--print-ink)}
+.sl-fields div{padding:14px 18px 16px;display:grid;gap:6px;align-content:start}
+.sl-fields div + div{border-left:2px solid var(--print-ink)}
+.sl-fields dt{font-size:var(--t-12);letter-spacing:.14em;text-transform:uppercase;color:var(--card-margin)}
+.sl-fields dd{margin:0;font:800 var(--t-20)/1.2 var(--f-body);display:grid;gap:4px}
+.sl-fields dd span{font:400 var(--t-14)/1.35 var(--f-body);color:#4A4A57}
+.ship-label .email{margin:0;padding:14px 18px 16px;gap:10px}
+.ship-label .email code{background:#fff;border-color:rgba(31,42,85,.2);color:var(--print-ink)}
+.ship-label .copy{border-color:var(--print-ink);color:var(--print-ink);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.ship-label .copy:hover{background:var(--print-ink);color:var(--card-paper)}
+.ship-label .copy:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.ship-label .copy.done{background:#23704A;border-color:#23704A;color:#fff}
+.copy .ico{width:12px;height:12px}
+@media (max-width:520px){
+  .sl-fields{grid-template-columns:1fr}
+  .sl-fields div + div{border-left:0;border-top:2px solid var(--print-ink)}
+}
+
+/* ---------- footer: just the facts ---------- */
+.fine-print{align-items:center}
+.fp-fish{width:46px;height:27px}
+.slip-foot a{color:inherit}
+/* on phones the eyebrow fills the width, so the stamp sits in the empty space beside the short product name: the card is no taller */
+@media (max-width:520px){
+  .variety > .ink-stamp{right:18px;top:62px;font-size:var(--t-12);padding:6px 8px 5px;letter-spacing:.1em}
+  .variety > .ink-stamp.is-shipped{padding-left:24px}
+  .variety > .ink-stamp.is-shipped::after{left:8px;width:11px;height:11px}
+  .variety > .ink-stamp small{display:none}
+}
+@media (max-width:900px){
+  .recipe-glance div:nth-child(odd){border-left:0}
+  .recipe-glance div:nth-child(n+3){border-top:1px dashed rgba(42,42,53,.25)}
+}
+/* recipe card labels: the plain term first, the kitchen word as a quiet tag */
+.recipe-glance dt{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.rx{font:italic 600 var(--t-14)/1 var(--f-display);letter-spacing:0;text-transform:none;color:#6A6A76;font-variation-settings:"SOFT" 100,"WONK" 1}
