@@ -186,13 +186,17 @@ body{background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gr
 .fine-print{align-items:center}
 .fp-fish{width:46px;height:27px}
 .slip-foot a{color:inherit}
-/* on phones the stamp drops into the flow, between the title and the screenshot */
+/* on phones the eyebrow fills the width, so the stamp sits in the empty space beside the short product name: the card is no taller */
 @media (max-width:520px){
-  .variety{grid-template-rows:none}
-  .variety > .thumb,.variety > .result,.variety > .v-foot{order:1}
-  .variety > .ink-stamp{position:relative;inset:auto;justify-self:start;margin:-4px 0 -2px 4px}
+  .variety > .ink-stamp{right:18px;top:62px;font-size:var(--t-12);padding:6px 8px 5px;letter-spacing:.1em}
+  .variety > .ink-stamp.is-shipped{padding-left:24px}
+  .variety > .ink-stamp.is-shipped::after{left:8px;width:11px;height:11px}
+  .variety > .ink-stamp small{display:none}
 }
 @media (max-width:900px){
   .recipe-glance div:nth-child(odd){border-left:0}
   .recipe-glance div:nth-child(n+3){border-top:1px dashed rgba(42,42,53,.25)}
 }
+/* recipe card labels: the plain term first, the kitchen word as a quiet tag */
+.recipe-glance dt{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.rx{font:italic 600 var(--t-14)/1 var(--f-display);letter-spacing:0;text-transform:none;color:#6A6A76;font-variation-settings:"SOFT" 100,"WONK" 1}

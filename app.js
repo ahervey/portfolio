@@ -566,17 +566,22 @@
   });
 
   /* ---------- copy email ---------- */
-  const copy = document.getElementById('copy'), email = document.getElementById('email');
+  // the button shows the result for 2s; a polite live region says it aloud
+  const copy = document.getElementById('copy'), email = document.getElementById('email'), copyStatus = document.getElementById('copy-status');
+  let copyTimer;
+  const copyFeedback = (html, msg, cls) => {
+    clearTimeout(copyTimer);
+    copy.innerHTML = html;
+    copy.classList.toggle('done', cls === 'done');
+    if (copyStatus) { copyStatus.textContent = ''; setTimeout(() => { copyStatus.textContent = msg; }, 30); }
+    copyTimer = setTimeout(() => { copy.textContent = 'Copy email'; copy.classList.remove('done'); if (copyStatus) copyStatus.textContent = ''; }, 2000);
+  };
   copy.addEventListener('click', () => {
-    const done = () => {
-      copy.innerHTML = 'Copied <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>';
-      copy.classList.add('done');
-      setTimeout(() => { copy.textContent = 'Copy email'; copy.classList.remove('done'); }, 1800);
-    };
+    const done = () => copyFeedback('Copied <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>', 'Email address copied', 'done');
     const fallback = () => {
       const r = document.createRange(); r.selectNodeContents(email);
       const s = getSelection(); s.removeAllRanges(); s.addRange(r);
-      copy.textContent = 'Selected, press Ctrl+C';
+      copyFeedback('Selected, press Ctrl+C', 'Email address selected. Press Control C to copy.');
     };
     if (navigator.clipboard) navigator.clipboard.writeText(email.textContent).then(done, fallback); else fallback();
   });
