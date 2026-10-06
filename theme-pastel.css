@@ -172,6 +172,8 @@ body{background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gr
 .sl-fields dd span{font:400 var(--t-14)/1.35 var(--f-body);color:#4A4A57}
 .ship-label .email{margin:0;padding:14px 18px 16px;gap:10px}
 .ship-label .email code{background:#fff;border-color:rgba(31,42,85,.2);color:var(--print-ink)}
+/* narrow phones: keep the address on one line (never split mid-word) */
+@media (max-width:400px){.ship-label .email code{font-size:var(--t-17);overflow-wrap:normal;white-space:nowrap;padding-inline:10px}}
 .ship-label .copy{border-color:var(--print-ink);color:var(--print-ink);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
 .ship-label .copy:hover{background:var(--print-ink);color:var(--card-paper)}
 .ship-label .copy:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
