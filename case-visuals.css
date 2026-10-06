@@ -1,0 +1,442 @@
+/* Case-study visuals: hero product mocks with callouts, close-up crops, the before/after slider and the lightbox.
+   Loaded after theme-pastel.css. Uses the pastel tokens (--print-*, --ink, --paper) so it follows the theme. */
+
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ---------- hero: copy on the left, a composited product mock on the right ---------- */
+.hero-visual{margin:0;display:block;min-width:0}
+.hv-stage{position:relative;padding:var(--pt,34px) 3% 50px 5%}
+.case-hero .hv-main{display:block;width:100%;padding:0;border:2px solid var(--print-ink);border-radius:14px;overflow:hidden;background:#fff;
+  box-shadow:10px 12px 0 rgba(31,42,85,.16),0 30px 50px -30px rgba(31,42,85,.6);transform:rotate(-1.2deg);transition:transform .35s ease}
+.case-hero .hv-main:hover{transform:rotate(0) translateY(-3px)}
+.case-hero .hv-main:focus-visible{outline:3px solid var(--print-coral);outline-offset:4px}
+.hv-bar{display:flex;align-items:center;gap:6px;height:26px;padding:0 12px;background:var(--print-cream);border-bottom:2px solid var(--print-ink)}
+.hv-bar i{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--print-ink);background:var(--print-red)}
+.hv-bar i:nth-child(2){background:var(--print-butter)}
+.hv-bar i:nth-child(3){background:var(--print-green)}
+.hv-bar span{margin-left:8px;font:500 10px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--print-ink);opacity:.75}
+.hv-img{position:relative;display:block}
+.hv-img img{display:block;width:100%;height:auto}
+
+/* numbered pins mark where each close-up was cropped from */
+.hv-pin{position:absolute;left:var(--x);top:var(--y);width:24px;height:24px;margin:-12px 0 0 -12px;border-radius:50%;background:var(--print-coral);color:#fff;
+  font:700 11px/20px var(--f-mono);text-align:center;border:2px solid #fff;box-shadow:0 0 0 2px var(--print-coral),0 4px 10px rgba(0,0,0,.25)}
+.hv-pin::after{content:"";position:absolute;inset:-8px;border-radius:50%;border:2px solid var(--print-coral);opacity:0;animation:hv-ping 2.6s ease-out infinite}
+@keyframes hv-ping{0%{transform:scale(.6);opacity:.8}70%,100%{transform:scale(1.5);opacity:0}}
+
+/* close-up callouts: real crops at 1:1, layered over the mock */
+.hv-call{position:absolute;z-index:2;width:var(--w);background:#fff;border:2px solid var(--print-ink);border-radius:12px;padding:6px;
+  box-shadow:6px 8px 0 rgba(31,42,85,.2),0 18px 30px -18px rgba(31,42,85,.6)}
+.hv-call img{display:block;width:100%;height:auto;border-radius:6px}
+.hv-c1{left:0;bottom:0;transform:rotate(1.6deg)}
+.hv-c2{right:0;top:0;transform:rotate(-2deg)}
+.hv-call.at-tl{left:0;top:0;right:auto;bottom:auto}
+.hv-call.at-br{right:0;bottom:0;left:auto;top:auto}
+.hv-tag{position:absolute;left:12px;top:-15px;display:inline-flex;gap:6px;align-items:center;background:var(--print-butter);color:var(--print-ink);
+  border:2px solid var(--print-ink);border-radius:999px;padding:3px 10px;font:500 10.5px/1.2 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.hv-tag b{display:grid;place-items:center;width:17px;height:17px;margin-left:-6px;border-radius:50%;background:var(--print-coral);color:#fff;font-size:10px}
+
+/* paper artefacts (persona sheet, sketches) get no browser chrome */
+.case-hero .hv-paper{border-radius:6px}
+
+/* InTune: sketches sit side by side with the zoomed screen, a second sheet tucked behind */
+.hv-split{display:flex;align-items:center;gap:0;padding:30px 2% 30px 4%}
+.hv-split .hv-main{flex:0 0 66%;position:relative;z-index:1}
+.hv-split .hv-call{position:relative;flex:0 0 var(--w);margin-left:-4%;top:auto;right:auto}
+.hv-split .hv-tag{left:auto;right:-6px}
+.hv-back{position:absolute;left:12%;top:8px;width:58%;border:2px solid var(--print-ink);border-radius:6px;overflow:hidden;background:#fff;transform:rotate(5deg);opacity:.9;
+  box-shadow:6px 8px 0 rgba(31,42,85,.12)}
+.hv-back img{display:block;width:100%;height:auto}
+
+@media (min-width:1000px){
+  /* meta line runs across the top; copy sits left, the mock right, both centred in the space below */
+  .case-hero:has(> .hero-visual){grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);grid-template-rows:auto 1fr auto auto auto 1fr;column-gap:clamp(24px,3vw,44px);row-gap:16px}
+  .case-hero:has(> .hero-visual) > :nth-child(1){grid-area:1/1/2/3}
+  .case-hero:has(> .hero-visual) > :nth-child(2){grid-area:3/1}
+  .case-hero:has(> .hero-visual) > :nth-child(3){grid-area:4/1}
+  .case-hero:has(> .hero-visual) > :nth-child(4){grid-area:5/1}
+  .case-hero > .hero-visual{grid-column:2;grid-row:2/-1;align-self:center;margin-right:-12px}
+  .case-hero:has(> .hero-visual) .flavor{font-size:clamp(60px,5.8vw,92px)}
+  .case-hero:has(> .hero-visual) h1{font-size:clamp(24px,2.4vw,32px)}
+  .case-hero:has(> .hero-visual) .summary{font-size:17px}
+}
+@media (max-width:999px){
+  .hero-visual{margin-top:8px}
+  .hv-stage{padding:22px 0 0}
+  .case-hero .hv-main{transform:none}
+  /* callouts drop below the mock at their natural size so the crop stays legible */
+  .hv-stage:not(.hv-split){display:flex;flex-wrap:wrap;gap:22px 12px;align-items:flex-start}
+  .hv-stage:not(.hv-split) .hv-main{flex:0 0 100%}
+  .hv-stage:not(.hv-split) .hv-call{position:relative;inset:auto;width:auto;max-width:calc(100% - 10px);transform:rotate(-1deg)}
+  .hv-stage:not(.hv-split) .hv-call:nth-of-type(odd){transform:rotate(1deg)}
+  .hv-stage:not(.hv-split) .hv-call img{width:auto;max-width:100%}
+  .hv-pin{width:20px;height:20px;margin:-10px 0 0 -10px;font-size:10px;line-height:16px}
+  .hv-split{padding:18px 0 4px}
+  .hv-back{display:none}
+}
+
+/* ---------- close-ups in the galleries: a crop at 1:1 that opens its full screenshot ---------- */
+.details{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 22px}
+.detail{grid-column:1/-1;grid-template-rows:1fr auto}
+.detail.half{grid-column:auto}
+.detail-shot{display:grid;place-items:center;min-height:120px;height:100%;padding:clamp(18px,3vw,30px);border:2px solid var(--print-ink);border-radius:16px;
+  background:radial-gradient(circle,rgba(31,42,85,.13) 1.2px,transparent 1.6px) 0 0/14px 14px,var(--d-bg,var(--print-blue));box-shadow:none}
+[data-view="oracle"] .detail-shot{--d-bg:var(--print-red)}
+[data-view="mychart"] .detail-shot{--d-bg:var(--print-butter)}
+[data-view="intune"] .detail-shot{--d-bg:var(--print-green)}
+.detail-shot img{max-width:100%;height:auto;border-radius:8px;background:#fff;box-shadow:0 0 0 2px var(--print-ink),7px 9px 0 rgba(31,42,85,.2);transition:transform .25s ease}
+.detail-shot:hover img{transform:scale(1.02)}
+.detail-tag{display:inline-block;margin-right:6px;padding:2px 8px;border-radius:999px;background:var(--print-butter);color:var(--print-ink);
+  font:500 10.5px/1.5 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;vertical-align:1px}
+
+/* every screenshot gets a printed-label frame (the open-larger badge lives in styles.css) */
+.gallery .shot:not(.detail-shot),.case-sec > figure .shot{border:2px solid var(--print-ink)}
+.shot:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.case-hero .hv-main::after{display:none}
+
+/* ---------- before / after slider ---------- */
+.compare{--pos:50%;position:relative;border:2px solid var(--print-ink);border-radius:14px;overflow:hidden;background:#fff;box-shadow:var(--shadow-shot);user-select:none;-webkit-user-select:none}
+.compare img{display:block;width:100%;height:auto;pointer-events:none}
+.compare-before{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+.compare-before img{width:100%;height:100%;object-fit:cover;object-position:left top}
+.compare-handle{position:absolute;top:0;bottom:0;left:var(--pos);width:3px;margin-left:-1.5px;background:var(--print-ink);pointer-events:none}
+.compare-handle::after{content:"↔";position:absolute;top:50%;left:50%;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;display:grid;place-items:center;
+  background:var(--print-butter);color:var(--print-ink);border:2px solid var(--print-ink);font:700 20px/1 var(--f-body);box-shadow:0 6px 14px rgba(31,42,85,.35)}
+.compare-tag{position:absolute;bottom:12px;padding:5px 12px;border-radius:999px;border:2px solid var(--print-ink);font:500 11px/1.2 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--print-ink);pointer-events:none}
+.compare-tag.is-before{left:12px;background:var(--print-cream)}
+.compare-tag.is-after{right:12px;background:var(--print-green)}
+.compare-range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;touch-action:pan-y;-webkit-appearance:none;appearance:none}
+.compare:has(.compare-range:focus-visible){outline:3px solid var(--accent);outline-offset:3px}
+.shot-link{all:unset;cursor:pointer;color:var(--ink);font-weight:600;text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px}
+.shot-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.compare-open{white-space:nowrap}
+
+/* ---------- lightbox (layout in styles.css): fully opaque, pastel controls, input-aware hint ---------- */
+.lightbox::backdrop{background:#0B1020}
+.lb-nav{background:var(--print-butter);color:var(--print-ink);border:2px solid var(--print-ink)!important}
+.lb-close{background:var(--print-cream);color:var(--print-ink);border:2px solid var(--print-ink)!important}
+.lb-cap::after{content:"← → to browse · click the image to zoom · Esc to close"}
+.lightbox.zoomed .lb-cap::after{content:"Drag or scroll to look around · click to fit"}
+@media (hover:none),(pointer:coarse){
+  .lb-cap::after{content:"Swipe · tap to zoom"}
+  .lightbox.zoomed .lb-cap::after{content:"Drag to look around · tap to fit"}
+}
+/* same wording whenever the last input was a finger */
+.touch-input .lb-cap::after{content:"Swipe · tap to zoom"}
+.touch-input .lightbox.zoomed .lb-cap::after{content:"Drag to look around · tap to fit"}
+
+/* galleries on small screens: captions are never cut off; phones get one screen per row */
+@media (max-width:768px){
+  .gallery figcaption{display:block;-webkit-line-clamp:unset;overflow:visible}
+  .lightbox{background:#0B1020}
+}
+@media (max-width:480px){
+  .gallery{grid-template-columns:minmax(0,1fr);gap:24px}
+  .gallery figcaption{font-size:14px}
+}
+
+@media (max-width:720px){
+  .details{grid-template-columns:minmax(0,1fr)}
+  .detail.half{grid-column:1/-1}
+  .detail-shot{min-height:0}
+  .compare-handle::after{width:36px;height:36px;margin:-18px 0 0 -18px;font-size:16px}
+  .compare-tag{bottom:8px;padding:3px 8px;font-size:9.5px}
+  .compare-tag.is-before{left:8px}.compare-tag.is-after{right:8px}
+}
+/* InTune on phones: the sketches are too faint shrunk down, so show one big close-up instead */
+@media (max-width:600px){
+  .hv-split{justify-content:center;padding:26px 0 6px}
+  .hv-split .hv-main,.hv-split .hv-back{display:none}
+  .hv-split .hv-call{flex:0 0 auto;width:min(100%,320px);margin:0;transform:rotate(-1.2deg)}
+  .hv-split .hv-tag{left:12px;right:auto}
+}
+@media (prefers-reduced-motion:reduce){.hv-pin::after{animation:none}.case-hero .hv-main{transform:none}}
+
+/* ---------- polish pass ---------- */
+/* metadata lines break between items, never inside a date or name */
+.nw{white-space:nowrap}
+/* coral text that clears 4.5:1 on paper (the brighter --accent stays for shapes and rules) */
+:root{--accent-ink:#B23A2B}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--accent-ink:var(--accent)}}
+:root[data-theme="dark"]{--accent-ink:var(--accent)}
+.lot,.tear-here,.figma-poster .mono{color:var(--accent-ink)}
+.stamp{color:var(--accent-ink);border-color:var(--accent-ink);opacity:1}
+.hv-pin{background:#B23A2B;box-shadow:0 0 0 2px #B23A2B,0 4px 10px rgba(0,0,0,.25)}
+.hv-pin::after{border-color:#B23A2B}
+.hv-tag b{background:#B23A2B}
+/* résumé: a plain-language line under the official job title */
+.role-sub{margin:-6px 0 0;text-wrap:pretty;font-size:15px;line-height:1.4;font-weight:500;color:var(--muted)}
+/* takeaway receipt: clip only the top edge (for the print-out), so its shadow fades instead of ending in a hard grey box */
+.receipt-clip{overflow:visible;clip-path:inset(0 -60px -80px -60px)}
+/* headings and short labels: no orphaned last words */
+.prose p,.summary,.lb-cap,.extra-sub,.variety h3{text-wrap:pretty}
+/* scalloped cards are masked, which would hide an outside focus ring: draw it inside instead */
+.variety:focus-visible,.next:focus-visible{outline:3px solid var(--print-ink);outline-offset:-14px}
+/* lightbox on wider screens: arrows sit in their own gutters beside the image, never over it */
+@media (min-width:769px){
+  .lightbox[open]{grid-template-columns:56px minmax(0,1fr) 56px;column-gap:14px}
+  .lb-bar,.lb-cap{grid-column:1/-1}
+  .lb-stage{grid-column:2;grid-row:2}
+  .lb-nav{position:static;margin:0;grid-row:2;align-self:center}
+  .lb-prev{grid-column:1;justify-self:start}
+  .lb-next{grid-column:3;justify-self:end}
+}
+
+/* ================= r3-cases-b: MyChart + InTune case studies =================
+   Tension-first opening, research synthesis cards, a landscape map, large annotated frames
+   with numbered pins tied to the decisions list, and numbered decisions with their tradeoff cards.
+   Sizes come from type.css tokens only. */
+
+/* no alt-text flash while images load: reserve space and hide the alt string */
+[data-view="mychart"] img,[data-view="intune"] img{color:transparent}
+[data-view="mychart"] .case-body img,[data-view="intune"] .case-body img{background:var(--print-cream)}
+
+/* constraint chips inside the north-star card */
+.r3-chips{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.r3-chips li{font:500 var(--t-12)/1.2 var(--f-mono);letter-spacing:var(--ls-chip);text-transform:uppercase;color:var(--print-ink);
+  background:rgba(255,255,255,.6);border:1.5px solid rgba(31,42,85,.35);border-radius:999px;padding:6px 11px}
+.r3-chips::before{content:"Constraints";display:block;width:100%;font:500 var(--t-12)/1 var(--f-mono);letter-spacing:var(--ls-label);text-transform:uppercase;color:var(--print-ink);margin-bottom:2px}
+.case-sec .problem{gap:12px}
+
+/* research synthesis: insight cards that each point at a decision */
+.r3-synth{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.r3-synth li{position:relative;display:grid;grid-template-rows:auto 1fr auto;gap:8px;align-content:start;padding:16px 16px 14px;border:2px solid var(--print-ink);border-radius:16px;
+  background:var(--c,var(--print-butter));color:var(--print-ink);box-shadow:5px 6px 0 rgba(31,42,85,.14)}
+.r3-synth li .mono{color:var(--print-ink);opacity:.8}
+.r3-synth li b{font:var(--w-voice) var(--t-20)/1.2 var(--f-display);font-style:italic;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72;text-wrap:balance}
+.r3-synth li p{margin:0;font-size:var(--t-14);line-height:1.45}
+.r3-c-butter,.r3c-butter{--c:var(--print-butter)}.r3c-green{--c:var(--print-green)}.r3c-lilac{--c:var(--print-lilac)}.r3c-blue{--c:var(--print-blue)}
+.r3-to{justify-self:start;display:inline-flex;align-items:center;gap:6px;font:500 var(--t-12)/1 var(--f-mono);letter-spacing:var(--ls-chip);text-transform:uppercase;
+  color:var(--print-cream);background:var(--print-ink);border-radius:999px;padding:6px 10px}
+.r3-to::before{content:"→"}
+
+/* InTune landscape map beside the survey cards */
+.r3-research{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:16px;align-items:stretch}
+.r3-synth-col{grid-template-columns:minmax(0,1fr)}
+.r3-synth-col li{grid-template-rows:auto auto auto}
+.r3-map{position:relative;margin:0;min-height:340px;border:2px solid var(--print-ink);border-radius:16px;color:var(--print-ink);
+  background:linear-gradient(var(--line),var(--line)) 50% 0/1.5px 100% no-repeat,linear-gradient(90deg,var(--line),var(--line)) 0 50%/100% 1.5px no-repeat,
+  radial-gradient(circle,rgba(31,42,85,.12) 1.2px,transparent 1.6px) 0 0/14px 14px,var(--print-cream)}
+.r3-map figcaption{position:absolute;left:14px;top:12px;color:var(--print-ink)}
+.r3-axis{position:absolute;font:500 var(--t-12)/1 var(--f-mono);letter-spacing:var(--ls-label);text-transform:uppercase;color:var(--print-ink);opacity:.75}
+.r3-ax-y{left:14px;top:50%;transform:translateY(-130%)}
+.r3-ax-x{right:14px;top:50%;transform:translateY(60%)}
+.r3-dot{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);display:grid;gap:2px;text-align:center;white-space:nowrap;
+  font-size:var(--t-12);line-height:1.2;padding:6px 10px;border-radius:12px;background:#fff;border:1.5px solid var(--print-ink)}
+.r3-dot b{font:700 var(--t-14)/1.2 var(--f-body)}
+.r3-us{background:var(--print-green);border:2px dashed var(--print-ink);padding:9px 14px;box-shadow:5px 6px 0 rgba(31,42,85,.16)}
+.r3-us b{font:var(--w-voice) var(--t-20)/1.1 var(--f-display);font-style:italic;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72}
+
+/* large annotated frames: numbered pins over a real artefact, explained in a key or the decisions below */
+.af{margin:0;display:grid;gap:14px}
+.af-stage{position:relative}
+.af-stage .shot{display:block;width:100%;padding:0;border:2px solid var(--print-ink);border-radius:12px;overflow:hidden;background:#fff;box-shadow:8px 10px 0 rgba(31,42,85,.14)}
+.af-stage img{display:block;width:100%;height:auto;aspect-ratio:var(--ar,16/9)}
+[data-view="intune"] .af-stage img{--ar:16/10}
+.af-pin{position:absolute;left:var(--x);top:var(--y);width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;pointer-events:none;
+  display:grid;place-items:center;background:#B23A2B;color:#fff;font:800 var(--t-14)/1 var(--f-body);border:2px solid #fff;box-shadow:0 0 0 2px #B23A2B,0 4px 10px rgba(0,0,0,.25)}
+.af-key{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 22px}
+.af-key li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:10px;align-items:start;font-size:var(--t-14);line-height:1.45;color:var(--muted)}
+.af-key b{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#B23A2B;color:#fff;font:800 var(--t-12)/1 var(--f-body)}
+.af-key em{display:block;font-style:normal;font-weight:700;color:var(--ink)}
+.af figcaption:not(.sr-only){font-size:var(--t-14);color:var(--muted)}
+
+/* numbered decisions; a tradeoff card sits beside the decision it shaped */
+.r3-dec{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.r3-dec > li{display:grid;grid-template-columns:64px minmax(0,1fr) minmax(0,.9fr);gap:14px 22px;align-items:start;padding:22px 0;border-top:3px solid var(--ink)}
+.r3-dec > li:last-child{border-bottom:3px solid var(--ink)}
+.r3-dec > li > div:not(.turn){display:grid;gap:6px}
+.r3-dec > li > div:not(.turn):last-child{grid-column:2/-1}
+.r3-dec p{margin:0;font-size:var(--t-17);line-height:1.55;color:var(--muted);max-width:var(--measure)}
+.r3-dec p b{color:var(--ink)}
+.r3-n{font:var(--w-loud) var(--t-40)/1 var(--f-display);font-style:italic;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72;color:var(--accent-ink)}
+.r3-dec .turn{margin:0}
+.r3-dec .turn p{color:var(--print-ink);font-size:var(--t-14)}
+.r3-dec .turn h3{font-size:var(--t-17)}
+
+/* InTune's last word: where it is now */
+.r3-now{display:grid;gap:8px;margin-top:8px;padding:22px 24px;border:2px solid var(--print-ink);border-radius:18px;background:var(--print-green);color:var(--print-ink);box-shadow:6px 8px 0 rgba(31,42,85,.14)}
+.r3-now .mono{color:var(--print-ink)}
+.r3-now p{margin:0;font-size:var(--t-17);line-height:1.55;max-width:60ch}
+.r3-now b{font:var(--w-voice) var(--t-20)/1.3 var(--f-display);font-style:italic;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72}
+
+/* the Figma poster is a button, not a 16:10 hole in the page, until it's loaded */
+[data-view="mychart"] .figma-frame:has(.figma-poster:not([hidden])),[data-view="intune"] .figma-frame:has(.figma-poster:not([hidden])){aspect-ratio:auto;min-height:0}
+[data-view="mychart"] .figma-frame .figma-poster:not([hidden]),[data-view="intune"] .figma-frame .figma-poster:not([hidden]){position:relative;inset:auto;padding:36px 24px}
+
+@media (max-width:1000px){
+  .r3-synth{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .r3-research{grid-template-columns:minmax(0,1fr)}
+  .r3-synth-col{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .r3-dec > li{grid-template-columns:52px minmax(0,1fr)}
+  .r3-dec > li > .turn{grid-column:2}
+}
+@media (max-width:600px){
+  .r3-synth,.r3-synth-col{grid-template-columns:minmax(0,1fr);gap:10px}
+  .r3-synth li{grid-template-rows:auto;padding:14px}
+  .af-key{grid-template-columns:minmax(0,1fr)}
+  .af-pin{width:22px;height:22px;margin:-11px 0 0 -11px;font-size:var(--t-12)}
+  .r3-map{min-height:300px}
+  .r3-dot{padding:4px 7px}
+  .r3-dot b{font-size:var(--t-12)}
+  .r3-us{padding:6px 10px}
+  .r3-us b{font-size:var(--t-17)}
+  .r3-ax-y{top:auto;bottom:10px;left:10px;transform:none}
+  .r3-ax-x{top:auto;bottom:10px;right:10px;transform:none}
+  .r3-dec > li{grid-template-columns:minmax(0,1fr);gap:10px;padding:18px 0}
+  .r3-dec > li > .turn,.r3-dec > li > div:not(.turn):last-child{grid-column:1}
+  .r3-n{font-size:var(--t-28)}
+  .r3-now{padding:18px}
+}
+
+/* round 2: map labels clear of the dots; InTune's "now" note sits under the lessons, beside the receipt */
+.r3-map figcaption{top:auto;bottom:12px}
+.r3-ax-y{left:calc(50% + 8px);top:12px;transform:none}
+.r3-ax-x{right:14px;top:calc(50% + 8px);transform:none}
+[data-view="intune"] .takeaway > .r3-now{grid-column:1;margin-top:0}
+[data-view="intune"] .takeaway > .printer{grid-column:2;grid-row:1/span 2}
+@media (max-width:1000px){[data-view="intune"] .takeaway > .printer{grid-column:1;grid-row:auto}}
+@media (max-width:600px){
+  .r3-ax-y{left:calc(50% + 6px);top:10px;bottom:auto}
+  .r3-ax-x{right:10px;top:calc(50% + 6px);bottom:auto}
+  .r3-synth:not(.r3-synth-col){grid-template-columns:repeat(2,minmax(0,1fr))}
+  .r3-synth li{gap:6px;padding:12px}
+  .r3-synth li b{font-size:var(--t-17)}
+  .r3-synth li .mono{letter-spacing:.04em}
+}
+[data-view="intune"] .takeaway{row-gap:22px}
+@media (max-width:1000px){[data-view="intune"] .takeaway > .r3-now{order:1}[data-view="intune"] .takeaway > .printer{order:2}}
+/* r3-casesb-fix: caption sits in the empty top-left quadrant, wrapping before the axis line */
+.r3-map figcaption{top:12px;bottom:auto;max-width:calc(50% - 28px);line-height:1.4}
+@media (max-width:600px){.r3-map figcaption{left:10px;top:10px;max-width:calc(50% - 20px);letter-spacing:.04em}
+  .r3-synth li p{font-size:var(--t-14);line-height:1.4}}
+/* MyChart hero: Mark's persona card (a crop, not the full sheet) with the quote and the familiarity scales beside it */
+.hv-mark{position:relative;padding:28px 2% 40px 3%}
+.hv-mark .hv-main{width:54%;transform:rotate(-1.6deg)}
+.hv-mark .hv-c2{top:6%;right:0;left:auto;bottom:auto;transform:rotate(2deg)}
+.hv-mark .hv-c1{bottom:4%;right:2%;left:auto;top:auto;transform:rotate(-1.4deg)}
+@media (max-width:999px){
+  .hv-mark{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px 12px;align-items:start;padding:22px 0 0}
+  .hv-mark .hv-main{grid-column:1;grid-row:1/span 2;width:100%;transform:rotate(-1deg)}
+  .hv-mark .hv-call{position:relative;inset:auto;width:auto;max-width:100%;transform:rotate(1deg)}
+  .hv-mark .hv-c2{grid-column:2;grid-row:1}
+  .hv-mark .hv-c1{grid-column:2;grid-row:2}
+  .hv-mark .hv-call img{width:100%}
+}
+@media (max-width:480px){
+  .hv-mark{grid-template-columns:minmax(0,1fr)}
+  .hv-mark .hv-main{grid-row:auto;width:78%;justify-self:center}
+  .hv-mark .hv-c1,.hv-mark .hv-c2{grid-column:1;grid-row:auto}
+}
+/* ---------- r3-cases-a: MEW2 + Alarms read as one argument (tension, decisions with annotated frames, outcome) ---------- */
+/* first paint: every screenshot keeps its box from width/height and never flashes its alt text while loading */
+.case-hero .hv-img img,.hv-call img,.frame img,.compare img{color:transparent;background:var(--print-cream)}
+
+/* constraints as one row of chips inside the problem card */
+.cons-row{list-style:none;margin:2px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.cons-row li{background:rgba(255,255,255,.6);border-radius:999px;padding:7px 14px;font-size:var(--t-14);line-height:1.35;color:var(--print-ink)}
+.cons-row b{font-weight:700;margin-right:5px}
+.problem .trace li{background:rgba(255,255,255,.72);border-color:transparent;color:var(--print-ink)}
+.problem .trace li > span:first-child{color:var(--print-ink);opacity:.8}
+.problem .trace-head span{color:var(--print-ink)}
+.dec-ref{display:inline-grid;place-items:center;min-width:28px;height:20px;padding:0 6px;margin-left:5px;border-radius:999px;background:var(--print-ink);color:var(--print-cream);
+  font:500 var(--t-12)/1 var(--f-mono);letter-spacing:.04em;vertical-align:2px}
+
+/* decisions: claim + numbered callouts, one big frame, then the tradeoff or the turn that shaped it */
+.dec-intro{max-width:var(--measure);font-size:var(--t-17);line-height:1.6;color:var(--muted)}
+.dec{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:20px 40px;margin-top:18px;padding-top:24px;border-top:3px solid var(--ink)}
+.dec-head{display:grid;gap:8px;align-content:start}
+.dec-n{font-family:var(--f-display);font-style:italic;font-weight:var(--w-voice);font-size:var(--t-40);line-height:1;color:var(--accent-ink)}
+.dec-head p{font-size:var(--t-17);line-height:1.6}
+.dec-side{display:grid;gap:16px;align-content:end}
+.callouts{list-style:none;counter-reset:co;margin:0;padding:0;display:grid;gap:10px;align-content:end}
+.callouts li{counter-increment:co;position:relative;padding-left:36px;font-size:var(--t-17);line-height:1.45;color:var(--ink)}
+.callouts li::before{content:counter(co);position:absolute;left:0;top:0;width:24px;height:24px;border-radius:50%;background:#B23A2B;color:#fff;
+  font:700 var(--t-12)/24px var(--f-mono);text-align:center}
+.dec > .frame,.dec > .dec-foot{grid-column:1/-1}
+.frame{margin:0}
+.frame .shot{border:2px solid var(--print-ink);border-radius:14px;box-shadow:8px 10px 0 rgba(31,42,85,.14),0 26px 44px -30px rgba(31,42,85,.55)}
+.frame .shot::after{right:auto;left:10px}
+/* pins sit beside what they label: a dot on the target's edge, a short leader, the number offset into empty space.
+   Each pin and its list item are a focusable pair (aria-describedby both ways); hover or focus on either lights up the other. */
+.fr-stage,.lb-pins{--k:1}
+.fr-stage{position:relative}
+.pt{position:absolute;left:var(--x);top:var(--y);width:0;height:0;z-index:1;outline:none}
+.pt::before{content:"";position:absolute;left:-3.5px;top:-3.5px;width:7px;height:7px;border-radius:50%;background:#B23A2B;box-shadow:0 0 0 1.5px #fff;pointer-events:none}
+.pt::after{content:"";position:absolute;left:0;top:-1px;height:2px;width:max(0px,calc(hypot(var(--dx),var(--dy)) * var(--k) * 1px - 12px));background:#B23A2B;
+  box-shadow:0 0 0 1px rgba(255,255,255,.8);transform-origin:0 50%;transform:rotate(atan2(var(--dy),var(--dx)));pointer-events:none}
+.pt b{position:absolute;left:calc(var(--dx) * var(--k) * 1px);top:calc(var(--dy) * var(--k) * 1px);width:24px;height:24px;margin:-12px 0 0 -12px;border-radius:50%;
+  display:grid;place-items:center;background:#B23A2B;color:#fff;font:700 var(--t-12)/1 var(--f-mono);border:2px solid #fff;
+  box-shadow:0 0 0 1.5px #B23A2B,0 3px 8px rgba(0,0,0,.25);transition:transform .2s ease;cursor:default}
+.pt:focus-visible b{outline:3px solid var(--print-ink);outline-offset:3px}
+.callouts li{border-radius:8px;transition:background-color .2s ease,box-shadow .2s ease;outline:none}
+.callouts li:focus-visible{box-shadow:0 0 0 3px var(--accent)}
+.pt:is(:hover,:focus-visible) b,
+.dec:has(.callouts li:nth-child(1):is(:hover,:focus-visible)) .pt:nth-of-type(1) b,
+.dec:has(.callouts li:nth-child(2):is(:hover,:focus-visible)) .pt:nth-of-type(2) b,
+.dec:has(.callouts li:nth-child(3):is(:hover,:focus-visible)) .pt:nth-of-type(3) b,
+.dec:has(.callouts li:nth-child(4):is(:hover,:focus-visible)) .pt:nth-of-type(4) b{transform:scale(1.35)}
+.callouts li:is(:hover,:focus-visible),
+.dec:has(.pt:nth-of-type(1):is(:hover,:focus-visible)) .callouts li:nth-child(1),
+.dec:has(.pt:nth-of-type(2):is(:hover,:focus-visible)) .callouts li:nth-child(2),
+.dec:has(.pt:nth-of-type(3):is(:hover,:focus-visible)) .callouts li:nth-child(3),
+.dec:has(.pt:nth-of-type(4):is(:hover,:focus-visible)) .callouts li:nth-child(4){background:var(--print-butter);color:var(--print-ink)}
+.callouts li:is(:hover,:focus-visible){box-shadow:0 0 0 6px var(--print-butter)}
+.callouts li:focus-visible{box-shadow:0 0 0 6px var(--print-butter),0 0 0 9px var(--accent)}
+/* the lightbox keeps the annotations: pins over the image, the key in the caption */
+.lb-stage{position:relative}
+.lb-pins{position:absolute;left:0;top:0;pointer-events:none}
+.lb-key{display:inline-flex;align-items:baseline;gap:6px;margin:8px 14px 0 0;text-align:left}
+.lb-key b{flex:none;display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#B23A2B;color:#fff;font:700 var(--t-12)/1 var(--f-mono)}
+.dec-foot{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px;align-items:start}
+.dec-trade{margin:0;padding:2px 0 2px 16px;border-left:3px dashed var(--line);font-size:var(--t-17);line-height:1.5;color:var(--muted)}
+.dec-trade b{display:block;margin-bottom:8px;font:500 var(--t-12)/1 var(--f-mono);letter-spacing:var(--ls-label);text-transform:uppercase;color:var(--ink)}
+
+/* the before/after slider is the main evidence: full column width, its own section */
+.compare-big{margin:0;display:grid;gap:14px}
+.compare-big .compare{box-shadow:8px 10px 0 rgba(31,42,85,.14),0 26px 44px -30px rgba(31,42,85,.55)}
+.compare-big figcaption{max-width:72ch;font-size:var(--t-14);line-height:1.55;color:var(--muted)}
+
+/* outcome: evidence first, then the receipts of how it kept growing */
+.case-sec .stats.loose b{font-size:var(--t-28)}
+.out-row{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px;align-items:start}
+.out-row .impact{max-width:none}
+
+@media (max-width:860px){
+  .dec{grid-template-columns:minmax(0,1fr);gap:16px}
+  .dec > .frame{order:1}
+  .dec > .dec-side{order:2}
+  .dec > .dec-foot{order:3}
+  .out-row{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:720px){
+  .dec{margin-top:10px;padding-top:20px}
+  .dec-n{font-size:var(--t-28)}
+  .dec-head p,.callouts li,.dec-trade,.dec-intro{font-size:var(--fs-small);line-height:1.55}
+  .callouts li{padding-left:32px}
+  .callouts li::before{width:22px;height:22px;line-height:22px}
+  .frame .shot{border-radius:10px;box-shadow:5px 6px 0 rgba(31,42,85,.14)}
+  .fr-stage,.lb-pins{--k:.55}
+  .pt::after{width:max(0px,calc(hypot(var(--dx),var(--dy)) * var(--k) * 1px - 10px))}
+  .pt b{width:20px;height:20px;margin:-10px 0 0 -10px;border-width:1.5px}
+  /* phones: the overview is too small to read, so each callout carries a 1:1 close-up of its spot in the same screenshot */
+  .callouts li::after{content:"";display:block;height:76px;margin:8px 0 4px -32px;border:1.5px solid var(--print-ink);border-radius:8px;
+    --iw:1600px;--ih:calc(var(--iw) * var(--ar));
+    background:var(--img) no-repeat var(--print-cream);background-size:var(--iw) var(--ih);
+    background-position:max(100%,min(0%,calc(50% + (.5 - var(--fx)) * var(--iw)))) max(100%,min(0%,calc(50% + (.5 - var(--fy)) * var(--ih))))}
+  /* phones: crop the slider to the query side of both screens so it's readable */
+  .compare-big .compare{aspect-ratio:1/1}
+  .compare-big .compare img{height:100%;object-fit:cover;object-position:left top}
+  .cons-row li{font-size:var(--t-12);padding:6px 11px}
+  .case-sec{padding-block:26px}
+  .problem .trace li{padding:10px 14px;gap:2px}
+  .problem .trace li > i{display:none}
+  .problem .trace li > span:first-child{font-size:var(--t-14)}
+  .case-sec .stats.loose li{grid-template-columns:minmax(0,1fr);gap:2px;padding:14px 18px}
+  .tldr-grid > div{padding:14px 18px;display:block}
+  .tldr-grid .tag{margin-right:6px;vertical-align:1px}
+  .tldr-grid > div p{display:inline}
+  .case-sec .stats.loose li{display:block}
+  .case-sec .stats.loose b{display:inline;margin-right:6px;font-size:var(--t-20)}
+  .case-sec .stats.loose span{display:inline}
+}

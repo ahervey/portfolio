@@ -13,6 +13,6 @@ from pathlib import Path
 page = Path(__file__).resolve().parent.parent / "index.html"
 stamp = time.strftime("%Y%m%d%H%M")
 html = page.read_text(encoding="utf-8")
-html, n = re.subn(r'(href|src)="(styles\.css|theme-pastel\.css|app\.js)(\?v=\w+)?"', rf'\1="\2?v={stamp}"', html)
+html, n = re.subn(r'(href|src)="(styles\.css|theme-pastel\.css|case-visuals\.css|type\.css|app\.js)(\?v=\w+)?"', rf'\1="\2?v={stamp}"', html)
 page.write_text(html, encoding="utf-8")
 print(f"stamped {n} asset links with v={stamp}")

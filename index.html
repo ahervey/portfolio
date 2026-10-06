@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Aaron Hervey</title>
-<meta name="description" content="Aaron (Aj) Hervey is a product designer and software engineer who builds what they design: UX research, interface design and React front-ends for data-heavy tools.">
+<title>Aaron Hervey · Product Designer</title>
+<meta name="description" content="Aaron (AJ) Hervey is a product designer and software engineer who builds what they design: UX research, interface design and React front-ends for data-heavy tools.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#FBF0EC">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aaron Hervey">
 <meta property="og:title" content="Aaron Hervey · Product Designer">
-<meta property="og:description" content="A product designer and software engineer who builds what I design. Case studies, résumé and writing, packed in a tin.">
+<meta property="og:description" content="A product designer and software engineer who builds what I design. Case studies and a résumé, packed in a tin.">
 <meta property="og:url" content="https://ahervey.dev/">
 <meta property="og:image" content="https://ahervey.dev/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -23,13 +23,27 @@
 <meta name="goatcounter" content="ahervey">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@1,9..144,700..900,0..100,0..1&family=Shrikhand&family=Hanken+Grotesk:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="styles.css?v=202610051614">
-<link rel="stylesheet" href="theme-pastel.css?v=202610051614" id="pastel-css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@1,72,600..800,100,1&family=Hanken+Grotesk:wght@400..800&family=DM+Mono:wght@500&display=swap">
+<!-- ← → only: Hanken draws them for every face (DM Mono and Fraunces have no arrows), about 1 KB -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400..800&text=%E2%86%90%E2%86%92&display=swap">
+<script>/* paint the routed page from the first frame, not home until app.js arrives; app.js removes this */
+(function(h){try{h=decodeURIComponent(location.hash.slice(1))}catch(e){return}
+if(!h||/^(top|home|work|about|editions|contact|main)$/.test(h)||!/^[\w-]+$/.test(h))return;
+var s=document.createElement('style');s.id='route-boot';
+s.textContent='[data-view="home"]{display:none!important}[data-view="'+h+'"][hidden]{display:block!important}';
+document.head.appendChild(s)})();</script>
+<link rel="stylesheet" href="styles.css?v=202610060929">
+<link rel="stylesheet" href="theme-pastel.css?v=202610060929">
+<link rel="stylesheet" href="case-visuals.css?v=202610060929">
+<link rel="stylesheet" href="type.css?v=202610060929">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <svg class="sprite" aria-hidden="true" focusable="false">
+  <!-- small glyphs the web fonts don't carry, drawn so no system font fills in -->
+  <symbol id="i-out" viewBox="0 0 12 12"><path d="M3.2 8.8 8.6 3.4M4.2 3h4.8v4.8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 12 12"><path d="M6 0Q6.7 5.3 12 6 6.7 6.7 6 12 5.3 6.7 0 6 5.3 5.3 6 0Z" fill="currentColor"/></symbol>
+  <symbol id="i-cut" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="3.6" cy="4.2" r="2.2"/><circle cx="3.6" cy="11.8" r="2.2"/><path d="M5.5 5.4 14.5 12.2M5.5 10.6 14.5 3.8"/></g></symbol>
   <symbol id="fish" viewBox="0 0 120 70">
     <g stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--fish-line);stroke-width:2.6">
       <path d="M24 35 L6 17 Q1 35 6 53 Z" style="fill:var(--fish-fin)"/>
@@ -45,189 +59,184 @@
       <path d="M99 40 Q103 42 106 38" fill="none"/>
     </g>
   </symbol>
+  <symbol id="i-check" viewBox="0 0 12 12"><path d="M2.2 6.4 4.9 9 9.8 3.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="fork" viewBox="0 0 24 24"><path d="M7 3v5a3 3 0 0 0 6 0V3M10 3v5M10 11v10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="spoon" viewBox="0 0 24 24"><path d="M12 3c-2.6 0-4 2.3-4 4.8S9.6 12.3 12 12.3s4-1.9 4-4.5S14.6 3 12 3zM12 12.3V21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="knife" viewBox="0 0 24 24"><path d="M14 3c-3.5 2.5-4.6 6.5-4.4 10H14zM12 13v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </svg>
 <div class="wrap">
-  <nav aria-label="Main">
-    <a class="brand" href="#top"><i></i>Aaron Hervey</a>
-    <div class="nav-links">
-      <a href="#work" data-cases="mew2 oracle mychart intune">Work</a>
-      <a href="#resume">Résumé</a>
-      <a href="#writing">Writing</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
+  <header class="site-head" id="site-head">
+    <nav aria-label="Main">
+      <a class="brand" href="#top"><i></i>Aaron Hervey</a>
+      <div class="nav-links">
+        <a href="#work" data-cases="mew2 oracle mychart intune">Work</a>
+        <a href="#about-me">About</a>
+        <a href="#resume">Résumé</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+    <!-- on small screens the case-study contents live behind this pill (the sidebar is hidden there) -->
+    <button class="toc-pill" id="toc-pill" type="button" aria-haspopup="dialog" aria-controls="toc-sheet" hidden>
+      <span class="toc-pill-k mono">Contents</span><span class="toc-pill-v" id="toc-pill-v"></span>
+      <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </header>
 
   <!-- ===================== HOME ===================== -->
   <main id="main" tabindex="-1">
   <div data-view="home">
     <header class="hero" id="top">
       <div class="hero-copy">
-        <span class="status mono"><b></b>Hi, I'm Aaron (Aj for short) · Open to UX &amp; software engineering roles</span>
-        <h1>A product designer who <em>builds</em> what I design.</h1>
-        <p class="lede">I design and ship internal tools at Avangrid Renewables, from user interviews and wireframes through to production front-ends. I like making complex, data-heavy systems feel simple for the people who use them every day.</p>
+        <span class="status mono"><b></b>Hi, I'm AJ · Open to UX &amp; SWE roles</span>
+        <h1>A product designer who <em>builds</em> what I&nbsp;design.</h1>
+        <p class="lede">I design and ship internal tools at Avangrid Renewables, from user interviews to production <span class="nw">front-ends</span>, so data-heavy systems feel simple.</p>
         <div class="ctas">
           <a class="btn primary" href="#work">See selected work</a>
           <a class="btn" href="#resume">Read my résumé</a>
         </div>
       </div>
-      <div>
+      <div class="hero-art">
+        <p class="hint mono"><button type="button" id="toggle" aria-controls="catch" aria-expanded="false"><span class="hint-icon" aria-hidden="true"></span><span class="hint-text">Pull the tab to open</span></button></p>
         <div class="stage" id="stage">
           <div class="tin" id="tin">
-            <div class="tray">
-              <div class="liner"></div>
-              <svg class="tray-fish" aria-hidden="true"><use href="#fish"/></svg>
-              <div class="photo"><img src="img/aj.jpg" alt="Aaron Hervey smiling in glasses and a blue patterned shirt" width="660" height="880" decoding="async" fetchpriority="high"></div>
-              <div class="sticker" aria-hidden="true">UX &amp;<br>SWE roles<small>Open 2026</small></div>
-            </div>
             <div class="lid-wrap">
               <div class="lid-clip">
                 <div class="lid" id="lid" aria-hidden="true">
-                  <i class="emboss" aria-hidden="true"></i>
-                  <div class="sparkles"><i style="top:18%;left:12%">✦</i><i style="top:30%;right:12%;font-size:13px">✦</i><i style="top:66%;left:14%;font-size:12px">✦</i><i style="top:70%;right:15%">✦</i></div>
-                  <span class="mono est">Est. 2019 · Knoxville, TN</span>
-                  <svg class="arch" viewBox="0 0 260 46" aria-hidden="true"><path id="lid-arc" d="M14 42 A270 270 0 0 1 246 42" fill="none"/><text><textPath href="#lid-arc" startOffset="50%" text-anchor="middle">Est. 2019 · Knoxville, TN</textPath></text></svg>
+                  <i class="emboss"></i>
+                  <div class="sparkles"><i style="top:20%;left:13%"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-spark"/></svg></i><i style="top:27%;right:13%;font-size:13px"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-spark"/></svg></i><i style="top:62%;left:10%;font-size:12px"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-spark"/></svg></i><i style="top:58%;right:11%"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-spark"/></svg></i></div>
                   <div class="lid-mid">
-                    <span class="mono" style="color:var(--print-cream);opacity:.8">Finest quality</span>
                     <div class="lid-name">Aaron<br>Hervey</div>
                     <span class="banner">Product Design</span>
-                    <div class="school">
-                      <svg viewBox="0 0 24 24"><path d="M5 2l14 11-6.2.9 3.7 7.4-2.8 1.4-3.7-7.5L5 19z" fill="currentColor"/></svg>
-                      <svg viewBox="0 0 24 24"><path d="M5 2l14 11-6.2.9 3.7 7.4-2.8 1.4-3.7-7.5L5 19z" fill="currentColor"/></svg>
-                      <svg viewBox="0 0 24 24"><path d="M5 2l14 11-6.2.9 3.7 7.4-2.8 1.4-3.7-7.5L5 19z" fill="currentColor"/></svg>
-                    </div>
                   </div>
-                  <span class="mono">Designed &amp; built in Vancouver, WA</span>
+                  <div class="lid-foot">
+                    <span class="medallion"><img src="img/aj.jpg" alt="" width="660" height="880" decoding="async"></span>
+                    <span class="mono">4 case studies<br>packed in Vancouver, WA</span>
+                  </div>
                 </div>
               </div>
               <div class="roll">
-                <div class="key" id="key" role="slider" tabindex="0" aria-label="Tin lid" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="Closed">
-                  <span class="stem"></span><span class="ring"></span>
-                </div>
-                <div class="pull-ring" id="pull-ring" role="slider" tabindex="0" aria-label="Tin lid pull tab" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="Closed">
-                  <svg viewBox="0 0 70 90" aria-hidden="true"><defs><linearGradient id="tab-metal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6f8f9"/><stop offset=".45" stop-color="#aab2b8"/><stop offset=".7" stop-color="#e9edef"/><stop offset="1" stop-color="#8a939a"/></linearGradient></defs><path fill-rule="evenodd" fill="url(#tab-metal)" stroke="#7d868c" d="M35 2C52 2 64 12 64 28c0 12-4 18-4 30 0 18-10 30-25 30S10 76 10 58c0-12-4-18-4-30C6 12 18 2 35 2zm0 38c-11 0-17 8-17 20s7 19 17 19 17-7 17-19-6-20-17-20z"/><circle cx="35" cy="20" r="9" fill="url(#tab-metal)" stroke="#7d868c"/><circle cx="35" cy="20" r="3.5" fill="#c3c9cd"/></svg>
+                <div class="pull-ring" id="pull-ring" role="slider" tabindex="0" aria-label="Tin lid, pull to open" aria-controls="catch" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="Sealed">
+                  <svg viewBox="0 0 70 90"><defs><linearGradient id="tab-metal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6f8f9"/><stop offset=".45" stop-color="#aab2b8"/><stop offset=".7" stop-color="#e9edef"/><stop offset="1" stop-color="#8a939a"/></linearGradient></defs><path fill-rule="evenodd" fill="url(#tab-metal)" stroke="#7d868c" d="M35 2C52 2 64 12 64 28c0 12-4 18-4 30 0 18-10 30-25 30S10 76 10 58c0-12-4-18-4-30C6 12 18 2 35 2zm0 38c-11 0-17 8-17 20s7 19 17 19 17-7 17-19-6-20-17-20z"/><circle cx="35" cy="20" r="9" fill="url(#tab-metal)" stroke="#7d868c"/><circle cx="35" cy="20" r="3.5" fill="#c3c9cd"/></svg>
                 </div>
               </div>
             </div>
+            <div class="tray">
+              <div class="liner"><i class="bubble" style="--b:0"></i><i class="bubble" style="--b:1"></i><i class="bubble" style="--b:2"></i><i class="bubble" style="--b:3"></i></div>
+              <ul class="catch" id="catch" aria-label="Case studies in the tin" inert>
+            <li class="sardine s-blue" style="--i:0"><a href="#mew2">
+              <svg class="sd" viewBox="0 0 320 90" aria-hidden="true" focusable="false"><path class="sd-tail" d="M50 45 L12 13 Q24 32 21 45 Q24 58 12 77 Z"/><path class="sd-fin" d="M146 15 Q164 -2 190 12 Z"/><path class="sd-body" d="M38 45 C70 14 150 8 232 12 C280 15 307 30 316 45 C307 61 280 75 232 78 C150 82 70 76 38 45 Z"/><path class="sd-belly" d="M74 63 C140 77 230 77 300 56 C254 72 150 75 74 63 Z"/><path class="sd-gill" d="M262 21 Q249 45 262 69"/><g class="sd-eye"><circle cx="285" cy="38" r="8.5"/><circle class="sd-pupil" cx="286" cy="38" r="4.2"/></g></svg>
+              <span class="sd-label"><b>MEW2</b> <span>Nº 01 · Data editor</span></span>
+            </a></li>
+            <li class="sardine flip s-red" style="--i:1"><a href="#oracle">
+              <svg class="sd" viewBox="0 0 320 90" aria-hidden="true" focusable="false"><path class="sd-tail" d="M50 45 L12 13 Q24 32 21 45 Q24 58 12 77 Z"/><path class="sd-fin" d="M146 15 Q164 -2 190 12 Z"/><path class="sd-body" d="M38 45 C70 14 150 8 232 12 C280 15 307 30 316 45 C307 61 280 75 232 78 C150 82 70 76 38 45 Z"/><path class="sd-belly" d="M74 63 C140 77 230 77 300 56 C254 72 150 75 74 63 Z"/><path class="sd-gill" d="M262 21 Q249 45 262 69"/><g class="sd-eye"><circle cx="285" cy="38" r="8.5"/><circle class="sd-pupil" cx="286" cy="38" r="4.2"/></g></svg>
+              <span class="sd-label"><b>Alarms</b> <span>Nº 02 · Redesign</span></span>
+            </a></li>
+            <li class="sardine s-butter" style="--i:2"><a href="#mychart">
+              <svg class="sd" viewBox="0 0 320 90" aria-hidden="true" focusable="false"><path class="sd-tail" d="M50 45 L12 13 Q24 32 21 45 Q24 58 12 77 Z"/><path class="sd-fin" d="M146 15 Q164 -2 190 12 Z"/><path class="sd-body" d="M38 45 C70 14 150 8 232 12 C280 15 307 30 316 45 C307 61 280 75 232 78 C150 82 70 76 38 45 Z"/><path class="sd-belly" d="M74 63 C140 77 230 77 300 56 C254 72 150 75 74 63 Z"/><path class="sd-gill" d="M262 21 Q249 45 262 69"/><g class="sd-eye"><circle cx="285" cy="38" r="8.5"/><circle class="sd-pupil" cx="286" cy="38" r="4.2"/></g></svg>
+              <span class="sd-label"><b>MyChart</b> <span>Nº 03 · Patient portal</span></span>
+            </a></li>
+            <li class="sardine flip s-green" style="--i:3"><a href="#intune">
+              <svg class="sd" viewBox="0 0 320 90" aria-hidden="true" focusable="false"><path class="sd-tail" d="M50 45 L12 13 Q24 32 21 45 Q24 58 12 77 Z"/><path class="sd-fin" d="M146 15 Q164 -2 190 12 Z"/><path class="sd-body" d="M38 45 C70 14 150 8 232 12 C280 15 307 30 316 45 C307 61 280 75 232 78 C150 82 70 76 38 45 Z"/><path class="sd-belly" d="M74 63 C140 77 230 77 300 56 C254 72 150 75 74 63 Z"/><path class="sd-gill" d="M262 21 Q249 45 262 69"/><g class="sd-eye"><circle cx="285" cy="38" r="8.5"/><circle class="sd-pupil" cx="286" cy="38" r="4.2"/></g></svg>
+              <span class="sd-label"><b>InTune</b> <span>Nº 04 · Music social</span></span>
+            </a></li>
+              </ul>
+            </div>
           </div>
         </div>
-        <p class="hint mono"><span class="hint-key">Drag the key to open</span><span class="hint-tab">Pull the tab to open</span> · <button type="button" id="toggle">Open the tin</button></p>
       </div>
     </header>
 
     <section class="home-sec" id="work">
-      <div class="sec-head"><h2><svg class="utensil" aria-hidden="true"><use href="#fork"/></svg>Selected work</h2><span class="mono">4 varieties · 2022–2026</span></div>
+      <div class="sec-head"><h2><svg class="utensil" aria-hidden="true"><use href="#fork"/></svg>Selected work</h2><span class="mono"><span class="nw">4 varieties</span> · <span class="nw">2022–2026</span></span></div>
       <div class="varieties">
         <a class="variety v-blue" href="#mew2">
-          <span class="mono">Nº 01 · Avangrid Renewables · 2026</span>
+          <span class="mono"><span class="nw">Nº 01</span> · <span class="nw">Avangrid Renewables</span> · <span class="nw">2026</span></span>
           <div><div class="flavor">MEW2</div><h3>A guided interface for editing renewable asset data without writing SQL</h3></div>
-          <div class="thumb"><img src="img/mew2_5.webp" alt="MEW2 data explorer showing the Baffin Bay wind farm and its attributes" loading="lazy" width="1600" height="706" decoding="async"></div>
-          <div class="result"><strong>Launched</strong><span>to our team, and rolling out to more teams</span></div>
+          <div class="thumb"><img src="img/card_mew2.webp" alt="MEW2 close-up: the Baffin Bay site record with editable fields for company name, server prefix, region and capacity" loading="lazy" width="800" height="450" decoding="async"></div>
+          <span class="ink-stamp is-shipped">Shipped</span>
+          <div class="result"><strong>3 months</strong><span>from kickoff to launch, solo; now rolling out to more teams</span></div>
           <div class="v-foot"><div class="tags"><span>UI/UX</span><span>React</span><span>ASP.NET</span></div><b>Open the case →</b></div>
         </a>
         <a class="variety v-red" href="#oracle">
-          <span class="mono">Nº 02 · Avangrid Renewables · 2024–25</span>
+          <span class="mono"><span class="nw">Nº 02</span> · <span class="nw">Avangrid Renewables</span> · <span class="nw">2024–25</span></span>
           <div><div class="flavor">Alarms</div><h3>Redesigning the historical alarms tool for solar and wind sites</h3></div>
-          <div class="thumb"><img src="img/oracle_2.webp" alt="Redesigned CORE Alarms results table with a query panel on the left" loading="lazy" width="1600" height="792" decoding="async"></div>
-          <div class="result"><strong>Shipped</strong><span>replaced the old site with faster filtering, sorting and validation</span></div>
+          <div class="thumb"><img src="img/card_alarms.webp" alt="CORE Alarms close-up: the query panel with time range and quick ranges beside the first columns of alarm results" loading="lazy" width="800" height="450" decoding="async"></div>
+          <span class="ink-stamp is-shipped">Shipped</span>
+          <div class="result"><strong>Hundreds</strong><span>of people use it to pull alarm history; I still maintain it</span></div>
           <div class="v-foot"><div class="tags"><span>User testing</span><span>Contextual inquiry</span></div><b>Open the case →</b></div>
         </a>
         <a class="variety v-butter" href="#mychart">
-          <span class="mono">Nº 03 · University of Tennessee · 2022</span>
+          <span class="mono"><span class="nw">Nº 03</span> · <span class="nw">University of Tennessee</span> · <span class="nw">2022</span></span>
           <div><div class="flavor">MyChart</div><h3>Simplifying a patient portal for the older users who rely on it most</h3></div>
-          <div class="thumb"><img src="img/mychart_0.webp" alt="User persona for Mark de la Cruz, a 68-year-old retired engineer" loading="lazy" width="1600" height="900" decoding="async"></div>
+          <div class="thumb"><img src="img/card_mychart.webp" alt="Close-up of the persona sheet for Mark de la Cruz, 68, a civil engineer: his profile and photo" loading="lazy" width="800" height="450" decoding="async"></div>
+          <span class="ink-stamp is-concept">Class project</span>
           <div class="result"><strong>Lead designer</strong><span>interviews, persona and a high-fidelity Figma prototype</span></div>
           <div class="v-foot"><div class="tags"><span>UX research</span><span>Interviews</span></div><b>Open the case →</b></div>
         </a>
         <a class="variety v-green" href="#intune">
-          <span class="mono">Nº 04 · University of Tennessee · 2023</span>
+          <span class="mono"><span class="nw">Nº 04</span> · <span class="nw">University of Tennessee</span> · <span class="nw">2023</span></span>
           <div><div class="flavor">InTune</div><h3>A music social app for listeners who want more than a yearly Wrapped</h3></div>
-          <div class="thumb"><img src="img/intune_1.webp" alt="Hand-drawn wireframes for InTune's community, creative and analytics screens" loading="lazy" width="512" height="320" decoding="async"></div>
+          <div class="thumb"><img src="img/card_intune.webp" alt="Close-up of InTune's hand-drawn wireframes for the creative and analytics screens" loading="lazy" width="664" height="373" decoding="async"></div>
+          <span class="ink-stamp is-concept">Class project<small>Now building it</small></span>
           <div class="result"><strong>Lead designer</strong><span>market research, wireframes and a high-fidelity prototype</span></div>
           <div class="v-foot"><div class="tags"><span>Market research</span><span>Interviews</span></div><b>Open the case →</b></div>
         </a>
       </div>
-      <div class="shelf">
-        <a class="shelf-item shelf-leaflet" href="#writing">
-          <div class="leaflet-face">
-            <span class="mono">Leaflet enclosed · 15 pages</span>
-            <b class="shelf-title">Writing sample</b>
-            <span class="shelf-sub">An autoethnography on queer and Black identity</span>
-            <span class="mono shelf-cta">Unfold →</span>
-          </div>
-        </a>
-        <a class="shelf-item shelf-tag" href="#resume">
-          <div class="tag-face">
-            <i class="tag-hole" aria-hidden="true"></i>
-            <span class="mono">Ship to · Your hiring team</span>
-            <b class="shelf-title">Résumé</b>
-            <span class="shelf-sub">Experience, skills, education and references</span>
-            <i class="rc-bars" aria-hidden="true"></i>
-          </div>
-        </a>
-      </div>
+      <p class="also mono"><span>Also in the pack</span><a href="#resume">Résumé&nbsp;→</a></p>
     </section>
 
     <section class="home-sec" id="about">
-      <div class="sec-head"><h2><svg class="utensil" aria-hidden="true"><use href="#spoon"/></svg>What's in the tin</h2><span class="mono">Ingredients &amp; method</span></div>
-      <div class="facts-grid">
-        <div>
-          <div class="facts" role="group" aria-label="Design facts">
-            <h3>Design Facts</h3>
-            <div class="row plain"><span>Serving size</span><b>1 product team</b></div>
-            <div class="row thick"><span>Servings per project</span><b>As needed</b></div>
-            <div class="row mid"><b>Amount per serving</b><span>% Daily Value*</span></div>
-            <div class="row bar"><b class="label">UX research</b><span class="meter"><i style="width:100%"></i></span><b>30%</b></div>
-            <div class="row bar"><b class="label">UI design</b><span class="meter"><i style="width:83%"></i></span><b>25%</b></div>
-            <div class="row bar"><span class="label ind">Typography</span><span class="meter"><i style="width:33%"></i></span><b>10%</b></div>
-            <div class="row bar"><b class="label">Front-end build</b><span class="meter"><i style="width:83%"></i></span><b>25%</b></div>
-            <div class="row bar thick"><b class="label">Design systems</b><span class="meter"><i style="width:67%"></i></span><b>20%</b></div>
-            <small><b>Tools:</b> Figma, React, Chakra UI, TypeScript, Node.js, C#, ASP.NET, SQL Server, Oracle, JIRA.<br><b>Contains:</b> poetry, video games and game-dev side projects. *Based on a typical week.</small>
-          </div>
-        </div>
-        <div>
-          <p class="about">I studied Computer &amp; Information Sciences at the University of Tennessee, where I combined UX design with programming. Before Avangrid I interned twice at Optum, designing in Figma and building in React and TypeScript. Now I research, design and build the tools engineers use to keep wind and solar sites running.</p>
-          <section class="card recipe-card" aria-label="House recipe">
-            <header><span class="mono">House recipe Nº 1</span><h3>A product that makes sense</h3></header>
-            <dl class="card-meta"><div><dt>Serves</dt><dd>1 product team</dd></div><div><dt>Prep time</dt><dd>A sprint or two</dd></div></dl>
-            <div class="recipe-cols">
-              <div>
-                <h4 class="mono">Ingredients</h4>
-                <ul class="ingredients">
-                  <li><b>2 tbsp</b> user interviews</li>
-                  <li><b>1 cup</b> contextual inquiry</li>
-                  <li><b>½ cup</b> competitive analysis</li>
-                  <li><b>3</b> wireframes, roughly sketched</li>
-                  <li><b>1</b> tidy Figma file</li>
-                  <li><b>A generous pour</b> of React</li>
-                  <li><b>A pinch</b> of Chakra UI</li>
-                  <li>Usability testing, <b>to taste</b></li>
-                </ul>
-              </div>
-              <div>
-                <h4 class="mono">Method</h4>
-                <ol class="method">
-                  <li><b>Listen.</b> Interview the people doing the work, at their desks and in their real tools.</li>
-                  <li><b>Map.</b> Fold in competitive analysis, flows and wireframes until the team agrees on the problem.</li>
-                  <li><b>Make.</b> Design in Figma, then bake it all the way to production in React so nothing gets lost in handoff.</li>
-                  <li><b>Test.</b> Serve to real users. Adjust while the feedback is still warm.</li>
-                </ol>
-              </div>
-            </div>
-          </section>
+      <div class="sec-head"><h2><svg class="utensil" aria-hidden="true"><use href="#spoon"/></svg>What's in the tin</h2><span class="mono">About Aaron</span></div>
+      <div class="about-grid">
+        <figure class="tin-label">
+          <img src="img/aj_tall.webp" alt="Aaron Hervey grinning in glasses and a blue patterned shirt, locs over the shoulders, under a green steel canopy" width="880" height="1100" loading="lazy" decoding="async">
+          <figcaption>
+            <span class="tl-name">Aaron (AJ) Hervey</span>
+          </figcaption>
+        </figure>
+        <div class="about-copy">
+          <p class="pov">I design the tool, then I build it myself, so nothing gets lost in handoff.</p>
+          <p class="about">I studied Computer &amp; Information Sciences at the University of Tennessee, mixing UX design with programming. Now I research, design and build the tools Avangrid's engineers use to keep wind and solar sites running.</p>
+          <a class="more-about" href="#about-me">More about me&nbsp;→</a>
         </div>
       </div>
     </section>
     <section class="home-sec" id="editions">
-      <div class="sec-head"><h2><svg class="utensil" aria-hidden="true"><use href="#knife"/></svg>Limited editions</h2><span class="mono">Not yet in stock</span></div>
-      <p class="editions-intro">Small-batch side projects, sealed until they're ready.</p>
+      <div class="sec-head"><h2><svg class="utensil" aria-hidden="true"><use href="#knife"/></svg>Limited editions</h2><span class="mono">Small batch · 2 tins</span></div>
+      <p class="editions-intro">What I'm making off the clock. Open a tin to read the back.</p>
       <div class="editions">
-        <a class="mini-tin t-pink" href="#intune">
-          <div class="mini-lid"><span class="mono">In development</span><b>InTune</b><span class="mini-sub">Becoming a full app →</span></div>
-          <span class="seal mono">Coming soon</span>
-        </a>
+        <article class="ed">
+          <span class="steam" aria-hidden="true"><svg viewBox="0 0 90 46"><path d="M24 44c-6-8 6-12 0-20s6-12 0-20"/><path d="M45 44c-6-8 6-12 0-20s6-12 0-20"/><path d="M66 44c-6-8 6-12 0-20s6-12 0-20"/></svg></span>
+          <button class="mini-tin ed-tin t-mint" type="button" aria-expanded="false" aria-controls="ed-note-1" aria-label="InTune, now cooking. Open the tin">
+            <span class="ed-inside"><img src="img/intune_1.webp" alt="InTune hand-drawn wireframes for the community, creative and analytics screens" width="512" height="320" loading="lazy" decoding="async"></span>
+            <span class="mini-lid"><span class="lid-back"></span><span class="mono">Small batch</span><b>InTune</b><span class="mini-sub">A music social app</span></span>
+            <span class="seal mono">Now cooking</span>
+          </button>
+          <span class="ed-shelf" aria-hidden="true"></span>
+          <div class="ed-note" id="ed-note-1">
+            <span class="note-head mono"><span>Back of the tin</span><span>Nº 01</span></span>
+            <div class="note-body">
+              <p>Began in spring 2023 as a ten-week University of Tennessee project with Holly Sarah Liban and Emma Thomas. I was lead designer: the research, the logo and the Figma prototype. Under the lid: our hand-drawn wireframes.</p>
+              <p><b>Now:</b> I'm developing it into a real app.</p>
+              <a class="note-link" href="#intune">Read the 2023 case study →</a>
+            </div>
+          </div>
+        </article>
+        <article class="ed">
+          <button class="mini-tin ed-tin t-blue" type="button" aria-expanded="false" aria-controls="ed-note-3" aria-label="Your team? Reserved. Open the tin">
+            <span class="ed-inside ed-text"><b>Room for one more</b> <span class="mono">Your project here</span></span>
+            <span class="mini-lid"><span class="lid-back"></span><span class="mono">Reserved</span><b>Your team?</b><span class="mini-sub">This spot's open</span></span>
+            <span class="seal mono">Reserved</span>
+          </button>
+          <span class="ed-shelf" aria-hidden="true"></span>
+          <div class="ed-note" id="ed-note-3">
+            <span class="note-head mono"><span>Back of the tin</span><span>Nº 02</span></span>
+            <div class="note-body">
+              <p>The shelf has room. I'm looking for UX design and software engineering roles where I can design for real users and build the result myself.</p>
+              <a class="note-link" href="#contact">Let's talk →</a>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
   </div>
@@ -236,133 +245,156 @@
   <article data-view="mew2" data-title="MEW2 Web Interface" hidden>
     <a class="back-link mono" href="#work">← All work</a>
     <header class="case-hero v-blue">
-      <span class="mono">Nº 01 · Avangrid Renewables · June – August 2026</span>
+      <span class="mono"><span class="nw">Nº 01</span> · <span class="nw">Avangrid Renewables</span> · <span class="nw">June – August 2026</span></span>
       <div class="flavor">MEW2</div>
-      <h1>A guided interface for editing renewable asset data without writing SQL</h1>
-      <p class="summary">MEW2 sits on top of our SQL Server databases so teams across Avangrid can maintain sites, devices and certificates through forms and a browsable tree instead of raw queries.</p>
+      <h1>Adding an asset meant writing SQL by hand. I turned it into a guided form.</h1>
+      <p class="summary">MEW2 sits on our SQL Server inventory of sites, devices and certificates. The forms were the easy part. The hard part was making that much data readable, and edits feel safe for people who'd never touched the database.</p>
+      <figure class="hero-visual">
+        <div class="hv-stage" style="--pt:66px">
+          <button class="shot hv-main" type="button" data-caption="The farm editor: sites in a sidebar, asset types in a second column, attributes as editable fields."><span class="hv-bar" aria-hidden="true"><i></i><i></i><i></i><span>MEW2 · Farms</span></span><span class="hv-img"><img src="img/mew2_4.webp" alt="MEW2 farm editor: sites in a sidebar, asset types in a second column, and the Baffin Bay attributes as editable fields" width="1600" height="787" decoding="async" fetchpriority="high"><span class="hv-pin" style="--x:39.6%;--y:23%" aria-hidden="true">1</span><span class="hv-pin" style="--x:86.4%;--y:5%" aria-hidden="true">2</span></span></button>
+          <div class="hv-call hv-c1" style="--w:52%"><span class="hv-tag"><b>1</b> Unsaved edits are flagged</span><img src="img/mew2_h_unsaved.webp" alt="Close-up: the Company Name field outlined in orange with an Unsaved badge" width="316" height="128" decoding="async" fetchpriority="high"></div>
+          <div class="hv-call hv-c2" style="--w:48%"><span class="hv-tag"><b>2</b> One place to save</span><img src="img/mew2_d_pending.webp" alt="Close-up: a 1 pending counter beside the Save and undo buttons" width="312" height="66" decoding="async" fetchpriority="high"></div>
+        </div>
+        <figcaption class="sr-only">The MEW2 farm editor with close-ups of an unsaved field and the pending-changes counter.</figcaption>
+      </figure>
     </header>
-    <dl class="glance">
-      <div><dt>Role</dt><dd>Designer &amp; developer (solo)</dd></div>
-      <div><dt>Timeline</dt><dd>June – August 2026</dd></div>
-      <div><dt>Collaborators</dt><dd>My manager</dd></div>
-      <div><dt>Tools</dt><dd>React, Chakra UI, ASP.NET, Entity Framework, SQL Server</dd></div>
-      <div class="outcome"><dt>Outcome</dt><dd>Launched to our team. It replaces direct SQL edits with a guided interface and is rolling out to more teams.</dd></div>
+    <dl class="glance recipe-glance">
+      <div><dt>Role <span class="rx" aria-hidden="true">chef</span></dt><dd>Designer &amp; developer (solo)</dd></div>
+      <div><dt>Timeline <span class="rx" aria-hidden="true">prep time</span></dt><dd>June – August 2026</dd></div>
+      <div><dt>Team <span class="rx" aria-hidden="true">kitchen crew</span></dt><dd>My manager, standing in for future users</dd></div>
+      <div><dt>Tools <span class="rx" aria-hidden="true">utensils</span></dt><dd>React, Chakra UI, ASP.NET, Entity Framework, SQL Server</dd></div>
     </dl>
     <div class="case-body">
       <aside class="toc" aria-label="Contents"><span class="mono">Contents</span></aside>
       <div>
-        <section class="case-sec" data-toc="Overview">
-          <h2>Overview</h2>
-          <div class="prose">
-            <p>I was asked to build a website that works as an interface to our SQL Server, so people could change the database without touching SQL. The goal was to let several teams across the company maintain and update our renewable inventory and its data themselves.</p>
-            <p>I was both the designer and the developer. I built an ASP.NET back-end that uses Entity Framework to make changes without raw SQL, and a React front-end with four main areas:</p>
-            <ul>
-              <li><b>Farms:</b> our renewable sites and all of their devices.</li>
-              <li><b>Certificates:</b> the certificates tied to each site.</li>
-              <li><b>History:</b> what was created or modified, by whom and when.</li>
-              <li><b>Asset management:</b> forms for creating new devices of each type directly in the database.</li>
-            </ul>
-          </div>
-          <div class="chips"><span>Website</span><span>C# / ASP.NET back-end</span><span>React front-end</span></div>
-          <section class="card recipe-card case-recipe" aria-label="Recipe for MEW2, from scratch">
-            <header><span class="mono">Recipe card · Nº 01</span><h3>MEW2, from scratch</h3></header>
-            <dl class="card-meta"><div><dt>Serves</dt><dd>Teams across Avangrid</dd></div><div><dt>Prep time</dt><dd>3 months</dd></div></dl>
-            <div class="recipe-cols">
-              <div>
-                <h4 class="mono">Ingredients</h4>
-                <ul class="ingredients">
-                  <li><b>1 cup</b> competitive analysis (Dribbble &amp; Contra)</li>
-                  <li><b>2 tbsp</b> manager feedback, every iteration</li>
-                  <li><b>1</b> ASP.NET back-end</li>
-                  <li><b>A splash</b> of Entity Framework</li>
-                  <li>React &amp; Chakra UI, <b>to taste</b></li>
-                  <li><b>2</b> Miller columns, no more</li>
-                </ul>
-              </div>
-              <div>
-                <h4 class="mono">Method</h4>
-                <ol class="method">
-                  <li><b>Study.</b> Compare dashboards that hold lots of nested data.</li>
-                  <li><b>Sketch.</b> A sidebar of sites that opens into their devices.</li>
-                  <li><b>Build.</b> Edits that wait in a pending-changes panel until you commit.</li>
-                  <li><b>Review.</b> Walk each build through with my manager, then iterate.</li>
-                </ol>
-              </div>
+        <section class="case-sec" data-toc="TL;DR">
+          <h2>TL;DR</h2>
+          <div class="tldr">
+            <div class="tldr-grid">
+              <div><span class="tag t-pain">The pain</span><p>Creating an asset meant writing SQL by hand in SSMS, so only people comfortable with SQL could keep the inventory current.</p></div>
+              <div><span class="tag t-did">What I did</span><p>Solo designer and developer: two-column browsing, validated forms and a review step before every commit.</p></div>
+              <div><span class="tag t-result">The result</span><p>Launched to our team three months after kickoff; now rolling out to more teams.</p></div>
             </div>
-          </section>
+          </div>
         </section>
 
-        <section class="case-sec" data-toc="The problem">
-          <h2>The problem</h2>
+        <section class="case-sec" data-toc="The tension">
+          <h2>The tension</h2>
           <div class="problem">
             <span class="mono">Key question</span>
-            <q>What's the best way to display and surface this information?</q>
-            <p>Every designer wrestles with how an interface should look, but here the bigger question was how to surface a lot of information so it makes sense to a first-time user. That mattered most on the Farms page, which holds sites, turbines, pads and many other devices.</p>
+            <q>How might people who don't write SQL find the right asset, and change it with confidence?</q>
+            <p>Farms opens on 95 sites, each with servers, turbines and pads. Every decision below either makes that much data make sense, or makes sure nothing changes by accident.</p>
+            <ul class="cons-row" aria-label="Constraints">
+              <li><b>Urgent</b> no separate prototyping phase</li>
+              <li><b>No users yet</b> my manager stood in</li>
+              <li><b>Generic data</b> attribute records, raw columns</li>
+              <li><b>.NET server</b> stays in the team's stack</li>
+            </ul>
           </div>
         </section>
 
-        <section class="case-sec" data-toc="Research">
-          <h2>Research</h2>
-          <div class="prose">
-            <h3>Competitive analysis</h3>
-            <p>MEW2 is an asset management dashboard, so I started by studying similar dashboards on Dribbble and Contra. I looked at how they organize large amounts of information and how people move between a high-level overview and specific details.</p>
-            <p>One pattern kept coming up: a persistent sidebar for hierarchical navigation. I adapted it so the sidebar lists each site, and clicking a site opens its child items. People can start at the top level and narrow down to exactly what they need without leaving the page or losing context.</p>
-            <h3>Feedback loop</h3>
-            <p>MEW2 was a brand-new tool, so there were no existing users to interview. Instead I reviewed each iteration with my manager, who represented the teams that would use it, and folded his feedback into the next build.</p>
+        <section class="case-sec" data-toc="Decisions">
+          <h2>Three decisions</h2>
+          <p class="dec-intro">With no time for a prototyping phase, I designed in code and walked each build through with my manager every week.</p>
+
+          <div class="dec">
+            <div class="dec-head">
+              <span class="dec-n">01</span>
+              <h3>Two columns, then stop</h3>
+              <p>Sites live in a persistent sidebar. Pick one and its devices open in a second column; the inspector shows the rest.</p>
+            </div>
+            <div class="dec-side">
+              <ol class="callouts" id="m1-key" style="--img:url(img/mew2_1.webp);--ar:0.493">
+                <li id="m1-c1" tabindex="0" aria-describedby="m1-p1" style="--fx:0.1334;--fy:0.1342">Sites stay put, with a count.</li>
+                <li id="m1-c2" tabindex="0" aria-describedby="m1-p2" style="--fx:0.1897;--fy:0.1934">Devices open in a second column, with a back button instead of a third.</li>
+                <li id="m1-c3" tabindex="0" aria-describedby="m1-p3" style="--fx:0.3596;--fy:0.2907">Readable field names, mapped from raw attribute columns.</li>
+                <li id="m1-c4" tabindex="0" aria-describedby="m1-p4" style="--fx:0.4586;--fy:0.0518">Global search jumps straight to an asset.</li>
+              </ol>
+            </div>
+            <figure class="frame">
+              <div class="fr-stage"><button class="shot" type="button" aria-describedby="m1-key" data-caption="Decision 01: sites in the sidebar, devices in a second column, the inspector for one server."><img src="img/mew2_1.webp" alt="MEW2 Farms: a sidebar of 95 sites, a second column of Baffin Bay servers with a Back button, and the inspector for server BB1-SV-SQL1" loading="lazy" width="1600" height="788" decoding="async"></button><span class="pt" id="m1-p1" tabindex="0" role="img" aria-label="Pin 1 on the screenshot" aria-describedby="m1-c1" style="--x:12.51%;--y:13.42%;--dx:-40;--dy:0"><b aria-hidden="true">1</b></span><span class="pt" id="m1-p2" tabindex="0" role="img" aria-label="Pin 2 on the screenshot" aria-describedby="m1-c2" style="--x:19.80%;--y:19.34%;--dx:36;--dy:0"><b aria-hidden="true">2</b></span><span class="pt" id="m1-p3" tabindex="0" role="img" aria-label="Pin 3 on the screenshot" aria-describedby="m1-c3" style="--x:38.56%;--y:29.07%;--dx:40;--dy:0"><b aria-hidden="true">3</b></span><span class="pt" id="m1-p4" tabindex="0" role="img" aria-label="Pin 4 on the screenshot" aria-describedby="m1-c4" style="--x:50.18%;--y:5.18%;--dx:30;--dy:0"><b aria-hidden="true">4</b></span></div>
+              <figcaption class="sr-only">The Farms view, numbered to match the list.</figcaption>
+            </figure>
+            <div class="dec-foot">
+              <div class="turn"><span class="mono">Option I rejected</span><h3>Finder-style columns that keep opening</h3><p>The dashboards I studied on Dribbble and Contra lean on a hierarchy sidebar, and Miller columns can nest as deep as the data. I capped MEW2 at two so it never sprawls.</p></div>
+            </div>
+          </div>
+
+          <div class="dec">
+            <div class="dec-head">
+              <span class="dec-n">02</span>
+              <h3>A form that knows the asset type</h3>
+              <p>The blank query window became one form that swaps its fields by asset type and marks what's required.</p>
+            </div>
+            <div class="dec-side">
+              <ol class="callouts" id="m2-key" style="--img:url(img/mew2_7.webp);--ar:0.4932">
+                <li id="m2-c1" tabindex="0" aria-describedby="m2-p1" style="--fx:0.2831;--fy:0.4387">Pick a type: site, server, turbine, substation or certificate.</li>
+                <li id="m2-c2" tabindex="0" aria-describedby="m2-p2" style="--fx:0.8045;--fy:0.3996">Field and required counts up front.</li>
+                <li id="m2-c3" tabindex="0" aria-describedby="m2-p3" style="--fx:0.3076;--fy:0.2886">Validation names the exact missing field.</li>
+                <li id="m2-c4" tabindex="0" aria-describedby="m2-p4" style="--fx:0.2862;--fy:0.9493">Required fields filled, as you go.</li>
+              </ol>
+            </div>
+            <figure class="frame">
+              <div class="fr-stage"><button class="shot" type="button" aria-describedby="m2-key" data-caption="Decision 02: one creation form that adapts to the asset type and names what's missing."><img src="img/mew2_7.webp" alt="Create a new asset: entity type cards on the left, a New Site form with 24 fields and 2 required, and an Action failed banner naming Company Name" loading="lazy" width="1600" height="789" decoding="async"></button><span class="pt" id="m2-p1" tabindex="0" role="img" aria-label="Pin 1 on the screenshot" aria-describedby="m2-c1" style="--x:29.67%;--y:45.45%;--dx:20;--dy:0"><b aria-hidden="true">1</b></span><span class="pt" id="m2-p2" tabindex="0" role="img" aria-label="Pin 2 on the screenshot" aria-describedby="m2-c2" style="--x:80.45%;--y:41.44%;--dx:0;--dy:26"><b aria-hidden="true">2</b></span><span class="pt" id="m2-p3" tabindex="0" role="img" aria-label="Pin 3 on the screenshot" aria-describedby="m2-c3" style="--x:32.74%;--y:28.86%;--dx:40;--dy:0"><b aria-hidden="true">3</b></span><span class="pt" id="m2-p4" tabindex="0" role="img" aria-label="Pin 4 on the screenshot" aria-describedby="m2-c4" style="--x:20.86%;--y:94.93%;--dx:40;--dy:0"><b aria-hidden="true">4</b></span></div>
+              <figcaption class="sr-only">The asset creation form, numbered to match the list.</figcaption>
+            </figure>
+            <div class="dec-foot">
+              <div class="turn t-fb"><span class="mono">What changed the design</span><h3>A zip code that lost its zeros</h3><p>A zip code set as a number input silently dropped leading zeros. Since then I treat field types and validation as part of the interface, not a back-end detail.</p></div>
+              <p class="dec-trade"><b>Tradeoff</b> A mapping layer over raw columns is more code to maintain, but people see readable names and input is converted to the right type before saving.</p>
+            </div>
+          </div>
+
+          <div class="dec">
+            <div class="dec-head">
+              <span class="dec-n">03</span>
+              <h3>Nothing changes silently</h3>
+              <p>Edits collect as drafts, get reviewed side by side, then are committed together and logged in History.</p>
+            </div>
+            <div class="dec-side">
+              <ol class="callouts" id="m3-key" style="--img:url(img/mew2_9c.webp);--ar:0.4432">
+                <li id="m3-c1" tabindex="0" aria-describedby="m3-p1" style="--fx:0.8629;--fy:0.0576">Pending count, Save and undo on every tab.</li>
+                <li id="m3-c2" tabindex="0" aria-describedby="m3-p2" style="--fx:0.7398;--fy:0.4471">Current against draft, for every edited field.</li>
+                <li id="m3-c3" tabindex="0" aria-describedby="m3-p3" style="--fx:0.9645;--fy:0.3294">Each change stays a draft until committed.</li>
+              </ol>
+              <p class="dec-trade"><b>Tradeoff</b> One API module handles every call's errors, retries and cancellation. More plumbing, but a slow connection never leaves a form half-broken.</p>
+            </div>
+            <figure class="frame">
+              <div class="fr-stage"><button class="shot" type="button" aria-describedby="m3-key" data-caption="Decision 03: reviewing three pending changes side by side before committing them."><img src="img/mew2_9c.webp" alt="Review pending changes: three Baffin Bay fields, each with its current value in red beside the draft value in green, and a 3 pending counter in the header" loading="lazy" width="1600" height="709" decoding="async"></button><span class="pt" id="m3-p1" tabindex="0" role="img" aria-label="Pin 1 on the screenshot" aria-describedby="m3-c1" style="--x:83.42%;--y:5.76%;--dx:-40;--dy:0"><b aria-hidden="true">1</b></span><span class="pt" id="m3-p2" tabindex="0" role="img" aria-label="Pin 2 on the screenshot" aria-describedby="m3-c2" style="--x:71.43%;--y:44.71%;--dx:-50;--dy:0"><b aria-hidden="true">2</b></span><span class="pt" id="m3-p3" tabindex="0" role="img" aria-label="Pin 3 on the screenshot" aria-describedby="m3-c3" style="--x:94.68%;--y:32.94%;--dx:-36;--dy:0"><b aria-hidden="true">3</b></span></div>
+              <figcaption class="sr-only">The pending-changes review, numbered to match the list.</figcaption>
+            </figure>
           </div>
         </section>
 
-        <section class="case-sec" data-toc="Key features">
-          <h2>Key features</h2>
-          <div class="features">
-            <div><h3>Review before you commit</h3><p>Edits collect in a pending-changes panel. A global indicator shows unsaved work on every tab, and people can review each change, then commit or undo it.</p></div>
-            <div><h3>Miller column navigation</h3><p>Like macOS Finder: sites in the first column, their children in a second, capped at two columns with a back button so the layout never sprawls.</p></div>
-            <div><h3>Validated asset creation</h3><p>One form that changes its fields by asset type, marks required fields, and says clearly whether the asset was created or what still needs fixing.</p></div>
-            <div><h3>History timeline</h3><p>Cards that show what was created or changed, by whom, and when.</p></div>
-            <div><h3>Tabs instead of pages</h3><p>A button group swaps content in place instead of reloading the site, so moving between views feels instant.</p></div>
-            <div><h3>Light and dark mode</h3><p>A toggle so people can match the interface to their environment and preference.</p></div>
+        <section class="case-sec" data-toc="Outcome">
+          <h2>Outcome</h2>
+          <p class="dec-intro">Keeping the inventory current no longer depends on someone who can write a query.</p>
+          <div class="tldr">
+            <div class="shift">
+              <div class="shift-head"><span class="mono">Creating an asset, before and after</span><small>We didn't measure time saved, so here's the workflow itself.</small></div>
+              <div class="trace-head" aria-hidden="true"><span>Before: SQL in SSMS</span><span></span><span>Now: MEW2</span></div>
+              <ul class="trace">
+                <li><span>Write the SQL by hand, from a blank query window.</span><i aria-hidden="true">→</i><b>Pick an asset type and get a form with only that type's fields.</b></li>
+                <li><span>Know which raw columns each value belongs in.</span><i aria-hidden="true">→</i><b>Fill in readable field names, with required ones marked.</b></li>
+                <li><span>Run it, and the change is live.</span><i aria-hidden="true">→</i><b>Validation names what's missing, and edits wait for review before they're committed.</b></li>
+              </ul>
+            </div>
           </div>
         </section>
 
-        <section class="case-sec" data-toc="Engineering">
-          <h2>Engineering for the interface</h2>
-          <div class="prose">
-            <p>I chose React for the front-end because it was the framework I knew best, which let me move faster on the interface while keeping the server in the .NET stack the team already used.</p>
-            <p>On the server, one thin API controller hands work to a service layer split into small files by job: creation, attribute updates, batch saves, search and the asset catalog. Because the database stores many assets as generic attribute records, I wrote mapping layers that translate between the field names people see and the columns underneath, and convert text input into the right data types before saving.</p>
-            <p>On the front-end, logic lives in custom hooks such as <code>useAssetCatalog</code>, <code>useAttributeEditor</code> and <code>useGlobalSearch</code>. Every server call goes through one API module with shared error handling, retries with backoff and request cancellation, so a slow connection never leaves the UI in a broken state. A global search bar highlights matching text so people can jump straight to an asset.</p>
-          </div>
-          <blockquote class="pull"><p>Small decisions like an input type can quietly damage data. I now think about validation and field types as a UX problem, not just a back-end one.</p><cite>Lesson learned: a zip code field set as a number input was silently dropping leading zeros.</cite></blockquote>
-        </section>
-
-        <section class="case-sec" data-toc="Screens">
-          <h2>Screens</h2>
-          <div class="gallery">
-            <figure class="wide"><button class="shot" type="button"><img src="img/mew2_4.webp" alt="Farm attributes being edited, with a changed field highlighted and a pending-changes badge" loading="lazy" width="1600" height="787" decoding="async"></button><figcaption>Editing a farm. Changed fields are highlighted and the header shows how many edits are waiting to be committed.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/mew2_9.webp" alt="Review pending changes panel comparing old and new values" loading="lazy" width="1600" height="788" decoding="async"></button><figcaption>Reviewing pending changes side by side before committing them in one batch.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/mew2_1.webp" alt="Inspector panel for a server asset" loading="lazy" width="1600" height="788" decoding="async"></button><figcaption>The inspector for a single server, opened from the second column.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/mew2_2.webp" alt="Create a new asset form with asset type options" loading="lazy" width="1600" height="708" decoding="async"></button><figcaption>One creation form that adapts its fields to the asset type.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/mew2_7.webp" alt="Create asset form showing a validation error" loading="lazy" width="1600" height="789" decoding="async"></button><figcaption>Validation explains what's missing before anything reaches the database.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/mew2_3.webp" alt="Activity history showing an updated server with old and new values" loading="lazy" width="1600" height="784" decoding="async"></button><figcaption>Activity history: what changed, who changed it and when.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/mew2_6.webp" alt="Certificates tab with certificate details" loading="lazy" width="1600" height="789" decoding="async"></button><figcaption>The Certificates tab.</figcaption></figure>
-            <figure class="wide"><button class="shot" type="button"><img src="img/mew2_8.webp" alt="MEW2 data explorer in dark mode" loading="lazy" width="1600" height="789" decoding="async"></button><figcaption>Dark mode.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/mew2_0.webp" alt="Empty data explorer prompting to select an asset" loading="lazy" width="1600" height="787" decoding="async"></button><figcaption>The starting state asks you to pick an asset from the sidebar.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/mew2_5.webp" alt="Baffin Bay site attributes" loading="lazy" width="1600" height="706" decoding="async"></button><figcaption>A site's attributes laid out as labeled fields.</figcaption></figure>
-          </div>
-        </section>
-
-        <section class="case-sec" data-toc="Takeaways">
-          <h2>Takeaways</h2>
+        <section class="case-sec" data-toc="Reflections">
+          <h2>Reflections</h2>
           <div class="takeaway">
-            <div class="prose"><p>The tool was needed urgently, so there was no separate prototyping phase. I designed as I built, shipped working versions quickly and iterated on my manager's feedback. I'm proud of how well it surfaces information and explains things people can miss, like what a certificate is or whether a site is solar or wind.</p></div>
+            <ol class="lessons">
+              <li><h3>A manager is not a user</h3><p>With no existing users, my manager's weekly reviews were the whole feedback loop. They kept the build moving, but one person can't show me where a first-time user gets stuck.</p><p class="next-time"><b>Next time I'd</b> run usability tests with the teams now adopting MEW2, starting with creating an asset from scratch.</p></li>
+              <li><h3>Organizing beats decorating</h3><p>What I'm proudest of is how MEW2 surfaces information and explains what people can miss, like what a certificate is or whether a site is solar or wind. The visuals are plainer than I'd like.</p><p class="next-time"><b>Next time I'd</b> give the visual layer its own pass once the structure holds.</p></li>
+            </ol>
             <div class="printer" aria-label="Takeaways receipt">
           <div class="slot" aria-hidden="true"></div>
           <div class="receipt-clip"><div class="receipt-wrap"><div class="receipt">
             <div class="rc-head"><span class="rc-brand">Aaron Hervey Goods</span><span>Vancouver, WA</span><span>Takeaways receipt</span></div>
             <div class="rc-meta"><span>Order</span><span>Nº 01 · MEW2</span><span>Date</span><span>Aug 2026</span><span>Cashier</span><span>Aaron</span></div>
             <ul class="rc-items">
-              <li><span class="rc-line"><span>Entity Framework</span><span>Learned</span></span><span class="rc-note">New to me; the CORE Alarms build gave me a head start.</span></li>
-              <li><span class="rc-line"><span>Design while building</span><span>1x</span></span><span class="rc-note">No time for a prototyping phase, so the build was the prototype.</span></li>
-              <li><span class="rc-line"><span>Feedback loops</span><span>Weekly</span></span><span class="rc-note">Each iteration reviewed with my manager.</span></li>
+              <li><span class="rc-line"><span>Entity Framework</span><span>Learned</span></span><span class="rc-note">The CORE Alarms build gave me a head start.</span></li>
             </ul>
             <p class="rc-sub">Backordered</p>
             <ul class="rc-items">
@@ -370,436 +402,449 @@
               <li><span class="rc-line"><span>Solar pad assets</span><span>Pending</span></span><span class="rc-note">Waiting on the solar and wind teams.</span></li>
             </ul>
             <div class="rc-total"><span class="rc-line"><span>Total</span><span>Launched</span></span><span class="rc-note">Rolling out to more teams.</span></div>
-            <div class="rc-foot"><svg class="rc-fish" aria-hidden="true"><use href="#fish"/></svg><span>Next visit: usability tests, more teams, bolder visuals</span><span>Thank you for visiting</span><i class="rc-bars"></i><span>Keep this receipt</span></div>
+            <div class="rc-foot"><svg class="rc-fish" aria-hidden="true"><use href="#fish"/></svg><span>Thank you for visiting</span><i class="rc-bars"></i></div>
           </div></div></div>
         </div>
           </div>
-        
+        </section>
       </div>
     </div>
-    <a class="next v-red" href="#oracle"><div><span class="mono">Next variety · Nº 02</span><div class="flavor">Alarms</div></div><span class="arrow" aria-hidden="true">→</span></a>
+    <a class="next v-red" href="#oracle"><div><span class="mono"><span class="nw">Next variety</span> · <span class="nw">Nº 02</span></span><div class="flavor">Alarms</div></div><span class="arrow" aria-hidden="true">→</span></a>
   </article>
 
   <!-- ===================== ORACLE ALARMS ===================== -->
   <article data-view="oracle" data-title="Oracle Alarms Redesign" hidden>
     <a class="back-link mono" href="#work">← All work</a>
     <header class="case-hero v-red">
-      <span class="mono">Nº 02 · Avangrid Renewables · August 2024 – February 2025</span>
+      <span class="mono"><span class="nw">Nº 02</span> · <span class="nw">Avangrid Renewables</span> · <span class="nw">August 2024 – February 2025</span></span>
       <div class="flavor">Alarms</div>
-      <h1>Redesigning the historical alarms tool for our solar and wind sites</h1>
-      <p class="summary">CORE Alarms lets engineers query Oracle for the alarm history of any site or front-end machine. I redesigned and rebuilt it on my own, from wireframe to a shipped React and Node.js app.</p>
+      <h1>The brief said “make it modern.” Its users needed to find an alarm, fast.</h1>
+      <p class="summary">Hundreds of people use CORE Alarms to pull the alarm history of any site or front-end machine. I redesigned it around searching and reading results, built it solo in React and Node.js, and still maintain it.</p>
+      <figure class="hero-visual">
+        <div class="hv-stage">
+          <button class="shot hv-main" type="button"><span class="hv-bar" aria-hidden="true"><i></i><i></i><i></i><span>CORE Alarms</span></span><span class="hv-img"><img src="img/oracle_2.webp" alt="Redesigned CORE Alarms: a query panel on the left and a green-headed table of alarm results on the right" width="1600" height="792" decoding="async" fetchpriority="high"></span></button>
+          <div class="hv-call hv-c1" style="--w:38%"><span class="hv-tag">Filters become chips</span><img src="img/oracle_h_chips.webp" alt="Close-up: a Gen. Unit Filters menu with an N-04 filter chip" width="220" height="84" decoding="async" fetchpriority="high"></div>
+          <div class="hv-call hv-c2" style="--w:50%"><span class="hv-tag">Errors say what to fix</span><img src="img/oracle_d_error.webp" alt="Close-up: a red toast reading Validation Error, please select an alarm list" width="320" height="88" decoding="async" fetchpriority="high"></div>
+        </div>
+        <figcaption class="sr-only">The redesigned CORE Alarms split layout, with close-ups of the filter chips and a validation toast.</figcaption>
+      </figure>
     </header>
-    <dl class="glance">
-      <div><dt>Role</dt><dd>Sole designer &amp; developer</dd></div>
-      <div><dt>Timeline</dt><dd>August 2024 – February 2025</dd></div>
-      <div><dt>Collaborators</dt><dd>My manager, teammates and site users</dd></div>
-      <div><dt>Tools</dt><dd>Figma, React, Chakra UI, Node.js, Oracle</dd></div>
-      <div class="outcome"><dt>Outcome</dt><dd>Shipped. Replaced the old alarms site with faster filtering, sorting, input validation and a refreshed visual design.</dd></div>
+    <dl class="glance recipe-glance">
+      <div><dt>Role <span class="rx" aria-hidden="true">chef</span></dt><dd>Sole designer &amp; developer</dd></div>
+      <div><dt>Timeline <span class="rx" aria-hidden="true">prep time</span></dt><dd>Built Aug 2024 – Feb 2025, maintained since</dd></div>
+      <div><dt>Team <span class="rx" aria-hidden="true">kitchen crew</span></dt><dd>Godfrey (manager), Stephen (teammate) and the users we interviewed</dd></div>
+      <div><dt>Tools <span class="rx" aria-hidden="true">utensils</span></dt><dd>Figma, React, Chakra UI, Node.js, Oracle, later SQL Server</dd></div>
     </dl>
     <div class="case-body">
       <aside class="toc" aria-label="Contents"><span class="mono">Contents</span></aside>
       <div>
-        <section class="case-sec" data-toc="Overview">
-          <h2>Overview</h2>
-          <div class="prose">
-            <p>My manager, Godfrey, looked for a project where I could put my UI/UX skills to work, and landed on the Oracle Alarms tool. It queries our Oracle database so people can view historical alarm data for a specific site or front-end machine (FE).</p>
-            <p>The rebuild was planned in Angular, but I moved it to React, which I knew best, and wrote the back-end in Node.js. As the sole designer and developer I:</p>
-            <ul>
-              <li>Wireframed the direction for the redesign.</li>
-              <li>Built the site in React, following guidelines from Godfrey and Stephen on my team.</li>
-              <li>Found users to interview about the old site, the redesign and the features they wanted.</li>
-            </ul>
-          </div>
-          <div class="chips"><span>Node.js back-end</span><span>React front-end</span><span>Improved visual experience</span></div>
-          <section class="card recipe-card case-recipe" aria-label="Recipe for Alarms, refreshed">
-            <header><span class="mono">Recipe card · Nº 02</span><h3>Alarms, refreshed</h3></header>
-            <dl class="card-meta"><div><dt>Serves</dt><dd>Engineers across the fleet</dd></div><div><dt>Prep time</dt><dd>Aug 2024 – Feb 2025</dd></div></dl>
-            <div class="recipe-cols">
-              <div>
-                <h4 class="mono">Ingredients</h4>
-                <ul class="ingredients">
-                  <li><b>1 cup</b> contextual inquiry</li>
-                  <li><b>½ cup</b> dashboard research</li>
-                  <li><b>1</b> Oracle database</li>
-                  <li><b>1</b> Node.js back-end</li>
-                  <li>React &amp; Chakra UI, <b>generously</b></li>
-                  <li><b>A pinch</b> of TanStack virtualization</li>
-                  <li>Avangrid brand colors, <b>to taste</b></li>
-                </ul>
-              </div>
-              <div>
-                <h4 class="mono">Method</h4>
-                <ol class="method">
-                  <li><b>Listen.</b> Ask people what slows them down in the old site.</li>
-                  <li><b>Wireframe.</b> Sketch a softer, more open layout.</li>
-                  <li><b>Rebuild.</b> Move it to React with filtering, sorting and validation.</li>
-                  <li><b>Test.</b> Stage it for users, fold in feedback, ship.</li>
-                </ol>
-              </div>
+        <section class="case-sec" data-toc="TL;DR">
+          <h2>TL;DR</h2>
+          <div class="tldr">
+            <div class="tldr-grid">
+              <div><span class="tag t-pain">The pain</span><p>It worked, but felt slow, couldn't sort or filter results, and never explained some columns.</p></div>
+              <div><span class="tag t-did">What I did</span><p>Rebuilt it solo in React and Node.js with column filters, sorting, query validation and a searchable site picker.</p></div>
+              <div><span class="tag t-result">The result</span><p>Shipped February 2025, replacing the old site. Since moved to SQL Server, still growing from user tickets.</p></div>
             </div>
-          </section>
+          </div>
         </section>
 
-        <section class="case-sec" data-toc="The problem">
-          <h2>The problem</h2>
+        <section class="case-sec" data-toc="The tension">
+          <h2>The tension</h2>
           <div class="problem">
-            <span class="mono">Key question</span>
-            <q>How can I make the UI feel more modern?</q>
-            <p>A more modern look was a specific requirement, and I agreed with it: the old site's visual design was one of my own pain points as a user. The site worked, so it didn't strictly need more than a UI refresh, but research showed there was more worth fixing.</p>
-          </div>
-        </section>
-
-        <section class="case-sec" data-toc="Research">
-          <h2>Research</h2>
-          <div class="prose">
-            <h3>Looking at other dashboards</h3>
-            <p>I studied dashboard designs to see which elements I wanted. What stood out were rounder type and buttons for a softer feel, brighter colors, and a less compact layout that feels more open.</p>
-            <h3>What users told us</h3>
-            <p>Contextual inquiry with people who use the tool surfaced three problems:</p>
-          </div>
-          <ul class="insights">
-            <li>It felt slow, especially when a query returned a large dataset.</li>
-            <li>It lacked proper sorting and filtering.</li>
-            <li>Some things weren't explained, like what certain columns in the data meant.</li>
-          </ul>
-        </section>
-
-        <section class="case-sec" data-toc="Key features">
-          <h2>Key features</h2>
-          <div class="features">
-            <div><h3>Robust filtering</h3><p>Filter results by any unique value in a column, choose which columns to show, and sort ascending or descending.</p></div>
-            <div><h3>Error validation</h3><p>Clear alerts when a query is incorrect, incomplete, or too large for the browser, with a prompt to export instead.</p></div>
-            <div><h3>Small enhancements</h3><p>Query all sites at once, a tooltip that explains the optional Tag field, and date selectors for quicker, error-free queries.</p></div>
-          </div>
-        </section>
-
-        <section class="case-sec" data-toc="Design details">
-          <h2>Design details</h2>
-          <div class="prose"><p>The interface uses one small visual vocabulary everywhere, defined in a Chakra theme, so new screens and the filter drawer read as part of the same page. I drew the colors from the Avangrid brand system.</p></div>
-          <div class="swatches"><span><i style="background:#00A443"></i>#00A443 actions</span><span><i style="background:#00402A"></i>#00402A headings</span><span><i style="background:#E8F5EE"></i>#E8F5EE hover</span><span><i style="background:#F1F3F5"></i>#F1F3F5 page</span></div>
-          <div class="decisions">
-            <div><h3>Two layouts, remembered</h3><p>Split puts results beside a 290px query panel; Stacked puts a full-width query bar above them. The choice is saved per browser, and the page still works if storage is blocked.</p></div>
-            <div><h3>Searchable site picker</h3><p>The alarm list has 100+ sites, so a long dropdown became a type-to-filter combobox with arrow-key and Enter support.</p></div>
-            <div><h3>Filters that read as inputs</h3><p>Outlined boxes show "Any" or "N selected" and fill green once set, so active filters are visible at a glance.</p></div>
-            <div><h3>Results stay on screen</h3><p>Editing the query doesn't clear the table. Only a new search replaces it.</p></div>
-            <div><h3>Editable table view</h3><p>Niche columns are hidden by default, and people can choose which columns matter to them.</p></div>
-            <div><h3>Quick date ranges</h3><p>Chakra has no millisecond time picker, so quick-range buttons sit under the date fields to reduce typing errors.</p></div>
-            <div><h3>Fast menus</h3><p>Menu transitions went from 200ms to about 80ms, because filter menus get opened over and over.</p></div>
-            <div><h3>A fixed table viewport</h3><p>The table scrolls inside a set area instead of stretching the page, and large datasets export to Excel.</p></div>
-          </div>
-        </section>
-
-        <section class="case-sec" data-toc="Engineering">
-          <h2>Engineering</h2>
-          <div class="prose">
-            <p>The front-end sends query parameters to the Node.js back-end, which assembles the Oracle query and returns results for rendering or export.</p>
-            <p>The hard part was table rendering. Queries can return a huge amount of data, so I paginated the table and processed results in chunks to keep the main thread responsive. Filtering also slowed down as data grew, so I virtualized the filter lists with TanStack. Every option is a fixed 40px tall, with long values truncated and shown in full on hover. That fixed a bug where wrapped options overlapped.</p>
+            <span class="mono">The brief</span>
+            <p>“Make it look and feel more modern.” But the site already worked, so we asked the people using it what slowed them down.</p>
+            <div class="trace-head" aria-hidden="true"><span>What users told us</span><span></span><span>Where it went</span></div>
+            <ul class="trace">
+              <li><span>It felt slow, especially on large results.</span><i aria-hidden="true">→</i><b>Pages, chunks and virtualized lists <span class="dec-ref">01</span> <span class="dec-ref">02</span></b></li>
+              <li><span>It lacked proper sorting and filtering.</span><i aria-hidden="true">→</i><b>Filter by any value, pick columns, sort either way <span class="dec-ref">01</span> <span class="dec-ref">02</span></b></li>
+              <li><span>Some things weren't explained, like certain columns.</span><i aria-hidden="true">→</i><b>Tooltips and validation that says what's wrong <span class="dec-ref">03</span></b></li>
+            </ul>
+            <q>How might engineers find the alarms they need in a long history, quickly and without guesswork?</q>
+            <ul class="cons-row" aria-label="Constraints">
+              <li><b>Solo</b> and out of practice with code</li>
+              <li><b>Keep what works</b> every old query still runs</li>
+              <li><b>Two-month window</b> per query</li>
+            </ul>
           </div>
         </section>
 
         <section class="case-sec" data-toc="Before &amp; after">
-          <h2>Before &amp; after</h2>
-          <div class="gallery">
-            <span class="gallery-label mono">Before</span>
-            <figure><button class="shot" type="button"><img src="img/oracle_0.webp" alt="The old CORE Alarms query form" loading="lazy" width="1600" height="858" decoding="async"></button><figcaption>The old query form.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/oracle_1.webp" alt="The old CORE Alarms results table" loading="lazy" width="1600" height="858" decoding="async"></button><figcaption>The old results table.</figcaption></figure>
-            <span class="gallery-label mono">After</span>
-            <figure class="wide"><button class="shot" type="button"><img src="img/oracle_2.webp" alt="New split layout with query panel and results" loading="lazy" width="1600" height="792" decoding="async"></button><figcaption>Split layout: the query panel sits beside the results.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/oracle_5.webp" alt="Filters and columns drawer open over the results" loading="lazy" width="1600" height="794" decoding="async"></button><figcaption>The Filters &amp; Columns drawer.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/oracle_3.webp" alt="Results narrowed by an active filter chip" loading="lazy" width="1600" height="793" decoding="async"></button><figcaption>Active filters show as chips above the results.</figcaption></figure>
-            <figure class="wide"><button class="shot" type="button"><img src="img/oracle_6.webp" alt="Stacked layout with a full-width query bar" loading="lazy" width="1600" height="794" decoding="async"></button><figcaption>Stacked layout: a full-width query bar above the results.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/oracle_4.webp" alt="Validation error toast asking the user to select an alarm list" loading="lazy" width="1600" height="791" decoding="async"></button><figcaption>Validation catches an incomplete query.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/oracle_7.webp" alt="Toast confirming the CSV was exported" loading="lazy" width="1600" height="791" decoding="async"></button><figcaption>Confirmation after exporting to CSV.</figcaption></figure>
+          <h2>The same kind of query, old tool vs. new</h2>
+          <figure class="compare-fig compare-big">
+            <div class="compare" style="--pos:50%">
+              <img class="compare-after" src="img/oracle_2.webp" alt="After: the redesigned results, with the query panel beside a green-headed, paginated table" loading="lazy" width="1600" height="792" decoding="async">
+              <div class="compare-before"><img src="img/oracle_cmp_before.webp" alt="Before: the old results, a plain HTML parameter table above a dense olive-headed alarm table" loading="lazy" width="1600" height="792" decoding="async"></div>
+              <span class="compare-tag is-before" aria-hidden="true">Before</span><span class="compare-tag is-after" aria-hidden="true">After</span>
+              <span class="compare-handle" aria-hidden="true"></span>
+              <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Before and after comparison: slide left to show more of the redesign, right to show more of the old tool">
+            </div>
+            <figcaption>Drag to compare. Both screens show an alarm query for Baffin Bay 1, but not the same one: the old tool in January 2025 (10 alarms returned), the redesign in September 2026 (43 results). Both are cropped to the same width and scale. Every old parameter survives, now beside the results. <span class="compare-open"><button type="button" class="shot-link" data-full="img/oracle_cmp_before.webp" data-full-alt="The old CORE Alarms results table" data-caption="Before: the old results table.">Open before</button> · <button type="button" class="shot-link" data-full="img/oracle_2.webp" data-full-alt="New split layout with query panel and results" data-caption="After: the query panel sits beside the results.">Open after</button></span></figcaption>
+          </figure>
+        </section>
+
+        <section class="case-sec" data-toc="Decisions">
+          <h2>Three decisions</h2>
+          <p class="dec-intro">I wireframed, rebuilt, then staged it for users and folded in their feedback.</p>
+
+          <div class="dec" id="oracle-d1">
+            <div class="dec-head">
+              <span class="dec-n">01</span>
+              <h3>Narrow the results, don't scan them</h3>
+              <p>Filter any column by its values, sort either way, and keep active filters in view, so a long history shrinks to the rows you need.</p>
+            </div>
+            <div class="dec-side">
+              <ol class="callouts" id="o1-key" style="--img:url(img/oracle_3c.webp);--ar:0.3994">
+                <li id="o1-c1" tabindex="0" aria-describedby="o1-p1" style="--fx:0.1986;--fy:0.2709">Active filters as chips you can clear.</li>
+                <li id="o1-c2" tabindex="0" aria-describedby="o1-p2" style="--fx:0.4422;--fy:0.1427">What's left: 43 results, 6 after filters.</li>
+                <li id="o1-c3" tabindex="0" aria-describedby="o1-p3" style="--fx:0.8521;--fy:0.1414">Sort either way.</li>
+                <li id="o1-c4" tabindex="0" aria-describedby="o1-p4" style="--fx:0.9462;--fy:0.9293">Pages instead of one endless table.</li>
+              </ol>
+              <p class="dec-trade"><b>Tradeoff</b> Results render a page at a time, in chunks, so the browser stays responsive on a busy two-month window.</p>
+            </div>
+            <figure class="frame">
+              <div class="fr-stage"><button class="shot" type="button" aria-describedby="o1-key" data-caption="Decision 01: 43 results narrowed to 6 by a Gen. Unit filter chip."><img src="img/oracle_3c.webp" alt="CORE Alarms results for Baffin Bay 1: 43 results with a 6 after filters badge, an N-04 filter chip, a Sort: Descending menu and pagination controls (empty space trimmed)" loading="lazy" width="1600" height="639" decoding="async"></button><span class="pt" id="o1-p1" tabindex="0" role="img" aria-label="Pin 1 on the screenshot" aria-describedby="o1-c1" style="--x:22.27%;--y:27.09%;--dx:40;--dy:0"><b aria-hidden="true">1</b></span><span class="pt" id="o1-p2" tabindex="0" role="img" aria-label="Pin 2 on the screenshot" aria-describedby="o1-c2" style="--x:44.22%;--y:12.96%;--dx:0;--dy:-26"><b aria-hidden="true">2</b></span><span class="pt" id="o1-p3" tabindex="0" role="img" aria-label="Pin 3 on the screenshot" aria-describedby="o1-c3" style="--x:85.21%;--y:12.30%;--dx:0;--dy:-24"><b aria-hidden="true">3</b></span><span class="pt" id="o1-p4" tabindex="0" role="img" aria-label="Pin 4 on the screenshot" aria-describedby="o1-c4" style="--x:94.62%;--y:89.79%;--dx:0;--dy:-28"><b aria-hidden="true">4</b></span></div>
+              <figcaption class="sr-only">Filtered results, numbered to match the list.</figcaption>
+            </figure>
+          </div>
+
+          <div class="dec" id="oracle-d2">
+            <div class="dec-head">
+              <span class="dec-n">02</span>
+              <h3>One drawer for columns and filters</h3>
+              <p>Sixteen columns is too many to read at once. One drawer holds both jobs: choose columns, then filter them.</p>
+            </div>
+            <div class="dec-side">
+              <ol class="callouts" id="o2-key" style="--img:url(img/oracle_5.webp);--ar:0.4968">
+                <li id="o2-c1" tabindex="0" aria-describedby="o2-p1" style="--fx:0.8258;--fy:0.0988">Choose which of the 16 columns to show.</li>
+                <li id="o2-c2" tabindex="0" aria-describedby="o2-p2" style="--fx:0.8342;--fy:0.4623">Filters read as inputs: “Any” until set, then green. Their open animation dropped from 200ms to about 80ms, since they're opened over and over.</li>
+                <li id="o2-c3" tabindex="0" aria-describedby="o2-p3" style="--fx:0.9778;--fy:0.9681">Reset or apply in one place.</li>
+              </ol>
+              <p class="dec-trade"><b>Tradeoff</b> Filter lists are virtualized, with fixed 40px options truncated and shown in full on hover. Long values are a little less visible, but big lists stay quick and never overlap.</p>
+            </div>
+            <figure class="frame">
+              <div class="fr-stage"><button class="shot" type="button" aria-describedby="o2-key" data-caption="Decision 02: the Filters &amp; Columns drawer open over the results."><img src="img/oracle_5.webp" alt="The Filters and Columns drawer open over the results: a Columns to display checklist above a grid of filter dropdowns set to Any, with Reset and Apply buttons" loading="lazy" width="1600" height="794" decoding="async"></button><span class="pt" id="o2-p1" tabindex="0" role="img" aria-label="Pin 1 on the screenshot" aria-describedby="o2-c1" style="--x:86.59%;--y:9.88%;--dx:36;--dy:0"><b aria-hidden="true">1</b></span><span class="pt" id="o2-p2" tabindex="0" role="img" aria-label="Pin 2 on the screenshot" aria-describedby="o2-c2" style="--x:78.78%;--y:46.23%;--dx:-36;--dy:0"><b aria-hidden="true">2</b></span><span class="pt" id="o2-p3" tabindex="0" role="img" aria-label="Pin 3 on the screenshot" aria-describedby="o2-c3" style="--x:96.30%;--y:95.43%;--dx:-26;--dy:-24"><b aria-hidden="true">3</b></span></div>
+              <figcaption class="sr-only">The drawer, numbered to match the list.</figcaption>
+            </figure>
+          </div>
+
+          <div class="dec" id="oracle-d3">
+            <div class="dec-head">
+              <span class="dec-n">03</span>
+              <h3>Catch a bad query before it runs</h3>
+              <p>The old form explained its syntax in a column of notes. The new one guides input instead.</p>
+            </div>
+            <div class="dec-side">
+              <ol class="callouts" id="o3-key" style="--img:url(img/oracle_4c.webp);--ar:0.4005">
+                <li id="o3-c1" tabindex="0" aria-describedby="o3-p1" style="--fx:0.1227;--fy:0.4498">Quick ranges, since Chakra has no millisecond time picker.</li>
+                <li id="o3-c2" tabindex="0" aria-describedby="o3-p2" style="--fx:0.0862;--fy:0.5854">A type-to-filter site picker.</li>
+                <li id="o3-c3" tabindex="0" aria-describedby="o3-p3" style="--fx:0.6731;--fy:0.7262">Results stay put while you edit the query.</li>
+                <li id="o3-c4" tabindex="0" aria-describedby="o3-p4" style="--fx:0.4345;--fy:0.9257">Validation names what's missing; oversized queries are pointed to export.</li>
+              </ol>
+            </div>
+            <figure class="frame">
+              <div class="fr-stage"><button class="shot" type="button" aria-describedby="o3-key" data-caption="Decision 03: the empty state and a validation error asking for an alarm list."><img src="img/oracle_4c.webp" alt="CORE Alarms before a search: quick range buttons, a Search or select a site field, a No results yet message and a red Validation Error toast reading Please select an alarm list (empty space trimmed)" loading="lazy" width="1600" height="641" decoding="async"></button><span class="pt" id="o3-p1" tabindex="0" role="img" aria-label="Pin 1 on the screenshot" aria-describedby="o3-c1" style="--x:13.79%;--y:44.98%;--dx:36;--dy:0"><b aria-hidden="true">1</b></span><span class="pt" id="o3-p2" tabindex="0" role="img" aria-label="Pin 2 on the screenshot" aria-describedby="o3-c2" style="--x:15.14%;--y:58.54%;--dx:36;--dy:0"><b aria-hidden="true">2</b></span><span class="pt" id="o3-p3" tabindex="0" role="img" aria-label="Pin 3 on the screenshot" aria-describedby="o3-c3" style="--x:67.31%;--y:72.62%;--dx:30;--dy:0"><b aria-hidden="true">3</b></span><span class="pt" id="o3-p4" tabindex="0" role="img" aria-label="Pin 4 on the screenshot" aria-describedby="o3-c4" style="--x:42.09%;--y:92.57%;--dx:-30;--dy:0"><b aria-hidden="true">4</b></span></div>
+              <figcaption class="sr-only">The query panel and a validation error, numbered to match the list.</figcaption>
+            </figure>
+            <div class="dec-foot">
+              <div class="turn"><span class="mono">Option I rejected</span><h3>A long dropdown of sites</h3><p>The alarm list has 100+ sites. A standard dropdown meant scrolling to find yours, so it became the keyboard-friendly picker in <b>2</b>.</p></div>
+            </div>
           </div>
         </section>
 
-        <section class="case-sec" data-toc="Takeaways">
-          <h2>Takeaways</h2>
+        <section class="case-sec" data-toc="Outcome">
+          <h2>Outcome</h2>
+          <ul class="stats loose">
+            <li><b>Hundreds</b><span>of people use it to look up alarm history</span></li>
+                        <li><b>SQL Server</b><span>it outlived Oracle: I rewrote the queries, search and export</span></li>
+          </ul>
+          <div class="out-row">
+            <ul class="impact">
+              <li><b>Steadier with big exports.</b> A server-side row cap and CSV exports that stream instead of building in the browser.</li>
+              <li><b>More reliable.</b> Validated settings and unit tests for filtering, export and validation.</li>
+            </ul>
+            <div class="turn t-fb"><span class="mono">Feedback that changed it</span><h3>Tickets after launch</h3><p>Users asked for alarm attributes the tool didn't show, so I added Reset Category and Category Code, and fixed reported bugs like station numbers not resolving to host names.</p></div>
+          </div>
+        </section>
+
+        <section class="case-sec" data-toc="Reflections">
+          <h2>Reflections</h2>
           <div class="takeaway">
-            <div class="prose"><p>This was the first time I carried a project almost entirely on my own. I was out of practice with programming at first, but it came back faster than I expected. I'm grateful Godfrey found a project that matched my interests and gave me free rein with it.</p></div>
+            <ol class="lessons">
+              <li><h3>The brief is a starting point</h3><p>I was asked to make it look modern. The value was in sorting, filtering and explaining, and that only surfaced because we asked the people using it.</p><p class="next-time"><b>Next time I'd</b> time a few common lookups before the redesign, so I could show the difference instead of describing it.</p></li>
+              <li><h3>Solo, not alone</h3><p>My first project carried almost entirely by myself. My rusty programming came back faster than expected, and later generative AI (Claude, ChatGPT, Copilot, Gemini) helped me plan refactors and chase bugs, which made the SQL Server move possible.</p><p class="next-time"><b>Next time I'd</b> get another designer's eyes on the UI early. I'm still finding things to polish.</p></li>
+            </ol>
             <div class="printer" aria-label="Takeaways receipt">
           <div class="slot" aria-hidden="true"></div>
           <div class="receipt-clip"><div class="receipt-wrap"><div class="receipt">
             <div class="rc-head"><span class="rc-brand">Aaron Hervey Goods</span><span>Vancouver, WA</span><span>Takeaways receipt</span></div>
             <div class="rc-meta"><span>Order</span><span>Nº 02 · Alarms</span><span>Date</span><span>Feb 2025</span><span>Cashier</span><span>Aaron</span></div>
             <ul class="rc-items">
-              <li><span class="rc-line"><span>First solo project</span><span>1x</span></span><span class="rc-note">Design and build, start to finish.</span></li>
-              <li><span class="rc-line"><span>Programming skills</span><span>Restored</span></span><span class="rc-note">Rusty at first, back up to speed.</span></li>
               <li><span class="rc-line"><span>Free rein</span><span>Thanks, G.</span></span><span class="rc-note">A manager who matched the work to my interests.</span></li>
             </ul>
             <p class="rc-sub">Still on my list</p>
             <ul class="rc-items">
               <li><span class="rc-line"><span>UI polish</span><span>Ongoing</span></span></li>
               <li><span class="rc-line"><span>Faster filtering</span><span>Ongoing</span></span></li>
-              <li><span class="rc-line"><span>Faster Oracle processing</span><span>Ongoing</span></span></li>
+              <li><span class="rc-line"><span>Faster handling of large results</span><span>Ongoing</span></span></li>
             </ul>
             <div class="rc-total"><span class="rc-line"><span>Total</span><span>Shipped</span></span><span class="rc-note">Not perfect, and proud of it anyway.</span></div>
-            <div class="rc-foot"><svg class="rc-fish" aria-hidden="true"><use href="#fish"/></svg><span>Returns accepted as new ideas</span><span>Thank you for visiting</span><i class="rc-bars"></i><span>Keep this receipt</span></div>
+            <div class="rc-foot"><svg class="rc-fish" aria-hidden="true"><use href="#fish"/></svg><span>Thank you for visiting</span><i class="rc-bars"></i></div>
           </div></div></div>
         </div>
           </div>
-        
+        </section>
       </div>
     </div>
-    <a class="next v-butter" href="#mychart"><div><span class="mono">Next variety · Nº 03</span><div class="flavor">MyChart</div></div><span class="arrow" aria-hidden="true">→</span></a>
+    <a class="next v-butter" href="#mychart"><div><span class="mono"><span class="nw">Next variety</span> · <span class="nw">Nº 03</span></span><div class="flavor">MyChart</div></div><span class="arrow" aria-hidden="true">→</span></a>
   </article>
 
   <!-- ===================== MYCHART ===================== -->
   <article data-view="mychart" data-title="MyChart Redesign" hidden>
     <a class="back-link mono" href="#work">← All work</a>
     <header class="case-hero v-butter">
-      <span class="mono">Nº 03 · University of Tennessee · August – December 2022</span>
+      <span class="mono"><span class="nw">Nº 03</span> · <span class="nw">University of Tennessee</span> · <span class="nw">August – December 2022</span></span>
       <div class="flavor">MyChart</div>
-      <h1>Simplifying a patient portal for the older users who rely on it most</h1>
-      <p class="summary">A redesign of the MyChart app with streamlined menus, a more useful dashboard, hospital maps, integrations and onboarding, built as a high-fidelity Figma prototype.</p>
+      <h1>The patients who need MyChart most get lost in it</h1>
+      <p class="summary">A ten-week class redesign. We traced the confusion to nested menus and rebuilt the app around bottom tabs and a dashboard about you. A Figma prototype, not yet user-tested.</p>
+      <figure class="hero-visual">
+        <div class="hv-stage hv-mark">
+          <button class="shot hv-main hv-paper" type="button"><span class="hv-img"><img src="img/mychart_hero.webp" alt="Persona card for Mark de la Cruz: male, 68, bachelor's degree, civil engineer, with his photo" width="502" height="568" decoding="async" fetchpriority="high"></span></button>
+          <div class="hv-call hv-c1 at-br" style="--w:50%"><span class="hv-tag">In Mark's words</span><img src="img/mychart_d_quote.webp" alt="Close-up of Mark's quote: my time is valuable, and I do not want to waste it waiting in line to hear things about my health that I already know" width="460" height="220" decoding="async"></div>
+          <div class="hv-call hv-c2" style="--w:42%"><span class="hv-tag">Comfort with tech</span><img src="img/mychart_d_scale.webp" alt="Close-up: technological familiarity rated about 6 of 10, medical familiarity about 3 of 10" width="398" height="220" decoding="async"></div>
+        </div>
+        <figcaption class="sr-only">Mark de la Cruz's persona card, with close-ups of his quote and familiarity scales.</figcaption>
+      </figure>
     </header>
-    <dl class="glance">
-      <div><dt>Role</dt><dd>Lead designer</dd></div>
-      <div><dt>Timeline</dt><dd>10 weeks, Aug – Dec 2022</dd></div>
-      <div><dt>Team</dt><dd>University of Tennessee course team</dd></div>
-      <div><dt>Tools</dt><dd>Figma</dd></div>
-      <div class="outcome"><dt>Outcome</dt><dd>Wireframes, contextual inquiry results, and low- and high-fidelity prototypes. <a href="https://www.figma.com/design/q7RuYWyuYlEiKuseegkchy/MyChart-Mock-up?node-id=0%3A1&amp;t=SJgsuLsm8kySRytp-1" target="_blank" rel="noopener">Open the Figma prototype ↗</a></dd></div>
+    <dl class="glance recipe-glance">
+      <div><dt>Role <span class="rx" aria-hidden="true">chef</span></dt><dd>Lead designer: recruiting, hi-fi prototype</dd></div>
+      <div><dt>Timeline <span class="rx" aria-hidden="true">prep time</span></dt><dd>10 weeks, Aug – Dec 2022</dd></div>
+      <div><dt>Team <span class="rx" aria-hidden="true">kitchen crew</span></dt><dd>University of Tennessee course team</dd></div>
+      <div><dt>Tools <span class="rx" aria-hidden="true">utensils</span></dt><dd>Figma</dd></div>
     </dl>
     <div class="case-body">
       <aside class="toc" aria-label="Contents"><span class="mono">Contents</span></aside>
       <div>
-        <section class="case-sec" data-toc="Overview">
-          <h2>Overview</h2>
-          <div class="prose">
-            <p>Our class team was asked to redesign an app we already knew. A teammate suggested MyChart, a healthcare app for appointments, lab results and much more. We wanted to make it more accessible and modern, starting from the ground up.</p>
-            <p>As lead designer, I turned our vision and early prototypes into the high-fidelity design, and recruited the users we interviewed about the app and our ideas.</p>
-          </div>
-          <section class="card recipe-card case-recipe" aria-label="Recipe for A calmer patient portal">
-            <header><span class="mono">Recipe card · Nº 03</span><h3>A calmer patient portal</h3></header>
-            <dl class="card-meta"><div><dt>Serves</dt><dd>Patients 40 and up</dd></div><div><dt>Prep time</dt><dd>10 weeks</dd></div></dl>
-            <div class="recipe-cols">
-              <div>
-                <h4 class="mono">Ingredients</h4>
-                <ul class="ingredients">
-                  <li><b>1 cup</b> user interviews</li>
-                  <li><b>1</b> persona, Mark</li>
-                  <li><b>5</b> key features</li>
-                  <li>White &amp; blue, <b>mostly white</b></li>
-                  <li><b>A handful</b> of Figma community resources</li>
-                </ul>
-              </div>
-              <div>
-                <h4 class="mono">Method</h4>
-                <ol class="method">
-                  <li><b>Map.</b> List what the app already does.</li>
-                  <li><b>Interview.</b> Find where people get lost.</li>
-                  <li><b>Distill.</b> Turn what we heard into Mark.</li>
-                  <li><b>Prototype.</b> Low- to high-fidelity in Figma.</li>
-                </ol>
-              </div>
-            </div>
-          </section>
-        </section>
-
-        <section class="case-sec" data-toc="The problem">
-          <h2>The problem</h2>
+        <section class="case-sec" data-toc="The tension">
+          <h2>The tension</h2>
           <div class="problem">
-            <span class="mono">Key question</span>
-            <q>How can we streamline the app and make it less confusing?</q>
-            <p>Interviews pointed to one critical issue: navigation. Layers of sub-menus made it easy to get lost, which hit especially hard because so many of the app's users were older. Fixing navigation was also a chance to modernize the design.</p>
+            <span class="mono">North star</span>
+            <q>Help someone like Mark find his lab results or his next appointment without getting lost.</q>
+            <p>MyChart already did the important things: messages, lab results, appointments. Layers of sub-menus buried them, for people who were mostly 40 or older, one relying on the app to manage a disability.</p>
+            <ul class="r3-chips" aria-label="Constraints"><li>10 weeks</li><li>1 shared account</li><li>First Figma project</li><li>Existing blue brand</li></ul>
           </div>
+          <ul class="stats loose">
+            <li><b>~10</b><span>people surveyed, most 40 or older</span></li>
+            <li><b>10 wks</b><span>from research to high-fidelity prototype</span></li>
+            <li><b>Untested</b><span>no usability test yet; test plan below</span></li>
+          </ul>
         </section>
 
-        <section class="case-sec" data-toc="Research">
-          <h2>Research</h2>
-          <div class="prose">
-            <p>One of us had an account, so we mapped the app's existing features: direct messaging with providers, lab results as soon as they're available, and an appointment calendar showing when and where to go. Contextual inquiry then told us:</p>
-          </div>
-          <ul class="insights">
-            <li>Most users were 40 or older.</li>
-            <li>Many found the app hard to navigate and confusing.</li>
-            <li>The visual design didn't appeal to them.</li>
-            <li>They felt bottom tabs would beat nested menus.</li>
-            <li>The dashboard felt random rather than personal.</li>
-          </ul>
+        <section class="case-sec" data-toc="What we heard">
+          <h2>What we heard</h2>
+          <div class="prose"><p>We surveyed about ten people and ran contextual inquiries. Four findings set the agenda.</p></div>
+          <ol class="r3-synth">
+            <li class="r3c-butter"><span class="mono">Finding 01</span><b>"Hard to navigate"</b><p>Layers of sub-menus made it easy to get lost.</p><span class="r3-to">Decision 01</span></li>
+            <li class="r3c-green"><span class="mono">Finding 02</span><b>The dashboard felt random</b><p>Nothing on it was about them.</p><span class="r3-to">Decision 02</span></li>
+            <li class="r3c-lilac"><span class="mono">Finding 03</span><b>The look didn't appeal</b><p>But they came for their health, not color.</p><span class="r3-to">Decision 03</span></li>
+            <li class="r3c-blue"><span class="mono">Finding 04</span><b>Many found it confusing</b><p>Most were 40 or older, so the app has to explain itself.</p><span class="r3-to">Decision 04</span></li>
+          </ol>
           <blockquote class="pull"><p>"It does a lot of good, and I like that because I'm disabled and rely on this to stay on top of my health, but it is confusing at times and hard to use."</p><cite>Survey respondent, 40–50 years old</cite></blockquote>
         </section>
 
-        <section class="case-sec" data-toc="Persona">
-          <h2>Meet Mark</h2>
-          <div class="prose"><p>We organized everything from our inquiries into a persona of our typical user: Mark, a 68-year-old retired civil engineer managing a heart condition, who doesn't want to waste the time he has left waiting in line for health information he already knows.</p></div>
-          <figure><button class="shot" type="button"><img src="img/mychart_0.webp" alt="Persona sheet for Mark de la Cruz with profile, biography, goals, frustrations and medical experience" loading="lazy" width="1600" height="900" decoding="async"></button><figcaption>Persona: Mark de la Cruz.</figcaption></figure>
+        <section class="case-sec" data-toc="Designing for Mark">
+          <h2>Designing for Mark</h2>
+          <div class="prose"><p>We distilled the survey into one persona: Mark, 68, a working civil engineer who was hospitalized for heart palpitations, then missed follow-ups because of work.</p></div>
+          <figure class="af">
+            <div class="af-stage">
+              <button class="shot" type="button" data-full="img/mychart_annotated.webp" data-full-alt="Persona sheet for Mark de la Cruz with four numbered pins" data-caption="Mark's persona, annotated: 1 time is valuable, so the dashboard shows what's new; 2 wants to self-manage, so navigation he can work out alone; 3 struggles to schedule visits and find specialists, so appointments up front and hospital maps; 4 tech comfort 6 of 10, medical 3 of 10, so a first-run tour."><img src="img/mychart_0.webp" alt="Persona sheet for Mark de la Cruz with profile, biography, goals, frustrations and medical experience" loading="lazy" width="1600" height="900" decoding="async"></button>
+              <span class="af-pin" style="--x:6.8%;--y:70%" aria-hidden="true">1</span>
+              <span class="af-pin" style="--x:70%;--y:71%" aria-hidden="true">2</span>
+              <span class="af-pin" style="--x:70%;--y:85%" aria-hidden="true">3</span>
+              <span class="af-pin" style="--x:71.5%;--y:16.5%" aria-hidden="true">4</span>
+            </div>
+            <ol class="af-key">
+              <li><b>1</b><span><em>"My time is valuable."</em> The dashboard should show what's new before he asks.</span></li>
+              <li><b>2</b><span><em>Wants to self-manage and stay independent.</em> Navigation he can work out alone.</span></li>
+              <li><b>3</b><span><em>Struggles to schedule visits and find specialists.</em> Appointments up front, and maps of the building.</span></li>
+              <li><b>4</b><span><em>Tech comfort 6 of 10, medical 3 of 10.</em> A first-run tour, not a manual.</span></li>
+            </ol>
+            <figcaption class="sr-only">Persona sheet for Mark de la Cruz, annotated with four needs.</figcaption>
+          </figure>
         </section>
 
-        <section class="case-sec" data-toc="Key features">
-          <h2>Key features</h2>
-          <div class="features">
-            <div><h3>A dashboard about you</h3><p>Upcoming appointments, recent lab work and visit results, and anything else you'd want at a glance.</p></div>
-            <div><h3>Hospital maps</h3><p>A map of your provider's building, so finding the right room is as easy as finding the right address.</p></div>
-            <div><h3>Simpler navigation</h3><p>Fewer nested menus and information surfaced where people expect it.</p></div>
-            <div><h3>Service integrations</h3><p>Connect accounts from different healthcare providers in one place.</p></div>
-            <div><h3>First-run tutorial</h3><p>A welcome that shows what the app can do and where everything lives, before the next appointment.</p></div>
-          </div>
+        <section class="case-sec" data-toc="Decisions">
+          <h2>Four decisions</h2>
+          <ol class="r3-dec">
+            <li><span class="r3-n">01</span><div><h3>Bottom tabs over nested menus</h3><p>Fewer nested levels, with information where people look first, so Mark can manage on his own.</p></div>
+              <div class="turn t-fb"><span class="mono">Feedback that changed it</span><h3>"Tabs, not menus"</h3><p>People told us bottom tabs would beat nested menus. That moved navigation to the center of the redesign.</p></div></li>
+            <li><span class="r3-n">02</span><div><h3>A dashboard about you</h3><p>Upcoming appointments, recent lab work and visit results at a glance, so Mark isn't waiting in line to hear what he already knows.</p></div></li>
+            <li><span class="r3-n">03</span><div><h3>Calm white and blue</h3><p>Minimal and modern, built from simple community resources in Figma.</p></div>
+              <div class="turn"><span class="mono">Option we rejected</span><h3>A colorful makeover</h3><p>A brighter palette was the obvious fix for "didn't appeal." We stayed mostly white and blue: blue is tied to healthcare and already part of MyChart's brand.</p></div></li>
+            <li><span class="r3-n">04</span><div><h3>Show people around</h3><p>For the many who found the app confusing (finding 04), a first-run tutorial shows where everything lives. <b>Hospital maps</b> find the right room, and <b>integrations</b> connect accounts from other providers.</p></div></li>
+          </ol>
         </section>
 
-        <section class="case-sec" data-toc="Visual design">
-          <h2>Visual design</h2>
-          <div class="prose">
-            <p>We went minimal and modern, mostly white and blue. Blue is closely tied to healthcare and was already part of MyChart's brand. We used simple, professional community resources in Figma and vector avatars for profile images.</p>
-          </div>
-          <div class="figma-frame" data-src="https://www.figma.com/embed?embed_host=share&amp;url=https%3A%2F%2Fwww.figma.com%2Fdesign%2Fq7RuYWyuYlEiKuseegkchy%2FMyChart-Mock-up%3Fnode-id%3D0%253A1%26t%3DSJgsuLsm8kySRytp-1" data-title="MyChart high-fidelity mock-up prototype in Figma">
+        <section class="case-sec" data-toc="Prototype">
+          <h2>The prototype</h2>
+<div class="figma-frame" data-src="https://www.figma.com/embed?embed_host=share&amp;url=https%3A%2F%2Fwww.figma.com%2Fdesign%2Fq7RuYWyuYlEiKuseegkchy%2FMyChart-Mock-up%3Fnode-id%3D0%253A1%26t%3DSJgsuLsm8kySRytp-1" data-title="MyChart high-fidelity mock-up prototype in Figma">
               <div class="figma-poster">
-                <span class="mono">Live prototype · Figma</span>
+                <span class="mono"><span class="nw">Live prototype</span> · <span class="nw">Figma</span></span>
                 <b>MyChart high-fidelity mock-up</b>
                 <p>Pan, zoom and click through the real design file.</p>
-                <div class="figma-actions"><button type="button" class="btn primary figma-load">Load the prototype</button><a class="btn" href="https://www.figma.com/design/q7RuYWyuYlEiKuseegkchy/MyChart-Mock-up?node-id=0%3A1&amp;t=SJgsuLsm8kySRytp-1" target="_blank" rel="noopener">Open in Figma ↗</a></div>
+                <div class="figma-actions"><button type="button" class="btn primary figma-load">Load the prototype</button><a class="btn" href="https://www.figma.com/design/q7RuYWyuYlEiKuseegkchy/MyChart-Mock-up?node-id=0%3A1&amp;t=SJgsuLsm8kySRytp-1" target="_blank" rel="noopener">Open in Figma <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-out"/></svg></a></div>
               </div>
             </div>
         </section>
 
-        <section class="case-sec" data-toc="Takeaways">
-          <h2>Takeaways</h2>
+        <section class="case-sec" data-toc="Reflections">
+          <h2>Reflections</h2>
           <div class="takeaway">
-            <div class="prose"><p>This was my first UI/UX project and my first time using Figma. It's where I learned the fundamentals I've built on since.</p></div>
+            <ol class="lessons">
+              <li><h3>Consistency compounds</h3><p>My first UI/UX project and first time in Figma. Small inconsistencies between screens added up quickly.</p><p class="next-time"><b>Next time I'd</b> set up shared styles and components before drawing screens, and plan the semester backward from the deadline.</p></li>
+              <li><h3>A prototype isn't proof</h3><p>Every change traces back to something people told us, but we never tested the prototype with users, so I can't show it works better. I'd test it against the current app with people like Mark:</p><ul class="test-plan"><li>Find your most recent lab result.</li><li>Find when and where your next appointment is.</li><li>Find the right room using the hospital map.</li></ul><p class="next-time"><b>Next time I'd</b> measure task success and time on both apps, and watch where people hesitate.</p></li>
+            </ol>
             <div class="printer" aria-label="Takeaways receipt">
           <div class="slot" aria-hidden="true"></div>
           <div class="receipt-clip"><div class="receipt-wrap"><div class="receipt">
             <div class="rc-head"><span class="rc-brand">Aaron Hervey Goods</span><span>Vancouver, WA</span><span>Takeaways receipt</span></div>
             <div class="rc-meta"><span>Order</span><span>Nº 03 · MyChart</span><span>Date</span><span>Dec 2022</span><span>Cashier</span><span>Aaron</span></div>
             <ul class="rc-items">
-              <li><span class="rc-line"><span>First UI/UX project</span><span>1x</span></span></li>
-              <li><span class="rc-line"><span>Figma</span><span>Learned</span></span><span class="rc-note">First time opening it.</span></li>
-              <li><span class="rc-line"><span>Visual consistency</span><span>Lesson</span></span><span class="rc-note">Small mismatches add up fast.</span></li>
-              <li><span class="rc-line"><span>Time planning</span><span>Lesson</span></span><span class="rc-note">Ten weeks goes quickly.</span></li>
+              <li><span class="rc-line"><span>Contextual inquiry results</span><span>1x</span></span></li>
+              <li><span class="rc-line"><span>Wireframes</span><span>1x</span></span></li>
+              <li><span class="rc-line"><span>Low-fidelity prototype</span><span>1x</span></span></li>
+              <li><span class="rc-line"><span>High-fidelity prototype</span><span>1x</span></span></li>
             </ul>
-            <p class="rc-sub">Taken home</p>
+            <p class="rc-sub">Not included</p>
             <ul class="rc-items">
-              <li><span class="rc-line"><span>Design fundamentals</span><span>Kept</span></span><span class="rc-note">Used on every project since.</span></li>
+              <li><span class="rc-line"><span>Usability testing</span><span>0x</span></span><span class="rc-note">See the test plan.</span></li>
             </ul>
             <div class="rc-total"><span class="rc-line"><span>Total</span><span>Prototype</span></span><span class="rc-note">High-fidelity, in Figma.</span></div>
-            <div class="rc-foot"><svg class="rc-fish" aria-hidden="true"><use href="#fish"/></svg><span>Est. 2022: where it started</span><span>Thank you for visiting</span><i class="rc-bars"></i><span>Keep this receipt</span></div>
+            <div class="rc-foot"><svg class="rc-fish" aria-hidden="true"><use href="#fish"/></svg><span>Thank you for visiting</span><i class="rc-bars"></i></div>
           </div></div></div>
         </div>
           </div>
-        
+        </section>
       </div>
     </div>
-    <a class="next v-green" href="#intune"><div><span class="mono">Next variety · Nº 04</span><div class="flavor">InTune</div></div><span class="arrow" aria-hidden="true">→</span></a>
+    <a class="next v-green" href="#intune"><div><span class="mono"><span class="nw">Next variety</span> · <span class="nw">Nº 04</span></span><div class="flavor">InTune</div></div><span class="arrow" aria-hidden="true">→</span></a>
   </article>
 
   <!-- ===================== INTUNE ===================== -->
   <article data-view="intune" data-title="InTune" hidden>
     <a class="back-link mono" href="#work">← All work</a>
     <header class="case-hero v-green">
-      <span class="mono">Nº 04 · University of Tennessee · January – May 2023</span>
+      <span class="mono"><span class="nw">Nº 04</span> · <span class="nw">University of Tennessee</span> · <span class="nw">January – May 2023</span></span>
       <div class="flavor">InTune</div>
-      <h1>A music social app for listeners who want more than a yearly Wrapped</h1>
-      <p class="summary">InTune blends Last.fm-style listening analytics with Reddit-style communities, so serious listeners can track their taste all year and find people who share it.</p>
+      <h1>Listeners loved Wrapped, then waited a year for the next one</h1>
+      <p class="summary">A three-designer class concept: listening stats you can check any week, and communities built around the artists you love. I'm now developing it into a real app.</p>
+      <figure class="hero-visual">
+        <div class="hv-stage hv-split">
+          <span class="hv-back"><img src="img/intune_0.webp" alt="Hand-drawn wireframes for InTune's welcome screen, streaming-service picker and home feed" width="512" height="320" decoding="async"></span>
+          <button class="shot hv-main hv-paper" type="button"><span class="hv-img"><img src="img/intune_1.webp" alt="Hand-drawn wireframes for InTune's Community, Creative and Analytics screens" width="512" height="320" decoding="async" fetchpriority="high"><span class="hv-pin" style="--x:83%;--y:30%" aria-hidden="true">1</span></span></button>
+          <div class="hv-call hv-c2 hv-tall" style="--w:30%"><span class="hv-tag"><b>1</b> Stats all year</span><img src="img/intune_d_analytics.webp" alt="Close-up of the Analytics wireframe: a music mood banner and a grid of top artists filtered to the last 4 weeks" width="348" height="568" decoding="async"></div>
+        </div>
+        <figcaption class="sr-only">InTune's hand-drawn wireframes, with a close-up of the Analytics screen.</figcaption>
+      </figure>
     </header>
-    <dl class="glance">
-      <div><dt>Role</dt><dd>Lead designer</dd></div>
-      <div><dt>Timeline</dt><dd>10 weeks, Jan – May 2023</dd></div>
-      <div><dt>Team</dt><dd>University of Tennessee course team</dd></div>
-      <div><dt>Tools</dt><dd>Figma</dd></div>
-      <div class="outcome"><dt>Outcome</dt><dd>Wireframes, contextual inquiry results, a brand logo, and low- and high-fidelity prototypes. <a href="https://www.figma.com/design/VseYbL1HKa4afr99k7Jiou/InTune-High-Fidelity?node-id=0%3A1&amp;t=JBlKy4W2P74Eoz2o-1" target="_blank" rel="noopener">Open the Figma prototype ↗</a></dd></div>
+    <dl class="glance recipe-glance">
+      <div><dt>Role <span class="rx" aria-hidden="true">chef</span></dt><dd>Lead designer</dd></div>
+      <div><dt>Timeline <span class="rx" aria-hidden="true">prep time</span></dt><dd>10 weeks, Jan – May 2023</dd></div>
+      <div><dt>Team <span class="rx" aria-hidden="true">kitchen crew</span></dt><dd>Three designers: me, Holly Sarah Liban and Emma Thomas</dd></div>
+      <div><dt>Tools <span class="rx" aria-hidden="true">utensils</span></dt><dd>Figma</dd></div>
     </dl>
     <div class="case-body">
       <aside class="toc" aria-label="Contents"><span class="mono">Contents</span></aside>
       <div>
-        <section class="case-sec" data-toc="Overview">
-          <h2>Overview</h2>
-          <div class="prose">
-            <p>We wanted an app that connects like-minded listeners and serious audiophiles. After settling on the concept, we prototyped in Figma and ran contextual inquiries to find out whether people needed it and would actually use it.</p>
-            <p>As lead designer, I built the high-fidelity prototype, researched potential users and design references for each page, designed the brand logo, and coordinated the wireframes with my team.</p>
-          </div>
-          <section class="card recipe-card case-recipe" aria-label="Recipe for InTune, made to share">
-            <header><span class="mono">Recipe card · Nº 04</span><h3>InTune, made to share</h3></header>
-            <dl class="card-meta"><div><dt>Serves</dt><dd>Serious music listeners</dd></div><div><dt>Prep time</dt><dd>10 weeks</dd></div></dl>
-            <div class="recipe-cols">
-              <div>
-                <h4 class="mono">Ingredients</h4>
-                <ul class="ingredients">
-                  <li><b>1 cup</b> market research</li>
-                  <li><b>½ cup</b> contextual inquiry</li>
-                  <li><b>1</b> survey</li>
-                  <li><b>6</b> hand-drawn wireframes</li>
-                  <li><b>1</b> brand logo</li>
-                  <li><b>A dash</b> of MySpace nostalgia</li>
-                </ul>
-              </div>
-              <div>
-                <h4 class="mono">Method</h4>
-                <ol class="method">
-                  <li><b>Research.</b> See what Spotify, Apple Music and Last.fm already offer.</li>
-                  <li><b>Ask.</b> Learn how listeners find stats and each other.</li>
-                  <li><b>Sketch.</b> Wireframe analytics, communities and profiles.</li>
-                  <li><b>Polish.</b> Build the high-fidelity prototype in Figma.</li>
-                </ol>
-              </div>
-            </div>
-          </section>
-        </section>
-
-        <section class="case-sec" data-toc="The problem">
-          <h2>The problem</h2>
+        <section class="case-sec" data-toc="The tension">
+          <h2>The tension</h2>
           <div class="problem">
-            <span class="mono">Key question</span>
-            <q>What should the app look like, and what should it include?</q>
-            <p>Detailed analytics were a must for serious listeners. To keep people coming back beyond the numbers, we added curated playlists and communities around artists. The look would be minimal, with a splash of color to give each page its own identity.</p>
+            <span class="mono">North star</span>
+            <q>Let serious listeners see their taste all year, and find the people who share it.</q>
+            <p>Wrapped and Replay were loved, but real insight arrived once a year. Last.fm had the depth and almost no social side. We had to learn whether people wanted something in between, and what would bring them back beyond the numbers.</p>
+            <ul class="r3-chips" aria-label="Constraints"><li>10 weeks</li><li>Unproven idea</li><li>Free Figma parts</li></ul>
           </div>
+          <ul class="stats loose">
+            <li><b>4</b><span>listeners surveyed about how they track their music</span></li>
+            <li><b>0 of 4</b><span>had heard of Last.fm, the best-known stats app</span></li>
+            <li><b>Now</b><span>I'm developing InTune into a real app</span></li>
+          </ul>
+          <div class="prose"><p>I led the high-fidelity prototype, the logo and design references. Holly Sarah Liban, Emma Thomas and I surveyed listeners and sketched the wireframes together.</p></div>
         </section>
 
-        <section class="case-sec" data-toc="Research">
-          <h2>Research</h2>
-          <div class="prose">
-            <h3>What already exists</h3>
-            <ul>
-              <li>Spotify offers Wrapped once a year but no detailed analytics on your library.</li>
-              <li>Apple Music's Replay updates weekly, but still lacks depth.</li>
-              <li>Last.fm has great analytics and almost no social features.</li>
-              <li>Fan-made tools like Receiptify are popular, and most support only Spotify, a sign of how accessible its API is.</li>
-            </ul>
-            <h3>What people told us</h3>
+        <section class="case-sec" data-toc="What we found">
+          <h2>What we found</h2>
+          <div class="prose"><p>We mapped what already existed, then asked four listeners how they track their music and find other fans.</p></div>
+          <div class="r3-research">
+            <figure class="r3-map" aria-label="Our read of the 2023 landscape: how deep each tool's stats go against how social it is">
+              <span class="r3-axis r3-ax-y">More social ↑</span>
+              <span class="r3-axis r3-ax-x">Deeper stats →</span>
+              <span class="r3-dot" style="--x:20%;--y:70%"><b>Spotify Wrapped</b>once a year</span>
+              <span class="r3-dot" style="--x:36%;--y:88%"><b>Apple Replay</b>weekly, shallow</span>
+              <span class="r3-dot" style="--x:26%;--y:54%"><b>Receiptify</b>a snapshot to post</span>
+              <span class="r3-dot" style="--x:76%;--y:80%"><b>Last.fm</b>deep, barely social</span>
+              <span class="r3-dot r3-us" style="--x:74%;--y:26%"><b>InTune</b>the gap we aimed at</span>
+              <figcaption class="mono">Our read of the landscape, 2023</figcaption>
+            </figure>
+            <ol class="r3-synth r3-synth-col">
+              <li class="r3c-butter"><span class="mono">From 4 listeners</span><b>They wanted Wrapped all year</b><span class="r3-to">Decision 01</span></li>
+              <li class="r3c-green"><span class="mono">From 4 listeners</span><b>Few could find detailed stats when asked</b><span class="r3-to">Decision 02</span></li>
+              <li class="r3c-lilac"><span class="mono">From 4 listeners</span><b>Finding fellow fans was hard</b><span class="r3-to">Decision 03</span></li>
+            </ol>
           </div>
-          <ul class="insights">
-            <li>Most streamed often, and Spotify was the clear favorite.</li>
-            <li>Few knew how to find detailed analytics about their listening.</li>
-            <li>They loved Wrapped and Replay and wanted something like it year-round.</li>
-            <li>Nobody had heard of Last.fm, though they'd seen Receiptify posts.</li>
-            <li>Finding fans of the same artists was hard. One person scrolled Twitter search to find them.</li>
-          </ul>
           <blockquote class="pull"><p>"It's not something I ever really thought about, but I'd be interested to see my music tastes and how they change more than just at the end of the year."</p><cite>Survey respondent, 18–20 years old</cite></blockquote>
         </section>
 
-        <section class="case-sec" data-toc="Key features">
-          <h2>Key features</h2>
-          <div class="features">
-            <div><h3>Detailed analytics</h3><p>Continuous tracking by day, week, year or all time, with comparisons like this week versus last and your top genres, artists and albums.</p></div>
-            <div><h3>Communities</h3><p>Spaces around an artist or genre to chat with like-minded listeners about new releases.</p></div>
-            <div><h3>Curated playlists</h3><p>AI-generated recommendations based on your habits and similar listeners, to give people a reason to return.</p></div>
-            <div><h3>Service integrations</h3><p>Connect your favorite streaming service so your history is tracked accurately.</p></div>
-            <div><h3>Profiles</h3><p>An icon, a banner and a favorite track that plays when someone visits, in the spirit of MySpace.</p></div>
-          </div>
-          <div class="gallery">
-            <figure><button class="shot" type="button"><img src="img/intune_0.webp" alt="Wireframes for logo screen, service selection and home feed" loading="lazy" width="512" height="320" decoding="async"></button><figcaption>Wireframes: welcome, service picker and home.</figcaption></figure>
-            <figure><button class="shot" type="button"><img src="img/intune_1.webp" alt="Wireframes for community, creative and analytics screens" loading="lazy" width="512" height="320" decoding="async"></button><figcaption>Wireframes: communities, creative and analytics.</figcaption></figure>
-          </div>
+        <section class="case-sec" data-toc="Decisions">
+          <h2>Four decisions</h2>
+          <div class="prose"><p>Numbers on our wireframes match the decisions below.</p></div>
+          <figure class="af">
+            <div class="af-stage">
+              <button class="shot" type="button"><img src="img/intune_w0.webp" alt="Wireframes for the welcome screen, the streaming-service picker and the home feed" loading="lazy" width="1024" height="640" decoding="async"></button>
+              <span class="af-pin" style="--x:96.5%;--y:21%" aria-hidden="true">1</span>
+              <span class="af-pin" style="--x:34.5%;--y:45%" aria-hidden="true">2</span>
+              <span class="af-pin" style="--x:96.5%;--y:41%" aria-hidden="true">3</span>
+            </div>
+            <figcaption>Welcome, service picker and home feed.</figcaption>
+          </figure>
+          <figure class="af">
+            <div class="af-stage">
+              <button class="shot" type="button"><img src="img/intune_w1.webp" alt="Wireframes for the Community, Creative and Analytics screens" loading="lazy" width="1024" height="640" decoding="async"></button>
+              <span class="af-pin" style="--x:93%;--y:55%" aria-hidden="true">1</span>
+              <span class="af-pin" style="--x:2.7%;--y:40%" aria-hidden="true">3</span>
+              <span class="af-pin" style="--x:34.5%;--y:70%" aria-hidden="true">4</span>
+            </div>
+            <figcaption>Community, Creative and Analytics tabs.</figcaption>
+          </figure>
+          <ol class="r3-dec">
+            <li><span class="r3-n">01</span><div><h3>Stats all year, not once a year</h3><p>Your history by day, week, year or all time, with this-week-versus-last comparisons and top genres, artists and albums.</p></div></li>
+            <li><span class="r3-n">02</span><div><h3>Connect once, tracked for you</h3><p>Pick your main service on the first screen and stats come to you. The picker goes beyond Spotify, where most fan-made tools stop.</p></div></li>
+            <li><span class="r3-n">03</span><div><h3>Communities around one artist</h3><p>Each community centers on one artist or genre, a place to talk releases with people who share your taste.</p></div>
+              <div class="turn t-fb"><span class="mono">Feedback that changed it</span><h3>The Twitter scroller</h3><p>One person found fellow fans by scrolling Twitter search and messaging them. So communities form around an artist, not general chat.</p></div></li>
+            <li><span class="r3-n">04</span><div><h3>A reason to come back</h3><p>Curated playlists, imagined as AI picks from your habits and similar listeners, plus MySpace-style profiles whose favorite track plays when someone visits.</p></div>
+              <div class="turn"><span class="mono">Option we rejected</span><h3>Stats and nothing else</h3><p>Last.fm already does deep analytics with almost no social side. Numbers alone give people little reason to come back daily.</p></div></li>
+          </ol>
         </section>
 
-        <section class="case-sec" data-toc="Visual design">
-          <h2>Visual design</h2>
-          <div class="prose">
-            <p>To move quickly, we built on community Figma resources, then shaped them into our own visual direction as wireframes became high-fidelity screens. Next time, I'd design custom icons and vector graphics so the visuals match the vision more closely.</p>
-          </div>
+        <section class="case-sec" data-toc="Prototype">
+          <h2>The prototype</h2>
           <div class="figma-frame" data-src="https://www.figma.com/embed?embed_host=share&amp;url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FVseYbL1HKa4afr99k7Jiou%2FInTune-High-Fidelity%3Fnode-id%3D0%253A1%26t%3DJBlKy4W2P74Eoz2o-1" data-title="InTune high-fidelity design prototype in Figma">
               <div class="figma-poster">
-                <span class="mono">Live prototype · Figma</span>
+                <span class="mono"><span class="nw">Live prototype</span> · <span class="nw">Figma</span></span>
                 <b>InTune high-fidelity design</b>
                 <p>Pan, zoom and click through the real design file.</p>
-                <div class="figma-actions"><button type="button" class="btn primary figma-load">Load the prototype</button><a class="btn" href="https://www.figma.com/design/VseYbL1HKa4afr99k7Jiou/InTune-High-Fidelity?node-id=0%3A1&amp;t=JBlKy4W2P74Eoz2o-1" target="_blank" rel="noopener">Open in Figma ↗</a></div>
+                <div class="figma-actions"><button type="button" class="btn primary figma-load">Load the prototype</button><a class="btn" href="https://www.figma.com/design/VseYbL1HKa4afr99k7Jiou/InTune-High-Fidelity?node-id=0%3A1&amp;t=JBlKy4W2P74Eoz2o-1" target="_blank" rel="noopener">Open in Figma <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-out"/></svg></a></div>
               </div>
             </div>
         </section>
 
-        <section class="case-sec" data-toc="Takeaways">
-          <h2>Takeaways</h2>
+        <section class="case-sec" data-toc="Reflections">
+          <h2>Reflections</h2>
           <div class="takeaway">
-            <div class="prose"><p>This was my first major UI/UX project, and it showed me how engaging design can be. Working with people on something we were all passionate about was rewarding, and I kept working on it in my free time.</p></div>
+            <ol class="lessons">
+              <li><h3>Borrowed parts set the look</h3><p>Free community resources got us to high fidelity in ten weeks, but they decided more of the visual style than we did.</p><p class="next-time"><b>Next time I'd</b> design custom icons and vector graphics, so the visuals match the vision.</p></li>
+              <li><h3>Four voices is a start</h3><p>Four listeners were enough to show the gap between a yearly recap and Last.fm, not enough to prove people would switch apps for it. We never tested whether communities would actually bring people back.</p><p class="next-time"><b>Next time I'd</b> survey more widely, then test the community and analytics flows with listeners before polishing.</p></li>
+            </ol>
             <div class="printer" aria-label="Takeaways receipt">
           <div class="slot" aria-hidden="true"></div>
           <div class="receipt-clip"><div class="receipt-wrap"><div class="receipt">
@@ -811,56 +856,300 @@
               <li><span class="rc-line"><span>Figma</span><span>Leveled up</span></span></li>
               <li><span class="rc-line"><span>Free time spent</span><span>Plenty</span></span><span class="rc-note">Kept designing after class.</span></li>
             </ul>
-            <p class="rc-sub">Next time</p>
+            <p class="rc-sub">Made with</p>
             <ul class="rc-items">
-              <li><span class="rc-line"><span>Custom icons</span><span>1x</span></span><span class="rc-note">Instead of community resources.</span></li>
-              <li><span class="rc-line"><span>Custom vector graphics</span><span>1x</span></span><span class="rc-note">So visuals match the vision.</span></li>
+              <li><span class="rc-line"><span>Holly Sarah Liban</span><span>Designer</span></span></li>
+              <li><span class="rc-line"><span>Emma Thomas</span><span>Designer</span></span></li>
             </ul>
             <div class="rc-total"><span class="rc-line"><span>Total</span><span>Higher bar</span></span><span class="rc-note">Meeting it is the reward.</span></div>
-            <div class="rc-foot"><svg class="rc-fish" aria-hidden="true"><use href="#fish"/></svg><span>Now playing: whatever you're into</span><span>Thank you for visiting</span><i class="rc-bars"></i><span>Keep this receipt</span></div>
+            <div class="rc-foot"><svg class="rc-fish" aria-hidden="true"><use href="#fish"/></svg><span>Thank you for visiting</span><i class="rc-bars"></i></div>
           </div></div></div>
         </div>
+          <div class="r3-now">
+            <span class="mono">Since 2023</span>
+            <p><b>I'm developing InTune into a real app.</b> The open question from lesson 02, whether communities bring people back, is one real listeners can now answer.</p>
           </div>
-        
+          </div>
+        </section>
       </div>
     </div>
-    <a class="next v-blue" href="#mew2"><div><span class="mono">Back to the start · Nº 01</span><div class="flavor">MEW2</div></div><span class="arrow" aria-hidden="true">→</span></a>
+    <a class="next v-blue" href="#mew2"><div><span class="mono"><span class="nw">Back to the start</span> · <span class="nw">Nº 01</span></span><div class="flavor">MEW2</div></div><span class="arrow" aria-hidden="true">→</span></a>
   </article>
 
-  <!-- ===================== WRITING: folded leaflet ===================== -->
-  <article data-view="writing" data-title="Writing Sample" hidden>
-    <div class="essay">
+  <!-- ===================== ABOUT ME: the pantry shelf ===================== -->
+  <!-- Every item on the shelf is a button that opens its label in the panel under the cabinet.
+       Without JS the panel simply lists every label, so the stories are always there to read. -->
+  <article data-view="about-me" data-title="About" hidden>
+    <div class="pn">
       <a class="back-link mono" href="#top">← Home</a>
-      <span class="mono muted">Leaflet enclosed · University of Tennessee · Spring 2021</span>
-      <h1>Autoethnography</h1>
-      <p class="sub">A ten-week research and writing project on my own intersecting identities, and what it taught me about writing in the first person.</p>
+      <header class="pn-head">
+        <span class="mono pn-kicker">About · Designer &amp; developer</span>
+        <h1 class="pn-title" tabindex="-1">Aaron (AJ) Hervey</h1>
+        <p class="pn-intro summary">I'm Aaron, AJ for short, a designer and developer from Memphis, Tennessee. Video games got me into computers, and writing and design were never far behind. Today I'm in Vancouver, Washington, making internal tools at Avangrid Renewables, and I'm looking for UX design and software engineering roles where I can keep doing both.</p>
+        <ul class="pn-strip" aria-label="At a glance"><li>Designer &amp; developer</li><li>Avangrid Renewables</li><li><b>Open to UX &amp; SWE roles</b></li><li>Memphis → Vancouver, WA</li></ul>
+        <!-- the one photo: a round print on a scalloped butter label, like the label behind the home page's tin -->
+        <figure class="pn-portrait">
+          <svg class="pn-scallop" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M50.0 6.0A6.8 6.8 0 0 1 62.4 7.8A6.8 6.8 0 0 1 73.8 13.0A6.8 6.8 0 0 1 83.3 21.2A6.8 6.8 0 0 1 90.0 31.7A6.8 6.8 0 0 1 93.6 43.7A6.8 6.8 0 0 1 93.6 56.3A6.8 6.8 0 0 1 90.0 68.3A6.8 6.8 0 0 1 83.3 78.8A6.8 6.8 0 0 1 73.8 87.0A6.8 6.8 0 0 1 62.4 92.2A6.8 6.8 0 0 1 50.0 94.0A6.8 6.8 0 0 1 37.6 92.2A6.8 6.8 0 0 1 26.2 87.0A6.8 6.8 0 0 1 16.7 78.8A6.8 6.8 0 0 1 10.0 68.3A6.8 6.8 0 0 1 6.4 56.3A6.8 6.8 0 0 1 6.4 43.7A6.8 6.8 0 0 1 10.0 31.7A6.8 6.8 0 0 1 16.7 21.2A6.8 6.8 0 0 1 26.2 13.0A6.8 6.8 0 0 1 37.6 7.8A6.8 6.8 0 0 1 50.0 6.0Z"/><circle cx="50" cy="50" r="38.5"/></svg>
+          <img src="img/aj.jpg" alt="Aaron smiling in glasses, locs framing his face" width="660" height="880" decoding="async">
+          <figcaption class="mono">Product of Memphis</figcaption>
+        </figure>
+      </header>
 
-      <div class="leaflet" id="leaflet">
-        <section class="fold" style="--i:0">
-          <div class="fold-head mono"><span>Please read before opening</span><span>Panel 1 of 4</span></div>
-          <h2>The assignment</h2>
-          <p class="drop">I expected this class to be like others: pick a topic loosely related to me and write an essay about it. Instead, the direction was to write something deeply personal, in the first person. I'd always been taught to remove myself from my writing, so I was essentially reteaching myself how to write. It came with a lot of feelings that I was doing it wrong, but by the end of the course I was grateful for the chance to step that far out of my comfort zone.</p>
-          <p class="defn"><b>au·to·eth·nog·ra·phy</b> <i>(n.)</i> A form of ethnographic research in which the researcher connects personal experience to wider cultural, political and social meaning.</p>
-        </section>
-        <section class="fold" style="--i:1">
-          <div class="fold-head mono"><span>Background</span><span>Panel 2 of 4</span></div>
-          <h2>Which story to tell</h2>
-          <p>I hold many identities. I'm queer, Black, gender-nonconforming, Gen Z and more. When I was asked to write about an identity personal to me and its communities, I was stuck. Which one? Was any of it worth writing about? I chose my queer and Black identities, and how they intersected to create a sense of alienation from both, and a uniqueness I was both ashamed of and proud of.</p>
-          <p>It was heavy, and it didn't bring up the happiest emotions. I called on feelings of alienation from as early as kindergarten and traced how they rippled into who I am now and into my relationships. It wasn't pretty, but it was me, and that was what mattered most.</p>
-        </section>
-        <section class="fold" style="--i:2">
-          <div class="fold-head mono"><span>Method</span><span>Panel 3 of 4</span></div>
-          <h2>Writing and researching</h2>
-          <p>Autoethnography isn't always respected as research because it's an arts-based exploration of the self. I firmly believe these stories tell us about communities, and that first-hand accounts should count as legitimate sources.</p>
-          <p>I started by defining Blackness and queerness and how they relate. That was hard, because the experience of belonging to either varies depending on who you ask. Peer-reviewed material was less useful here than interviews and op-eds. I focused on how queerness isn't widely accepted in the Black community, how racism can hide inside the queer community, and how the othering both groups face doesn't always extend grace to people at that crossroads.</p>
-        </section>
-        <section class="fold" style="--i:3">
-          <div class="fold-head mono"><span>Findings</span><span>Panel 4 of 4</span></div>
-          <h2>What I found</h2>
-          <p>Once I started, writing it was surprisingly natural. I began like any other paper; the only difference was not taking myself out of it. Choosing which stories to tell was the real challenge, and I had a sense of those before I began.</p>
-          <p>My biggest takeaway was the beauty of combining art and research, and how writing truly changes you. For a while afterwards I wanted to be an English major. It also taught me to be articulate and to adapt my writing style to what a situation calls for, a skill I use every time I write up research or explain a design decision.</p>
-          <div class="fold-cta"><span class="mono">The full paper · 15 pages</span><a class="btn primary" href="files/aj-hervey-autoethnography.pdf" target="_blank" rel="noopener">Read the full paper ↗</a></div>
-        </section>
+      <section class="pn-pantry" id="pantry" aria-labelledby="pn-h">
+        <h2 id="pn-h" class="sr-only">What's on my shelf</h2>
+        <p class="pn-how mono" aria-hidden="true"><span class="pn-how-dot"></span><span class="pn-how-t">Pick anything off the shelf to read its label</span></p>
+        <!-- shared paint for the tins: one brushed-metal gradient -->
+        <svg class="pn-defs" aria-hidden="true" focusable="false"><defs>
+          <linearGradient id="pn-metal" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9AA3AA"/><stop offset=".22" stop-color="#EEF1F3"/><stop offset=".5" stop-color="#C3CACF"/><stop offset=".78" stop-color="#F4F6F7"/><stop offset="1" stop-color="#8D969D"/></linearGradient>
+          <linearGradient id="pn-curve" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1F2A55" stop-opacity=".22"/><stop offset=".18" stop-color="#1F2A55" stop-opacity="0"/><stop offset=".3" stop-color="#fff" stop-opacity=".35"/><stop offset=".42" stop-color="#fff" stop-opacity="0"/><stop offset=".8" stop-color="#1F2A55" stop-opacity="0"/><stop offset="1" stop-color="#1F2A55" stop-opacity=".25"/></linearGradient>
+        </defs></svg>
+
+        <div class="pn-cab">
+          <!-- ===== top shelf: ingredients ===== -->
+          <div class="pn-shelf">
+            <div class="pn-scroll"><div class="pn-track">
+              <ul class="pn-row" aria-labelledby="pn-tag-1">
+                <li><button type="button" class="pn-item pn-jar" style="--c:var(--print-blue);--c2:#93BCE2" aria-controls="pn-s-interviews">
+                  <svg class="pn-art" viewBox="0 0 120 160" aria-hidden="true" focusable="false">
+                    <ellipse class="pn-sh" cx="60" cy="156" rx="48" ry="4"/>
+                    <path class="f-glass" d="M34 40H86V44Q86 50 96 52Q108 55 108 66V146Q108 155 99 155H21Q12 155 12 146V66Q12 55 24 52Q34 50 34 44Z"/>
+                    <path class="f-c t" d="M15 124C30 118 44 127 60 121S90 118 105 123V146Q105 152 98 152H22Q15 152 15 146Z"/>
+                    <g class="t"><path class="f-cream" d="M22 128H44Q49 128 49 133V138Q49 143 44 143H32L26 148V143H22Q17 143 17 138V133Q17 128 22 128Z"/><path class="f-butter" d="M58 131H82Q87 131 87 136V141Q87 146 82 146H74V151L68 146H58Q53 146 53 141V136Q53 131 58 131Z"/><path class="f-red" d="M88 124H99Q104 124 104 129V133Q104 138 99 138H96L92 142V138H88Q84 138 84 133V129Q84 124 88 124Z"/></g>
+                    <g class="n f-ink"><circle cx="27" cy="135.5" r="1.4"/><circle cx="33" cy="135.5" r="1.4"/><circle cx="39" cy="135.5" r="1.4"/><circle cx="64" cy="138.5" r="1.4"/><circle cx="70" cy="138.5" r="1.4"/><circle cx="76" cy="138.5" r="1.4"/></g>
+                    <path class="t f-cream" d="M76 56H94Q98 56 98 60V63Q98 67 94 67H84L80 71V67H76Q72 67 72 63V60Q72 56 76 56Z"/>
+                    <path class="shine" d="M21 72Q19 100 21 116"/>
+                    <g class="pn-lid"><rect class="f-c2" x="30" y="20" width="60" height="22" rx="6"/><path class="t ridge" d="M39 25V37M47 25V37M55 25V37M63 25V37M71 25V37M79 25V37"/></g>
+                  </svg>
+                  <span class="pn-label"><b>Interviews</b> <span class="mono">Est. 2020</span></span>
+                  <span class="pn-cap">COVID survey in Qualtrics, 2020</span>
+                </button></li>
+                <li><button type="button" class="pn-item pn-jar" style="--c:var(--print-red);--c2:#EE958C" aria-controls="pn-s-optum">
+                  <svg class="pn-art" viewBox="0 0 120 160" aria-hidden="true" focusable="false">
+                    <ellipse class="pn-sh" cx="60" cy="156" rx="48" ry="4"/>
+                    <path class="f-glass" d="M34 40H86V44Q86 50 96 52Q108 55 108 66V146Q108 155 99 155H21Q12 155 12 146V66Q12 55 24 52Q34 50 34 44Z"/>
+                    <path class="f-c t" d="M15 122C32 128 46 117 62 123S92 126 105 119V146Q105 152 98 152H22Q15 152 15 146Z"/>
+                    <g class="t"><rect class="f-butter" x="22" y="128" width="13" height="13" rx="2" transform="rotate(-12 28 134)"/><circle class="f-blue" cx="50" cy="141" r="7"/><path class="f-green" d="M70 128L80 145H60Z"/><rect class="f-lilac" x="86" y="131" width="12" height="12" rx="6"/><path class="nofill" d="M38 146L33 149L38 152M44 145L41 153M47 146L52 149L47 152"/></g>
+                    <g class="t"><rect class="f-butter" x="78" y="56" width="10" height="10" rx="2" transform="rotate(14 83 61)"/></g>
+                    <path class="shine" d="M21 72Q19 100 21 116"/>
+                    <g class="pn-lid"><rect class="f-c2" x="30" y="20" width="60" height="22" rx="6"/><path class="t ridge" d="M39 25V37M47 25V37M55 25V37M63 25V37M71 25V37M79 25V37"/></g>
+                  </svg>
+                  <span class="pn-label"><b>Optum</b> <span class="mono">2022 &amp; 2023</span></span>
+                  <span class="pn-cap">Two intern summers, Figma → React</span>
+                </button></li>
+                <li><button type="button" class="pn-item pn-jar" style="--c:var(--print-butter);--c2:#F2C95E" aria-controls="pn-s-oncall">
+                  <svg class="pn-art" viewBox="0 0 120 160" aria-hidden="true" focusable="false">
+                    <ellipse class="pn-sh" cx="60" cy="156" rx="48" ry="4"/>
+                    <path class="f-glass" d="M34 40H86V44Q86 50 96 52Q108 55 108 66V146Q108 155 99 155H21Q12 155 12 146V66Q12 55 24 52Q34 50 34 44Z"/>
+                    <path class="f-c t" d="M15 120C28 125 42 116 58 121S90 125 105 118V146Q105 152 98 152H22Q15 152 15 146Z"/>
+                    <g class="t f-coral"><path d="M32 126L24 139H31L27 150L40 135H33L38 126Z"/><path d="M80 127L73 138H79L76 148L87 135H81L85 127Z"/></g>
+                    <g class="t"><path class="nofill" d="M56 150V134"/><circle class="f-cream" cx="56" cy="133" r="2.2"/><path class="f-cream" d="M56 133L54 124Q56 122 58 124ZM56 133L64 136Q64 139 61 139ZM56 133L49 138Q47 136 49 134Z"/></g>
+                    <g class="t f-coral"><path d="M86 56L81 64H85L83 70L90 62H86L88 56Z"/></g>
+                    <path class="shine" d="M21 72Q19 100 21 116"/>
+                    <g class="pn-lid"><rect class="f-c2" x="30" y="20" width="60" height="22" rx="6"/><path class="t ridge" d="M39 25V37M47 25V37M55 25V37M63 25V37M71 25V37M79 25V37"/></g>
+                  </svg>
+                  <span class="pn-label"><b>On call</b> <span class="mono">Triage shifts</span></span>
+                  <span class="pn-cap">Triage shifts on renewable sites</span>
+                </button></li>
+                <li><button type="button" class="pn-item pn-mason" style="--c:var(--print-green);--c2:#8FCCA6" aria-controls="pn-s-maycontain">
+                  <svg class="pn-art" viewBox="0 0 160 170" aria-hidden="true" focusable="false">
+                    <ellipse class="pn-sh" cx="80" cy="166" rx="66" ry="4"/>
+                    <path class="f-glass" d="M30 46H130Q146 48 146 64V150Q146 164 132 164H28Q14 164 14 150V64Q14 48 30 46Z"/>
+                    <g class="t pn-bits">
+                      <path class="f-c" d="M17 142C40 136 60 146 84 140S124 136 143 142V150Q143 161 132 161H28Q17 161 17 150Z"/>
+                      <g transform="translate(-4 -30) rotate(-8 50 140)"><path class="f-lilac" d="M30 132Q30 126 38 126H62Q70 126 70 132V144Q70 152 62 152Q56 152 52 146H48Q44 152 38 152Q30 152 30 144Z"/><path class="nofill" d="M37 135V143M33 139H41"/><circle class="f-coral" cx="60" cy="136" r="2.6"/><circle class="f-butter" cx="64" cy="142" r="2.6"/></g>
+                      <g transform="translate(-4 -28) rotate(10 116 138)"><rect class="f-red" x="100" y="118" width="32" height="38" rx="3"/><path class="nofill" d="M106 118V156M110 128H126M110 134H124"/></g>
+                      <g transform="translate(-2 -40) rotate(-8 62 108)"><rect class="f-cream" x="38" y="100" width="50" height="16" rx="3"/><ellipse class="f-cream" cx="38" cy="108" rx="4" ry="8"/><ellipse class="f-cream" cx="88" cy="108" rx="4" ry="8"/><path class="nofill" d="M46 106H78M46 111H70"/><path class="f-coral" d="M60 116L57 124L61 121L64 125L63 116Z"/></g>
+                      <g transform="translate(-58 -2) rotate(-6 108 86)"><rect class="f-blue" x="88" y="70" width="42" height="32" rx="4"/><path class="nofill" d="M88 78H130"/><circle class="n f-ink" cx="93" cy="74" r="1.3"/><circle class="n f-ink" cx="98" cy="74" r="1.3"/><path class="f-coral" d="M109 98C100 92 101 84 105 84C107 84 109 86 109 88C109 86 111 84 113 84C117 84 118 92 109 98Z"/></g>
+                      <path class="n f-white" d="M120 60Q121 66 127 67Q121 68 120 74Q119 68 113 67Q119 66 120 60Z"/><path class="n f-white" d="M84 108Q85 112 89 113Q85 114 84 118Q83 114 79 113Q83 112 84 108Z"/>
+                    </g>
+                    <path class="shine" d="M22 66Q20 96 22 126"/>
+                    <rect class="f-glass" x="30" y="34" width="100" height="14" rx="4"/>
+                    <g class="pn-lid"><path class="f-glass" d="M26 34Q80 8 134 34Z"/><rect class="f-coral" x="24" y="31" width="112" height="6" rx="3"/></g>
+                    <path class="t nofill wire" d="M18 76Q14 40 34 30M142 76Q146 40 126 30"/>
+                  </svg>
+                  <span class="pn-label pn-tagged"><b>May contain</b> <span class="mono">Odds &amp; ends</span></span>
+                  <span class="pn-cap">Poetry, stories, Tumblr, games</span>
+                </button></li>
+              </ul>
+              <div class="pn-plank" aria-hidden="true">
+                <svg class="pn-grain" viewBox="0 0 1000 30" preserveAspectRatio="none" focusable="false"><path d="M0 12Q120 7 240 12T480 11Q560 9 600 14T820 12Q900 9 1000 13M30 21Q200 17 360 22T700 21Q840 18 980 22M640 7Q690 4 760 8"/><path d="M180 17q12-5 24 0q-12 5-24 0Z"/></svg>
+                <i class="pn-bracket"></i><i class="pn-bracket"></i>
+              </div>
+            </div></div>
+            <p class="pn-tag mono" id="pn-tag-1">Ingredients</p>
+          </div>
+
+          <!-- ===== bottom shelf: the house blend, the game tin, the stove ===== -->
+          <div class="pn-shelf">
+            <div class="pn-scroll"><div class="pn-track">
+              <ul class="pn-row" aria-labelledby="pn-tag-2">
+                <li><button type="button" class="pn-item pn-tin" style="--c:var(--print-red);--c2:var(--print-blue)" aria-controls="pn-s-aj" data-default>
+                  <svg class="pn-art" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+                    <ellipse class="pn-sh" cx="100" cy="196" rx="86" ry="4"/>
+                    <path class="f-c2" d="M24 54H176V182Q176 192 166 192H34Q24 192 24 182Z"/>
+                    <path class="f-c" d="M24 54H98C110 76 84 100 100 124S90 168 104 192H34Q24 192 24 182Z"/>
+                    <path class="shine" d="M34 70Q32 110 34 150"/>
+                    <g class="t nofill"><path d="M38 168C46 150 62 150 70 168"/><path d="M38 168L30 156M70 168L78 156"/></g>
+                    <g class="t f-cream"><rect x="34" y="164" width="8" height="8" rx="1.5"/><rect x="66" y="164" width="8" height="8" rx="1.5"/><circle cx="30" cy="156" r="2.6"/><circle cx="78" cy="156" r="2.6"/></g>
+                    <path class="nofill" d="M130 154L121 163L130 172M150 154L159 163L150 172M143 150L137 176"/>
+                    <path class="n f-white" d="M152 66Q153 72 159 73Q153 74 152 80Q151 74 145 73Q151 72 152 66Z"/><path class="n f-white" d="M46 76Q47 80 51 81Q47 82 46 86Q45 82 41 81Q45 80 46 76Z"/>
+                    <rect class="f-metal" x="20" y="180" width="160" height="14" rx="6"/>
+                    <g class="pn-lid">
+                      <ellipse class="f-metal-top" cx="100" cy="36" rx="82" ry="8"/>
+                      <rect class="f-metal" x="18" y="36" width="164" height="24" rx="7"/>
+                      <path class="t nofill ridge" d="M20 49H180"/>
+                    </g>
+                  </svg>
+                  <span class="pn-label"><b>House blend</b> <span class="mono">Design + code</span></span>
+                  <span class="pn-cap">AJ, designer &amp; developer</span>
+                </button></li>
+                <li><button type="button" class="pn-item pn-game" style="--c:var(--print-green);--c2:#8FCCA6" aria-controls="pn-s-games">
+                  <svg class="pn-art" viewBox="0 0 160 180" aria-hidden="true" focusable="false">
+                    <ellipse class="pn-sh" cx="80" cy="175" rx="68" ry="4"/>
+                    <g transform="rotate(-11 62 90)"><rect class="f-butter" x="30" y="40" width="64" height="86" rx="6"/><path class="t ridge" d="M40 46H84M40 51H84"/><rect class="f-cream t" x="38" y="60" width="48" height="34" rx="3"/></g>
+                    <g class="pn-cart"><rect class="f-lilac" x="62" y="26" width="72" height="94" rx="7"/><path class="t ridge" d="M72 32H124M72 37H124M72 42H124"/><rect class="f-cream t" x="70" y="50" width="56" height="40" rx="3"/>
+                      <path class="n f-coral" d="M88 60h6v3h3v-3h6v3h3v9h-3v3h-3v3h-3v3h-3v-3h-3v-3h-3v-3h-3v-9h3z"/></g>
+                    <path class="f-c" d="M14 102H146V164Q146 174 136 174H24Q14 174 14 164Z"/>
+                    <rect class="f-metal" x="10" y="94" width="140" height="13" rx="5"/>
+                  </svg>
+                  <span class="pn-label"><b>Game dev</b> <span class="mono">Not ready yet</span></span>
+                  <span class="pn-cap">Side projects, not ready yet</span>
+                </button></li>
+                <li><button type="button" class="pn-item pn-pot" style="--c:var(--print-blue);--c2:#93BCE2" aria-controls="pn-s-cooking">
+                  <svg class="pn-art" viewBox="0 0 250 250" aria-hidden="true" focusable="false">
+                    <g class="pn-steam nofill"><path d="M102 64C92 54 112 46 102 34S106 16 100 8"/><path d="M126 58C116 46 136 38 126 26S130 8 124 0"/><path d="M150 64C140 54 160 46 150 34S154 16 148 8"/></g>
+                    <ellipse class="pn-sh" cx="125" cy="244" rx="104" ry="5"/>
+                    <rect class="f-green" x="30" y="194" width="190" height="46" rx="11"/>
+                    <rect class="f-green-d" x="22" y="184" width="206" height="14" rx="6"/>
+                    <circle class="f-cream" cx="64" cy="217" r="10"/><path class="nofill" d="M64 217L58 210"/>
+                    <circle class="f-cream" cx="186" cy="217" r="10"/><path class="nofill" d="M186 217L193 211"/>
+                    <circle class="f-coral t pn-light" cx="125" cy="217" r="4.5"/>
+                    <ellipse class="f-ink" cx="125" cy="185" rx="66" ry="5"/>
+                    <path class="pn-handle nofill" d="M50 124H34Q26 124 26 132V136Q26 144 34 144H50M200 124H216Q224 124 224 132V136Q224 144 216 144H200"/>
+                    <path class="f-c" d="M50 112H200V160Q200 184 174 184H76Q50 184 50 160Z"/>
+                    <g class="n f-white pn-speck"><circle cx="62" cy="120" r="2"/><circle cx="190" cy="168" r="2.4"/><circle cx="184" cy="120" r="1.6"/><circle cx="60" cy="170" r="1.8"/><circle cx="72" cy="178" r="1.3"/></g>
+                    <rect class="f-c2" x="43" y="104" width="164" height="12" rx="6"/>
+                    <g class="pn-lid"><path class="f-c2" d="M54 104Q125 56 196 104Z"/><path class="t nofill shine-ink" d="M82 92Q100 78 122 75"/><rect class="f-cream" x="113" y="64" width="24" height="13" rx="5"/></g>
+                  </svg>
+                  <span class="pn-label"><b>Now cooking</b> <span class="mono">3 dishes</span></span>
+                  <span class="pn-cap">MEW2 · CORE Alarms · InTune</span>
+                </button></li>
+              </ul>
+              <div class="pn-plank" aria-hidden="true">
+                <svg class="pn-grain" viewBox="0 0 1000 30" preserveAspectRatio="none" focusable="false"><path d="M0 14Q140 9 280 14T560 13Q660 10 720 15T1000 12M20 22Q240 18 420 23T800 21Q900 19 990 23M300 6Q360 3 430 7"/><path d="M620 18q12-5 24 0q-12 5-24 0Z"/></svg>
+                <i class="pn-bracket"></i><i class="pn-bracket"></i>
+              </div>
+            </div></div>
+            <p class="pn-tag mono" id="pn-tag-2">On the stove</p>
+          </div>
+        </div>
+
+        <!-- the labels: one shows at a time once JS is running; without it they're all here as a list -->
+        <div class="pn-panel" id="pn-panel">
+          <i class="pn-caret" aria-hidden="true"></i>
+          <section class="pn-story pn-index" id="pn-index" style="--tone:var(--print-butter)" aria-labelledby="pn-index-h">
+            <div class="pn-story-main">
+              <span class="mono">The shelf at a glance</span>
+              <h3 id="pn-index-h">What's on the shelf</h3>
+              <p>Seven things that make me, me. Pick any of them, here or on the shelf, to read its label.</p>
+            </div>
+            <ul class="pn-index-list"><li><button type="button" data-open="pn-s-aj"><b>House blend</b><span>Who I am</span></button></li><li><button type="button" data-open="pn-s-interviews"><b>Interviews</b><span>Research, 2020</span></button></li><li><button type="button" data-open="pn-s-optum"><b>Optum</b><span>Two summers</span></button></li><li><button type="button" data-open="pn-s-oncall"><b>On call</b><span>Renewable sites</span></button></li><li><button type="button" data-open="pn-s-maycontain"><b>May contain</b><span>Odds &amp; ends</span></button></li><li><button type="button" data-open="pn-s-games"><b>Game dev</b><span>Side projects</span></button></li><li><button type="button" data-open="pn-s-cooking"><b>Now cooking</b><span>MEW2, Alarms, InTune</span></button></li></ul>
+          </section>
+
+          <section class="pn-story" id="pn-s-aj" style="--tone:var(--print-red)" aria-labelledby="pn-s-aj-h">
+            <div class="pn-story-main">
+              <span class="mono">House blend · Nº 00 · Product of Memphis</span>
+              <h3 id="pn-s-aj-h">Aaron (AJ) Hervey</h3>
+              <p>I take internal tools from user interviews to production front-ends, so data-heavy systems feel simple.</p>
+            </div>
+            <dl class="pn-facts"><div><dt>Product of</dt><dd>Memphis, TN</dd></div><div><dt>Packed in</dt><dd>Vancouver, WA</dd></div><div><dt>Works at</dt><dd>Avangrid Renewables</dd></div><div><dt>Open to</dt><dd>UX &amp; SWE roles</dd></div></dl>
+          </section>
+
+          <section class="pn-story" id="pn-s-interviews" style="--tone:var(--print-blue)" aria-labelledby="pn-s-interviews-h">
+            <div class="pn-story-main">
+              <span class="mono">Ingredient Nº 01 · Research</span>
+              <h3 id="pn-s-interviews-h">Interviews before interfaces</h3>
+              <p>In 2020 I surveyed Knoxville businesses on COVID's impact in Qualtrics and presented at the Eureka Conference.</p>
+            </div>
+            <dl class="pn-facts"><div><dt>Year</dt><dd>2020</dd></div><div><dt>Where</dt><dd>Knoxville, TN</dd></div><div><dt>Tool</dt><dd>Qualtrics</dd></div><div><dt>Served at</dt><dd>Eureka Conference</dd></div></dl>
+          </section>
+
+          <section class="pn-story" id="pn-s-optum" style="--tone:var(--print-red)" aria-labelledby="pn-s-optum-h">
+            <div class="pn-story-main">
+              <span class="mono">Ingredient Nº 02 · Internships</span>
+              <h3 id="pn-s-optum-h">Two summers at Optum</h3>
+              <p>Teams of four interns, Figma to React and TypeScript: an employee discussion space the first summer, then a release-notes hub the next.</p>
+            </div>
+            <dl class="pn-facts"><div><dt>Summers</dt><dd>2022, 2023</dd></div><div><dt>Where</dt><dd>Raleigh, NC</dd></div><div><dt>Team</dt><dd>4 interns</dd></div><div><dt>Stack</dt><dd>Figma, React, TypeScript</dd></div></dl>
+          </section>
+
+          <section class="pn-story" id="pn-s-oncall" style="--tone:var(--print-butter)" aria-labelledby="pn-s-oncall-h">
+            <div class="pn-story-main">
+              <span class="mono">Ingredient Nº 03 · Operations</span>
+              <h3 id="pn-s-oncall-h">On call, too</h3>
+              <p>I take shifts triaging our renewable sites, so I see what happens long after handoff.</p>
+            </div>
+            <dl class="pn-facts"><div><dt>Shifts</dt><dd>Triage</dd></div><div><dt>Sites</dt><dd>Renewable</dd></div><div><dt>Where</dt><dd>Avangrid Renewables</dd></div></dl>
+          </section>
+
+          <section class="pn-story" id="pn-s-maycontain" style="--tone:var(--print-green)" aria-labelledby="pn-s-maycontain-h">
+            <div class="pn-story-main">
+              <span class="mono">Allergen advice</span>
+              <h3 id="pn-s-maycontain-h">May contain</h3>
+              <p>Poetry, short stories, old Tumblr designs and the video games that got me into programming.</p>
+            </div>
+            <ul class="pn-facts pn-traces"><li>Poetry</li><li>Short stories</li><li>Old Tumblr designs</li><li>Video games</li></ul>
+          </section>
+
+          <section class="pn-story pn-story-wide" id="pn-s-cooking" style="--tone:var(--print-blue)" aria-labelledby="pn-s-cooking-h">
+            <div class="pn-story-main">
+              <span class="mono">On the stove · 3 dishes</span>
+              <h3 id="pn-s-cooking-h">Now cooking</h3>
+            </div>
+            <ul class="pn-dishes">
+              <li><span class="mono">At work</span><b>MEW2</b><p>A guided way to edit renewable asset data without writing SQL, now rolling out to more teams.</p><a class="pn-go" href="#mew2">Open the MEW2 case →</a></li>
+              <li><span class="mono">Still tending</span><b>CORE Alarms</b><p>The alarm-history site I rebuilt from wireframe to React and Node.js. I still maintain it.</p><a class="pn-go" href="#oracle">Open the Alarms case →</a></li>
+              <li><span class="mono">Side project</span><b>InTune</b><p>A 2023 class concept with Holly Sarah Liban and Emma Thomas that I'm developing into a real app.</p><a class="pn-go" href="#intune">Open the InTune case →</a></li>
+            </ul>
+          </section>
+
+          <section class="pn-story" id="pn-s-games" style="--tone:var(--print-green)" aria-labelledby="pn-s-games-h">
+            <div class="pn-story-main">
+              <span class="mono">Small batch · Tinkering</span>
+              <h3 id="pn-s-games-h">Game dev</h3>
+              <p>Side projects, not ready to taste yet. Video games are what got me into computers in the first place, so this tin stays on the shelf.</p>
+            </div>
+            <dl class="pn-facts"><div><dt>Status</dt><dd>Not ready to taste</dd></div><div><dt>Batch</dt><dd>Side projects</dd></div></dl>
+          </section>
+        </div>
+      </section>
+
+      <!-- ===== the shipping crate: where the tin has travelled ===== -->
+      <section class="pn-crate" aria-labelledby="pn-route-h">
+        <div class="pn-crate-head"><h2 id="pn-route-h">Shipping route</h2><span class="mono" aria-hidden="true">This side up ↑ · Handle with care</span></div>
+        <div class="pn-waybill">
+          <svg class="pn-map" viewBox="0 0 800 230" aria-hidden="true" focusable="false">
+            <path class="pn-map-land" d="M40 70Q60 40 130 46Q220 30 330 50Q450 34 560 56Q680 44 740 74Q768 104 744 140Q760 176 700 190Q600 206 520 196Q420 212 320 196Q210 210 120 190Q50 186 44 146Q24 110 40 70Z"/>
+            <path class="pn-map-route" d="M460 158Q540 120 610 140Q660 152 712 132C760 60 520 0 300 24Q150 36 92 92"/>
+            <g class="pn-pin"><circle cx="460" cy="158" r="17"/><text x="460" y="164">1</text></g>
+            <g class="pn-pin"><circle cx="610" cy="140" r="17"/><text x="610" y="146">2</text></g>
+            <g class="pn-pin"><circle cx="712" cy="132" r="17"/><text x="712" y="138">3</text></g>
+            <g class="pn-pin pn-pin-now"><circle cx="92" cy="92" r="19"/><text x="92" y="98">4</text></g>
+            <use class="pn-map-fish" href="#fish" x="118" y="102" width="72" height="42"/>
+            <g class="pn-compass"><circle cx="300" cy="150" r="22"/><path d="M300 126V174M276 150H324"/><path class="pn-compass-n" d="M300 128L306 150H294Z"/><text x="300" y="120">N</text></g>
+          </svg>
+          <ol class="pn-stops">
+            <li><b>Memphis, TN</b><span>Where I'm from</span></li>
+            <li><b>Knoxville, TN</b><span>University of Tennessee · 2019–23</span></li>
+            <li><b>Raleigh, NC</b><span>Optum internships · 2022, 2023</span></li>
+            <li aria-current="step"><b>Vancouver, WA</b><span>Avangrid Renewables · 2024–now</span></li>
+          </ol>
+        </div>
+      </section>
+
+      <div class="pn-close">
+        <p>The long version, with dates and tools, is on my résumé.</p>
+        <div class="ctas"><a class="btn primary" href="#resume">Read my résumé</a><a class="btn" href="#contact">Get in touch</a></div>
       </div>
     </div>
   </article>
@@ -871,22 +1160,22 @@
       <header class="slip-head">
         <div class="slip-brand">
           <span class="slip-logo">Aaron Hervey Goods</span>
-          <span class="mono muted">Vancouver, WA · adhervey.jr@gmail.com</span>
+          <span class="mono muted"><span class="nw">Vancouver, WA</span> · <span class="nw">adhervey.jr@gmail.com</span></span>
         </div>
         <div class="slip-title"><span class="mono muted">Document</span><b>Packing slip</b></div>
       </header>
       <dl class="slip-fields">
         <div><dt>Ship to</dt><dd>Your hiring team</dd></div>
-        <div><dt>Contents</dt><dd>1 product designer, fully assembled</dd></div>
+        <div><dt>Based in</dt><dd>Vancouver, WA</dd></div>
         <div><dt>Looking for</dt><dd>UX, product design &amp; software engineering roles</dd></div>
         <div><dt>Packed</dt><dd>2019 – 2026</dd></div>
       </dl>
       <div class="slip-intro">
         <div>
-          <h1>Aaron (Aj) Hervey</h1>
+          <h1>Aaron (AJ) Hervey</h1>
           <p>Early-career product designer and software engineer. I research, design and build the tools people use every day, and I'm looking for UX, product design and software engineering roles.</p>
         </div>
-        <div class="stamps" aria-hidden="true"><span class="stamp">Inspected</span><span class="stamp stamp-alt">Ready to ship</span></div>
+        <div class="stamps"><span class="ink-stamp is-big">Open to roles<small>UX · Product · SWE</small></span></div>
       </div>
 
       <div class="resume-grid">
@@ -897,6 +1186,7 @@
             <div class="role">
               <span class="lot mono">AVG-26</span>
               <div><h3>SCADA Engineer <span>· Avangrid</span></h3>
+              <p class="role-sub">Designs and builds custom applications in React, C# and Node.js</p>
               <ul>
                 <li>Build custom applications in React, C# and Node.js on the ROADS team (Remote Operations, Application, Development &amp; SCADA), writing SQL to bring database data into them.</li>
                 <li>Designed and built <a href="#mew2">MEW2</a>, a guided interface for editing renewable asset data without SQL.</li>
@@ -962,16 +1252,16 @@
 
         <div class="slip-side">
           <a class="tearoff" href="files/aj-hervey-resume.pdf" target="_blank" rel="noopener">
-            <span class="mono tear-here">✂ Tear here</span>
-            <span class="mono muted">Shipping label · 1 page</span>
-            <b>Résumé PDF ↗</b>
+            <span class="mono tear-here"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-cut"/></svg> Tear here</span>
+            <span class="mono muted"><span class="nw">Shipping label</span> · <span class="nw">1 page</span></span>
+            <b>Résumé PDF <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-out"/></svg></b>
             <i class="rc-bars" aria-hidden="true"></i>
           </a>
           <section class="r-sec">
             <h2>Education</h2>
             <div class="side-block">
               <b>B.S., Computer &amp; Information Sciences</b>
-              <p class="muted">University of Tennessee, Knoxville · 2019 – 2023 · 1794 Honors Program</p>
+              <p class="muted">University of Tennessee, Knoxville · <span class="nw">2019 – 2023</span> · <span class="nw">1794 Honors Program</span></p>
               <p class="muted">Coursework: Human-Computer Interaction, UX Research &amp; Testing, UI/UX Design Principles, Algorithms &amp; Data Structures, Programming for Information Systems.</p>
             </div>
           </section>
@@ -984,13 +1274,13 @@
           <section class="r-sec">
             <h2>Elsewhere</h2>
             <div class="r-links">
-              <a href="https://www.linkedin.com/in/aahervey" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
-              <a href="https://github.com/ahervey" target="_blank" rel="noopener">GitHub <span>↗</span></a>
+              <a href="https://www.linkedin.com/in/aahervey" target="_blank" rel="noopener">LinkedIn <span><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-out"/></svg></span></a>
+              <a href="https://github.com/ahervey" target="_blank" rel="noopener">GitHub <span><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-out"/></svg></span></a>
             </div>
           </section>
         </div>
       </div>
-      <p class="slip-foot mono muted">Handle with care · This side up · Questions? adhervey.jr@gmail.com</p>
+      <p class="slip-foot mono muted">Questions? <a href="mailto:adhervey.jr@gmail.com">adhervey.jr@gmail.com</a></p>
     </div>
   </article>
 
@@ -1007,7 +1297,7 @@
           <i class="crumb" style="left:22%;top:72%"></i><i class="crumb" style="left:64%;top:20%"></i><i class="crumb" style="left:80%;top:76%"></i>
         </div>
       </div>
-      <span class="mono muted">Error 404 · Net wt. 0 oz</span>
+      <span class="mono muted"><span class="nw">Error 404</span> · <span class="nw">Net wt. 0 oz</span></span>
       <h1>This tin is empty.</h1>
       <p>The page you're looking for isn't here. The link may have a typo, or the page may have moved.</p>
       <div class="ctas"><a class="btn primary" href="#top">Back to the shelf</a><a class="btn" href="#work">See the work</a></div>
@@ -1021,30 +1311,50 @@
   <section class="back-sec" id="contact" aria-label="Contact">
     <div class="back">
       <div>
-        <span class="mono muted dist"><svg class="utensil" aria-hidden="true"><use href="#knife"/></svg>Distributed by Aaron Hervey · Vancouver, WA</span>
         <h2>Let's open something together.</h2>
-        <div class="email"><code id="email">adhervey.jr@gmail.com</code><button class="copy" id="copy" type="button">Copy email</button></div>
+        <div class="ship-label">
+          <dl class="sl-fields">
+            <div><dt class="mono">From</dt><dd>AJ Hervey<span>Vancouver, WA</span></dd></div>
+            <div><dt class="mono">Ship to</dt><dd>Your team<span>UX design or software engineering</span></dd></div>
+          </dl>
+          <div class="email"><code id="email">adhervey.jr@gmail.com</code><button class="copy" id="copy" type="button">Copy email</button><span class="sr-only" id="copy-status" role="status" aria-live="polite"></span><a class="copy mail" href="mailto:adhervey.jr@gmail.com">Open in mail app</a></div>
+        </div>
       </div>
       <div class="links">
-        <a href="https://www.linkedin.com/in/aahervey" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
-        <a href="https://github.com/ahervey" target="_blank" rel="noopener">GitHub <span>↗</span></a>
-        <a href="files/aj-hervey-resume.pdf" target="_blank" rel="noopener">Résumé PDF <span>↗</span></a>
+        <span class="mono muted">Elsewhere</span>
+        <a href="https://www.linkedin.com/in/aahervey" target="_blank" rel="noopener">LinkedIn <span><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-out"/></svg></span></a>
+        <a href="https://github.com/ahervey" target="_blank" rel="noopener">GitHub <span><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-out"/></svg></span></a>
+        <a href="files/aj-hervey-resume.pdf" target="_blank" rel="noopener">Résumé PDF <span><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-out"/></svg></span></a>
       </div>
     </div>
   </section>
   <div class="fine-print">
-    <span class="mono">Best before: never · Recycle responsibly</span>
-    <div class="barcode"><div class="bars" id="bars" aria-hidden="true"></div><span class="mono">0 19 AH 2026 01</span></div>
+    <span class="mono"><span class="nw">© 2026 Aaron Hervey</span> · <span class="nw">Vancouver, WA</span></span>
+    <svg class="fp-fish" aria-hidden="true"><use href="#fish"/></svg>
   </div>
   </footer>
 </div>
 
 <dialog class="lightbox" id="lightbox" aria-label="Screenshot">
-  <button type="button" aria-label="Close">×</button>
-  <img alt="">
-  <p></p>
+  <div class="lb-bar">
+    <span class="lb-count mono" id="lb-count" aria-live="polite"></span>
+    <button class="lb-zoom" id="lb-zoom" type="button" aria-pressed="false">Zoom in</button>
+    <button class="lb-close" type="button" aria-label="Close">×</button>
+  </div>
+  <div class="lb-stage" id="lb-stage"><img alt=""></div>
+  <button class="lb-nav lb-prev" type="button" aria-label="Previous screenshot">←</button>
+  <button class="lb-nav lb-next" type="button" aria-label="Next screenshot">→</button>
+  <p class="lb-cap"></p>
 </dialog>
 
-<script src="app.js?v=202610051614"></script>
+<dialog class="toc-sheet" id="toc-sheet" aria-labelledby="toc-sheet-h">
+  <div class="sheet-head">
+    <span class="mono" id="toc-sheet-h">Contents</span>
+    <button class="sheet-close" type="button" aria-label="Close contents">×</button>
+  </div>
+  <ol class="sheet-list" id="toc-sheet-list"></ol>
+</dialog>
+
+<script src="app.js?v=202610060929"></script>
 </body>
 </html>

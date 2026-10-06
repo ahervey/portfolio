@@ -1,0 +1,165 @@
+/* Type system. Loaded last, so every font declaration on the site resolves here.
+
+   Eight sizes, nothing else: 12 / 14 / 17 / 20 / 28 / 40 / 64 / 92.
+   Roles map onto the steps; small screens remap the roles one step down, never to an off-scale size.
+
+   Three faces, each with a job:
+   - Fraunces 800 italic (soft, wonky): H1s and names only. The home headline, project names,
+     case-study titles, the résumé name, the 404 line, and the brand marks on the tin.
+     Kept rare so it lands every time.
+   - Hanken Grotesk (variable 400-800): everything else that is a heading. Section heads and the
+     contact line in 800, subtitles and callouts in 600-700, all roman with tight tracking.
+     Body, h3s, UI and numbers too. A callout under a heading is always set a step smaller than it.
+   - DM Mono 500: one label style. 12px, .08em, uppercase, full ink (>= 4.5:1 on every tint). Never body text.
+   Hanken sits second in the display and mono stacks: it carries the ← → those two faces lack. */
+:root{
+  --f-display:"Fraunces","Hanken Grotesk","Cooper Black",Georgia,serif;
+  --f-body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"DM Mono","Hanken Grotesk",ui-monospace,"Cascadia Mono",Consolas,monospace;
+
+  /* the scale */
+  --t-12:12px; --t-14:14px; --t-17:17px; --t-20:20px; --t-28:28px; --t-40:40px; --t-64:64px; --t-92:92px;
+
+  /* roles */
+  --fs-label:var(--t-12);     /* mono labels, chips */
+  --fs-small:var(--t-14);     /* captions, citations, side nav */
+  --fs-lead:var(--t-20);      /* intros, pull lines */
+  --fs-h3:var(--t-20);
+  --fs-h2:var(--t-28);        /* h2 inside a page: always below the page title */
+  --fs-sec:var(--t-40);       /* home section heads, about line */
+  --fs-title:var(--t-40);     /* page titles: case-study h1, résumé name */
+  --fs-name:var(--t-40);      /* project names on cards */
+  --fs-title-xl:var(--t-64);  /* 404 line, contact line */
+  --fs-hero:var(--t-92);      /* home headline, case-study project name */
+
+  --w-loud:800;
+  --lh-display:.95; --lh-heading:1.1; --lh-ui:1.3; --lh-prose:1.7;
+  --ls-display:.005em; --ls-heading:-.02em; --ls-tight:-.03em; --ls-label:.08em; --ls-chip:.06em;
+  --measure:29em;          /* about 65 characters a line in Hanken (its 0 is wide, so ch overshoots) */
+
+  /* labels: full ink (9-13:1 on the pastel grounds and tints); coloured labels get a deeper coral */
+  --label-ink:var(--ink);
+  --label-accent:#93291F; --label-card:#93291F;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--label-accent:var(--accent)}}
+:root[data-theme="dark"]{--label-accent:var(--accent)}
+@media (max-width:1100px){:root{--fs-hero:var(--t-64)}}
+@media (max-width:720px){:root{
+  --fs-sec:var(--t-28); --fs-title:var(--t-28); --fs-name:var(--t-28); --fs-title-xl:var(--t-40);
+  --fs-h2:var(--t-20); --fs-h3:var(--t-17); --fs-lead:var(--t-17)}}
+@media (max-width:420px){:root{--fs-hero:var(--t-40)}}
+
+/* ---------- Fraunces 800: H1s and names, nothing else ---------- */
+.hero h1,.lid-name,.flavor,.mini-lid b,.sd-label b,.case-hero h1,.case-hero:has(> .hero-visual) h1,.slip-intro h1,.empty h1,
+.slip-logo{
+  font-family:var(--f-display);font-style:italic;font-weight:var(--w-loud);font-synthesis:none;
+  font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72;letter-spacing:var(--ls-display);text-transform:none}
+.hero h1{font-size:var(--fs-hero);line-height:var(--lh-display)}
+.hero h1 em{font-weight:var(--w-loud)}
+.lid-name{font-size:var(--t-64);line-height:.92}
+.case-hero .flavor,.case-hero:has(> .hero-visual) .flavor{font-size:var(--fs-hero);line-height:.92}
+.variety .flavor{font-size:var(--fs-name);line-height:1}
+.next .flavor{font-size:var(--t-64);line-height:1}
+.mini-lid b{font-size:var(--t-28);line-height:1}
+@media (max-width:720px){.next .flavor{font-size:var(--t-40)}}
+.case-hero h1,.case-hero:has(> .hero-visual) h1{font-size:var(--fs-title);line-height:1.12;max-width:22ch}
+.slip-intro h1{font-size:var(--fs-title);line-height:1}
+.empty h1{font-size:var(--fs-title-xl);line-height:1}
+.slip-logo{font-size:var(--t-20);line-height:1}
+
+/* ---------- Hanken roman: section heads, subtitles, callouts ---------- */
+.sec-head h2,.case-sec > h2,.back h2,.card h3,.extra-title,.pov,.problem q,.tin-ingredients b{
+  font-family:var(--f-body);font-style:normal;font-variation-settings:normal;font-synthesis:none;text-transform:none}
+/* heads: 800, tracked in harder as they grow */
+.sec-head h2,.case-sec > h2,.back h2,.extra-title,.card h3{font-weight:800}
+.sec-head h2{font-size:var(--fs-sec);line-height:1.05;letter-spacing:-.035em}
+.back h2{font-size:var(--fs-title-xl);line-height:1;letter-spacing:-.04em}
+.case-sec > h2{font-size:var(--fs-h2);line-height:1.15;letter-spacing:-.025em}
+.card h3,.extra-title{font-size:var(--fs-h2);line-height:1.1;letter-spacing:-.025em}
+/* callouts sit one step below the head above them: the about line under its section head (40 > 28),
+   the key question under "The problem" (28 > 20); on phones 28 > 20 and 20 > 17 */
+.pov{font-size:var(--t-28);font-weight:700;line-height:1.2;letter-spacing:-.025em}
+.problem q{font-size:var(--fs-lead);font-weight:600;line-height:1.4;letter-spacing:-.01em}
+.tin-ingredients b{font-size:var(--t-17);font-weight:700;letter-spacing:-.01em}
+@media (max-width:720px){.pov{font-size:var(--t-20)}}
+
+/* ---------- Hanken: numbers, h3s, UI ---------- */
+.rc-brand,.stats b,.steps .n,.ingredients b,.slip-title b,.tearoff b,.figma-poster b,.result strong{
+  font-family:var(--f-body);font-style:normal;font-variation-settings:normal;font-weight:800;letter-spacing:var(--ls-heading)}
+.rc-brand{font-size:var(--t-20);line-height:1.1}
+.stats b{font-size:var(--t-28);line-height:1;letter-spacing:var(--ls-tight);font-variant-numeric:tabular-nums}
+.steps .n{font-size:var(--t-20);line-height:1;letter-spacing:0;font-variant-numeric:tabular-nums}
+.ingredients b{font-size:var(--t-17);line-height:28px;font-weight:700;letter-spacing:0}
+.slip-title b{font-size:var(--t-28)}
+.tearoff b,.figma-poster b,.result strong{font-size:var(--t-20)}
+.case-sec h3,.role h3,.variety h3,.decisions h3,.features h3{font-family:var(--f-body);font-size:var(--fs-h3);line-height:var(--lh-ui);letter-spacing:-.01em}
+.case-sec h3,.role h3{font-weight:700}
+.variety h3{font-weight:500;font-size:var(--t-20)}
+.steps h3{font-size:var(--t-17)}
+.glance dd,.glance .outcome dd{font-size:var(--t-17)}
+.pull p{font-size:var(--fs-lead);line-height:1.4}
+.banner{font-size:var(--t-12)}
+.btn,.hero .ctas .btn{font-size:var(--t-17)}
+.copy,.toc button,.toc-pill{font-size:var(--t-14)}
+.nav-links a{font-size:var(--t-17)}
+@media (max-width:600px){.nav-links a{font-size:var(--t-14)}}
+@media (max-width:720px){.variety h3{font-size:var(--t-17)}}
+
+/* ---------- body copy: three sizes and a measure ---------- */
+.lede,.about,.case-hero .summary,.case-hero:has(> .hero-visual) .summary,.slip-intro p,.editions-intro,.empty p{font-size:var(--fs-lead);line-height:1.55}
+.prose,.brief,.problem p,.impact,.about{max-width:var(--measure)}
+.tldr-grid p,.steps p,.steps li,.decisions p,.constraints li,.trace li > span:first-child,.role ul,.side-block p,.side-block li,
+.extra-sub,.contains,.insights li,.features p,.ref span,.skill-group b{font-size:var(--t-17)}
+figcaption,.gallery figcaption,.pull cite,.stats span,.result span,.mini-sub,.lb-cap{font-size:var(--fs-small)}
+.extra-go{font-size:var(--t-20)}
+.next .arrow{font-size:var(--t-28)}
+
+/* ---------- DM Mono 500: one label style ---------- */
+.mono,.sub-h,.case-sec h3.sub-h,.r-sec > h2,.glance dt,.slip-fields dt,.trace-head span,.role time,.card-meta,.steps li::before,.lot,
+.method-row h3,.status,.tags span,.chips span,.skill-group .chips span,.tag,.hv-tag,.detail-tag,.compare-tag,.seal,.swatches span,
+.hv-bar span,.lid .mono,.mini-lid .mono,.portrait figcaption,.extra .mono,.barcode .mono,.toc-pill-k,.sheet-list button .mono,
+.gallery::before,.lb-cap::after,.sheet-list button[aria-current]::after,.recipe-cols h4,.slip-cols,.slip-foot{
+  font-family:var(--f-mono);font-size:var(--fs-label);font-weight:500;letter-spacing:var(--ls-label);text-transform:uppercase;font-style:normal}
+.tags span,.chips span,.skill-group .chips span,.tag,.hv-tag,.detail-tag,.compare-tag,.seal,.swatches span{letter-spacing:var(--ls-chip)}
+.swatches span{text-transform:none}
+.role time{text-transform:none;letter-spacing:.02em;font-variant-numeric:tabular-nums}
+.glance dt,.slip-fields dt{line-height:1.2}
+.case-sec h3.sub-h{margin-top:10px}
+/* quiet, but dark: the grey labels move to deep ink */
+.sec-head .mono,.glance dt,.slip-fields dt,.r-sec > h2,.role time,.trace-head span,.case-sec h3.sub-h,.toc .mono,.extra .mono,
+.portrait figcaption,.links > .mono,.fine-print .mono,.status,.slip-foot,.slip-cols,.mono.muted{color:var(--label-ink)}
+.method-row h3,.lot,.tear-here,.figma-poster .mono{color:var(--label-accent)}
+.mini-lid .mono{opacity:.85}
+.hv-tag{padding-block:3px}
+.hv-tag b{font:800 var(--t-12)/1 var(--f-body)}
+.hv-pin{font:800 var(--t-12)/20px var(--f-body);letter-spacing:0}
+.email code{font-weight:500;font-size:var(--t-20)}
+.steps li:has(> .n)::before{content:none}
+
+/* the takeaways receipt: a mono object on the same steps */
+.receipt{font-size:var(--t-14)}
+.rc-head,.rc-meta,.rc-sub,.rc-note,.rc-foot,.rc-foot span:first-child{font-size:var(--t-12)}
+.rc-line{font-weight:500}
+.rc-total .rc-line{font-size:var(--t-20);font-weight:500}
+.stamp{font-size:var(--t-14);font-weight:500}
+
+@media (max-width:480px){.variety > .mono,.next .mono{letter-spacing:.04em}}
+@media (max-width:360px){.status{letter-spacing:.04em}}
+/* one inline style in the résumé markup sets 15px; pull it onto the scale */
+.slip-side p.muted[style]{font-size:var(--t-14)!important}
+/* coral mono labels on paper: the deep coral clears 4.5:1 on every tint where the bright one (3.5:1) didn't */
+.lessons .next-time b,.lessons h3::before{color:var(--label-accent)}
+/* the tear-off is a print surface (butter in both themes), so its labels keep print ink in dark mode too */
+.tearoff .mono,.tearoff .muted{color:var(--print-ink)}
+.tearoff .tear-here{color:#93291F}
+
+/* ---------- glyphs the web fonts don't carry ---------- */
+/* ↗ ✦ ✂ are inline SVG (sprite symbols in index.html); they size and colour like the text around them */
+.ico{display:inline-block;width:.72em;height:.72em;vertical-align:-.02em;overflow:visible}
+.sparkles .ico{width:1em;height:1em;vertical-align:top}
+.tear-here .ico{width:1.25em;height:1.25em;vertical-align:-.3em;margin-right:.2em}
+/* pseudo-element icons: × is in Hanken; the turn arrow and the drag handle are drawn */
+.turn .mono::before{content:"\00D7";font-size:15px}
+.turn.t-fb .mono::before{content:"";background:var(--print-ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cg fill='none' stroke='%23FFFAF2' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 6A4 4 0 1 1 6 2'/%3E%3Cpath d='M4.6.7 6.2 2 4.6 3.3'/%3E%3C/g%3E%3C/svg%3E") center/11px no-repeat}
+.compare-handle::after{content:"";background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 12'%3E%3Cpath d='M2 6h20M6 2 2 6l4 4M18 2l4 4-4 4' fill='none' stroke='%231F2A55' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/22px auto no-repeat var(--print-butter)}
+@media (max-width:720px){.compare-handle::after{background-size:18px auto}}
