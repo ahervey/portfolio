@@ -4,12 +4,12 @@ Personal UX portfolio site. Open `index.html` in a browser.
 
 - Live at https://ahervey.dev (GitHub Pages, custom domain set by the `CNAME` file)
 - `img/` optimized images used by the site
-- `files/` résumé and writing sample PDFs
+- `files/` résumé PDF
 - `source-images/` original project screenshots
 
 ## How it works
 
-Everything lives in `index.html` as separate views (home, four case studies, writing, résumé).
+Everything lives in `index.html` as separate views (home, four case studies, about, résumé).
 `app.js` shows the right view based on the URL hash, e.g. `index.html#oracle`.
 
 - `styles.css` design tokens and all styling

@@ -5,7 +5,7 @@
 
    Three faces, each with a job:
    - Fraunces 800 italic (soft, wonky): H1s and names only. The home headline, project names,
-     case-study titles, the essay title, the résumé name, the 404 line, and the brand marks on the tin.
+     case-study titles, the résumé name, the 404 line, and the brand marks on the tin.
      Kept rare so it lands every time.
    - Hanken Grotesk (variable 400-800): everything else that is a heading. Section heads and the
      contact line in 800, subtitles and callouts in 600-700, all roman with tight tracking.
@@ -29,7 +29,7 @@
   --fs-sec:var(--t-40);       /* home section heads, about line */
   --fs-title:var(--t-40);     /* page titles: case-study h1, résumé name */
   --fs-name:var(--t-40);      /* project names on cards */
-  --fs-title-xl:var(--t-64);  /* essay title, contact line */
+  --fs-title-xl:var(--t-64);  /* 404 line, contact line */
   --fs-hero:var(--t-92);      /* home headline, case-study project name */
 
   --w-loud:800;
@@ -50,8 +50,8 @@
 @media (max-width:420px){:root{--fs-hero:var(--t-40)}}
 
 /* ---------- Fraunces 800: H1s and names, nothing else ---------- */
-.hero h1,.lid-name,.flavor,.mini-lid b,.sd-label b,.case-hero h1,.case-hero:has(> .hero-visual) h1,.essay h1,.slip-intro h1,.empty h1,
-.slip-logo,.fold .drop::first-letter{
+.hero h1,.lid-name,.flavor,.mini-lid b,.sd-label b,.case-hero h1,.case-hero:has(> .hero-visual) h1,.slip-intro h1,.empty h1,
+.slip-logo{
   font-family:var(--f-display);font-style:italic;font-weight:var(--w-loud);font-synthesis:none;
   font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72;letter-spacing:var(--ls-display);text-transform:none}
 .hero h1{font-size:var(--fs-hero);line-height:var(--lh-display)}
@@ -63,20 +63,18 @@
 .mini-lid b{font-size:var(--t-28);line-height:1}
 @media (max-width:720px){.next .flavor{font-size:var(--t-40)}}
 .case-hero h1,.case-hero:has(> .hero-visual) h1{font-size:var(--fs-title);line-height:1.12;max-width:22ch}
-.essay h1{font-size:var(--fs-title-xl);line-height:var(--lh-display)}
 .slip-intro h1{font-size:var(--fs-title);line-height:1}
 .empty h1{font-size:var(--fs-title-xl);line-height:1}
 .slip-logo{font-size:var(--t-20);line-height:1}
-.fold .drop::first-letter{font-size:var(--t-64);line-height:.8}
 
 /* ---------- Hanken roman: section heads, subtitles, callouts ---------- */
-.sec-head h2,.case-sec > h2,.essay h2,.fold h2,.back h2,.card h3,.extra-title,.pov,.problem q,.tin-ingredients b{
+.sec-head h2,.case-sec > h2,.back h2,.card h3,.extra-title,.pov,.problem q,.tin-ingredients b{
   font-family:var(--f-body);font-style:normal;font-variation-settings:normal;font-synthesis:none;text-transform:none}
 /* heads: 800, tracked in harder as they grow */
-.sec-head h2,.case-sec > h2,.essay h2,.fold h2,.back h2,.extra-title,.card h3{font-weight:800}
+.sec-head h2,.case-sec > h2,.back h2,.extra-title,.card h3{font-weight:800}
 .sec-head h2{font-size:var(--fs-sec);line-height:1.05;letter-spacing:-.035em}
 .back h2{font-size:var(--fs-title-xl);line-height:1;letter-spacing:-.04em}
-.case-sec > h2,.essay h2,.fold h2{font-size:var(--fs-h2);line-height:1.15;letter-spacing:-.025em}
+.case-sec > h2{font-size:var(--fs-h2);line-height:1.15;letter-spacing:-.025em}
 .card h3,.extra-title{font-size:var(--fs-h2);line-height:1.1;letter-spacing:-.025em}
 /* callouts sit one step below the head above them: the about line under its section head (40 > 28),
    the key question under "The problem" (28 > 20); on phones 28 > 20 and 20 > 17 */
@@ -108,11 +106,10 @@
 @media (max-width:720px){.variety h3{font-size:var(--t-17)}}
 
 /* ---------- body copy: three sizes and a measure ---------- */
-.lede,.about,.case-hero .summary,.case-hero:has(> .hero-visual) .summary,.essay .sub,.slip-intro p,.editions-intro,.empty p{font-size:var(--fs-lead);line-height:1.55}
-.essay p,.fold p{font-size:var(--t-17);line-height:var(--lh-prose)}
-.prose,.brief,.problem p,.fold p,.essay p,.defn,.impact,.about{max-width:var(--measure)}
+.lede,.about,.case-hero .summary,.case-hero:has(> .hero-visual) .summary,.slip-intro p,.editions-intro,.empty p{font-size:var(--fs-lead);line-height:1.55}
+.prose,.brief,.problem p,.impact,.about{max-width:var(--measure)}
 .tldr-grid p,.steps p,.steps li,.decisions p,.constraints li,.trace li > span:first-child,.role ul,.side-block p,.side-block li,
-.extra-sub,.contains,.insights li,.features p,.defn,.ref span,.skill-group b{font-size:var(--t-17)}
+.extra-sub,.contains,.insights li,.features p,.ref span,.skill-group b{font-size:var(--t-17)}
 figcaption,.gallery figcaption,.pull cite,.stats span,.result span,.mini-sub,.lb-cap{font-size:var(--fs-small)}
 .extra-go{font-size:var(--t-20)}
 .next .arrow{font-size:var(--t-28)}
@@ -121,7 +118,7 @@ figcaption,.gallery figcaption,.pull cite,.stats span,.result span,.mini-sub,.lb
 .mono,.sub-h,.case-sec h3.sub-h,.r-sec > h2,.glance dt,.slip-fields dt,.trace-head span,.role time,.card-meta,.steps li::before,.lot,
 .method-row h3,.status,.tags span,.chips span,.skill-group .chips span,.tag,.hv-tag,.detail-tag,.compare-tag,.seal,.swatches span,
 .hv-bar span,.lid .mono,.mini-lid .mono,.portrait figcaption,.extra .mono,.barcode .mono,.toc-pill-k,.sheet-list button .mono,
-.gallery::before,.lb-cap::after,.sheet-list button[aria-current]::after,.recipe-cols h4,.slip-cols,.fold-head,.slip-foot{
+.gallery::before,.lb-cap::after,.sheet-list button[aria-current]::after,.recipe-cols h4,.slip-cols,.slip-foot{
   font-family:var(--f-mono);font-size:var(--fs-label);font-weight:500;letter-spacing:var(--ls-label);text-transform:uppercase;font-style:normal}
 .tags span,.chips span,.skill-group .chips span,.tag,.hv-tag,.detail-tag,.compare-tag,.seal,.swatches span{letter-spacing:var(--ls-chip)}
 .swatches span{text-transform:none}
@@ -132,13 +129,11 @@ figcaption,.gallery figcaption,.pull cite,.stats span,.result span,.mini-sub,.lb
 .sec-head .mono,.glance dt,.slip-fields dt,.r-sec > h2,.role time,.trace-head span,.case-sec h3.sub-h,.toc .mono,.extra .mono,
 .portrait figcaption,.links > .mono,.fine-print .mono,.status,.slip-foot,.slip-cols,.mono.muted{color:var(--label-ink)}
 .method-row h3,.lot,.tear-here,.figma-poster .mono{color:var(--label-accent)}
-.fold-head,.fold-cta .mono{color:var(--label-card)}
 .mini-lid .mono{opacity:.85}
 .hv-tag{padding-block:3px}
 .hv-tag b{font:800 var(--t-12)/1 var(--f-body)}
 .hv-pin{font:800 var(--t-12)/20px var(--f-body);letter-spacing:0}
 .email code{font-weight:500;font-size:var(--t-20)}
-.fold-head > :last-child{white-space:nowrap}
 .steps li:has(> .n)::before{content:none}
 
 /* the takeaways receipt: a mono object on the same steps */
