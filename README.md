@@ -5,7 +5,6 @@ Personal UX portfolio site. Open `index.html` in a browser.
 - Live at https://ahervey.dev (GitHub Pages, custom domain set by the `CNAME` file)
 - `img/` optimized images used by the site
 - `files/` résumé PDF
-- `source-images/` original project screenshots
 
 ## How it works
 
