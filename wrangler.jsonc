@@ -1,0 +1,14 @@
+// Cloudflare Workers config: serves the repo root as static assets.
+// Matches what Workers Builds auto-detected for production; the empty
+// `previews` block lets non-production branches build a preview.
+{
+  "name": "portfolio",
+  "compatibility_date": "2026-10-19",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "."
+  },
+  "previews": {}
+}
